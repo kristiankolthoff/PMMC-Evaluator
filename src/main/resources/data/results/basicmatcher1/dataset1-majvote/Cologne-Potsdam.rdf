@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" 
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-D4F6E283-16FB-458A-830A-03336924C1D2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768"/>
+		<entity2 rdf:resource="http://Potsdam#sid-AFD38E5A-3438-44ED-87A9-63EAE7A744DD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768"/>
+		<entity2 rdf:resource="http://Potsdam#sid-FB567539-2B9F-4B9C-A2A8-4C8A9097CE89"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-885F9233-8A3A-470C-90D9-FA7F483D69CA"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-885F9233-8A3A-470C-90D9-FA7F483D69CA"/>
+		<entity2 rdf:resource="http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+		<entity2 rdf:resource="http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+		<entity2 rdf:resource="http://Potsdam#sid-AFD38E5A-3438-44ED-87A9-63EAE7A744DD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+		<entity2 rdf:resource="http://Potsdam#sid-FB567539-2B9F-4B9C-A2A8-4C8A9097CE89"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+		<entity2 rdf:resource="http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+
+</Alignment>
+</rdf:RDF>

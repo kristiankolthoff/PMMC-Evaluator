@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-15689096-B676-4EFE-87E9-AC7E50725AB8'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-5A0807EA-8206-4037-A55F-0A3C9605ABF7'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-997AFA4D-FFA4-45FD-9E52-B2D45BD24785'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-03231681-FE58-415D-AECB-BC1143526ED5'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-27F26039-B6AE-470D-A325-A997E655AC70'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-03231681-FE58-415D-AECB-BC1143526ED5'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

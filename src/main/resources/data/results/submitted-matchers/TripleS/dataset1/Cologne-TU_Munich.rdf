@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.9937500357627869</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-DF0BF153-C7B8-47A6-9436-2217B6A02FB9'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-40FCF57B-44A4-443F-80D6-D2778D1045CD'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.984375</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-B91C87CE-C2CD-4CEF-B652-B83414A123D7'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-DFAB4855-32CC-4502-805E-32558E512ADD'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-885F9233-8A3A-470C-90D9-FA7F483D69CA'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-8C188CB2-5CD5-451F-B76D-B14C777E9556'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.8875000476837158</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7375000715255737</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7375000715255737</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.8875000476837158</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.8875000476837158</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.8875000476837158</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.8875000476837158</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7375000715255737</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7375000715255737</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.8875000476837158</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-701A0B1D-BFF0-482A-A658-A6713BC21F13'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.9935096502304077</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-BB1C4222-40C6-4013-A9C7-11BD25E18C16'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.9906250238418579</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.9906250238418579</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-A8E1C7F2-D9A4-4669-9A5E-A39015D04BE2'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.9935096502304077</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

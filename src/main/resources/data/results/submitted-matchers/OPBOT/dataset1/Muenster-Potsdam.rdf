@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+    <Alignment>
+        <xml>yes</xml>
+        <level>0</level>
+        <type>**</type>
+        <onto1>
+            <Ontology rdf:about="null">
+                <location>null</location>
+            </Ontology>
+        </onto1>
+        <onto2>
+            <Ontology rdf:about="null">
+                <location>null</location>
+            </Ontology>
+        </onto2>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Muenster#sid-E82C3C01-40A1-4E7D-B642-E6FFFA9008E8'/>
+                <entity2 rdf:resource='http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0'/>
+                <entity2 rdf:resource='http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Muenster#sid-E75E22AB-D608-459B-A125-3089B5FC6608'/>
+                <entity2 rdf:resource='http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55'/>
+                <entity2 rdf:resource='http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55'/>
+                <entity2 rdf:resource='http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B'/>
+                <entity2 rdf:resource='http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7'/>
+                <entity2 rdf:resource='http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+    </Alignment>
+</rdf:RDF>

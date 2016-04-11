@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>**</type>	
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+			<entity2 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6008</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+			<entity2 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5953</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+			<entity2 rdf:resource="http://Muenster#sid-FA818A39-9A60-4A73-9DB3-536ECED36803"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.3002</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+			<entity2 rdf:resource="http://Muenster#sid-FE06EA88-2FF3-4061-AF0C-2C43FADCDB8E"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.3002</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-A3568080-F469-4D86-BB96-7A5C48342857"/>
+			<entity2 rdf:resource="http://Muenster#sid-653B2E61-D08D-4038-A632-603B74BAAD45"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.321</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768"/>
+			<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.4019</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-885F9233-8A3A-470C-90D9-FA7F483D69CA"/>
+			<entity2 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.4785</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-7657E804-205F-446E-A919-FE7008355206"/>
+			<entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554"/>
+			<entity2 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-7657E804-205F-446E-A919-FE7008355206"/>
+			<entity2 rdf:resource="http://Muenster#sid-F744D08B-981B-48A8-A2FE-0AB7DF15995E"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C"/>
+			<entity2 rdf:resource="http://Muenster#sid-58820A80-B650-4F8E-8F61-7912B328820E"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978"/>
+			<entity2 rdf:resource="http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9567</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-257EB9F2-1203-4F54-8E2E-43FE6ABA096E"/>
+			<entity2 rdf:resource="http://Muenster#sid-C28F8767-5ADE-4467-9F6B-92B0B07939A5"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6912</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+</Alignment>
+</rdf:RDF>

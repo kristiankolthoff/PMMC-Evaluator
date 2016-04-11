@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-2A61C308-48B4-4C26-9CB3-D489A0BBC1E3'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-DF0BF153-C7B8-47A6-9436-2217B6A02FB9'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-EA76CC8B-DB97-46CB-A2A0-5F44667C8B2E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-7657E804-205F-446E-A919-FE7008355206'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-29CFE8F0-3D84-478E-A27A-9FD962B466DB'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

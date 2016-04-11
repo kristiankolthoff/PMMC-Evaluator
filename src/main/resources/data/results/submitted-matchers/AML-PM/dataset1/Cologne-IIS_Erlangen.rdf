@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>**</type>
+	<onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6008</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5953</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-7657E804-205F-446E-A919-FE7008355206"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-61C63143-A3D1-43D6-BE5A-8526C6794B43"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-AD174F93-7C65-4F21-8791-2C91779F9457"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-7657E804-205F-446E-A919-FE7008355206"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-053A0B4D-160A-4953-B0D9-298A22FAD4CE"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-257EB9F2-1203-4F54-8E2E-43FE6ABA096E"/>
+			<entity2 rdf:resource="http://IIS_Erlangen#sid-98F36DFD-F030-436E-9C1C-541AB22E5D0E"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5574</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+</Alignment>
+</rdf:RDF>

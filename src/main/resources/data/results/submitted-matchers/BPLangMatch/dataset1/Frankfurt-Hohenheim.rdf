@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+  <Alignment>
+    <xml>yes</xml>
+    <level>0</level>
+    <type>**</type>
+    <onto1>
+      <Ontology rdf:about="null">
+        <location>null</location>
+      </Ontology>
+    </onto1>
+    <onto2>
+      <Ontology rdf:about="null">
+        <location>null</location>
+      </Ontology>
+    </onto2>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047" />
+        <entity2 rdf:resource="http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888" />
+        <entity2 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://Frankfurt#sid-B296B105-D85C-47FE-A200-50F7C64E65CF" />
+        <entity2 rdf:resource="http://Hohenheim#sid-EA76CC8B-DB97-46CB-A2A0-5F44667C8B2E" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6" />
+        <entity2 rdf:resource="http://Hohenheim#sid-A9A47E33-0D7E-4826-B8C9-F2AA528EE59B" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+  </Alignment>
+</rdf:RDF>

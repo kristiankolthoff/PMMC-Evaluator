@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-AFB67B06-BDE2-40B6-B3C2-A3665192D791'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-465F693F-A9A4-43B7-86FB-B6F16EAD8DE7'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-5A0807EA-8206-4037-A55F-0A3C9605ABF7'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-5A0807EA-8206-4037-A55F-0A3C9605ABF7'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-40FCF57B-44A4-443F-80D6-D2778D1045CD'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-B06626EF-C70E-4D70-B20F-BA3DAC313DD9'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

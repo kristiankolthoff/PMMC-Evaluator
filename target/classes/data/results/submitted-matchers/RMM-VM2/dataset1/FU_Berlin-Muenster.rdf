@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282'/>
+      <entity2 rdf:resource='http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90'/>
+      <entity2 rdf:resource='http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3'/>
+      <entity2 rdf:resource='http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-DB1169F0-5D3C-4463-9A95-B77636938DB3'/>
+      <entity2 rdf:resource='http://Muenster#sid-7A3C1CD7-9190-48A3-A21E-58EAA921B7C7'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544'/>
+      <entity2 rdf:resource='http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC'/>
+      <entity2 rdf:resource='http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-E8AD3C41-2A2F-47FA-879A-648F728C4D17'/>
+      <entity2 rdf:resource='http://Muenster#sid-FA818A39-9A60-4A73-9DB3-536ECED36803'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-3572686C-9AEC-4B27-85AC-6A1F1C28883C'/>
+      <entity2 rdf:resource='http://Muenster#sid-FA818A39-9A60-4A73-9DB3-536ECED36803'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-C8972681-3E1C-408F-8595-59226D48CF52'/>
+      <entity2 rdf:resource='http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-4C4F7701-49EF-41A8-946A-88EF52B17794'/>
+      <entity2 rdf:resource='http://Muenster#sid-7A3C1CD7-9190-48A3-A21E-58EAA921B7C7'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC'/>
+      <entity2 rdf:resource='http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111'/>
+      <entity2 rdf:resource='http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5'/>
+      <entity2 rdf:resource='http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E'/>
+      <entity2 rdf:resource='http://Muenster#sid-58820A80-B650-4F8E-8F61-7912B328820E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-9D9B9D3B-B540-465D-9CAC-AFE4A96DE279'/>
+      <entity2 rdf:resource='http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF'/>
+      <entity2 rdf:resource='http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC'/>
+      <entity2 rdf:resource='http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

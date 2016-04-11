@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" 
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-8C188CB2-5CD5-451F-B76D-B14C777E9556"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-465F693F-A9A4-43B7-86FB-B6F16EAD8DE7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-C4B9A0D4-3335-4527-B339-DC83E05D5E30"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-465F693F-A9A4-43B7-86FB-B6F16EAD8DE7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-F53E1042-76C5-4315-B652-DB962450B711"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-8C188CB2-5CD5-451F-B76D-B14C777E9556"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-465F693F-A9A4-43B7-86FB-B6F16EAD8DE7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-AE4B14E4-923C-4AE1-AF9F-2B02AEF2A2E0"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+
+</Alignment>
+</rdf:RDF>

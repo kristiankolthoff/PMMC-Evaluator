@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" 
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-8049BBB8-0B3A-4E42-95C7-4781418558DE"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+		<entity2 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+		<entity2 rdf:resource="http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+		<entity2 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+		<entity2 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+		<entity2 rdf:resource="http://Muenster#sid-FF0DB83C-2CF0-4E75-BED9-7BC93C57F5E5"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+		<entity2 rdf:resource="http://Muenster#sid-58820A80-B650-4F8E-8F61-7912B328820E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+		<entity2 rdf:resource="http://Muenster#sid-AA30AF0A-8581-4B06-B9CC-377FCB426BA2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-8049BBB8-0B3A-4E42-95C7-4781418558DE"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF"/>
+		<entity2 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Muenster#sid-FF0DB83C-2CF0-4E75-BED9-7BC93C57F5E5"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Muenster#sid-58820A80-B650-4F8E-8F61-7912B328820E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Muenster#sid-AA30AF0A-8581-4B06-B9CC-377FCB426BA2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-8049BBB8-0B3A-4E42-95C7-4781418558DE"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C8972681-3E1C-408F-8595-59226D48CF52"/>
+		<entity2 rdf:resource="http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3572686C-9AEC-4B27-85AC-6A1F1C28883C"/>
+		<entity2 rdf:resource="http://Muenster#sid-BDCFC466-A624-4FD3-B69D-D5C08CEC4BC9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282"/>
+		<entity2 rdf:resource="http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282"/>
+		<entity2 rdf:resource="http://Muenster#sid-6AC1166A-C7A0-46B7-99D0-8BE2D24163BB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282"/>
+		<entity2 rdf:resource="http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF"/>
+		<entity2 rdf:resource="http://Muenster#sid-F1349441-49AF-4AC2-8A31-EB0BA9BACB9D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF"/>
+		<entity2 rdf:resource="http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF"/>
+		<entity2 rdf:resource="http://Muenster#sid-6AC1166A-C7A0-46B7-99D0-8BE2D24163BB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF"/>
+		<entity2 rdf:resource="http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-8049BBB8-0B3A-4E42-95C7-4781418558DE"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+		<entity2 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-D116AE7C-E3B4-4C29-974D-303416C670E5"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-4DC6FB4E-153C-422A-8896-193087C5AD07"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-8049BBB8-0B3A-4E42-95C7-4781418558DE"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+		<entity2 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-9C365BD2-58D0-443D-9FD4-AC287BF377F6"/>
+		<entity2 rdf:resource="http://Muenster#sid-653B2E61-D08D-4038-A632-603B74BAAD45"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-9C365BD2-58D0-443D-9FD4-AC287BF377F6"/>
+		<entity2 rdf:resource="http://Muenster#sid-D972785F-B737-4B22-ABAE-23B52642FCEA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-9D9B9D3B-B540-465D-9CAC-AFE4A96DE279"/>
+		<entity2 rdf:resource="http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-9D9B9D3B-B540-465D-9CAC-AFE4A96DE279"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-9D9B9D3B-B540-465D-9CAC-AFE4A96DE279"/>
+		<entity2 rdf:resource="http://Muenster#sid-6AC1166A-C7A0-46B7-99D0-8BE2D24163BB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-9D9B9D3B-B540-465D-9CAC-AFE4A96DE279"/>
+		<entity2 rdf:resource="http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-DB1169F0-5D3C-4463-9A95-B77636938DB3"/>
+		<entity2 rdf:resource="http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Muenster#sid-FF0DB83C-2CF0-4E75-BED9-7BC93C57F5E5"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Muenster#sid-58820A80-B650-4F8E-8F61-7912B328820E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Muenster#sid-AA30AF0A-8581-4B06-B9CC-377FCB426BA2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-8049BBB8-0B3A-4E42-95C7-4781418558DE"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111"/>
+		<entity2 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Muenster#sid-FF0DB83C-2CF0-4E75-BED9-7BC93C57F5E5"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Muenster#sid-58820A80-B650-4F8E-8F61-7912B328820E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Muenster#sid-AA30AF0A-8581-4B06-B9CC-377FCB426BA2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+
+</Alignment>
+</rdf:RDF>

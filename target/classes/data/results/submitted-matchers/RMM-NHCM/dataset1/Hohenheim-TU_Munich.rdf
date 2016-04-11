@@ -1,0 +1,46 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+		xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+		xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+		xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/' 
+		xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-EA76CC8B-DB97-46CB-A2A0-5F44667C8B2E'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-40FCF57B-44A4-443F-80D6-D2778D1045CD'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-BB1C4222-40C6-4013-A9C7-11BD25E18C16'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

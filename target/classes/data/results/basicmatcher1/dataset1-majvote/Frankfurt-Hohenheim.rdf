@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" 
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-66591B2F-F075-4F41-84CF-13A13B315189"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-66591B2F-F075-4F41-84CF-13A13B315189"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-66591B2F-F075-4F41-84CF-13A13B315189"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-E78FA99D-E060-476F-B663-312E3503890F"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-E78FA99D-E060-476F-B663-312E3503890F"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-E78FA99D-E060-476F-B663-312E3503890F"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-615665EB-F5E5-4CD2-BD68-B38C319DEAE1"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-615665EB-F5E5-4CD2-BD68-B38C319DEAE1"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-615665EB-F5E5-4CD2-BD68-B38C319DEAE1"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-49E84080-A4FA-4017-BF10-1BD0B878AC4A"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-49E84080-A4FA-4017-BF10-1BD0B878AC4A"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-49E84080-A4FA-4017-BF10-1BD0B878AC4A"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+
+</Alignment>
+</rdf:RDF>

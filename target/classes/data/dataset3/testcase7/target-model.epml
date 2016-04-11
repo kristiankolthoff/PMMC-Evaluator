@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epml:epml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="epml_1_draft.xsd" xmlns:epml="http://www.epml.de">
+	<epc EpcId="168" name="1Be_1y63">
+		<event id="4350">
+			<graphics>
+				<position height="41" width="81" x="237" y="401"/>
+			</graphics>
+			<name>Purchase order created</name>
+		</event>
+		<function id="4344">
+			<graphics>
+				<position height="41" width="81" x="232" y="67"/>
+			</graphics>
+			<name>Purchase Requisition</name>
+		</function>
+		<xor id="4371">
+			<graphics>
+				<position height="31" width="31" x="256" y="130"/>
+			</graphics>
+			<name/>
+		</xor>
+		<event id="4364">
+			<graphics>
+				<position height="41" width="81" x="339" y="182"/>
+			</graphics>
+			<name>Requisition released for scheduling agreement schedule/SA release</name>
+		</event>
+		<event id="4349">
+			<graphics>
+				<position height="41" width="81" x="235" y="185"/>
+			</graphics>
+			<name>Purchase requisition released for purchase order</name>
+		</event>
+		<event id="4354">
+			<graphics>
+				<position height="41" width="81" x="142" y="182"/>
+			</graphics>
+			<name>Purchase requisition released for contract release order</name>
+		</event>
+		<xor id="4370">
+			<graphics>
+				<position height="31" width="31" x="262" y="244"/>
+			</graphics>
+			<name/>
+		</xor>
+		<function id="4343">
+			<graphics>
+				<position height="41" width="81" x="236" y="294"/>
+			</graphics>
+			<name>Purchasing</name>
+		</function>
+		<xor id="4369">
+			<graphics>
+				<position height="31" width="31" x="261" y="354"/>
+			</graphics>
+			<name/>
+		</xor>
+		<event id="4360">
+			<graphics>
+				<position height="41" width="81" x="338" y="399"/>
+			</graphics>
+			<name>Service is accepted</name>
+		</event>
+		<event id="4351">
+			<graphics>
+				<position height="41" width="81" x="433" y="400"/>
+			</graphics>
+			<name>Service entry sheet is transmitted</name>
+		</event>
+		<and id="4365">
+			<graphics>
+				<position height="31" width="31" x="411" y="357"/>
+			</graphics>
+			<name/>
+		</and>
+		<function id="4345">
+			<graphics>
+				<position height="41" width="81" x="387" y="296"/>
+			</graphics>
+			<name>Service Entry Sheet</name>
+		</function>
+		<event id="4361">
+			<graphics>
+				<position height="41" width="81" x="230" y="10"/>
+			</graphics>
+			<name>Requirement for material/ external services exists</name>
+		</event>
+		<function id="4346">
+			<graphics>
+				<position height="41" width="81" x="75" y="461"/>
+			</graphics>
+			<name>Goods Receipt</name>
+		</function>
+		<event id="4356">
+			<graphics>
+				<position height="41" width="81" x="73" y="519"/>
+			</graphics>
+			<name>Goods receipt posted</name>
+		</event>
+		<event id="4363">
+			<graphics>
+				<position height="41" width="81" x="120" y="733"/>
+			</graphics>
+			<name>TO item confirmed without differences</name>
+		</event>
+		<event id="4362">
+			<graphics>
+				<position height="41" width="81" x="31" y="733"/>
+			</graphics>
+			<name>Transfer order item is confirmed</name>
+		</event>
+		<function id="4347">
+			<graphics>
+				<position height="41" width="81" x="336" y="730"/>
+			</graphics>
+			<name>Invoice Verification</name>
+		</function>
+		<event id="4353">
+			<graphics>
+				<position height="41" width="81" x="335" y="790"/>
+			</graphics>
+			<name>Payment must be effected</name>
+		</event>
+		<function id="4348">
+			<graphics>
+				<position height="41" width="81" x="77" y="626"/>
+			</graphics>
+			<name>Warehouse/ Stores</name>
+		</function>
+		<event id="4358">
+			<graphics>
+				<position height="41" width="81" x="434" y="609"/>
+			</graphics>
+			<name>Material is released</name>
+		</event>
+		<event id="4357">
+			<graphics>
+				<position height="41" width="81" x="386" y="238"/>
+			</graphics>
+			<name>Services are to be entered</name>
+		</event>
+		<event id="4352">
+			<graphics>
+				<position height="41" width="81" x="10" y="350"/>
+			</graphics>
+			<name>Goods received</name>
+		</event>
+		<event id="4359">
+			<graphics>
+				<position height="41" width="81" x="338" y="608"/>
+			</graphics>
+			<name>Invoice received</name>
+		</event>
+		<event id="4355">
+			<graphics>
+				<position height="41" width="81" x="105" y="349"/>
+			</graphics>
+			<name>Inbound delivery for PO created</name>
+		</event>
+		<and id="4368">
+			<graphics>
+				<position height="31" width="31" x="101" y="416"/>
+			</graphics>
+			<name/>
+		</and>
+		<and id="4367">
+			<graphics>
+				<position height="31" width="31" x="100" y="576"/>
+			</graphics>
+			<name/>
+		</and>
+		<xor id="4372">
+			<graphics>
+				<position height="31" width="31" x="262" y="616"/>
+			</graphics>
+			<name/>
+		</xor>
+		<xor id="4373">
+			<graphics>
+				<position height="31" width="31" x="102" y="683"/>
+			</graphics>
+			<name/>
+		</xor>
+		<and id="4366">
+			<graphics>
+				<position height="31" width="31" x="363" y="678"/>
+			</graphics>
+			<name/>
+		</and>
+		<arc id="3609">
+			<flow source="4343" target="4369"/>
+		</arc>
+		<arc id="3610">
+			<flow source="4369" target="4350"/>
+		</arc>
+		<arc id="3611">
+			<flow source="4369" target="4355"/>
+		</arc>
+		<arc id="3612">
+			<flow source="4365" target="4351"/>
+		</arc>
+		<arc id="3613">
+			<flow source="4365" target="4360"/>
+		</arc>
+		<arc id="3614">
+			<flow source="4349" target="4370"/>
+		</arc>
+		<arc id="3615">
+			<flow source="4370" target="4343"/>
+		</arc>
+		<arc id="3616">
+			<flow source="4344" target="4371"/>
+		</arc>
+		<arc id="3617">
+			<flow source="4350" target="4372"/>
+		</arc>
+		<arc id="3618">
+			<flow source="4371" target="4349"/>
+		</arc>
+		<arc id="3619">
+			<flow source="4371" target="4354"/>
+		</arc>
+		<arc id="3620">
+			<flow source="4371" target="4364"/>
+		</arc>
+		<arc id="3621">
+			<flow source="4352" target="4368"/>
+		</arc>
+		<arc id="3622">
+			<flow source="4354" target="4370"/>
+		</arc>
+		<arc id="3623">
+			<flow source="4366" target="4347"/>
+		</arc>
+		<arc id="3624">
+			<flow source="4355" target="4368"/>
+		</arc>
+		<arc id="3625">
+			<flow source="4367" target="4372"/>
+		</arc>
+		<arc id="3626">
+			<flow source="4367" target="4348"/>
+		</arc>
+		<arc id="3627">
+			<flow source="4356" target="4367"/>
+		</arc>
+		<arc id="3628">
+			<flow source="4357" target="4345"/>
+		</arc>
+		<arc id="3629">
+			<flow source="4372" target="4366"/>
+		</arc>
+		<arc id="3630">
+			<flow source="4358" target="4366"/>
+		</arc>
+		<arc id="3631">
+			<flow source="4373" target="4362"/>
+		</arc>
+		<arc id="3632">
+			<flow source="4373" target="4363"/>
+		</arc>
+		<arc id="3633">
+			<flow source="4359" target="4366"/>
+		</arc>
+		<arc id="3634">
+			<flow source="4360" target="4372"/>
+		</arc>
+		<arc id="3635">
+			<flow source="4345" target="4365"/>
+		</arc>
+		<arc id="3636">
+			<flow source="4346" target="4356"/>
+		</arc>
+		<arc id="3637">
+			<flow source="4368" target="4346"/>
+		</arc>
+		<arc id="3638">
+			<flow source="4361" target="4344"/>
+		</arc>
+		<arc id="3639">
+			<flow source="4347" target="4353"/>
+		</arc>
+		<arc id="3640">
+			<flow source="4348" target="4373"/>
+		</arc>
+		<arc id="3641">
+			<flow source="4364" target="4370"/>
+		</arc>
+	</epc>
+</epml:epml>

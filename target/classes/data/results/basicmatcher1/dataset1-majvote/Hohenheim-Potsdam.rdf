@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" 
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-27040690-579E-40A1-AC4E-2EBD869C1E60"/>
+		<entity2 rdf:resource="http://Potsdam#sid-CBF7C869-D493-4C33-95CC-B6E0DCC0C95B"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-27040690-579E-40A1-AC4E-2EBD869C1E60"/>
+		<entity2 rdf:resource="http://Potsdam#sid-913A36A0-2F12-42FE-B791-904D6E57BF46"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+		<entity2 rdf:resource="http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-B5436D2E-8B89-442C-9DB9-340A5ADFFB00"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<entity2 rdf:resource="http://Potsdam#sid-AFD38E5A-3438-44ED-87A9-63EAE7A744DD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<entity2 rdf:resource="http://Potsdam#sid-FB567539-2B9F-4B9C-A2A8-4C8A9097CE89"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-C4B9A0D4-3335-4527-B339-DC83E05D5E30"/>
+		<entity2 rdf:resource="http://Potsdam#sid-B969BD21-9ED6-4153-9A4A-16D3FF6EB8E6"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-C4B9A0D4-3335-4527-B339-DC83E05D5E30"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<entity2 rdf:resource="http://Potsdam#sid-AFD38E5A-3438-44ED-87A9-63EAE7A744DD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<entity2 rdf:resource="http://Potsdam#sid-FB567539-2B9F-4B9C-A2A8-4C8A9097CE89"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4F885112-0FEB-40B6-81F6-577438355F3E"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-F53E1042-76C5-4315-B652-DB962450B711"/>
+		<entity2 rdf:resource="http://Potsdam#sid-B969BD21-9ED6-4153-9A4A-16D3FF6EB8E6"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-F53E1042-76C5-4315-B652-DB962450B711"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-27F26039-B6AE-470D-A325-A997E655AC70"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-997AFA4D-FFA4-45FD-9E52-B2D45BD24785"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2134BCB7-AA6C-4D36-98BD-96A11AA724F7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0B43A1DC-9CD7-4082-82F3-B012CAF55B53"/>
+		<entity2 rdf:resource="http://Potsdam#sid-CBF7C869-D493-4C33-95CC-B6E0DCC0C95B"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-0B43A1DC-9CD7-4082-82F3-B012CAF55B53"/>
+		<entity2 rdf:resource="http://Potsdam#sid-913A36A0-2F12-42FE-B791-904D6E57BF46"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+		<entity2 rdf:resource="http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<entity2 rdf:resource="http://Potsdam#sid-AFD38E5A-3438-44ED-87A9-63EAE7A744DD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<entity2 rdf:resource="http://Potsdam#sid-FB567539-2B9F-4B9C-A2A8-4C8A9097CE89"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-76EC3699-B839-4B75-AF80-197D104E8181"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-AE4B14E4-923C-4AE1-AF9F-2B02AEF2A2E0"/>
+		<entity2 rdf:resource="http://Potsdam#sid-B969BD21-9ED6-4153-9A4A-16D3FF6EB8E6"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-AE4B14E4-923C-4AE1-AF9F-2B02AEF2A2E0"/>
+		<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BF91EE3E-9FA5-4B2D-A047-0C6E672FE0E5"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-BF91EE3E-9FA5-4B2D-A047-0C6E672FE0E5"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-A9A47E33-0D7E-4826-B8C9-F2AA528EE59B"/>
+		<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+
+</Alignment>
+</rdf:RDF>

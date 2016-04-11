@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>**</type>
+	<onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874"/>
+			<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.8836</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+			<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5841</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+			<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5532</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+			<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5329</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+			<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5655</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+			<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5532</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+			<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5329</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+			<entity2 rdf:resource="http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5655</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A"/>
+			<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.4257</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2"/>
+			<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.3906</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-B1EBF238-7E8F-4B1D-A4A8-4D43C1982F64"/>
+			<entity2 rdf:resource="http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.3708</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6"/>
+			<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.3906</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-127FF88D-82B1-497C-810F-A233C9815279"/>
+			<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-09FD9E11-6B6F-4776-AD6F-840EA15E0FBF"/>
+			<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-27040690-579E-40A1-AC4E-2EBD869C1E60"/>
+			<entity2 rdf:resource="http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E"/>
+			<entity2 rdf:resource="http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-0B43A1DC-9CD7-4082-82F3-B012CAF55B53"/>
+			<entity2 rdf:resource="http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.939</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Hohenheim#sid-27040690-579E-40A1-AC4E-2EBD869C1E60"/>
+			<entity2 rdf:resource="http://Potsdam#sid-913A36A0-2F12-42FE-B791-904D6E57BF46"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.7876</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+</Alignment>
+</rdf:RDF>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" 
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-66591B2F-F075-4F41-84CF-13A13B315189"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-E78FA99D-E060-476F-B663-312E3503890F"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-615665EB-F5E5-4CD2-BD68-B38C319DEAE1"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-925591B8-59CC-4806-B43B-3B5F10D7794F"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-49E84080-A4FA-4017-BF10-1BD0B878AC4A"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-55151873-6F3B-47B9-8E13-CC1D36A2D6C6"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20"/>
+		<entity2 rdf:resource="http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+
+</Alignment>
+</rdf:RDF>
