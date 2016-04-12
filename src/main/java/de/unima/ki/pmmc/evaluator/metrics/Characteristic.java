@@ -53,6 +53,8 @@ public class Characteristic {
 	*/
 	private static boolean strictEvaluation = false;
 	
+	public static final double THRESHOLD = 0.500;
+	
 	/**
 	* Constructs an empty characteristic which is a characteristic for an mapping of cardinality zero. 
 	*
