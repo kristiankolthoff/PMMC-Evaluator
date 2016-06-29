@@ -735,8 +735,17 @@ public class Characteristic {
 					}
 				}
 			}
-			double sqDev = Math.pow(e.getKey().getConfidence() - cRef.getConfidence(), 2);
+			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
+			double sqDev = Math.pow(e.getValue() - confRef, 2);
 			sum += sqDev;
+		}
+		//Increase sum by squared deviation of correspondences not found by the matcher but
+		//present in the reference alignment
+		for(Characteristic c : characteristics) {
+			Alignment alignOnlyRef = c.getAlignmentReference().minus(c.getAlignmentCorrect());
+			for(Correspondence cOnlyRef : alignOnlyRef) {
+				sum += Math.pow(cOnlyRef.getConfidence(), 2);
+			}
 		}
 		return sum;
 	}
@@ -750,16 +759,28 @@ public class Characteristic {
 		Map<Correspondence, Double> vals = new HashMap<>();
 		Correspondence maxCorrespondence = Collections.max(correspondences);
 		double maxConf = maxCorrespondence.getConfidence();
-		for(Correspondence c : correspondences) {
-			vals.put(c, c.getConfidence() / maxConf);
-		}
-		double minConf = Collections.min(vals.values());
-		final double TARGET_MAX = 1;
-		final double TARGET_MIN = 0.125;
-		double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
-		for(Map.Entry<Correspondence, Double> e : vals.entrySet()) {
-			double finalConf = 1 - mult * (1 - e.getValue());
-			vals.put(e.getKey(), finalConf);
+		//Check for first line matcher
+		long numDistinctVals = correspondences.stream()
+				.mapToDouble(c -> c.getConfidence()).distinct().count();
+		//The matcher is a second line matcher, simply normalize to 0 and 1
+		if(numDistinctVals == 1) {
+			for(Correspondence c : correspondences) {
+				double confVal = (c.getConfidence()>0) ? 1 : 0;
+				vals.put(c, confVal);
+			}
+		//The matcher is a first line matcher, normalize between 0.125 and 1	
+		} else {
+			for(Correspondence c : correspondences) {
+				vals.put(c, c.getConfidence() / maxConf);
+			}
+			double minConf = Collections.min(vals.values());
+			final double TARGET_MAX = 1;
+			final double TARGET_MIN = 0.125;
+			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
+			for(Map.Entry<Correspondence, Double> e : vals.entrySet()) {
+				double finalConf = 1 - mult * (1 - e.getValue());
+				vals.put(e.getKey(), finalConf);
+			}
 		}
 		return vals;
 	}

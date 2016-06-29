@@ -2,6 +2,7 @@ package de.unima.ki.pmmc.evaluator.metrics;
 
 import static org.junit.Assert.*;
 
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class CharacteristicTest {
 	private Characteristic characteristic3;
 	private List<Characteristic> characteristicsZero;
 	private List<Characteristic> characteristics;
+	
+	private static final double ALLOWED_DEV = 0.001;
 	
 	@Before
 	public void init() {
@@ -114,8 +117,8 @@ public class CharacteristicTest {
 		matcher.add(new Correspondence("3", "3", 0.58));
 		matcher.add(new Correspondence("4", "4", 0.6));
 		Characteristic c = new Characteristic(matcher, reference);
-		assertEquals(0.9740, c.getCorrelation(ALLOW_ZEROS), 0.1);
-		assertEquals(0.9740, c.getCorrelation(!ALLOW_ZEROS), 0.1);
+		assertEquals(0.9740, c.getCorrelation(ALLOW_ZEROS), ALLOWED_DEV);
+		assertEquals(0.9740, c.getCorrelation(!ALLOW_ZEROS), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -132,8 +135,8 @@ public class CharacteristicTest {
 		matcher.add(new Correspondence("3", "3", 0.8));
 		matcher.add(new Correspondence("4", "4", 0.5));
 		Characteristic c = new Characteristic(matcher, reference);
-		assertEquals(-0.6002, c.getCorrelation(ALLOW_ZEROS), 0.1);
-		assertEquals(-0.6002, c.getCorrelation(!ALLOW_ZEROS), 0.1);
+		assertEquals(-0.6002, c.getCorrelation(ALLOW_ZEROS), ALLOWED_DEV);
+		assertEquals(-0.6002, c.getCorrelation(!ALLOW_ZEROS), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -150,7 +153,7 @@ public class CharacteristicTest {
 		matcher.add(new Correspondence("3", "3", 0.8));
 		matcher.add(new Correspondence("4", "4", 1.0));
 		Characteristic c = new Characteristic(matcher, reference);
-		assertEquals(0.9894, c.getCorrelation(ALLOW_ZEROS), 0.1);
+		assertEquals(0.9894, c.getCorrelation(ALLOW_ZEROS), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -168,7 +171,110 @@ public class CharacteristicTest {
 		matcher.add(new Correspondence("4", "4", 0.6));
 		matcher.add(new Correspondence("5", "5", 0.71));
 		Characteristic c = new Characteristic(matcher, reference);
-		assertEquals(0.1094, c.getCorrelation(ALLOW_ZEROS), 0.1);
-		assertEquals(0.9740, c.getCorrelation(!ALLOW_ZEROS), 0.1);
+		assertEquals(0.1094, c.getCorrelation(ALLOW_ZEROS), ALLOWED_DEV);
+		assertEquals(0.9740, c.getCorrelation(!ALLOW_ZEROS), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getRelativeDistanceFLMEqualCorresTest() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.08));
+		matcher.add(new Correspondence("2", "2", 0.10));
+		matcher.add(new Correspondence("3", "3", 0.22));
+		matcher.add(new Correspondence("4", "4", 0.7));
+		matcher.add(new Correspondence("5", "5", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(0.279, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+	}
+	
+	
+	@Test
+	public void getRelativeDistanceFLMNonEqualCorresMatcherTest() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.08));
+		matcher.add(new Correspondence("2", "2", 0.10));
+		matcher.add(new Correspondence("3", "3", 0.22));
+		matcher.add(new Correspondence("4", "4", 0.7));
+		matcher.add(new Correspondence("5", "5", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(1.279, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		matcher.add(new Correspondence("6", "6",0.9));
+		Characteristic c1 = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics1 = new ArrayList<>();
+		characteristics1.add(c1);
+		assertEquals(2.089, Characteristic.getRelativeDistance(characteristics1), ALLOWED_DEV + 0.01);
+	}
+	
+	@Test
+	public void getRelativeDistanceFLMNonEqualCorresRefTest() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 0.875));
+		reference.add(new Correspondence("6", "6", 0.875));
+		reference.add(new Correspondence("7", "7", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.08));
+		matcher.add(new Correspondence("2", "2", 0.10));
+		matcher.add(new Correspondence("3", "3", 0.22));
+		matcher.add(new Correspondence("4", "4", 0.7));
+		matcher.add(new Correspondence("7", "7", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(1.81, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getRelativeDistanceSLMTest() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 1));
+		matcher.add(new Correspondence("2", "2", 1));
+		matcher.add(new Correspondence("3", "3", 1));
+		matcher.add(new Correspondence("4", "4", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getRelativeDistanceSLM2Test() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.5));
+		matcher.add(new Correspondence("2", "2", 0.5));
+		matcher.add(new Correspondence("3", "3", 0.5));
+		matcher.add(new Correspondence("4", "4", 0.5));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
 	}
 }
