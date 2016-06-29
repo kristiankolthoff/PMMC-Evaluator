@@ -26,7 +26,12 @@ package de.unima.ki.pmmc.evaluator.metrics;
 
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
@@ -295,6 +300,7 @@ public class Characteristic {
 		}
 		return sum;
 	}
+	
 	
 	/**
 	 * 
@@ -710,6 +716,54 @@ public class Characteristic {
 		}
 		return Math.sqrt(dev/characteristics.size());
 	}
+	
+	
+	public static double getRelativeDistance(List<Characteristic> characteristics) {
+		List<Correspondence> allMatcherCorres = new ArrayList<>();
+		for(Characteristic c : characteristics) {
+			allMatcherCorres.addAll(c.getAlignmentMapping().getCorrespondences());
+		}
+		Map<Correspondence, Double> normConfs = getNormalizedConfidences(allMatcherCorres);
+		double sum = 0;
+		for(Map.Entry<Correspondence, Double> e: normConfs.entrySet()) {
+			Correspondence cRef = null;
+			for(Characteristic c : characteristics) {
+				for(Correspondence cCurr : c.getAlignmentReference()) {
+					if(e.getKey().equals(cCurr)) {
+						cRef = cCurr;
+						break;
+					}
+				}
+			}
+			double sqDev = Math.pow(e.getKey().getConfidence() - cRef.getConfidence(), 2);
+			sum += sqDev;
+		}
+		return sum;
+	}
+	
+	/**
+	 * First line mathcer and second line matcher recogniation
+	 * @param correspondences
+	 * @return
+	 */
+	private static Map<Correspondence, Double> getNormalizedConfidences(List<Correspondence> correspondences) {
+		Map<Correspondence, Double> vals = new HashMap<>();
+		Correspondence maxCorrespondence = Collections.max(correspondences);
+		double maxConf = maxCorrespondence.getConfidence();
+		for(Correspondence c : correspondences) {
+			vals.put(c, c.getConfidence() / maxConf);
+		}
+		double minConf = Collections.min(vals.values());
+		final double TARGET_MAX = 1;
+		final double TARGET_MIN = 0.125;
+		double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
+		for(Map.Entry<Correspondence, Double> e : vals.entrySet()) {
+			double finalConf = 1 - mult * (1 - e.getValue());
+			vals.put(e.getKey(), finalConf);
+		}
+		return vals;
+	}
+	
 
 	public boolean isAllowZeros() {
 		return allowZeros;

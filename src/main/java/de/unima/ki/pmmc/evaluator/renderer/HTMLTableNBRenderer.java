@@ -88,11 +88,14 @@ public class HTMLTableNBRenderer extends Renderer{
 		th3.setStyle("border:none;");
 		trHead1.addElement(th3.addAttribute("width", "20"));
 		trHead1.addElement(new TH("F-Measure").addAttribute("colspan", "3"));
-		this.table.addElement(trHead1);
 		TH th4 = new TH();
 		th4.setStyle("border:none;");
 		trHead1.addElement(th4.addAttribute("width", "20"));
 		trHead1.addElement(new TH("Corr.").addAttribute("colspan", "3"));
+		TH th5 = new TH();
+		th5.setStyle("border:none;");
+		trHead1.addElement(th5.addAttribute("width", "20"));
+		trHead1.addElement(new TH("Rel. Dist.").addAttribute("colspan", "3"));
 		this.table.addElement(trHead1);
 	}
 	
@@ -109,6 +112,10 @@ public class HTMLTableNBRenderer extends Renderer{
 			trHead2.addElement(new TD("SD"));
 			trHead2.addElement(new TD().setStyle("border:none;"));
 		}
+		trHead2.addElement(new TD());
+		trHead2.addElement(new TD().setStyle("border:none;"));
+		trHead2.addElement(new TD().setStyle("border:none;"));
+		trHead2.addElement(new TD().setStyle("border:none;"));
 		trHead2.addElement(new TD());
 		this.table.addElement(trHead2);
 	}
@@ -129,6 +136,7 @@ public class HTMLTableNBRenderer extends Renderer{
 		String macroFMeasure = this.df.format(Characteristic.getNBFMeasureMacro(characteristics));
 		String stdDevFMeasure = this.df.format(Characteristic.getNBFMeasureStdDev(characteristics));
 		String correlation = this.df.format(Characteristic.getCorrelationMicro(characteristics, false));
+		String relativeDistance = this.df.format(Characteristic.getRelativeDistance(characteristics));
 		
 		this.table.addElement(new TD(mappingInfo));
 		this.table.addElement(new TD().setStyle("border:none;"));
@@ -145,6 +153,10 @@ public class HTMLTableNBRenderer extends Renderer{
 		this.table.addElement(new TD(stdDevFMeasure));
 		this.table.addElement(new TD().setStyle("border:none;"));
 		this.table.addElement(new TD(correlation));
+		this.table.addElement(new TD().setStyle("border:none;"));
+		this.table.addElement(new TD().setStyle("border:none;"));
+		this.table.addElement(new TD().setStyle("border:none;"));
+		this.table.addElement(new TD(relativeDistance));
 	}
 
 }

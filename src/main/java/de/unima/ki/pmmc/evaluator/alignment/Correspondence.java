@@ -1,6 +1,8 @@
 package de.unima.ki.pmmc.evaluator.alignment;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -11,10 +13,11 @@ public class Correspondence implements Comparable<Correspondence> {
 	private String uri1;
 	private String uri2;
 	private double confidence;
+	private double normConfidence;
 	private SemanticRelation relation;
 	private Optional<CorrespondenceType> type;
 	
-	private static HashMap<SemanticRelation, String> symbolTable = new HashMap<SemanticRelation, String>();
+	private static Map<SemanticRelation, String> symbolTable = new HashMap<SemanticRelation, String>();
 	
 	static {
 		symbolTable.put(SemanticRelation.EQUIV, "=");
@@ -96,12 +99,7 @@ public class Correspondence implements Comparable<Correspondence> {
 	public boolean equals(Object correspondence) {
 		if (correspondence instanceof Correspondence) {
 			Correspondence that = (Correspondence)correspondence;
-			if (this.getUri1().equals(that.getUri1()) && this.getUri2().equals(that.getUri2())) {
-				return true;
-			}
-			else {
-				return false;
-			}
+			return this.getUri1().equals(that.getUri1()) && this.getUri2().equals(that.getUri2());
 		}
 		else {
 			return false;
@@ -109,8 +107,12 @@ public class Correspondence implements Comparable<Correspondence> {
 		
 	}
 	
+	
+	
+
+	@Override
 	public int hashCode() {
-		return this.toString().hashCode();
+		return Objects.hash(uri1, uri2);
 	}
 
 	public Optional<CorrespondenceType> getType() {
@@ -119,6 +121,14 @@ public class Correspondence implements Comparable<Correspondence> {
 
 	public void setType(Optional<CorrespondenceType> type) {
 		this.type = type;
+	}
+
+	public double getNormConfidence() {
+		return normConfidence;
+	}
+
+	public void setNormConfidence(double normConfidence) {
+		this.normConfidence = normConfidence;
 	}
 
 }
