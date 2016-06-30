@@ -243,6 +243,26 @@ public class CharacteristicTest {
 	}
 	
 	@Test
+	public void getRelativeDistanceFLM2Test() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.08));
+		matcher.add(new Correspondence("2", "2", 0.1));
+		matcher.add(new Correspondence("3", "3", 0.31));
+		matcher.add(new Correspondence("4", "4", 0.22));
+		matcher.add(new Correspondence("5", "5", 0.35));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(0.106, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+	}
+	
+	@Test
 	public void getRelativeDistanceSLMTest() {
 		final Alignment reference = new Alignment();
 		reference.add(new Correspondence("1", "1", 0.125));
@@ -277,4 +297,24 @@ public class CharacteristicTest {
 		characteristics.add(c);
 		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
 	}
+	
+	@Test
+	public void getRelativeDistanceSLM3Test() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("3", "3", 1));
+		matcher.add(new Correspondence("4", "4", 1));
+		matcher.add(new Correspondence("5", "5", 1));
+		matcher.add(new Correspondence("6", "6", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(1.156, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+	}
+	
 }

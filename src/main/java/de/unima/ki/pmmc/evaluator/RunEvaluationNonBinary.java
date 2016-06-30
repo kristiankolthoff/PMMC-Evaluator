@@ -30,7 +30,7 @@ public class RunEvaluationNonBinary {
 		 * Define multiple directories with matcher alginments.
 		 * First entry of the array should be the directory of the reference alignment.
 		 */
-		final String OUTPUT_PATH = "src/main/resources/data/evaluation/mes-nonbinary-new-gs-500.html";
+		final String OUTPUT_PATH = "src/main/resources/data/evaluation/mes-nonbinary-new-gs-000.html";
 		final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
 		final String END_DIR = "/dataset1";
 		final String[] dirs = new String[] {

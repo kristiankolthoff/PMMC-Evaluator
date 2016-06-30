@@ -58,7 +58,7 @@ public class Characteristic {
 	*/
 	private static boolean strictEvaluation = false;
 	
-	public static final double THRESHOLD = 0.500;
+	public static final double THRESHOLD = 0.000;
 	
 	/**
 	* Constructs an empty characteristic which is a characteristic for an mapping of cardinality zero. 
@@ -717,7 +717,52 @@ public class Characteristic {
 		return Math.sqrt(dev/characteristics.size());
 	}
 	
+	/**
+	 * Computes the relative distance of the matcher alignment to
+	 * the reference alignment of the gold standard, based on a single
+	 * characteristic. First normalizes the matcher alignments to a 
+	 * target scale, then computes the sum of squared deviations of the confidence
+	 * values of the matcher and the reference alignment.
+	 * @param characteristic - the characteristic to obtain matcher and reference alignment
+	 * @return realtive distance of matcher to reference alignment
+	 */
+	public static double getRelativeDistance(Characteristic characteristic) {
+		List<Correspondence> allMatcherCorres = new ArrayList<>();
+		allMatcherCorres.addAll(characteristic.getAlignmentMapping().getCorrespondences());
+		Map<Correspondence, Double> normConfs = getNormalizedConfidences(allMatcherCorres);
+		double sum = 0;
+		for(Map.Entry<Correspondence, Double> e: normConfs.entrySet()) {
+			Correspondence cRef = null;
+			for(Correspondence cCurr : characteristic.getAlignmentReference()) {
+				if(e.getKey().equals(cCurr)) {
+					cRef = cCurr;
+					break;
+				}
+			}
+			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
+			double sqDev = Math.pow(e.getValue() - confRef, 2);
+			sum += sqDev;
+		}
+		//Increase sum by squared deviation of correspondences not found by the matcher but
+		//present in the reference alignment
+		Alignment alignOnlyRef = characteristic.getAlignmentReference()
+				.minus(characteristic.getAlignmentCorrect());
+		for(Correspondence cOnlyRef : alignOnlyRef) {
+			sum += Math.pow(cOnlyRef.getConfidence(), 2);
+		}
+		return sum;
+	}
 	
+	
+	/**
+	 * Computes the relative distance of the matcher alignments to
+	 * the reference alignments of the gold standard, based on a collection
+	 * of characteristics. First normalizes the matcher alignments to a 
+	 * target scale, then computes the sum of squared deviations of the confidence
+	 * values of the matcher and the reference alignment.
+	 * @param characteristics - the characteristics to obtain the matcher and reference alignments
+	 * @return realtive distance of matcher to reference alignment
+	 */
 	public static double getRelativeDistance(List<Characteristic> characteristics) {
 		List<Correspondence> allMatcherCorres = new ArrayList<>();
 		for(Characteristic c : characteristics) {
@@ -751,9 +796,12 @@ public class Characteristic {
 	}
 	
 	/**
-	 * First line mathcer and second line matcher recogniation
-	 * @param correspondences
-	 * @return
+	 * Normalizes a given collection of correspondences to a target range.
+	 * Note that First Line Matcher (FLM) producing various confidence
+	 * values for the correspondences, have target range [0.125,1]. Second Line Matcher
+	 * (SLM) producing only binary confidence values, are mapped to 0 and 1.
+	 * @param correspondences - the correspondences to normalize
+	 * @return map of correspondence to its normalized confidence value
 	 */
 	private static Map<Correspondence, Double> getNormalizedConfidences(List<Correspondence> correspondences) {
 		Map<Correspondence, Double> vals = new HashMap<>();
