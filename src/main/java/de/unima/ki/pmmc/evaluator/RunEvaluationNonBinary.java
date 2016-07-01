@@ -30,6 +30,7 @@ public class RunEvaluationNonBinary {
 		 * Define multiple directories with matcher alginments.
 		 * First entry of the array should be the directory of the reference alignment.
 		 */
+		final double THRESHOLD = 0.000;
 		final String OUTPUT_PATH = "src/main/resources/data/evaluation/mes-nonbinary-new-gs-000.html";
 		final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
 		final String END_DIR = "/dataset1";
@@ -75,7 +76,7 @@ public class RunEvaluationNonBinary {
 						System.out.println(filePath.toString());
 						Alignment a = alignReader.getAlignment(filePath.toString());
 						if(filePath.toString().contains("dataset1_goldstandard_experts")) {
-							a.applyThreshold(Characteristic.THRESHOLD);							
+							a.applyThreshold(THRESHOLD);							
 						}
 						aligns.add(a);
 					} catch (Exception e) {

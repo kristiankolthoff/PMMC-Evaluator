@@ -138,7 +138,11 @@ public class HTMLTableNBRenderer extends Renderer{
 		String correlation = this.df.format(Characteristic.getCorrelationMicro(characteristics, false));
 		String relativeDistance = this.df.format(Characteristic.getRelativeDistance(characteristics));
 		
-		this.table.addElement(new TD(mappingInfo));
+		if(Characteristic.isFirstLineMatcher(characteristics)) {
+			this.table.addElement(new TD(mappingInfo + " (FLM)").setStyle("background-color:gray;"));
+		} else {
+			this.table.addElement(new TD(mappingInfo + " (SLM)").setStyle("background-color:white;"));
+		}
 		this.table.addElement(new TD().setStyle("border:none;"));
 		this.table.addElement(new TD(microPrecision));
 		this.table.addElement(new TD(macroPrecision));

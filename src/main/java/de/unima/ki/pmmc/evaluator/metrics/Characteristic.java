@@ -58,8 +58,6 @@ public class Characteristic {
 	*/
 	private static boolean strictEvaluation = false;
 	
-	public static final double THRESHOLD = 0.000;
-	
 	/**
 	* Constructs an empty characteristic which is a characteristic for an mapping of cardinality zero. 
 	*
@@ -753,6 +751,14 @@ public class Characteristic {
 		return sum;
 	}
 	
+	public static double getRelativeDistance2(List<Characteristic> characteristics) {
+		double sum = 0;
+		for(Characteristic c : characteristics) {
+			sum += getRelativeDistance(c);
+		}
+		return sum;
+	}
+	
 	
 	/**
 	 * Computes the relative distance of the matcher alignments to
@@ -833,6 +839,39 @@ public class Characteristic {
 		return vals;
 	}
 	
+	/**
+	 * Checks weather the matcher, which produced the alignments in the each
+	 * characteristic, produces only one single confidence value based on a 
+	 * collection of characteristics. 
+	 * @param characteristics specifying the alignments produced by the matcher
+	 * @return true if the Matcher is a First Line Matcher, false if the Matcher
+	 * is a Second Line Matcher
+	 */
+	public static boolean isFirstLineMatcher(List<Characteristic> characteristics) {
+		for(Characteristic c : characteristics) {
+			if(c.isFirstLineMatcher()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+
+	/**
+	 * Checks wether the matcher, which produced the alignment hold by
+	 * this characteristic, only generates one single confidence value
+	 * (Second Line Matcher).
+	 * @return true if the Matcher is a First Line Matcher, false if
+	 * the Matcher is a Second Line Matcher
+	 */
+	public boolean isFirstLineMatcher() {
+		long numDistinctVals = this.alignmentMapping.getCorrespondences()
+				.stream()
+				.mapToDouble(c -> c.getConfidence())
+				.distinct().count();
+		return numDistinctVals > 1;
+	}
+	
 
 	public boolean isAllowZeros() {
 		return allowZeros;
@@ -853,6 +892,5 @@ public class Characteristic {
 	public Alignment getAlignmentCorrect() {
 		return alignmentCorrect;
 	}
-	
-	
+
 }
