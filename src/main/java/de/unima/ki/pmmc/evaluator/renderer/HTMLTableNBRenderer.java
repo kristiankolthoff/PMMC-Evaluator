@@ -1,5 +1,7 @@
 package de.unima.ki.pmmc.evaluator.renderer;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -24,12 +26,14 @@ public class HTMLTableNBRenderer extends Renderer{
 	private Table table;
 	private DecimalFormat df;
 	private boolean initialized;
+	private boolean showInBrowser;
 	
-	public HTMLTableNBRenderer(String file) throws IOException {
+	public HTMLTableNBRenderer(String file, boolean showInBrowser) throws IOException {
 		super(file);
 		this.table = new Table();
 		this.df = new DecimalFormat("#.###");
 		this.initialized = false;
+		this.showInBrowser = showInBrowser;
 	}
 	
 	private void init(List<Characteristic> characteristics) throws CorrespondenceException {
@@ -56,6 +60,10 @@ public class HTMLTableNBRenderer extends Renderer{
 	public void flush() throws IOException {
 		this.bw.append(this.table.toString());
 		super.flush();
+		if(this.showInBrowser) {
+			File htmlFile = new File(file.getAbsolutePath());
+			Desktop.getDesktop().browse(htmlFile.toURI());
+		}
 	}
 
 	private void startTable() {
@@ -162,5 +170,15 @@ public class HTMLTableNBRenderer extends Renderer{
 		this.table.addElement(new TD().setStyle("border:none;"));
 		this.table.addElement(new TD(relativeDistance));
 	}
+
+	public boolean showInBrowser() {
+		return showInBrowser;
+	}
+
+	public void setShowInBrowser(boolean showInBrowser) {
+		this.showInBrowser = showInBrowser;
+	}
+	
+	
 
 }

@@ -31,6 +31,7 @@ public class RunEvaluationNonBinary {
 		 * First entry of the array should be the directory of the reference alignment.
 		 */
 		final double THRESHOLD = 0.000;
+		final boolean SHOW_IN_BROWSER = true;
 		final String OUTPUT_PATH = "src/main/resources/data/evaluation/mes-nonbinary-new-gs-000.html";
 		final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
 		final String END_DIR = "/dataset1";
@@ -110,7 +111,7 @@ public class RunEvaluationNonBinary {
 		/**
 		 * Render alignments to HTML evaluation summary page
 		 */
-		Renderer renderer = new HTMLTableNBRenderer(OUTPUT_PATH);
+		Renderer renderer = new HTMLTableNBRenderer(OUTPUT_PATH, SHOW_IN_BROWSER);
 		for (int i = 0; i < characteristics.size(); i++) {
 			renderer.render(characteristics.get(i), mappingInfo[i]);
 		}
