@@ -11,7 +11,8 @@ public enum CorrespondenceType {
 	TRIVIAL ("trivial"),
 	TRIVIAL_BASIC_NORM ("trivial-after-basic-normalization"),
 	TRIVIAL_EXTENDED_NORM ("trivial-after-extended-normalization"),
-	MISC ("misc");
+	MISC ("misc"),
+	DEFAULT ("default");
 	
 	private String name;
 	
