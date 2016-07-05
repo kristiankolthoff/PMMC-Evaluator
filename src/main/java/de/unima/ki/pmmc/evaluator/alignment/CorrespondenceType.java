@@ -9,6 +9,7 @@ public enum CorrespondenceType {
 	DIFFICULT_SIMILAR_VERB ("difficult-similar-verb"),
 	ONE_WORD_SIMILAR ("one-word-similar"),
 	TRIVIAL ("trivial"),
+	TRIVIAL_NORM ("trivial-norm"),
 	TRIVIAL_BASIC_NORM ("trivial-after-basic-normalization"),
 	TRIVIAL_EXTENDED_NORM ("trivial-after-extended-normalization"),
 	MISC ("misc"),

@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.ecs.storage.Hash;
 
+import de.unima.ki.pmmc.evaluator.utils.Utils;
 import edu.mit.jwi.IRAMDictionary;
 import edu.mit.jwi.RAMDictionary;
 import edu.mit.jwi.data.ILoadPolicy;
@@ -102,7 +105,6 @@ public class NLPHelper {
 		return pos;
 	}
 	
-	//TODO Does not remove s in verbs like: visits
 	public static String getNormalized(String w, POS p) {
 		IIndexWord indexWord;
 		Set<ISynset> synsets;
@@ -198,8 +200,8 @@ public class NLPHelper {
 		return sb.toString();
 	}
 	
-	public static String getStemmedString(String sentence) {
-		return getStemmedTokens(sentence)
+	public static String getStemmedString(String sentence, boolean usePOS) {
+		return getStemmedTokens(sentence, usePOS)
 				.stream()
 				.reduce("", (s,t) -> (s + " " + t))
 				.trim();
@@ -216,11 +218,16 @@ public class NLPHelper {
 		return sTokens;
 	}
 	
-	public static List<String> getStemmedTokens(String sentence) {
+	public static List<String> getStemmedTokens(String sentence, boolean usePOS) {
 		List<String> tokens = getTokens(sentence);
 		List<String> stemmedTokens = new ArrayList<>();
 		for (int i = 0; i < tokens.size(); i++) {
-			List<String> possibleStems = getWordStem(tokens.get(i));
+			List<String> possibleStems = null;
+			if(usePOS) {
+				possibleStems = getWordStemWithPOS(tokens.get(i));				
+			} else {
+				possibleStems = getWordStem(tokens.get(i));
+			}
 			if(possibleStems.size() > 1) {
 				for(String stem : possibleStems) {
 					if(!tokens.get(i).equals(stem)) {
@@ -242,6 +249,51 @@ public class NLPHelper {
 		return ws.findStems(word, null);
 	}
 	
+	public static List<String> getWordStemWithPOS(String word) {
+		WordnetStemmer ws = new WordnetStemmer(dict);
+		Set<POS> pos = getPOS(word);
+		for(POS p : pos) {
+			if(p == POS.VERB) {
+				return ws.findStems(word, p);
+			}
+		}
+		if(pos.size() == 0) {
+			return ws.findStems(word, null);
+		} else {
+			return ws.findStems(word, pos.iterator().next());			
+		}
+	}
+	
+	public static List<String> getWordStem(String word, POS pos) {
+		WordnetStemmer ws = new WordnetStemmer(dict);
+		return ws.findStems(word, pos);
+	}
+	
+	public static Set<String> getNGrams(String sentence, int n) {
+		Set<String> ngrams = new HashSet<>();
+		sentence = getSanitizeLabel(sentence).replace(" ", "");
+		for (int i = 0; i < sentence.length() - n + 1; i++) {
+			ngrams.add(sentence.substring(i,i+n));
+		}
+		return ngrams;
+	}
+	
+	public static double jaccardNGramSimilarity(String s1, String s2, int n) {
+		Set<String> sameNgrams = getNGrams(s1, n);
+		sameNgrams.retainAll(getNGrams(s2, n));
+		Set<String> unionNgrams = getNGrams(s1, n);
+		unionNgrams.addAll(getNGrams(s2, n));
+		return sameNgrams.size() / (double) unionNgrams.size();
+	}
+	
+	public static double jaccardSimilarity(String s1, String s2) {
+		Set<String> sameTokens = Utils.toSet(getTokens(s1));
+		sameTokens.retainAll(Utils.toSet(getTokens(s2)));
+		Set<String> unionTokens = Utils.toSet(getTokens(s1));
+		unionTokens.addAll(Utils.toSet(getTokens(s2)));
+		return sameTokens.size() / (double) unionTokens.size();
+	}
+	
 	public static String getSanitizeLabel(String label) {
 		label = label.trim();
 		label = label.toLowerCase();
@@ -249,4 +301,10 @@ public class NLPHelper {
 		label = label.replace("\n", "");
 		return label;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(NLPHelper.jaccardSimilarity("Attach additional requirements", 
+				"Add additional requirements"));
+	}
+	
 }

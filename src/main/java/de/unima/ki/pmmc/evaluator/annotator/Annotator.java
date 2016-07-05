@@ -30,11 +30,10 @@ public class Annotator {
 		this.matchers = new ArrayList<>();
 		this.models = models;
 		this.matchers.add(new CTMatcherTrivial());
-		this.matchers.add(new CTMatcherTrivialBN());
-		this.matchers.add(new CTMatcherTrivialEN());
+		this.matchers.add(new CTMatcherTrivialNorm());
 		this.matchers.add(new CTMatcherOWS());
 		this.matchers.add(new CTMatcherDSV());
-		this.matchers.add(new CTMatcherDifficult());
+		this.matchers.add(new CTMatcherMisc());
 		this.idCache = new HashMap<>();
 		this.initModelMap();
 	}
@@ -56,7 +55,7 @@ public class Annotator {
 				return estCT;
 			}
 		}
-		return CorrespondenceType.DEFAULT;
+		return CorrespondenceType.DIFFICULT;
 	}
 	
 	public Alignment annotateAlignment(Alignment alignment) {
