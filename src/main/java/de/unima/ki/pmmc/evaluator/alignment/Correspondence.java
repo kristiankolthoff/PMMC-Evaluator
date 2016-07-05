@@ -13,7 +13,6 @@ public class Correspondence implements Comparable<Correspondence> {
 	private String uri1;
 	private String uri2;
 	private double confidence;
-	private double normConfidence;
 	private SemanticRelation relation;
 	private Optional<CorrespondenceType> type;
 	
@@ -107,8 +106,6 @@ public class Correspondence implements Comparable<Correspondence> {
 		
 	}
 	
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -121,14 +118,6 @@ public class Correspondence implements Comparable<Correspondence> {
 
 	public void setType(Optional<CorrespondenceType> type) {
 		this.type = type;
-	}
-
-	public double getNormConfidence() {
-		return normConfidence;
-	}
-
-	public void setNormConfidence(double normConfidence) {
-		this.normConfidence = normConfidence;
 	}
 
 }

@@ -1,6 +1,7 @@
 package de.unima.ki.pmmc.evaluator.annotator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -16,10 +17,9 @@ import de.unima.ki.pmmc.evaluator.model.Model;
 public class Annotator {
 
 	/**
-	 * Matcher for identifying TRIVIAL correspondences
+	 * Stores all kinds of different CTMatchers
 	 */
-	private CTMatcher matcherTrivial;
-	private List<CTMatcher> allMatchers;
+	private List<CTMatcher> matchers;
 	private List<Model> models;
 	/**
 	 * Cached IDs to actual labels
@@ -27,15 +27,19 @@ public class Annotator {
 	private Map<String, String> idCache;
 	
 	public Annotator(List<Model> models) {
-		this.allMatchers = new ArrayList<>();
+		this.matchers = new ArrayList<>();
 		this.models = models;
-		this.matcherTrivial = new CTMatcherTrivial();
-		this.allMatchers.add(matcherTrivial);
+		this.matchers.add(new CTMatcherTrivial());
+		this.matchers.add(new CTMatcherTrivialBN());
+		this.matchers.add(new CTMatcherTrivialEN());
+		this.matchers.add(new CTMatcherOWS());
+		this.matchers.add(new CTMatcherDSV());
+		this.matchers.add(new CTMatcherDifficult());
+		this.idCache = new HashMap<>();
 		this.initModelMap();
 	}
 	
 	private void initModelMap() {
-		//TODO activities, intermediateevent....
 		for(Model m : this.models) {
 			for(Activity a : m.getActivities()) {
 				this.idCache.put(a.getId(), a.getLabel());
@@ -44,15 +48,15 @@ public class Annotator {
 	}
 	
 	public CorrespondenceType receiveCType(Correspondence correspondence) {
-		for(CTMatcher matcher : this.allMatchers) {
+		for(CTMatcher matcher : this.matchers) {
 			String label1 = this.idCache.get(correspondence.getUri1());
 			String label2 = this.idCache.get(correspondence.getUri2());
-			CorrespondenceType estCT = matcher.match(label1, label2, correspondence);
+			CorrespondenceType estCT = matcher.match(label1, label2);
 			if(estCT != CorrespondenceType.DEFAULT) {
 				return estCT;
 			}
 		}
-		return null;
+		return CorrespondenceType.DEFAULT;
 	}
 	
 	public Alignment annotateAlignment(Alignment alignment) {

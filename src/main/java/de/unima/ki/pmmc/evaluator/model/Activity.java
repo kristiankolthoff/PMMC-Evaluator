@@ -3,6 +3,8 @@ package de.unima.ki.pmmc.evaluator.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
+
 
 public class Activity {
 	
@@ -16,8 +18,7 @@ public class Activity {
 
 	public Activity(String id, String label) {
 		this.id = id;
-		//TODO should be moved, creates unnecessary dependency
-//		this.label = NLPHelper.getSanitizeLabel(label);
+		this.label = label;
 		this.labels = new HashSet<String[]>();	
 	}
 	
