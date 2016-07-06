@@ -13,9 +13,14 @@ import org.xml.sax.SAXException;
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
+import de.unima.ki.pmmc.evaluator.annotator.Annotator;
 import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
+import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
+import de.unima.ki.pmmc.evaluator.model.Model;
+import de.unima.ki.pmmc.evaluator.model.parser.Parser;
+import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
 import de.unima.ki.pmmc.evaluator.renderer.HTMLTableNBRenderer;
 import de.unima.ki.pmmc.evaluator.renderer.Renderer;
 
@@ -109,6 +114,15 @@ public class RunEvaluationNonBinary {
 			characteristics.add(tcharacteristics);
 		}
 		/**
+		 * Annotate collection of characteristics to obtain typecharacteristics
+		 */
+		List<Model> models = loadModels();
+		List<List<TypeCharacteristic>> tCharacteristics = new ArrayList<>();
+		Annotator annotator = new Annotator(models);
+		for(List<Characteristic> chars : characteristics) {
+			tCharacteristics.add(annotator.annotateCharacteristics(chars));
+		}
+		/**
 		 * Render alignments to HTML evaluation summary page
 		 */
 		Renderer renderer = new HTMLTableNBRenderer(OUTPUT_PATH, SHOW_IN_BROWSER);
@@ -116,6 +130,28 @@ public class RunEvaluationNonBinary {
 			renderer.render(characteristics.get(i), mappingInfo[i]);
 		}
 		renderer.flush();
+	}
+	
+	public static List<Model> loadModels() throws ParserConfigurationException, SAXException, IOException {
+		final String[] modelIds = new String[]{
+				"Cologne",
+				"Frankfurt",
+				"FU_Berlin",
+				"Hohenheim",
+				"IIS_Erlangen",
+				"Muenster",
+				"Potsdam",
+				"TU_Munich",
+				"Wuerzburg"
+		};
+		List<Model> models = new ArrayList<>();
+		Parser bpmnParser = ParserFactory.getParser(Parser.TYPE_BPMN);
+		for (int i = 0; i < modelIds.length - 1; i++) {
+			String sourceId = modelIds[i];
+			Model model = bpmnParser.parse("src/main/resources/data/dataset1/models/" + sourceId + ".bpmn");
+			models.add(model);
+		}
+		return models;
 	}
 
 }

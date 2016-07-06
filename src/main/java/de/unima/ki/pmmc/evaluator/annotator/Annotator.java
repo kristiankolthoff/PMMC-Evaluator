@@ -46,7 +46,7 @@ public class Annotator {
 		}
 	}
 	
-	public CorrespondenceType receiveCType(Correspondence correspondence) {
+	public CorrespondenceType annotateCorrespondence(Correspondence correspondence) {
 		for(CTMatcher matcher : this.matchers) {
 			String label1 = this.idCache.get(correspondence.getUri1());
 			String label2 = this.idCache.get(correspondence.getUri2());
@@ -61,7 +61,7 @@ public class Annotator {
 	public Alignment annotateAlignment(Alignment alignment) {
 		Alignment finalAlign = new Alignment();
 		for(Correspondence c : alignment) {
-			c.setType(Optional.ofNullable(receiveCType(c)));
+			c.setType(Optional.ofNullable(annotateCorrespondence(c)));
 			finalAlign.add(c);
 		}
 		return finalAlign;

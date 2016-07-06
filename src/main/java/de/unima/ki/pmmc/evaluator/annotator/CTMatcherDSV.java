@@ -29,12 +29,14 @@ public class CTMatcherDSV implements CTMatcher {
 				}
 			}
 		}
+		//TODO hack, needs to be improved
+		if(sameTokens.size() > 1) {
+			return CorrespondenceType.DEFAULT;
+		}
 		for(String token : sameTokens) {
 			Set<POS> pos = NLPHelper.getPOS(token);
-			for(POS p : pos) {
-				if(p == POS.VERB) {
-					return TYPE;
-				}
+			if(pos.contains(POS.VERB)) {
+				return TYPE;
 			}
 		}
 		return CorrespondenceType.DEFAULT;

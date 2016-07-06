@@ -41,7 +41,7 @@ public class TypeCharacteristic extends Characteristic {
 		return correspondencesCorrect.size() / correspondencesMatcher.size();
 	}
 	
-	public double getRecall(CorrespondenceType type) {
+	public double getRecal8l(CorrespondenceType type) {
 		return correspondencesCorrect.size() / corresponendencesGold.size();
 	}
 	

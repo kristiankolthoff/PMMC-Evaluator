@@ -17,6 +17,7 @@ public class CTMatcherOWS implements CTMatcher{
 	public CorrespondenceType match(String label1, String label2) {
 		label1 = NLPHelper.getSanitizeLabel(label1);
 		label2 = NLPHelper.getSanitizeLabel(label2);
+		//TODO needs to normalize
 		List<String> label1Tokens = NLPHelper.getTokens(label1);
 		List<String> label2Tokens = NLPHelper.getTokens(label2);
 		List<String> sameTokens = new ArrayList<>();
@@ -27,14 +28,15 @@ public class CTMatcherOWS implements CTMatcher{
 				}
 			}
 		}
+		if(sameTokens.size() > 1) {
+			return CorrespondenceType.DEFAULT;
+		}
 		Set<POS> pos = new HashSet<>();
 		for(String token : sameTokens) {
 			pos.addAll(NLPHelper.getPOS(token));
 		}
-		for(POS p : pos) {
-			if(p != POS.VERB) {
-				return TYPE;
-			}
+		if(!pos.isEmpty() && !pos.contains(POS.VERB)) {
+			return TYPE;
 		}
 		return CorrespondenceType.DEFAULT;
 	}

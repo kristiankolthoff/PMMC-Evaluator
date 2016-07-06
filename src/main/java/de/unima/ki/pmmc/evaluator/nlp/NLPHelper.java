@@ -23,15 +23,22 @@ import edu.mit.jwi.item.IWordID;
 import edu.mit.jwi.item.POS;
 import edu.mit.jwi.morph.WordnetStemmer;
 import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.ling.TaggedWord;
+import edu.stanford.nlp.ling.Word;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
+import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 public class NLPHelper {
 	
 	private static IRAMDictionary dict;
 	private static HashSet<String> stopwords;
+	private static MaxentTagger tagger;
 	
 	public static final String WORDNET_DIRECTORY = "src/main/resources/libs/wordnet/dict";
+	public static final String TAGGER_BIDIR_DIRECTORY = "src/main/resources/libs/tagger/english-bidirectional-distsim.tagger";
+	public static final String TAGGER_LEFT_DIRECTORY = "src/main/resources/libs/tagger/english-left3words-distsim.tagger";
 	private static final String[] STOP_WORDS;
 	
 	static {
@@ -103,6 +110,16 @@ public class NLPHelper {
 		}
 		
 		return pos;
+	}
+	
+	public static List<TaggedWord> getPOSSentence(String sentence) {
+		sentence = getSanitizeLabel(sentence);
+		String[] words = sentence.split(" ");
+		List<Word> taggedWords = new ArrayList<>();
+		for (int i = 0; i < words.length; i++) {
+			taggedWords.add(new Word(words[i]));
+		}
+		return getMaxentTagger().tagSentence(taggedWords);
 	}
 	
 	public static String getNormalized(String w, POS p) {
@@ -303,8 +320,17 @@ public class NLPHelper {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(NLPHelper.jaccardSimilarity("Attach additional requirements", 
-				"Add additional requirements"));
+		List<TaggedWord> taggedWords = NLPHelper.getPOSSentence("Complete online interview");
+		for(TaggedWord t : taggedWords) {
+			System.out.println(t.word() + " " + t.tag());
+		}
+	}
+	
+	public static MaxentTagger getMaxentTagger() {
+		if(tagger == null) {
+			tagger = new MaxentTagger(TAGGER_LEFT_DIRECTORY);
+		}
+		return tagger;
 	}
 	
 }
