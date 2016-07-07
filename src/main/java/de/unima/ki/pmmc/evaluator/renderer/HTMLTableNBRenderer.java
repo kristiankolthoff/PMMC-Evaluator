@@ -143,8 +143,9 @@ public class HTMLTableNBRenderer extends Renderer{
 		String microFMeasure = this.df.format(Characteristic.getNBFMeasureMicro(characteristics));
 		String macroFMeasure = this.df.format(Characteristic.getNBFMeasureMacro(characteristics));
 		String stdDevFMeasure = this.df.format(Characteristic.getNBFMeasureStdDev(characteristics));
+		//TODO create corresponding constants
 		String correlation = this.df.format(Characteristic.getCorrelationMicro(characteristics, false));
-		String relativeDistance = this.df.format(Characteristic.getRelativeDistance(characteristics));
+		String relativeDistance = this.df.format(Characteristic.getRelativeDistance(characteristics, true));
 		
 		if(Characteristic.isFirstLineMatcher(characteristics)) {
 			this.table.addElement(new TD(mappingInfo + " (FLM)").setStyle("background-color:gray;"));

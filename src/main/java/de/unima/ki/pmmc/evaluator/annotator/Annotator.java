@@ -9,6 +9,7 @@ import java.util.Optional;
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
+import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 import de.unima.ki.pmmc.evaluator.model.Activity;
@@ -67,13 +68,15 @@ public class Annotator {
 		return finalAlign;
 	}
 	
-	public TypeCharacteristic annotateCharacteristic(Characteristic characteristic) {
+	public TypeCharacteristic annotateCharacteristic(Characteristic characteristic) 
+			throws CorrespondenceException {
 		Alignment alignmentReference = annotateAlignment(characteristic.getAlignmentReference());
 		Alignment alignmentMapping = annotateAlignment(characteristic.getAlignmentMapping());
 		return new TypeCharacteristic(alignmentMapping, alignmentReference);
 	}
 	
-	public List<TypeCharacteristic> annotateCharacteristics(List<Characteristic> characteristics) {
+	public List<TypeCharacteristic> annotateCharacteristics(List<Characteristic> characteristics) 
+			throws CorrespondenceException {
 		List<TypeCharacteristic> vals = new ArrayList<>();
 		for(Characteristic c : characteristics) {
 			vals.add(annotateCharacteristic(c));

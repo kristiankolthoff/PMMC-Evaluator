@@ -77,9 +77,9 @@ public class Model {
 						labels[0] = a.getLabel();
 					} else if(c.getUri2().contains(a.getId())) {
 						labels[1] = a.getLabel();
-						if(c.getType().isPresent()) {
-							labels[1] += " (" + c.getType().get() + ")";
-							if(c.getType().get().equals(CorrespondenceType.TRIVIAL_EXTENDED_NORM.getName())) {
+						if(c.getCType().isPresent()) {
+							labels[1] += " (" + c.getCType().get() + ")";
+							if(c.getCType().get().equals(CorrespondenceType.TRIVIAL_EXTENDED_NORM.getName())) {
 								System.err.println(String.join(" = ", labels));
 							}
 						}

@@ -69,7 +69,7 @@ public class CorrespondenceException extends DioException {
 			this.generalDescription = "An unsupported type category has been detected:";
 			break;
 		case MISSING_TYPE_ANNOTATION:
-			this.generalDescription = "Type annototation missing in reference alignment";
+			this.generalDescription = "Type annototation missing in correspondence";
 			break;
 		default:
 			this.generalDescription = "General description is missing";

@@ -14,11 +14,7 @@ public class CTMatcherTrivialNorm implements CTMatcher{
 		label1 = NLPHelper.getStemmedString(label1, USE_POS);
 		label2 = NLPHelper.getSanitizeLabel(label2);
 		label2 = NLPHelper.getStemmedString(label2, USE_POS);
-		if(label1.equals(label2)) {
-			return TYPE;
-		} else {
-			return CorrespondenceType.DEFAULT;			
-		}
+		return label1.equals(label2) ? TYPE : CorrespondenceType.DEFAULT;
 	}
 
 }

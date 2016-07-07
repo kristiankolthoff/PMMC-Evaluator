@@ -50,8 +50,16 @@ public class Correspondence implements Comparable<Correspondence> {
 		this(uri1, uri2, SemanticRelation.EQUIV, confidence);
 	}
 	
+	public Correspondence(String uri1, String uri2, double confidence, CorrespondenceType type) {
+		this(uri1, uri2, SemanticRelation.EQUIV, confidence, type);
+	}
+	
 	public Correspondence(String uri1, String uri2) {
 		this(uri1, uri2, SemanticRelation.EQUIV, 1.0d);
+	}
+	
+	public Correspondence(String uri1, String uri2, CorrespondenceType type) {
+		this(uri1, uri2, SemanticRelation.EQUIV, 1.0d, type);
 	}
 	
 	public String getUri1() {
@@ -112,7 +120,7 @@ public class Correspondence implements Comparable<Correspondence> {
 		return Objects.hash(uri1, uri2);
 	}
 
-	public Optional<CorrespondenceType> getType() {
+	public Optional<CorrespondenceType> getCType() {
 		return type;
 	}
 

@@ -23,6 +23,7 @@ public class CharacteristicTest {
 	private List<Characteristic> characteristics;
 	
 	private static final double ALLOWED_DEV = 0.001;
+	private static final boolean NORMALIZE = true;
 	
 	@Before
 	public void init() {
@@ -192,7 +193,7 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(0.279, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		assertEquals(0.279, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 	
@@ -212,12 +213,12 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(1.279, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		assertEquals(1.279, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 		matcher.add(new Correspondence("6", "6",0.9));
 		Characteristic c1 = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics1 = new ArrayList<>();
 		characteristics1.add(c1);
-		assertEquals(2.089, Characteristic.getRelativeDistance(characteristics1), ALLOWED_DEV + 0.01);
+		assertEquals(2.089, Characteristic.getRelativeDistance(characteristics1, NORMALIZE), ALLOWED_DEV + 0.01);
 	}
 	
 	@Test
@@ -239,7 +240,7 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(1.81, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		assertEquals(1.81, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -259,7 +260,7 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(0.106, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		assertEquals(0.106, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -277,7 +278,7 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -295,7 +296,7 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -314,7 +315,7 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(1.156, Characteristic.getRelativeDistance(characteristics), ALLOWED_DEV);
+		assertEquals(1.156, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 }

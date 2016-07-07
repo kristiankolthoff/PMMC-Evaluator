@@ -28,10 +28,10 @@ package de.unima.ki.pmmc.evaluator.metrics;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
@@ -582,7 +582,7 @@ public class Characteristic {
 	 * Compute the macro precision over a list of characteristics. The
 	 * macro precision is the average of all the precision values of
 	 * all characteristics. Note that this metric can be easily biased
-	 * if the testsets are not equally large.
+	 * if the test sets are not equally large.
 	 * @param characteristics - the characteristic to compute the macro precision from
 	 * @return macro precision
 	 */
@@ -722,16 +722,17 @@ public class Characteristic {
 	 * target scale, then computes the sum of squared deviations of the confidence
 	 * values of the matcher and the reference alignment.
 	 * @param characteristic - the characteristic to obtain matcher and reference alignment
+	 * @param normalize - specifies if the correspondence confidences should be normalized
 	 * @return realtive distance of matcher to reference alignment
 	 */
-	public static double getRelativeDistance(Characteristic characteristic) {
+	public double getRelativeDistance(boolean normalize) {
 		List<Correspondence> allMatcherCorres = new ArrayList<>();
-		allMatcherCorres.addAll(characteristic.getAlignmentMapping().getCorrespondences());
+		allMatcherCorres.addAll(this.getAlignmentMapping().getCorrespondences());
 		Map<Correspondence, Double> normConfs = getNormalizedConfidences(allMatcherCorres);
 		double sum = 0;
 		for(Map.Entry<Correspondence, Double> e: normConfs.entrySet()) {
 			Correspondence cRef = null;
-			for(Correspondence cCurr : characteristic.getAlignmentReference()) {
+			for(Correspondence cCurr : this.getAlignmentReference()) {
 				if(e.getKey().equals(cCurr)) {
 					cRef = cCurr;
 					break;
@@ -743,22 +744,13 @@ public class Characteristic {
 		}
 		//Increase sum by squared deviation of correspondences not found by the matcher but
 		//present in the reference alignment
-		Alignment alignOnlyRef = characteristic.getAlignmentReference()
-				.minus(characteristic.getAlignmentCorrect());
+		Alignment alignOnlyRef = this.getAlignmentReference()
+				.minus(this.getAlignmentCorrect());
 		for(Correspondence cOnlyRef : alignOnlyRef) {
 			sum += Math.pow(cOnlyRef.getConfidence(), 2);
 		}
 		return sum;
 	}
-	
-	public static double getRelativeDistance2(List<Characteristic> characteristics) {
-		double sum = 0;
-		for(Characteristic c : characteristics) {
-			sum += getRelativeDistance(c);
-		}
-		return sum;
-	}
-	
 	
 	/**
 	 * Computes the relative distance of the matcher alignments to
@@ -767,16 +759,25 @@ public class Characteristic {
 	 * target scale, then computes the sum of squared deviations of the confidence
 	 * values of the matcher and the reference alignment.
 	 * @param characteristics - the characteristics to obtain the matcher and reference alignments
+	 * @param normalize - specifies if the correspondence confidences should be normalized
 	 * @return realtive distance of matcher to reference alignment
 	 */
-	public static double getRelativeDistance(List<Characteristic> characteristics) {
+	public static double getRelativeDistance(List<Characteristic> characteristics, boolean normalize) {
 		List<Correspondence> allMatcherCorres = new ArrayList<>();
 		for(Characteristic c : characteristics) {
 			allMatcherCorres.addAll(c.getAlignmentMapping().getCorrespondences());
 		}
-		Map<Correspondence, Double> normConfs = getNormalizedConfidences(allMatcherCorres);
+		Map<Correspondence, Double> confs = null;
+		if(normalize) {
+			confs = getNormalizedConfidences(allMatcherCorres);
+		} else {
+			confs = new HashMap<>();
+			for(Correspondence c : allMatcherCorres) {
+				confs.put(c, c.getConfidence());
+			}
+		}
 		double sum = 0;
-		for(Map.Entry<Correspondence, Double> e: normConfs.entrySet()) {
+		for(Map.Entry<Correspondence, Double> e: confs.entrySet()) {
 			Correspondence cRef = null;
 			for(Characteristic c : characteristics) {
 				for(Correspondence cCurr : c.getAlignmentReference()) {
@@ -822,7 +823,7 @@ public class Characteristic {
 				double confVal = (c.getConfidence()>0) ? 1 : 0;
 				vals.put(c, confVal);
 			}
-		//The matcher is a first line matcher, normalize between 0.125 and 1	
+		//The matcher is a first line matcher, normalize between 0.125 and 1
 		} else {
 			for(Correspondence c : correspondences) {
 				vals.put(c, c.getConfidence() / maxConf);
