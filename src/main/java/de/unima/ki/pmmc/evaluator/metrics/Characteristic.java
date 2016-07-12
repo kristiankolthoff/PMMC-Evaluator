@@ -32,7 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 
@@ -726,16 +725,52 @@ public class Characteristic {
 	 * @return realtive distance of matcher to reference alignment
 	 */
 	public double getRelativeDistance(boolean normalize) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		mappings.add(alignmentMapping);
+		references.add(alignmentReference);
+		return getRelativeDistance(mappings, references, normalize);
+	}
+	
+	
+	
+	/**
+	 * Computes the relative distance of the matcher alignments to
+	 * the reference alignments of the gold standard, based on a collection
+	 * of characteristics. First normalizes the matcher alignments to a 
+	 * target scale, then computes the sum of squared deviations of the confidence
+	 * values of the matcher and the reference alignment.
+	 * @param characteristics - the characteristics to obtain the matcher and reference alignments
+	 * @param normalize - specifies if the correspondence confidences should be normalized
+	 * @return realtive distance of matcher to reference alignment
+	 */
+	public static double getRelativeDistance(List<Alignment> mappings, List<Alignment> references, boolean normalize) {
+		if(mappings.size() != references.size()) {
+			throw new IllegalArgumentException("Mapping and reference alignment length unequal. Mapping: " + mappings.size()
+					+ " Reference: " + references.size());
+		}
 		List<Correspondence> allMatcherCorres = new ArrayList<>();
-		allMatcherCorres.addAll(this.getAlignmentMapping().getCorrespondences());
-		Map<Correspondence, Double> normConfs = getNormalizedConfidences(allMatcherCorres);
+		for(Alignment a : mappings) {
+			allMatcherCorres.addAll(a.getCorrespondences());
+		}
+		Map<Correspondence, Double> confs = null;
+		if(normalize) {
+			confs = getNormalizedConfidences(allMatcherCorres);
+		} else {
+			confs = new HashMap<>();
+			for(Correspondence c : allMatcherCorres) {
+				confs.put(c, c.getConfidence());
+			}
+		}
 		double sum = 0;
-		for(Map.Entry<Correspondence, Double> e: normConfs.entrySet()) {
+		for(Map.Entry<Correspondence, Double> e: confs.entrySet()) {
 			Correspondence cRef = null;
-			for(Correspondence cCurr : this.getAlignmentReference()) {
-				if(e.getKey().equals(cCurr)) {
-					cRef = cCurr;
-					break;
+			for(Alignment a : references) {
+				for(Correspondence cCurr : a) {
+					if(e.getKey().equals(cCurr)) {
+						cRef = cCurr;
+						break;
+					}
 				}
 			}
 			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
@@ -744,10 +779,11 @@ public class Characteristic {
 		}
 		//Increase sum by squared deviation of correspondences not found by the matcher but
 		//present in the reference alignment
-		Alignment alignOnlyRef = this.getAlignmentReference()
-				.minus(this.getAlignmentCorrect());
-		for(Correspondence cOnlyRef : alignOnlyRef) {
-			sum += Math.pow(cOnlyRef.getConfidence(), 2);
+		for(int i = 0; i < references.size(); i++) {
+			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
+			for(Correspondence cOnlyRef : alignOnlyRef) {
+				sum += Math.pow(cOnlyRef.getConfidence(), 2);
+			}
 		}
 		return sum;
 	}
@@ -763,43 +799,13 @@ public class Characteristic {
 	 * @return realtive distance of matcher to reference alignment
 	 */
 	public static double getRelativeDistance(List<Characteristic> characteristics, boolean normalize) {
-		List<Correspondence> allMatcherCorres = new ArrayList<>();
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
 		for(Characteristic c : characteristics) {
-			allMatcherCorres.addAll(c.getAlignmentMapping().getCorrespondences());
+			mappings.add(c.getAlignmentMapping());
+			references.add(c.getAlignmentReference());
 		}
-		Map<Correspondence, Double> confs = null;
-		if(normalize) {
-			confs = getNormalizedConfidences(allMatcherCorres);
-		} else {
-			confs = new HashMap<>();
-			for(Correspondence c : allMatcherCorres) {
-				confs.put(c, c.getConfidence());
-			}
-		}
-		double sum = 0;
-		for(Map.Entry<Correspondence, Double> e: confs.entrySet()) {
-			Correspondence cRef = null;
-			for(Characteristic c : characteristics) {
-				for(Correspondence cCurr : c.getAlignmentReference()) {
-					if(e.getKey().equals(cCurr)) {
-						cRef = cCurr;
-						break;
-					}
-				}
-			}
-			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
-			double sqDev = Math.pow(e.getValue() - confRef, 2);
-			sum += sqDev;
-		}
-		//Increase sum by squared deviation of correspondences not found by the matcher but
-		//present in the reference alignment
-		for(Characteristic c : characteristics) {
-			Alignment alignOnlyRef = c.getAlignmentReference().minus(c.getAlignmentCorrect());
-			for(Correspondence cOnlyRef : alignOnlyRef) {
-				sum += Math.pow(cOnlyRef.getConfidence(), 2);
-			}
-		}
-		return sum;
+		return getRelativeDistance(mappings, references, normalize);
 	}
 	
 	/**

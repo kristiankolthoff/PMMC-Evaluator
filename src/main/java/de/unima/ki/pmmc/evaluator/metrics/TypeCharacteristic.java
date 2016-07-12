@@ -17,17 +17,17 @@ public class TypeCharacteristic extends Characteristic {
 	 * Partition of correspondences into correspondence types 
 	 * of the reference alignment from the characteristic
 	 */
-	private Map<CorrespondenceType, List<Correspondence>> corresponendencesRef;
+	private Map<CorrespondenceType, Alignment> corresponendencesRef;
 	/**
 	 * Partition of correspondences into correspondence types 
 	 * of the matcher alignment from the characteristic
 	 */
-	private Map<CorrespondenceType, List<Correspondence>> correspondencesMapping;
+	private Map<CorrespondenceType, Alignment> correspondencesMapping;
 	/**
 	 * Partition of correspondences into correspondence types 
 	 * of the correct alignment from the characteristic
 	 */
-	private Map<CorrespondenceType, List<Correspondence>> correspondencesCorrect;
+	private Map<CorrespondenceType, Alignment> correspondencesCorrect;
 	
 	public TypeCharacteristic(Alignment mapping, Alignment reference) throws CorrespondenceException {
 		super(mapping, reference);
@@ -40,19 +40,19 @@ public class TypeCharacteristic extends Characteristic {
 		this.correspondencesCorrect = extractCTMap(getAlignmentCorrect());
 	}
 	
-	private Map<CorrespondenceType, List<Correspondence>> extractCTMap(Alignment alignment) 
+	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
 			throws CorrespondenceException {
-		Map<CorrespondenceType, List<Correspondence>> vals = new HashMap<>();
+		Map<CorrespondenceType, Alignment> vals = new HashMap<>();
 		for(Correspondence c : alignment) {
 			if(c.getCType().isPresent()) {
 				if(vals.containsKey(c.getCType().get())) {
-					List<Correspondence> cList = vals.get(c.getCType().get());
-					cList.add(c);
-					vals.put(c.getCType().get(), cList);
+					Alignment align = vals.get(c.getCType().get());
+					align.add(c);
+					vals.put(c.getCType().get(), align);
 				} else {
-					List<Correspondence> cList = new ArrayList<>();
-					cList.add(c);
-					vals.put(c.getCType().get(), cList);
+					Alignment align = new Alignment();
+					align.add(c);
+					vals.put(c.getCType().get(), align);
 				}
 			} else {
 				throw new CorrespondenceException(CorrespondenceException.MISSING_TYPE_ANNOTATION, c.toString());
@@ -73,20 +73,16 @@ public class TypeCharacteristic extends Characteristic {
 		return computeFFromPR(getPrecision(type), getRecall(type));
 	}
 	
-	public List<Correspondence> getCTCorrespondencesRef(CorrespondenceType type) {
+	public Alignment getCTAlignmentRef(CorrespondenceType type) {
 		return this.corresponendencesRef.get(type);
 	}
 	
-	public List<Correspondence> getCTCorrespondencesMapping(CorrespondenceType type) {
+	public Alignment getCTAlignmentMapping(CorrespondenceType type) {
 		return this.correspondencesMapping.get(type);
 	}
 	
-	public List<Correspondence> getCTCorrespondencesCorrect(CorrespondenceType type) {
+	public Alignment getCTAlignmentCorrect(CorrespondenceType type) {
 		return this.correspondencesCorrect.get(type);
-	}
-	
-	public double getRelativeDistance(CorrespondenceType type, boolean normalize) {
-		return 0;
 	}
 	
 	@Override
@@ -130,8 +126,8 @@ public class TypeCharacteristic extends Characteristic {
 		int sumNumOfMatcher = 0;
 		int sumNumOfGold = 0;
 		for(TypeCharacteristic c : characteristics) {
-			sumNumOfMatcher += c.getCTCorrespondencesCorrect(type).size();
-			sumNumOfGold += c.getCTCorrespondencesRef(type).size();
+			sumNumOfMatcher += c.getCTAlignmentCorrect(type).size();
+			sumNumOfGold += c.getCTAlignmentRef(type).size();
 		}
 		return Characteristic.computeRecall(sumNumOfMatcher, sumNumOfGold);
 	}
@@ -193,8 +189,8 @@ public class TypeCharacteristic extends Characteristic {
 		int sumNumOfRulesCorrect = 0;
 		int sumNumOfRulesMatcher = 0;
 		for(TypeCharacteristic c : characteristics) {
-			sumNumOfRulesCorrect += c.getCTCorrespondencesCorrect(type).size();
-			sumNumOfRulesMatcher += c.getCTCorrespondencesMapping(type).size();
+			sumNumOfRulesCorrect += c.getCTAlignmentCorrect(type).size();
+			sumNumOfRulesMatcher += c.getCTAlignmentMapping(type).size();
 		}
 		return sumNumOfRulesCorrect / (double)sumNumOfRulesMatcher;
 	}
@@ -219,6 +215,35 @@ public class TypeCharacteristic extends Characteristic {
 			}
 		}
 		return Math.sqrt(dev/numOfOcc);
+	}
+	
+	public double getRelativeDistance(CorrespondenceType type, boolean normalize) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		mappings.add(correspondencesMapping.get(type));
+		references.add(corresponendencesRef.get(type));
+		return getRelativeDistance(mappings, references, normalize);
+	}
+	
+	/**
+	 * Computes the relative distance of the matcher alignments to the reference alignments 
+	 * of the gold standard for a specific <code>CorrespondenceType</code>, based on a collection 
+	 * of characteristics. First normalizes the  matcher alignments to a target scale, then computes 
+	 * the sum of squared deviations of the confidence values of the matcher and the reference alignment.
+	 * @param characteristics - the characteristics to compute the relative distance from
+	 * @param type - the correspondence type
+	 * @param normalize - state wether the confidences should be normalized
+	 * @return the realtive distance for a given <code>CorrespondenceType</code>
+	 */
+	public static double getRelativeDistance(List<TypeCharacteristic> characteristics, CorrespondenceType type, 
+			boolean normalize) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		for(TypeCharacteristic c : characteristics) {
+			mappings.add(c.getCTAlignmentMapping(type));
+			references.add(c.getCTAlignmentRef(type));
+		}
+		return getRelativeDistance(mappings, references, normalize);
 	}
 	
 }
