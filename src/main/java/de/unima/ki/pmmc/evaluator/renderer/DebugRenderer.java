@@ -8,9 +8,8 @@ import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 
 public class DebugRenderer extends Renderer{
 
-	public DebugRenderer(String file) throws IOException {
-		super(file);
-		// TODO Auto-generated constructor stub
+	public DebugRenderer() throws IOException {
+
 	}
 
 	@Override

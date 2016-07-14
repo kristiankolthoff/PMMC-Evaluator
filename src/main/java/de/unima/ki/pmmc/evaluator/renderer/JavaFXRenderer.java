@@ -8,9 +8,7 @@ import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 
 public class JavaFXRenderer extends Renderer{
 
-	public JavaFXRenderer(String file) throws IOException {
-		super(file);
-		// TODO Auto-generated constructor stub
+	public JavaFXRenderer() throws IOException {
 	}
 
 	@Override

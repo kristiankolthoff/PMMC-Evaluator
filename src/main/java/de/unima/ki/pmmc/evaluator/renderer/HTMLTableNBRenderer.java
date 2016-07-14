@@ -28,8 +28,7 @@ public class HTMLTableNBRenderer extends Renderer{
 	private boolean initialized;
 	private boolean showInBrowser;
 	
-	public HTMLTableNBRenderer(String file, boolean showInBrowser) throws IOException {
-		super(file);
+	public HTMLTableNBRenderer(boolean showInBrowser) throws IOException {
 		this.table = new Table();
 		this.df = new DecimalFormat("#.###");
 		this.initialized = false;

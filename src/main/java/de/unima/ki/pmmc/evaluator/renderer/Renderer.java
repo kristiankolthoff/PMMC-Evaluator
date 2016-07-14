@@ -18,12 +18,19 @@ public abstract class Renderer {
 		this.file = new File(file);
 		this.bw = new BufferedWriter(new FileWriter(this.file));
 	}
+	
+	public Renderer() {}
 
 	public abstract void render(List<? extends Characteristic> characteristics, String mappingInfo) throws IOException, CorrespondenceException;
 	
 	public void flush() throws IOException {
 		this.bw.flush();
 		this.bw.close();
+	}
+	
+	public void setFile(String file) throws IOException {
+		this.file = new File(file);
+		this.bw = new BufferedWriter(new FileWriter(this.file));
 	}
 	
 }
