@@ -22,6 +22,7 @@ import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 public class HTMLTableNBRenderer extends Renderer{
 
 	public static final boolean PRETTY_PRINT = true;
+	public static final String FILE_TYPE = ".html";
 	
 	private Table table;
 	private DecimalFormat df;
@@ -60,7 +61,8 @@ public class HTMLTableNBRenderer extends Renderer{
 		this.bw.append(this.table.toString());
 		super.flush();
 		if(this.showInBrowser) {
-			File htmlFile = new File(file.getAbsolutePath());
+			File htmlFile = new File(file.getAbsoluteFile().toString());
+			System.out.println(htmlFile);
 			Desktop.getDesktop().browse(htmlFile.toURI());
 		}
 	}
@@ -177,6 +179,11 @@ public class HTMLTableNBRenderer extends Renderer{
 
 	public void setShowInBrowser(boolean showInBrowser) {
 		this.showInBrowser = showInBrowser;
+	}
+
+	@Override
+	public void setFile(String file) throws IOException {
+		super.setFile(file + FILE_TYPE);
 	}
 	
 	

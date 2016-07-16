@@ -2,15 +2,21 @@ package de.unima.ki.pmmc.evaluator;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.ecs.storage.Array;
+import org.apache.ecs.xhtml.font;
 import org.xml.sax.SAXException;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
@@ -41,14 +47,19 @@ public class Evaluator {
 	private Result goldstandard;
 	private List<String> matcherPaths;
 	private List<Result> results;
-	private double threshold;
 	private List<Double> thresholds;
 	private List<Renderer> renderVals;
 	private String currMatcherName;
+	private String currMatcherPath;
+	private List<Alignment> currAlignments;
 	private boolean debugOn;
+	private boolean tagCTOn;
 	private AlignmentReader alignmentReader;
-	private Function<Result, Result> transResult;
-	private Function<Correspondence, Correspondence> transCorr;
+	private Map<Double, List<Result>> mapResult;
+	private List<Function<Result, Result>> transformationsResult;
+	private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
+	private Annotator annotator;
+	private Parser parser;
 
 	public static final double THRESHOLD_ZERO = 0.0;
 	public static final double THRESHOLD_LOW = 0.375;
@@ -62,38 +73,83 @@ public class Evaluator {
 	private static final String SEPERATOR = "-";
 	private static final Logger LOGGER = Logger.getLogger(Evaluator.class.getName());
 	
-	public Evaluator(List<Renderer> renderVals, List<Result> results, Result goldstandard) {
-		this.renderVals = renderVals;
+	public Evaluator(String goldstandardPath, String matchersRootPath,
+			String outputPath, String outputName, Result goldstandard,
+			List<String> matcherPaths, List<Result> results,
+			List<Double> thresholds, List<Renderer> renderVals,
+			boolean debugOn, boolean tagCTOn,
+			AlignmentReader alignmentReader,
+			List<Function<Result, Result>> transResult,
+			List<Function<Correspondence, Correspondence>> transCorr,
+			Annotator annotator, Parser parser) {
+		this.goldstandardPath = goldstandardPath;
+		this.matchersRootPath = matchersRootPath;
+		this.outputPath = outputPath;
+		this.outputName = outputName;
+		this.goldstandard = goldstandard;
+		this.matcherPaths = matcherPaths;
 		this.results = results;
-		this.goldstandard = goldstandard;
+		this.thresholds = thresholds;
+		this.renderVals = renderVals;
+		this.debugOn = debugOn;
+		this.tagCTOn = tagCTOn;
+		this.alignmentReader = alignmentReader;
+		this.transformationsResult = transResult;
+		this.transformationsCorrespondence = transCorr;
+		this.annotator = annotator;
+		this.parser = parser;
 	}
-	
-	public Evaluator(Result goldstandard) {
-		init();
-		this.goldstandard = goldstandard;
-	}
-	
-	public Evaluator() {
-		init();
-	}
-	
-	private void init() {
-		this.renderVals = new ArrayList<>();
-		this.results = new ArrayList<>();
-		this.thresholds = new ArrayList<>();
-		this.matcherPaths = new ArrayList<>();
-		this.debugOn = false;
-		this.outputName = DEFAULT_NAME;
-	}
-	
-	public Evaluator run() throws IOException {
+
+	public Evaluator run() throws IOException, CorrespondenceException {
 		this.goldstandard = loadResult(this.goldstandardPath, GOLDSTANDARD_NAME);
 		for(String matcherPath : this.matcherPaths) {
 			results.add(loadResult(matcherPath, extractName(matcherPath)));
 		}
 		searchForResults(this.matchersRootPath);
+		this.mapResult = applyThreshold();
+		for(Map.Entry<Double, List<Result>> e : this.mapResult.entrySet()) {
+			List<Result> currResults = e.getValue();
+			for(Result result : currResults) {
+				result.computeCharacteristics(this.goldstandard, this.tagCTOn);
+				for(Renderer renderer : this.renderVals) {
+					renderer.setFile(getFinalOutputName(outputPath, outputName, result.getName(), e.getKey()));
+					if(this.tagCTOn) {
+						renderer.render(result.getTypeCharacteristics(), "");
+					} else {
+						renderer.render(result.getCharacteristics(), "");
+					}
+					renderer.flush();
+				}
+			}
+		}
 		return this;
 	}
+	
+	public Evaluator reset() {
+		return this;
+	}
+	
+	private String getFinalOutputName(String path, String prefix, String name, double threshold) {
+		return path + SEPERATOR + prefix + SEPERATOR + name + SEPERATOR 
+				+ "t" + String.valueOf(threshold).replace(".", "");
+	}
+	
+	private Map<Double, List<Result>> applyThreshold() {
+		Map<Double, List<Result>> vals = new HashMap<>();
+		if(!thresholds.isEmpty()) {
+			for(double t : thresholds) {
+				List<Result> tmpResults = getResults();
+				for(Result result : tmpResults) {
+					result.applyThreshold(t);
+				}
+				vals.put(t, tmpResults);
+			}
+		} else {
+			vals.put(THRESHOLD_ZERO, getResults());
+		}
+		return vals;
+	}
+	
 	
 	private Result loadResult(String path, String name) throws IOException {
 		List<Alignment> alignments = new ArrayList<>();
@@ -116,28 +172,48 @@ public class Evaluator {
 	}
 	
 	private void searchForResults(String path) throws IOException {
-		List<Alignment> alignments = new ArrayList<>();
 		Files.walk(Paths.get(path)).forEach(filePath -> {
-			System.out.println(filePath + " " + filePath.getFileName());
 			if(isFileInGS(filePath.getFileName().toString())) {
 				try {
 					Alignment a = alignmentReader.getAlignment(filePath.toString());
-					System.out.println(a.toString());;
 					a.setName(filePath.getFileName().toString());
-					alignments.add(a);
+					currAlignments.add(a);
+					currMatcherName = findName(filePath, path);
+					currMatcherPath = filePath.getParent().toString();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			} else if(!alignments.isEmpty()){
-				//TODO recognize unequal alignment size to gs
-				results.add(new Result(currMatcherName, filePath.toString(), alignments));
-				currMatcherName = null;
-				alignments.clear();
-			} else if(currMatcherName == null && !filePath.getFileName().equals(Paths.get(path).getFileName())){
-				currMatcherName = filePath.getFileName().toString();
+			} else if(!currAlignments.isEmpty()){
+				//Verify if currently read matcher alignment has the same size as goldstandard
+				if(goldstandard.size() != currAlignments.size()) {
+					throw new IllegalArgumentException("Goldstandard alignment size unequal to matcher alignment size at "
+							+ currMatcherName + "GS: " + goldstandard.size() + " Matcher: " + currAlignments.size());
+				}
+				results.add(new Result(currMatcherName, currMatcherPath, currAlignments));
+				currAlignments = new ArrayList<>();
 			}
 		});
-		System.out.println();
+	}
+	
+	private String findName(Path filePath, String root) {
+		List<String> dirs = new ArrayList<>();
+		while(filePath.getParent() != null && 
+				!filePath.getFileName().toString()
+				.equals(Paths.get(root).getFileName().toString())) {
+			if(Files.isDirectory(filePath)) {
+				dirs.add(filePath.getFileName().toString());
+			}
+			filePath = filePath.getParent();
+			System.out.println(filePath.getFileName().toString());
+		}
+		String name = "";
+		for (int i = dirs.size()-1; i >= 0; i--) {
+			name += dirs.get(i);
+			if(i != 0) {
+				name += SEPERATOR;
+			}
+		}
+		return name;
 	}
 	
 	private boolean isFileInGS(String filename) {
@@ -149,185 +225,281 @@ public class Evaluator {
 		return false;
 	}
 	
-	public Evaluator addRenderer(Renderer renderer) {
-		System.out.println("addRenderer");
-		this.renderVals.add(renderer);
-		return this;
-	}
-	
-	public Evaluator removeRenderer(Renderer renderer) {
-		for (int i = 0; i < renderVals.size(); i++) {
-			if(renderVals.get(i).getClass().getName().equals(renderer.getClass().getName())) {
-				renderVals.remove(i);
-				return this;
-			}
-		}
-		return this;
-	}
-	
-	public Evaluator addResult(Result result) {
-		//TODO check wether result matches
-		results.add(result);
-		return this;
-	}
-	
-	public Evaluator removeResult(Result result) {
-		for (int i = 0; i < results.size(); i++) {
-			if(results.get(i).equals(result)) {
-				results.remove(i);
-				return this;
-			}
-		}
-		return this;
-	}
-	
-	public Evaluator addMatcherPath(String path) {
-		this.matcherPaths.add(path);
-		return this;
-	}
-	
-	public Evaluator removeMatcherPath(String path) {
-		for (int i = 0; i < matcherPaths.size(); i++) {
-			if(matcherPaths.get(i).equals(path)) {
-				matcherPaths.remove(i);
-				return this;
-			}
-		}
-		return this;
-	}
-	
-	public boolean isDebugOn() {
-		return debugOn;
-	}
-
-	public Evaluator setDebugOn(boolean debugOn) {
-		this.debugOn = debugOn;
-		return this;
-	}
-
-	public Function<Result, Result> getFunctionResult() {
-		return transResult;
-	}
-
-	public Evaluator setTransformationResult(Function<Result, Result> transformation) {
-		this.transResult = transformation;
-		return this;
-	}
-
-	public Function<Correspondence, Correspondence> getTransformationCorr() {
-		return transCorr;
-	}
-
-	public Evaluator setTransformationCorr(Function<Correspondence, Correspondence> transformation) {
-		this.transCorr = transformation;
-		return this;
-	}
-
 	public String getGoldstandardPath() {
 		return goldstandardPath;
 	}
 
-	public Evaluator setGoldstandardPath(String goldstandardPath) {
-		System.out.println("goldstandard");
-		this.goldstandardPath = goldstandardPath;
-		return this;
-	}
-
-	public String getMatchersPath() {
+	public String getMatchersRootPath() {
 		return matchersRootPath;
-	}
-
-	public Evaluator setMatchersRootPath(String matchersPath) {
-		System.out.println("setRoot");
-		this.matchersRootPath = matchersPath;
-		return this;
-	}
-
-	public String getOutputName() {
-		return outputName;
-	}
-
-	public Evaluator setOutputName(String outputName) {
-		this.outputName = outputName;
-		return this;
 	}
 
 	public String getOutputPath() {
 		return outputPath;
 	}
 
-	public Evaluator setOutputPath(String outputPath) {
-		System.out.println("ouput path");
-		this.outputPath = outputPath;
-		return this;
+	public String getOutputName() {
+		return outputName;
+	}
+
+	public Result getGoldstandard() {
+		return goldstandard;
+	}
+
+	public List<String> getMatcherPaths() {
+		return matcherPaths;
+	}
+
+	public List<Result> getResults() {
+		return results;
 	}
 
 	public List<Double> getThresholds() {
 		return thresholds;
 	}
 
-	public Evaluator setThresholds(List<Double> thresholds) {
-		this.thresholds = thresholds;
-		return this;
-	}
-	
-	public double getThreshold(int position) {
-		return thresholds.get(position);
+	public List<Renderer> getRenderVals() {
+		return renderVals;
 	}
 
-	public double getThreshold() {
-		return threshold;
+	public boolean isDebugOn() {
+		return debugOn;
 	}
 
-	public Evaluator setThreshold(double threshold) {
-		this.threshold = threshold;
-		return this;
+	public boolean isTagCTOn() {
+		return tagCTOn;
 	}
 
-	public Result getGoldStandard() {
-		return goldstandard;
-	}
-
-	public Evaluator setGoldstandard(Result goldstandard) {
-		this.goldstandard = goldstandard;
-		return this;
-	}
-	
-	public List<Result> getResults() {
-		return results;
-	}
-
-	public Evaluator setResults(List<Result> results) {
-		this.results = results;
-		return this;
-	}
-	
 	public AlignmentReader getAlignmentReader() {
 		return alignmentReader;
 	}
 
-	public Evaluator setAlignmentReader(AlignmentReader alignmentReader) {
-		this.alignmentReader = alignmentReader;
-		return this;
+	public Map<Double, List<Result>> getMapResult() {
+		return mapResult;
+	}
+	
+	public List<Result> getResults(double threshold) {
+		return this.mapResult.get(threshold);
+	}
+
+	public List<Function<Result, Result>> getTransformationsResult() {
+		return transformationsResult;
+	}
+
+	public List<Function<Correspondence, Correspondence>> getTransformationsCorrespondence() {
+		return transformationsCorrespondence;
+	}
+
+	public Annotator getAnnotator() {
+		return annotator;
+	}
+
+	public Parser getParser() {
+		return parser;
+	}
+
+
+	public static class Builder {
+		
+		private String goldstandardPath;
+		private String matchersRootPath;
+		private String outputPath;
+		private String outputName;
+		private Result goldstandard;
+		private List<String> matcherPaths;
+		private List<Double> thresholds;
+		private boolean debugOn;
+		private boolean tagCTOn;
+		private AlignmentReader alignmentReader;
+		private List<Result> results;
+		private List<Renderer> renderVals;
+		private List<Function<Result, Result>> transformationsResult;
+		private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
+		private Annotator annotator;
+		private Parser parser;
+		
+		public Builder() {
+			this.matcherPaths = new ArrayList<>();
+			this.results = new ArrayList<>();
+			this.thresholds = new ArrayList<>();
+			this.renderVals = new ArrayList<>();
+			this.transformationsResult = new ArrayList<>();
+			this.transformationsCorrespondence = new ArrayList<>();
+		}
+		
+		public Builder addRenderer(Renderer renderer) {
+			this.renderVals.add(renderer);
+			return this;
+		}
+		
+		public Builder removeRenderer(Renderer renderer) {
+			for (int i = 0; i < renderVals.size(); i++) {
+				if(renderVals.get(i).getClass().getName().equals(renderer.getClass().getName())) {
+					renderVals.remove(i);
+					return this;
+				}
+			}
+			return this;
+		}
+		
+		public Builder addResult(Result result) {
+			//Verify if currently read matcher alignment has the same size as goldstandard
+			if(goldstandard.size() != result.size() && goldstandard == null) {
+				throw new IllegalArgumentException("Goldstandard alignment size unequal to matcher alignment size at "
+						+ result.getName() + "GS: " + goldstandard.size() + " Matcher: " + result.size());
+			}
+			results.add(result);
+			return this;
+		}
+		
+		public Builder removeResult(Result result) {
+			for (int i = 0; i < results.size(); i++) {
+				if(results.get(i).equals(result)) {
+					results.remove(i);
+					return this;
+				}
+			}
+			return this;
+		}
+		
+		public Builder addMatcherPath(String path) {
+			this.matcherPaths.add(path);
+			return this;
+		}
+		
+		public Builder removeMatcherPath(String path) {
+			for (int i = 0; i < matcherPaths.size(); i++) {
+				if(matcherPaths.get(i).equals(path)) {
+					matcherPaths.remove(i);
+					return this;
+				}
+			}
+			return this;
+		}
+		
+		public Builder setDebugOn(boolean debugOn) {
+			this.debugOn = debugOn;
+			return this;
+		}
+
+		public Builder addTransformationToResult(Function<Result, Result> transformation) {
+			this.transformationsResult.add(transformation);
+			return this;
+		}
+		
+		public Builder addTransformationToCorrespondence(Function<Correspondence, Correspondence> transformation) {
+			this.transformationsCorrespondence.add(transformation);
+			return this;
+		}
+
+		public Builder setGoldstandardPath(String goldstandardPath) {
+			this.goldstandardPath = goldstandardPath;
+			return this;
+		}
+
+		public Builder setMatchersRootPath(String matchersPath) {
+			this.matchersRootPath = matchersPath;
+			return this;
+		}
+
+		public Builder setOutputName(String outputName) {
+			this.outputName = outputName;
+			return this;
+		}
+
+		public Builder setOutputPath(String outputPath) {
+			this.outputPath = outputPath;
+			return this;
+		}
+
+		public Builder setThresholds(List<Double> thresholds) {
+			this.thresholds = thresholds;
+			return this;
+		}
+		
+		public Builder setThresholds(Double[] thresholds) {
+			this.thresholds = Arrays.asList(thresholds);
+			return this;
+		}
+		
+		public Builder addThreshold(double threshold) {
+			this.thresholds.add(threshold);
+			return this;
+		}
+		
+		public Builder removeThreshold(double threshold) {
+			for (int i = 0; i < thresholds.size(); i++) {
+				if(thresholds.get(i) == threshold) {
+					thresholds.remove(i);
+					return this;
+				}
+			}
+			return this;
+		}
+		
+		public Builder setTagCTOn(boolean tagCTOn) {
+			this.tagCTOn = tagCTOn;
+			return this;
+		}
+
+		public Builder setParser(String parsertype) {
+			this.parser = ParserFactory.getParser(parsertype);
+			return this;
+		}
+
+		public Builder setGoldstandard(Result goldstandard) {
+			this.goldstandard = goldstandard;
+			return this;
+		}
+		
+		public Builder setResults(List<Result> results) {
+			this.results = results;
+			return this;
+		}
+		
+		public Builder setAlignmentReader(AlignmentReader alignmentReader) {
+			this.alignmentReader = alignmentReader;
+			return this;
+		}
+		
+		public Evaluator build() {
+			return new Evaluator(this.goldstandardPath, 
+					this.matchersRootPath, 
+					this.outputPath, 
+					this.outputName, 
+					this.goldstandard, 
+					this.matcherPaths, 
+					this.results, 
+					this.thresholds, 
+					this.renderVals, 
+					this.debugOn, 
+					this.tagCTOn, 
+					this.alignmentReader, 
+					this.transformationsResult, 
+					this.transformationsCorrespondence, 
+					this.annotator, 
+					this.parser);
+		}
 	}
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, 
 			IOException, AlignmentException, CorrespondenceException {
 		final boolean SHOW_IN_BROWSER = true;
-		final String OUTPUT_PATH = "src/main/resources/data/evaluation/mes-nonbinary-new-gs-000.html";
+		final String OUTPUT_PATH = "src/main/resources/data/evaluation/";
 		final String GOLDSTANDARD_PATH = "src/main/resources/data/results/goldstandard/dataset1_goldstandard_experts";
 		final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
 //		final String SINGLE_MATCHER_TEST_PATH = "src/main/resources/data/results/submitted-matchers/RMM-VM2/dataset1";
-		@SuppressWarnings("unused")
-		Evaluator evaluator = new Evaluator()
-								.addRenderer(new HTMLTableNBRenderer(SHOW_IN_BROWSER))
-								.setOutputPath(OUTPUT_PATH)
-								.setOutputName("result")
-								.setGoldstandardPath(GOLDSTANDARD_PATH)
-								.setMatchersRootPath(RESULTS_PATH)
-//								.addMatcherPath(SINGLE_MATCHER_TEST_PATH)
-								.setAlignmentReader(new AlignmentReaderXml())
-								.run();
+//		@SuppressWarnings("unused")
+//		Evaluator evaluator = new Evaluator()
+//								.addRenderer(new HTMLTableNBRenderer(SHOW_IN_BROWSER))
+//								.setOutputPath(OUTPUT_PATH)
+//								.setOutputName("result")
+//								.setGoldstandardPath(GOLDSTANDARD_PATH)
+//								.setMatchersRootPath(RESULTS_PATH)
+////								.addMatcherPath(SINGLE_MATCHER_TEST_PATH)
+//								.addThreshold(THRESHOLD_MEDIUM)
+//								.addThreshold(THRESHOLD_LOW)
+//								.setAlignmentReader(new AlignmentReaderXml())
+//								.run();
 //
 //		
 //		/**

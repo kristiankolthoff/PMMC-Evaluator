@@ -1,9 +1,11 @@
 package de.unima.ki.pmmc.evaluator;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
+import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 
@@ -18,7 +20,6 @@ public class Result implements Iterable<Alignment>{
 	public Result(String name, String path, List<Alignment> alignments,
 			List<Characteristic> characteristics,
 			List<TypeCharacteristic> tCharacteristics) {
-		super();
 		this.name = name;
 		this.path = path;
 		this.alignments = alignments;
@@ -27,14 +28,43 @@ public class Result implements Iterable<Alignment>{
 	}
 
 	public Result(String name, String path, List<Alignment> alignments) {
-		super();
 		this.name = name;
 		this.path = path;
 		this.alignments = alignments;
+		this.characteristics = new ArrayList<>();
+		this.tCharacteristics = new ArrayList<>();
 	}
-
+	
+	public void applyThreshold(double threshold) {
+		for(Alignment a : this.alignments) {
+			a.applyThreshold(threshold);
+		}
+	}
+	
+	public void computeCharacteristics(Result goldstandard, boolean typeOn) throws CorrespondenceException {
+		for(Alignment aRef : goldstandard) {
+			for(Alignment aMatcher : this) {
+				if(aRef.equals(aMatcher)) {
+					if(typeOn) {
+						this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef));
+					} else {
+						this.characteristics.add(new Characteristic(aMatcher, aRef));						
+					}
+				}
+			}
+		}
+	}
+	
 	public int size() {
 		return alignments.size();
+	}
+	
+	public boolean isEmptyCharacteristics() {
+		return this.characteristics.isEmpty();
+	}
+	
+	public boolean isEmptyTypeCharacteristics() {
+		return this.tCharacteristics.isEmpty();
 	}
 
 	public String getName() {
@@ -69,12 +99,16 @@ public class Result implements Iterable<Alignment>{
 		this.characteristics = characteristics;
 	}
 
-	public List<TypeCharacteristic> gettCharacteristics() {
+	public List<TypeCharacteristic> getTypeCharacteristics() {
 		return tCharacteristics;
 	}
 
-	public void settCharacteristics(List<TypeCharacteristic> tCharacteristics) {
+	public void setTypeCharacteristics(List<TypeCharacteristic> tCharacteristics) {
 		this.tCharacteristics = tCharacteristics;
+	}
+	
+	public boolean isFLM() {
+		return Characteristic.isFirstLineMatcher(this.characteristics);
 	}
 
 	@Override
@@ -106,5 +140,15 @@ public class Result implements Iterable<Alignment>{
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Result [name=" + name + ", path=" + path + "]";
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+
 }
