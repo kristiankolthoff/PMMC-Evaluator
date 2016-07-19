@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -19,12 +18,9 @@ import org.xml.sax.SAXException;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
-import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.annotator.Annotator;
-import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-import de.unima.ki.pmmc.evaluator.handler.ConsoleHandler;
 import de.unima.ki.pmmc.evaluator.handler.ResultHandler;
 import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
@@ -37,23 +33,56 @@ import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
  */
 public class Evaluator {
 	
+	/**
+	 * Paths to goldstandard alignments, multiple matchers
+	 * root path and root path to the used models
+	 */
 	private String goldstandardPath;
 	private String matchersRootPath;
 	private String modelsRootPath;
+	/**
+	 * Output path and prefix for generated output files
+	 */
 	private String outputPath;
 	private String outputName;
+	/**
+	 * Loaded result for goldstandard
+	 */
 	private Result goldstandard;
+	/**
+	 * Contains all specified paths to matchers
+	 */
 	private List<String> matcherPaths;
 	private List<Double> thresholds;
+	/**
+	 * Current matcher path and name as well as
+	 * alignment which is currently read
+	 */
 	private String currMatcherName;
 	private String currMatcherPath;
 	private List<Alignment> currAlignments;
 	private boolean debugOn;
 	private boolean tagCTOn;
+	/**
+	 * Loaded results list. One result for
+	 * each single matcher
+	 */
 	private List<Result> results;
+	/**
+	 * The result handlers which should 
+	 * process the generated results
+	 */
 	private List<ResultHandler> handler;
 	private AlignmentReader alignmentReader;
+	/**
+	 * Map storing the applied thresholds and
+	 * the corresponding result list
+	 */
 	private Map<Double, List<Result>> mapResult;
+	/**
+	 * Functions providing Correspondence, Alignment 
+	 * and Result transformations
+	 */
 	private List<Function<Result, Result>> transformationsResult;
 	private List<Function<Alignment, Alignment>> transformationsAlignment;
 	private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
@@ -61,16 +90,16 @@ public class Evaluator {
 	private Annotator annotator;
 	private Parser parser;
 
+	/**
+	 * Important default thresholds used often
+	 */
 	public static final double THRESHOLD_ZERO = 0.0;
 	public static final double THRESHOLD_LOW = 0.375;
 	public static final double THRESHOLD_MEDIUM = 0.5;
 	public static final double THRESHOLD_HIGH = 0.75;
-	public static final int METRIC_BINARY = 0;
-	public static final int METRIC_NON_BINARY = 1;
-	
+
 	private static final String GOLDSTANDARD_NAME = "goldstandard";
 	private static final String SEPERATOR = "-";
-	private static final Logger LOG = Logger.getLogger(Evaluator.class.getName());
 	
 	public Evaluator(String goldstandardPath, String matchersRootPath,
 			String modelsRootPath, String outputPath, String outputName, Result goldstandard,
@@ -221,15 +250,16 @@ public class Evaluator {
 		return results;
 	}
 	
-	public Evaluator reset() {
-		return this;
-	}
-	
 	private String getFinalOutputName(String prefix, double threshold) {
 		return prefix + SEPERATOR
 				+ "t" + String.valueOf(threshold).replace(".", "");
 	}
 	
+	/**
+	 * Applies all specified thresholds to the <code>Result</code>
+	 * collection.
+	 * @return threshold to result mappings
+	 */
 	private Map<Double, List<Result>> applyThreshold() {
 		Map<Double, List<Result>> vals = new HashMap<>();
 		if(!thresholds.isEmpty()) {
@@ -285,6 +315,12 @@ public class Evaluator {
 		return path;
 	}
 	
+	/**
+	 * Automatically searches at a given path for matcher alignments
+	 * to build up the <code>Result</code> collection.
+	 * @param path the root path used as a starting point to search for results
+	 * @throws IOException
+	 */
 	private void searchForResults(String path) throws IOException {
 		Files.walk(Paths.get(path)).forEach(filePath -> {
 			if(isFileInGS(filePath.getFileName().toString())) {
@@ -309,6 +345,15 @@ public class Evaluator {
 		});
 	}
 	
+	/**
+	 * Given a file path and a root name, automatically
+	 * extracts the name for a matcher as the directory
+	 * chain from the root to the actual RDF <code>Alignment</code>
+	 * files.
+	 * @param filePath the file path to start searching from
+	 * @param root the top most root path of the matcher
+	 * @return the extracted matcher name for a <code>Result</code>
+	 */
 	private String findName(Path filePath, String root) {
 		List<String> dirs = new ArrayList<>();
 		while(filePath.getParent() != null && 
@@ -411,146 +456,6 @@ public class Evaluator {
 		return parser;
 	}
 	
-	public Evaluator addHandler(ResultHandler handler) {
-		this.handler.add(handler);
-		return this;
-	}
-	
-	public Evaluator removeHandler(ResultHandler handler) {
-		for (int i = 0; i < this.handler.size(); i++) {
-			if(this.handler.get(i).getClass().getName().equals(handler.getClass().getName())) {
-				this.handler.remove(i);
-				return this;
-			}
-		}
-		return this;
-	}
-	
-	public Evaluator addResult(Result result) {
-		//Verify if currently read matcher alignment has the same size as goldstandard
-		if(goldstandard.size() != result.size() && goldstandard == null) {
-			throw new IllegalArgumentException("Goldstandard alignment size unequal to matcher alignment size at "
-					+ result.getName() + "GS: " + goldstandard.size() + " Matcher: " + result.size());
-		}
-		results.add(result);
-		return this;
-	}
-	
-	public Evaluator removeResult(Result result) {
-		for (int i = 0; i < results.size(); i++) {
-			if(results.get(i).equals(result)) {
-				results.remove(i);
-				return this;
-			}
-		}
-		return this;
-	}
-	
-	public Evaluator addMatcherPath(String path) {
-		this.matcherPaths.add(path);
-		return this;
-	}
-	
-	public Evaluator removeMatcherPath(String path) {
-		for (int i = 0; i < matcherPaths.size(); i++) {
-			if(matcherPaths.get(i).equals(path)) {
-				matcherPaths.remove(i);
-				return this;
-			}
-		}
-		return this;
-	}
-	
-	public Evaluator setDebugOn(boolean debugOn) {
-		this.debugOn = debugOn;
-		return this;
-	}
-
-	public Evaluator addTransformationToResult(Function<Result, Result> transformation) {
-		this.transformationsResult.add(transformation);
-		return this;
-	}
-	
-	public Evaluator addTransformationToCorrespondence(Function<Correspondence, Correspondence> transformation) {
-		this.transformationsCorrespondence.add(transformation);
-		return this;
-	}
-	
-	public Evaluator addTransformationToAlignment(Function<Alignment, Alignment> transformation) {
-		this.transformationsAlignment.add(transformation);
-		return this;
-	}
-
-	public Evaluator setGoldstandardPath(String goldstandardPath) {
-		this.goldstandardPath = goldstandardPath;
-		return this;
-	}
-
-	public Evaluator setMatchersRootPath(String matchersPath) {
-		this.matchersRootPath = matchersPath;
-		return this;
-	}
-
-	public Evaluator setOutputName(String outputName) {
-		this.outputName = outputName;
-		return this;
-	}
-
-	public Evaluator setOutputPath(String outputPath) {
-		this.outputPath = outputPath;
-		return this;
-	}
-
-	public Evaluator setThresholds(List<Double> thresholds) {
-		this.thresholds = thresholds;
-		return this;
-	}
-	
-	public Evaluator setThresholds(Double[] thresholds) {
-		this.thresholds = Arrays.asList(thresholds);
-		return this;
-	}
-	
-	public Evaluator addThreshold(double threshold) {
-		this.thresholds.add(threshold);
-		return this;
-	}
-	
-	public Evaluator removeThreshold(double threshold) {
-		for (int i = 0; i < thresholds.size(); i++) {
-			if(thresholds.get(i) == threshold) {
-				thresholds.remove(i);
-				return this;
-			}
-		}
-		return this;
-	}
-	
-	public Evaluator setTagCTOn(boolean tagCTOn) {
-		this.tagCTOn = tagCTOn;
-		return this;
-	}
-
-	public Evaluator setParser(String parsertype) {
-		this.parser = ParserFactory.getParser(parsertype);
-		return this;
-	}
-
-	public Evaluator setGoldstandard(Result goldstandard) {
-		this.goldstandard = goldstandard;
-		return this;
-	}
-	
-	public Evaluator setResults(List<Result> results) {
-		this.results = results;
-		return this;
-	}
-	
-	public Evaluator setAlignmentReader(AlignmentReader alignmentReader) {
-		this.alignmentReader = alignmentReader;
-		return this;
-	}
-	
 	public List<Function<Alignment, Alignment>> getTransformationsAlignment() {
 		return transformationsAlignment;
 	}
@@ -559,7 +464,10 @@ public class Evaluator {
 		this.transformationsAlignment = transformationsAlignment;
 	}
 
-
+	/**
+	 * Allows to easily create and configure an <code>Evaluator</code>
+	 * instance.
+	 */
 	public static class Builder {
 		
 		private String goldstandardPath;
@@ -598,11 +506,23 @@ public class Evaluator {
 			this.outputName = "result";
 		}
 		
+		/**
+		 * Adds a <code>ResultHandler</code> which is used
+		 * as a sink for the computed <code>Result</code>s.
+		 * @param handler the handler which should be added
+		 * @return this
+		 */
 		public Builder addHandler(ResultHandler handler) {
 			this.handler.add(handler);
 			return this;
 		}
 		
+		/**
+		 * Removes a <code>ResultHandler</code> from the current
+		 * collection of handlers.
+		 * @param handler the handler which should be removed
+		 * @return this
+		 */
 		public Builder removeHandler(ResultHandler handler) {
 			for (int i = 0; i < this.handler.size(); i++) {
 				if(this.handler.get(i).getClass().getName().equals(handler.getClass().getName())) {
@@ -613,6 +533,11 @@ public class Evaluator {
 			return this;
 		}
 		
+		/**
+		 * Manually add a <code>Result</code> to the collection.
+		 * @param result the result which should be added
+		 * @return this
+		 */
 		public Builder addResult(Result result) {
 			//Verify if currently read matcher alignment has the same size as goldstandard
 			if(goldstandard.size() != result.size() && goldstandard == null) {
@@ -623,6 +548,11 @@ public class Evaluator {
 			return this;
 		}
 		
+		/**
+		 * Removes a <code>Result</code> from the collection.
+		 * @param result the result which should be removed
+		 * @return this
+		 */
 		public Builder removeResult(Result result) {
 			for (int i = 0; i < results.size(); i++) {
 				if(results.get(i).equals(result)) {
@@ -633,11 +563,24 @@ public class Evaluator {
 			return this;
 		}
 		
+		/**
+		 * Adds a root path to alignments of a matcher.
+		 * The files within this folder should be actual
+		 * RDF alignment files.
+		 * @param path the root path to the alignments of a single matcher
+		 * @return this
+		 */
 		public Builder addMatcherPath(String path) {
 			this.matcherPaths.add(path);
 			return this;
 		}
 		
+		/**
+		 * Removes a root path to alignments of a matcher from
+		 * the collection.
+		 * @param path the root path which should be removed
+		 * @return this
+		 */
 		public Builder removeMatcherPath(String path) {
 			for (int i = 0; i < matcherPaths.size(); i++) {
 				if(matcherPaths.get(i).equals(path)) {
@@ -648,11 +591,23 @@ public class Evaluator {
 			return this;
 		}
 		
+		/**
+		 * Adds the root path of the source folder
+		 * containing the actual <code>Model</code>s
+		 * which were used to generate the alignments.
+		 * @param path the root path of the actual models
+		 * @return this
+		 */
 		public Builder addModelPath(String path) {
 			this.modelPaths.add(path);
 			return this;
 		}
 		
+		/**
+		 * Removes the root path to the <code>Model</code>s.
+		 * @param path the root path of the actual models
+		 * @return this
+		 */
 		public Builder removeModelPath(String path) {
 			for (int i = 0; i < modelPaths.size(); i++) {
 				if(modelPaths.get(i).equals(path)) {
@@ -663,51 +618,110 @@ public class Evaluator {
 			return this;
 		}
 		
+		/**
+		 * If debug mode is on, prints log information to the console
+		 * about the evaluation progress.
+		 * @param debugOn if true logs progress, else silent
+		 * @return this
+		 */
 		public Builder setDebugOn(boolean debugOn) {
 			this.debugOn = debugOn;
 			return this;
 		}
 
+		/**
+		 * Adds custom <code>Result</code> transformation. This transformation
+		 * is applied to each generated <code>Result</code> instance of a matcher.
+		 * @param transformation which should be applied to the generated results
+		 * @return this
+		 */
 		public Builder addTransformationToResult(Function<Result, Result> transformation) {
 			this.transformationsResult.add(transformation);
 			return this;
 		}
 		
+		/**
+		 * Adds custom <code>Correspondence</code> transformation. This transformation
+		 * is applied to each generated <code>Correspondence</code> instances of a matcher.
+		 * @param transformation which should be applied to the generated correspondences
+		 * @return this
+		 */
 		public Builder addTransformationToCorrespondence(Function<Correspondence, Correspondence> transformation) {
 			this.transformationsCorrespondence.add(transformation);
 			return this;
 		}
 		
+		/**
+		 * Adds custom <code>Alignment</code> transformation. This transformation
+		 * is applied to each generated <code>Alignment</code> instance of a matcher.
+		 * @param transformation which should be applied to the generated alignments
+		 * @return this
+		 */
 		public Builder addTransformationToAlignment(Function<Alignment, Alignment> transformation) {
 			this.transformationsAlignment.add(transformation);
 			return this;
 		}
 		
+		/**
+		 * Set root path of goldstandard alignment
+		 * @param goldstandardPath the path to the goldstandard alignments
+		 * @return this
+		 */
 		public Builder setGoldstandardPath(String goldstandardPath) {
 			this.goldstandardPath = goldstandardPath;
 			return this;
 		}
-
+		
+		/**
+		 * Set root path for alignments of multiple matchers. Used
+		 * to automatically extract the name of a matcher and its
+		 * <code>Alignment</code>s corresponding to the <code>Alignment</code>s
+		 * from the goldstandard.
+		 * @param matchersPath root path to matcher alignments
+		 * @return this
+		 */
 		public Builder setMatchersRootPath(String matchersPath) {
 			this.matchersRootPath = matchersPath;
 			return this;
 		}
 		
+		/**
+		 * Set root path to the acutal RDF models used for generating
+		 * the alignments.
+		 * @param modelsPath the path to the RDF files of the acutal <code>Model</code>s
+		 * @return this
+		 */
 		public Builder setModelsRootPath(String modelsPath) {
 			this.modelsRootPath = modelsPath;
 			return this;
 		}
 
+		/**
+		 * Sets the prefix of the generated <code>Result</code>s
+		 * @param outputName the name
+		 * @return this
+		 */
 		public Builder setOutputName(String outputName) {
 			this.outputName = outputName;
 			return this;
 		}
 		
+		/**
+		 * Used to process current evalation events.
+		 * @param listener the listener which should be used
+		 * @return this
+		 */
 		public Builder setFlowListener(Consumer<String> listener) {
 			this.flowListener = listener;
 			return this;
 		}
 
+		/**
+		 * Sets the path for the output which should be
+		 * used by corresponding <code>ResultHandler</code>s.
+		 * @param outputPath the output path
+		 * @return this
+		 */
 		public Builder setOutputPath(String outputPath) {
 			this.outputPath = outputPath;
 			return this;
@@ -738,11 +752,28 @@ public class Evaluator {
 			return this;
 		}
 		
+		/**
+		 * Specifies wether to annotate each <code>Correspondence</code>
+		 * with its <code>CorrespondenceType</code>. If set to true,
+		 * annotates <code>Correspondence</code>s and computes the <code>
+		 * TypeCharacteristic</code> for each <code>Result</code>. Otherwise
+		 * computes only the <code>Charateristics</code>. Note that if this is
+		 * set to true, also <code>Parser</code> and root path to <code>Model</code>s
+		 * is required.
+		 * @param tagCTOn if true, annotates correspondences with their type
+		 * @return this
+		 */
 		public Builder setTagCTOn(boolean tagCTOn) {
 			this.tagCTOn = tagCTOn;
 			return this;
 		}
 
+		/**
+		 * Set the type of the <code>Parser</code> which should be used
+		 * to read the model files.
+		 * @param parsertype the parser type
+		 * @return this
+		 */
 		public Builder setParser(String parsertype) {
 			this.parser = ParserFactory.getParser(parsertype);
 			return this;
@@ -758,6 +789,12 @@ public class Evaluator {
 			return this;
 		}
 		
+		/**
+		 * Set the <code>AlignmentReader</code> implementation that should
+		 * be used to read the RDF alignments.
+		 * @param alignmentReader the alignment reader for parsing RDF files
+		 * @return this
+		 */
 		public Builder setAlignmentReader(AlignmentReader alignmentReader) {
 			this.alignmentReader = alignmentReader;
 			return this;
@@ -783,107 +820,6 @@ public class Evaluator {
 					this.transformationsAlignment,
 					this.parser);
 		}
-	}
-
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, 
-			IOException, AlignmentException, CorrespondenceException {
-		final boolean SHOW_IN_BROWSER = true;
-		final String OUTPUT_PATH = "src/main/resources/data/evaluation/";
-		final String GOLDSTANDARD_PATH = "src/main/resources/data/results/goldstandard/dataset1_goldstandard_experts";
-		final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
-		final String MODELS_PATH = "src/main/resources/data/dataset1/models/";
-//		final String SINGLE_MATCHER_TEST_PATH = "src/main/resources/data/results/submitted-matchers/RMM-VM2/dataset1";
-		Evaluator evaluator = new Evaluator.Builder().
-								addHandler(new ConsoleHandler()).
-								setOutputPath(OUTPUT_PATH).
-								setOutputName("result").
-								setParser(Parser.TYPE_BPMN).
-								setGoldstandardPath(GOLDSTANDARD_PATH).
-								setMatchersRootPath(RESULTS_PATH).
-								setModelsRootPath(MODELS_PATH).
-//								addMatcherPath(SINGLE_MATCHER_TEST_PATH).
-								setTagCTOn(true).
-								addThreshold(THRESHOLD_ZERO).
-								addThreshold(0.99).
-								setAlignmentReader(new AlignmentReaderXml()).
-								addTransformationToResult(r -> {
-									return r;}).
-								addTransformationToCorrespondence(c -> {
-									return c;
-								}).
-								
-								build();
-		evaluator.run();
-//
-//		/**
-//		 * Define multiple directories with matcher alginments.
-//		 * First entry of the array should be the directory of the reference alignment.
-//		 */
-//		final String OUTPUT_PATH = "src/main/resources/data/evaluation/mes-nonbinary-new-gs-000.html";
-//		final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
-//		final String END_DIR = "/dataset1";
-
-//		/**
-//		 * Read all alignments from gold standard and matchers 
-//		 */
-//		final AlignmentReader alignReader = new AlignmentReaderXml();
-//		List<List<Alignment>> alignments = new ArrayList<>();
-//		for (int i = 0; i < dirs.length; i++) {
-//			List<Alignment> aligns = new ArrayList<>();
-//			Files.walk(Paths.get(dirs[i])).forEach(filePath -> {
-//				if(Files.isRegularFile(filePath)) {
-//					try {
-//						System.out.println(filePath.toString());
-//						Alignment a = alignReader.getAlignment(filePath.toString());
-//						if(filePath.toString().contains("dataset1_goldstandard_experts")) {
-//							a.applyThreshold(THRESHOLD);							
-//						}
-//						aligns.add(a);
-//					} catch (Exception e) {
-//						e.printStackTrace();
-//					}
-//				}
-//		});
-//			alignments.add(aligns);
-//		}
-//		/**
-//		 * Compute typecharacteristcs for each alignment
-//		 */
-//		List<List<Characteristic>> characteristics = new ArrayList<>();
-//		for (int i = 1; i < alignments.size(); i++) {
-//			List<Alignment> aligns = alignments.get(i);
-//			List<Characteristic> tcharacteristics = new ArrayList<>();
-//			for (int j = 0; j < aligns.size(); j++) {
-//				try {
-//				Alignment mapping = aligns.get(j);
-//				Alignment reference = alignments.get(0).get(j);
-//				Characteristic tc = new Characteristic(mapping, reference);
-//				tc.setAllowZeros(false);
-//				tcharacteristics.add(tc);
-//				} catch(IndexOutOfBoundsException ex) {
-//					System.err.println("Number of reference and matcher "
-//							+ "alignments unequal : " + ex.getMessage());
-//				}
-//			}
-//			characteristics.add(tcharacteristics);
-//		}
-//		/**
-//		 * Annotate collection of characteristics to obtain typecharacteristics
-//		 */
-////		List<Model> models = loadModels();
-////		List<List<TypeCharacteristic>> tCharacteristics = new ArrayList<>();
-////		Annotator annotator = new Annotator(models);
-////		for(List<Characteristic> chars : characteristics) {
-////			tCharacteristics.add(annotator.annotateCharacteristics(chars));
-////		}
-//		/**
-//		 * Render alignments to HTML evaluation summary page
-//		 */
-//		Renderer renderer = new HTMLTableNBRenderer(OUTPUT_PATH, SHOW_IN_BROWSER);
-//		for (int i = 0; i < characteristics.size(); i++) {
-//			renderer.render(characteristics.get(i), mappingInfo[i]);
-//		}
-//		renderer.flush();
 	}
 	
 }

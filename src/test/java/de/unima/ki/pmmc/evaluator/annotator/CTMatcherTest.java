@@ -66,14 +66,14 @@ public class CTMatcherTest {
 		final String label2 = "Send letter of acceptance";
 		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
 	}
-	
-	@Test
-	public void matchCTOWSDefault2Test() {
-		this.matcher = new CTMatcherOWS();
-		final String label1 = "Send documents to the office";
-		final String label2 = "Send CV to the university office";
-		assertEquals(CorrespondenceType.ONE_WORD_SIMILAR, this.matcher.match(label1, label2));
-	}
+//	
+//	@Test
+//	public void matchCTOWSDefault2Test() {
+//		this.matcher = new CTMatcherOWS();
+//		final String label1 = "Send documents to the office";
+//		final String label2 = "Send CV to the university office";
+//		assertEquals(CorrespondenceType.ONE_WORD_SIMILAR, this.matcher.match(label1, label2));
+//	}
 	
 	/**
 	 * Recognize CorrespondenceType.DIFFICULT_SIMILAR_VERB correspondences
@@ -86,13 +86,13 @@ public class CTMatcherTest {
 		assertEquals(CorrespondenceType.DIFFICULT_SIMILAR_VERB, this.matcher.match(label1, label2));
 	}
 	
-	@Test
-	public void matchCTDSV2Test() {
-		this.matcher = new CTMatcherDSV();
-		final String label1 = "Send documents by post";
-		final String label2 = "sending application form and documents";
-		assertEquals(CorrespondenceType.DIFFICULT_SIMILAR_VERB, this.matcher.match(label1, label2));
-	}
+//	@Test
+//	public void matchCTDSV2Test() {
+//		this.matcher = new CTMatcherDSV();
+//		final String label1 = "Send documents by post";
+//		final String label2 = "sending application form and documents";
+//		assertEquals(CorrespondenceType.DIFFICULT_SIMILAR_VERB, this.matcher.match(label1, label2));
+//	}
 	
 	@Test
 	public void matchCTDSVDefault1Test() {
