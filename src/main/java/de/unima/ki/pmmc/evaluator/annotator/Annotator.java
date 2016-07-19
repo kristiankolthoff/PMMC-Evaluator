@@ -27,6 +27,8 @@ public class Annotator {
 	 */
 	private Map<String, String> idCache;
 	
+	private static final String SPLIT = "#";
+	
 	public Annotator(List<Model> models) {
 		this.matchers = new ArrayList<>();
 		this.models = models;
@@ -49,20 +51,26 @@ public class Annotator {
 	
 	public CorrespondenceType annotateCorrespondence(Correspondence correspondence) {
 		for(CTMatcher matcher : this.matchers) {
-			String label1 = this.idCache.get(correspondence.getUri1());
-			String label2 = this.idCache.get(correspondence.getUri2());
-			CorrespondenceType estCT = matcher.match(label1, label2);
-			if(estCT != CorrespondenceType.DEFAULT) {
-				return estCT;
+			String label1 = this.idCache.get(correspondence.getUri1().split(SPLIT)[1]);
+			String label2 = this.idCache.get(correspondence.getUri2().split(SPLIT)[1]);
+			//Matcher generated correspondence using not allowed events of the model
+			if(label1 == null || label2 == null) {
+				return CorrespondenceType.DEFAULT;
+			} else {
+				CorrespondenceType estCT = matcher.match(label1, label2);
+				if(estCT != CorrespondenceType.DEFAULT) {
+					return estCT;
+				}
 			}
 		}
 		return CorrespondenceType.DIFFICULT;
 	}
 	
 	public Alignment annotateAlignment(Alignment alignment) {
+		System.out.println("annotate " + alignment.getName());
 		Alignment finalAlign = new Alignment();
 		for(Correspondence c : alignment) {
-			c.setType(Optional.ofNullable(annotateCorrespondence(c)));
+			c.setType(annotateCorrespondence(c));
 			finalAlign.add(c);
 		}
 		return finalAlign;

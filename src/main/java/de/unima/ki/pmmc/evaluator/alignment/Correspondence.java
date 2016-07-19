@@ -84,7 +84,11 @@ public class Correspondence implements Comparable<Correspondence> {
 	
 	public String toString() {
 		String relationSymbol = Correspondence.symbolTable.get(this.relation);
-		return uri1 + " " + relationSymbol + " " + uri2 + ", " + this.confidence;
+		String type = "";
+		if(this.type.isPresent()) {
+			type = this.type.get().getName();
+		}
+		return uri1 + " " + relationSymbol + " " + uri2 + ", " + this.confidence + ", " + type;
 	}
 
 
@@ -124,8 +128,8 @@ public class Correspondence implements Comparable<Correspondence> {
 		return type;
 	}
 
-	public void setType(Optional<CorrespondenceType> type) {
-		this.type = type;
+	public void setType(CorrespondenceType type) {
+		this.type = Optional.ofNullable(type);
 	}
 
 }

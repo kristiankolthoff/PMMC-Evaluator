@@ -141,7 +141,7 @@ public class Characteristic {
 		sb.append("NB-Precision: " + (100.0 * this.getNBPrecision()) + "%\n");
 		sb.append("NB-Recall:    " + (100.0 * this.getNBRecall()) + "%\n");
 		sb.append("NB-F-measure: " + (100.0 * this.getNBFMeasure()) + "%\n");
-		sb.append("Correlation: " + (100.0 * this.getCorrelation(this.allowZeros)) + "%\n");
+		sb.append("Correlation: " + (this.getCorrelation(this.allowZeros)) + "\n");
 		sb.append("Gold: " + this.numOfRulesGold + " Matcher: " + numOfRulesMatcher +  " Correct: " + numOfRulesCorrect + "\n");
 		return sb.toString();
 	}

@@ -1,10 +1,12 @@
 package de.unima.ki.pmmc.evaluator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
+import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
@@ -53,6 +55,26 @@ public class Result implements Iterable<Alignment>{
 				}
 			}
 		}
+	}
+	
+	public double minConf() {
+		List<Correspondence> cVals = new ArrayList<>();
+		for(Alignment alignment : this.alignments) {
+			for(Correspondence c : alignment) {
+				cVals.add(c);
+			}
+		}
+		return Collections.min(cVals).getConfidence();
+	}
+	
+	public double maxConf() {
+		List<Correspondence> cVals = new ArrayList<>();
+		for(Alignment alignment : this.alignments) {
+			for(Correspondence c : alignment) {
+				cVals.add(c);
+			}
+		}
+		return Collections.max(cVals).getConfidence();
 	}
 	
 	public int size() {

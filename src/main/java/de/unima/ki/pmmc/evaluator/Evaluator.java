@@ -9,14 +9,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.ecs.storage.Array;
-import org.apache.ecs.xhtml.font;
 import org.xml.sax.SAXException;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
@@ -26,38 +24,40 @@ import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.annotator.Annotator;
 import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
-import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
+import de.unima.ki.pmmc.evaluator.handler.ConsoleHandler;
+import de.unima.ki.pmmc.evaluator.handler.ResultHandler;
 import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
-import de.unima.ki.pmmc.evaluator.renderer.DebugRenderer;
-import de.unima.ki.pmmc.evaluator.renderer.HTMLTableNBRenderer;
-import de.unima.ki.pmmc.evaluator.renderer.JavaFXRenderer;
-import de.unima.ki.pmmc.evaluator.renderer.Renderer;
 
 
-
+/**
+ * Starts the evaluation process and allows to easily set up
+ * the evaluation.
+ */
 public class Evaluator {
 	
 	private String goldstandardPath;
 	private String matchersRootPath;
+	private String modelsRootPath;
 	private String outputPath;
 	private String outputName;
 	private Result goldstandard;
 	private List<String> matcherPaths;
-	private List<Result> results;
 	private List<Double> thresholds;
-	private List<Renderer> renderVals;
 	private String currMatcherName;
 	private String currMatcherPath;
 	private List<Alignment> currAlignments;
 	private boolean debugOn;
 	private boolean tagCTOn;
+	private List<Result> results;
+	private List<ResultHandler> handler;
 	private AlignmentReader alignmentReader;
 	private Map<Double, List<Result>> mapResult;
 	private List<Function<Result, Result>> transformationsResult;
+	private List<Function<Alignment, Alignment>> transformationsAlignment;
 	private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
+	private Consumer<String> flowListener;
 	private Annotator annotator;
 	private Parser parser;
 
@@ -68,69 +68,165 @@ public class Evaluator {
 	public static final int METRIC_BINARY = 0;
 	public static final int METRIC_NON_BINARY = 1;
 	
-	private static final String DEFAULT_NAME = "result";
 	private static final String GOLDSTANDARD_NAME = "goldstandard";
 	private static final String SEPERATOR = "-";
-	private static final Logger LOGGER = Logger.getLogger(Evaluator.class.getName());
+	private static final Logger LOG = Logger.getLogger(Evaluator.class.getName());
 	
 	public Evaluator(String goldstandardPath, String matchersRootPath,
-			String outputPath, String outputName, Result goldstandard,
+			String modelsRootPath, String outputPath, String outputName, Result goldstandard,
 			List<String> matcherPaths, List<Result> results,
-			List<Double> thresholds, List<Renderer> renderVals,
+			List<Double> thresholds, List<ResultHandler> handler,
 			boolean debugOn, boolean tagCTOn,
+			Consumer<String> flowListener,
 			AlignmentReader alignmentReader,
 			List<Function<Result, Result>> transResult,
 			List<Function<Correspondence, Correspondence>> transCorr,
-			Annotator annotator, Parser parser) {
+			List<Function<Alignment, Alignment>> transAlign,
+			Parser parser) {
 		this.goldstandardPath = goldstandardPath;
 		this.matchersRootPath = matchersRootPath;
+		this.modelsRootPath = modelsRootPath;
 		this.outputPath = outputPath;
 		this.outputName = outputName;
 		this.goldstandard = goldstandard;
 		this.matcherPaths = matcherPaths;
 		this.results = results;
 		this.thresholds = thresholds;
-		this.renderVals = renderVals;
+		this.handler = handler;
 		this.debugOn = debugOn;
 		this.tagCTOn = tagCTOn;
+		this.flowListener = flowListener;
 		this.alignmentReader = alignmentReader;
 		this.transformationsResult = transResult;
 		this.transformationsCorrespondence = transCorr;
-		this.annotator = annotator;
+		this.transformationsAlignment = transAlign;
 		this.parser = parser;
+		this.currAlignments = new ArrayList<>();
 	}
 
-	public Evaluator run() throws IOException, CorrespondenceException {
+	/**
+	 * Runs the evaluation process using the defined configurations.
+	 * Given a root path for the matcher results, automatically detects and
+	 * extracts the alignments it can find compared to the goldstandard alignments.
+	 * Applies transformations to every <code>Correspondence</code>, <code>Alignment</code>
+	 * and <code>Result</code>. If configured, also computes the <code>CorrespondenceType</code>
+	 * for each <code>Correspondence</code>. Finally ships the <code>Result</code>s to 
+	 * each <code>ResultHandler</code>.
+	 * @return same <code>Evaluator</code> instance to allow method chaining
+	 * @throws IOException
+	 * @throws CorrespondenceException
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 */
+	public Evaluator run() throws IOException, CorrespondenceException, 
+									ParserConfigurationException, SAXException {
 		this.goldstandard = loadResult(this.goldstandardPath, GOLDSTANDARD_NAME);
 		for(String matcherPath : this.matcherPaths) {
 			results.add(loadResult(matcherPath, extractName(matcherPath)));
 		}
 		searchForResults(this.matchersRootPath);
 		this.mapResult = applyThreshold();
+		this.mapResult = applyTransformationsCorrespondence(this.mapResult, this.transformationsCorrespondence);
+		this.mapResult = applyTransformationsAlignment(this.mapResult, this.transformationsAlignment);
+		this.mapResult = applyTransformationsResults(this.mapResult, this.transformationsResult);
+		if(tagCTOn) {
+			this.annotator = new Annotator(loadModels(this.modelsRootPath));
+			this.goldstandard = applyCTAnnotation(this.goldstandard);
+			this.mapResult = applyCTAnnotation(this.mapResult);
+		}
+		this.mapResult = computeMetrics(this.mapResult);
+		for(ResultHandler handler : this.handler) {
+			handler.open();
+			handler.setFlowListener(this.flowListener);
+		}
 		for(Map.Entry<Double, List<Result>> e : this.mapResult.entrySet()) {
+			for(ResultHandler handler : this.handler) {
+				handler.setMappingInfo(getFinalOutputName(this.outputName, e.getKey()));
+				handler.setOutputPath(Paths.get(this.outputPath));
+				handler.receive(e.getValue());
+			}
+		}
+		for(ResultHandler handler : this.handler) {
+			handler.close();
+		}
+		return this;
+	}
+	
+	private Result applyCTAnnotation(Result result) {
+		for(Alignment alignment : result) {
+			alignment = this.annotator.annotateAlignment(alignment);
+		}
+		return result;
+	}
+	
+	private Map<Double, List<Result>> applyCTAnnotation(Map<Double, List<Result>> results) {
+		for(List<Result> vals : results.values()) {
+			for(Result result : vals) {
+				result = applyCTAnnotation(result);
+			}
+		}
+		return results;
+	}
+	
+	private Map<Double, List<Result>> computeMetrics(Map<Double, List<Result>> results) 
+			throws CorrespondenceException {
+		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
 			List<Result> currResults = e.getValue();
 			for(Result result : currResults) {
 				result.computeCharacteristics(this.goldstandard, this.tagCTOn);
-				for(Renderer renderer : this.renderVals) {
-					renderer.setFile(getFinalOutputName(outputPath, outputName, result.getName(), e.getKey()));
-					if(this.tagCTOn) {
-						renderer.render(result.getTypeCharacteristics(), "");
-					} else {
-						renderer.render(result.getCharacteristics(), "");
-					}
-					renderer.flush();
+			}
+		}
+		return results;
+	}
+	
+	private Map<Double, List<Result>> applyTransformationsResults(Map<Double, List<Result>> results,
+			List<Function<Result,Result>> transformations) {
+		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
+			for(Result result : e.getValue()) {
+				for(Function<Result, Result> trans : transformations) {
+					result = trans.apply(result);
 				}
 			}
 		}
-		return this;
+		return results;
+	}
+	
+	private Map<Double, List<Result>> applyTransformationsCorrespondence(Map<Double, List<Result>> results,
+			List<Function<Correspondence, Correspondence>> transformations) {
+		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
+			for(Result result : e.getValue()) {
+				for(Alignment alignment : result) {
+					for(Correspondence c : alignment) {
+						for(Function<Correspondence, Correspondence> trans : transformations) {
+							c = trans.apply(c);
+						}
+					}
+				}
+			}
+		}
+		return results;
+	}
+	
+	private Map<Double, List<Result>> applyTransformationsAlignment(Map<Double, List<Result>> results,
+			List<Function<Alignment, Alignment>> transformations) {
+		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
+			for(Result result : e.getValue()) {
+				for(Alignment alignment : result) {
+					for(Function<Alignment, Alignment> trans : transformations) {
+						alignment = trans.apply(alignment);
+					}
+				}
+			}
+		}
+		return results;
 	}
 	
 	public Evaluator reset() {
 		return this;
 	}
 	
-	private String getFinalOutputName(String path, String prefix, String name, double threshold) {
-		return path + SEPERATOR + prefix + SEPERATOR + name + SEPERATOR 
+	private String getFinalOutputName(String prefix, double threshold) {
+		return prefix + SEPERATOR
 				+ "t" + String.valueOf(threshold).replace(".", "");
 	}
 	
@@ -148,6 +244,24 @@ public class Evaluator {
 			vals.put(THRESHOLD_ZERO, getResults());
 		}
 		return vals;
+	}
+	
+	private List<Model> loadModels(String path) throws ParserConfigurationException, SAXException, IOException {
+		List<Model> models = new ArrayList<>();
+		Files.walk(Paths.get(path)).forEach(filePath -> {
+			if(Files.isRegularFile(filePath)) {
+				try {
+					String p = filePath.getFileName().toString();
+					if(p.contains(Parser.TYPE_BPMN) ||
+							p.contains(Parser.TYPE_EPK) || p.contains(Parser.TYPE_PNML)) {
+						models.add(parser.parse(filePath.toString()));			
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		return models;
 	}
 	
 	
@@ -257,8 +371,8 @@ public class Evaluator {
 		return thresholds;
 	}
 
-	public List<Renderer> getRenderVals() {
-		return renderVals;
+	public List<ResultHandler> getRenderVals() {
+		return handler;
 	}
 
 	public boolean isDebugOn() {
@@ -288,7 +402,7 @@ public class Evaluator {
 	public List<Function<Correspondence, Correspondence>> getTransformationsCorrespondence() {
 		return transformationsCorrespondence;
 	}
-
+	
 	public Annotator getAnnotator() {
 		return annotator;
 	}
@@ -296,45 +410,203 @@ public class Evaluator {
 	public Parser getParser() {
 		return parser;
 	}
+	
+	public Evaluator addHandler(ResultHandler handler) {
+		this.handler.add(handler);
+		return this;
+	}
+	
+	public Evaluator removeHandler(ResultHandler handler) {
+		for (int i = 0; i < this.handler.size(); i++) {
+			if(this.handler.get(i).getClass().getName().equals(handler.getClass().getName())) {
+				this.handler.remove(i);
+				return this;
+			}
+		}
+		return this;
+	}
+	
+	public Evaluator addResult(Result result) {
+		//Verify if currently read matcher alignment has the same size as goldstandard
+		if(goldstandard.size() != result.size() && goldstandard == null) {
+			throw new IllegalArgumentException("Goldstandard alignment size unequal to matcher alignment size at "
+					+ result.getName() + "GS: " + goldstandard.size() + " Matcher: " + result.size());
+		}
+		results.add(result);
+		return this;
+	}
+	
+	public Evaluator removeResult(Result result) {
+		for (int i = 0; i < results.size(); i++) {
+			if(results.get(i).equals(result)) {
+				results.remove(i);
+				return this;
+			}
+		}
+		return this;
+	}
+	
+	public Evaluator addMatcherPath(String path) {
+		this.matcherPaths.add(path);
+		return this;
+	}
+	
+	public Evaluator removeMatcherPath(String path) {
+		for (int i = 0; i < matcherPaths.size(); i++) {
+			if(matcherPaths.get(i).equals(path)) {
+				matcherPaths.remove(i);
+				return this;
+			}
+		}
+		return this;
+	}
+	
+	public Evaluator setDebugOn(boolean debugOn) {
+		this.debugOn = debugOn;
+		return this;
+	}
+
+	public Evaluator addTransformationToResult(Function<Result, Result> transformation) {
+		this.transformationsResult.add(transformation);
+		return this;
+	}
+	
+	public Evaluator addTransformationToCorrespondence(Function<Correspondence, Correspondence> transformation) {
+		this.transformationsCorrespondence.add(transformation);
+		return this;
+	}
+	
+	public Evaluator addTransformationToAlignment(Function<Alignment, Alignment> transformation) {
+		this.transformationsAlignment.add(transformation);
+		return this;
+	}
+
+	public Evaluator setGoldstandardPath(String goldstandardPath) {
+		this.goldstandardPath = goldstandardPath;
+		return this;
+	}
+
+	public Evaluator setMatchersRootPath(String matchersPath) {
+		this.matchersRootPath = matchersPath;
+		return this;
+	}
+
+	public Evaluator setOutputName(String outputName) {
+		this.outputName = outputName;
+		return this;
+	}
+
+	public Evaluator setOutputPath(String outputPath) {
+		this.outputPath = outputPath;
+		return this;
+	}
+
+	public Evaluator setThresholds(List<Double> thresholds) {
+		this.thresholds = thresholds;
+		return this;
+	}
+	
+	public Evaluator setThresholds(Double[] thresholds) {
+		this.thresholds = Arrays.asList(thresholds);
+		return this;
+	}
+	
+	public Evaluator addThreshold(double threshold) {
+		this.thresholds.add(threshold);
+		return this;
+	}
+	
+	public Evaluator removeThreshold(double threshold) {
+		for (int i = 0; i < thresholds.size(); i++) {
+			if(thresholds.get(i) == threshold) {
+				thresholds.remove(i);
+				return this;
+			}
+		}
+		return this;
+	}
+	
+	public Evaluator setTagCTOn(boolean tagCTOn) {
+		this.tagCTOn = tagCTOn;
+		return this;
+	}
+
+	public Evaluator setParser(String parsertype) {
+		this.parser = ParserFactory.getParser(parsertype);
+		return this;
+	}
+
+	public Evaluator setGoldstandard(Result goldstandard) {
+		this.goldstandard = goldstandard;
+		return this;
+	}
+	
+	public Evaluator setResults(List<Result> results) {
+		this.results = results;
+		return this;
+	}
+	
+	public Evaluator setAlignmentReader(AlignmentReader alignmentReader) {
+		this.alignmentReader = alignmentReader;
+		return this;
+	}
+	
+	public List<Function<Alignment, Alignment>> getTransformationsAlignment() {
+		return transformationsAlignment;
+	}
+
+	public void setTransformationsAlignment(List<Function<Alignment, Alignment>> transformationsAlignment) {
+		this.transformationsAlignment = transformationsAlignment;
+	}
 
 
 	public static class Builder {
 		
 		private String goldstandardPath;
 		private String matchersRootPath;
+		private String modelsRootPath;
 		private String outputPath;
 		private String outputName;
 		private Result goldstandard;
 		private List<String> matcherPaths;
+		private List<String> modelPaths;
 		private List<Double> thresholds;
 		private boolean debugOn;
 		private boolean tagCTOn;
 		private AlignmentReader alignmentReader;
 		private List<Result> results;
-		private List<Renderer> renderVals;
+		private List<ResultHandler> handler;
+		private Consumer<String> flowListener;
 		private List<Function<Result, Result>> transformationsResult;
 		private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
-		private Annotator annotator;
+		private List<Function<Alignment, Alignment>> transformationsAlignment;
 		private Parser parser;
 		
 		public Builder() {
 			this.matcherPaths = new ArrayList<>();
+			this.modelPaths = new ArrayList<>();
 			this.results = new ArrayList<>();
 			this.thresholds = new ArrayList<>();
-			this.renderVals = new ArrayList<>();
+			this.handler = new ArrayList<>();
 			this.transformationsResult = new ArrayList<>();
 			this.transformationsCorrespondence = new ArrayList<>();
+			this.transformationsAlignment = new ArrayList<>();
+			this.outputPath =  System.getProperty("user.dir");
+			this.debugOn = false;
+			this.tagCTOn = false;
+			this.flowListener = s -> {};
+			this.outputName = "result";
 		}
 		
-		public Builder addRenderer(Renderer renderer) {
-			this.renderVals.add(renderer);
+		public Builder addHandler(ResultHandler handler) {
+			this.handler.add(handler);
 			return this;
 		}
 		
-		public Builder removeRenderer(Renderer renderer) {
-			for (int i = 0; i < renderVals.size(); i++) {
-				if(renderVals.get(i).getClass().getName().equals(renderer.getClass().getName())) {
-					renderVals.remove(i);
+		public Builder removeHandler(ResultHandler handler) {
+			for (int i = 0; i < this.handler.size(); i++) {
+				if(this.handler.get(i).getClass().getName().equals(handler.getClass().getName())) {
+					this.handler.remove(i);
 					return this;
 				}
 			}
@@ -376,6 +648,21 @@ public class Evaluator {
 			return this;
 		}
 		
+		public Builder addModelPath(String path) {
+			this.modelPaths.add(path);
+			return this;
+		}
+		
+		public Builder removeModelPath(String path) {
+			for (int i = 0; i < modelPaths.size(); i++) {
+				if(modelPaths.get(i).equals(path)) {
+					modelPaths.remove(i);
+					return this;
+				}
+			}
+			return this;
+		}
+		
 		public Builder setDebugOn(boolean debugOn) {
 			this.debugOn = debugOn;
 			return this;
@@ -390,7 +677,12 @@ public class Evaluator {
 			this.transformationsCorrespondence.add(transformation);
 			return this;
 		}
-
+		
+		public Builder addTransformationToAlignment(Function<Alignment, Alignment> transformation) {
+			this.transformationsAlignment.add(transformation);
+			return this;
+		}
+		
 		public Builder setGoldstandardPath(String goldstandardPath) {
 			this.goldstandardPath = goldstandardPath;
 			return this;
@@ -400,9 +692,19 @@ public class Evaluator {
 			this.matchersRootPath = matchersPath;
 			return this;
 		}
+		
+		public Builder setModelsRootPath(String modelsPath) {
+			this.modelsRootPath = modelsPath;
+			return this;
+		}
 
 		public Builder setOutputName(String outputName) {
 			this.outputName = outputName;
+			return this;
+		}
+		
+		public Builder setFlowListener(Consumer<String> listener) {
+			this.flowListener = listener;
 			return this;
 		}
 
@@ -463,20 +765,22 @@ public class Evaluator {
 		
 		public Evaluator build() {
 			return new Evaluator(this.goldstandardPath, 
-					this.matchersRootPath, 
+					this.matchersRootPath,
+					this.modelsRootPath,
 					this.outputPath, 
 					this.outputName, 
 					this.goldstandard, 
-					this.matcherPaths, 
+					this.matcherPaths,
 					this.results, 
 					this.thresholds, 
-					this.renderVals, 
+					this.handler, 
 					this.debugOn, 
 					this.tagCTOn, 
+					this.flowListener,
 					this.alignmentReader, 
 					this.transformationsResult, 
 					this.transformationsCorrespondence, 
-					this.annotator, 
+					this.transformationsAlignment,
 					this.parser);
 		}
 	}
@@ -487,21 +791,30 @@ public class Evaluator {
 		final String OUTPUT_PATH = "src/main/resources/data/evaluation/";
 		final String GOLDSTANDARD_PATH = "src/main/resources/data/results/goldstandard/dataset1_goldstandard_experts";
 		final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
+		final String MODELS_PATH = "src/main/resources/data/dataset1/models/";
 //		final String SINGLE_MATCHER_TEST_PATH = "src/main/resources/data/results/submitted-matchers/RMM-VM2/dataset1";
-//		@SuppressWarnings("unused")
-//		Evaluator evaluator = new Evaluator()
-//								.addRenderer(new HTMLTableNBRenderer(SHOW_IN_BROWSER))
-//								.setOutputPath(OUTPUT_PATH)
-//								.setOutputName("result")
-//								.setGoldstandardPath(GOLDSTANDARD_PATH)
-//								.setMatchersRootPath(RESULTS_PATH)
-////								.addMatcherPath(SINGLE_MATCHER_TEST_PATH)
-//								.addThreshold(THRESHOLD_MEDIUM)
-//								.addThreshold(THRESHOLD_LOW)
-//								.setAlignmentReader(new AlignmentReaderXml())
-//								.run();
+		Evaluator evaluator = new Evaluator.Builder().
+								addHandler(new ConsoleHandler()).
+								setOutputPath(OUTPUT_PATH).
+								setOutputName("result").
+								setParser(Parser.TYPE_BPMN).
+								setGoldstandardPath(GOLDSTANDARD_PATH).
+								setMatchersRootPath(RESULTS_PATH).
+								setModelsRootPath(MODELS_PATH).
+//								addMatcherPath(SINGLE_MATCHER_TEST_PATH).
+								setTagCTOn(true).
+								addThreshold(THRESHOLD_ZERO).
+								addThreshold(0.99).
+								setAlignmentReader(new AlignmentReaderXml()).
+								addTransformationToResult(r -> {
+									return r;}).
+								addTransformationToCorrespondence(c -> {
+									return c;
+								}).
+								
+								build();
+		evaluator.run();
 //
-//		
 //		/**
 //		 * Define multiple directories with matcher alginments.
 //		 * First entry of the array should be the directory of the reference alignment.
@@ -573,26 +886,4 @@ public class Evaluator {
 //		renderer.flush();
 	}
 	
-	public static List<Model> loadModels() throws ParserConfigurationException, SAXException, IOException {
-		final String[] modelIds = new String[]{
-				"Cologne",
-				"Frankfurt",
-				"FU_Berlin",
-				"Hohenheim",
-				"IIS_Erlangen",
-				"Muenster",
-				"Potsdam",
-				"TU_Munich",
-				"Wuerzburg"
-		};
-		List<Model> models = new ArrayList<>();
-		Parser bpmnParser = ParserFactory.getParser(Parser.TYPE_BPMN);
-		for (int i = 0; i < modelIds.length - 1; i++) {
-			String sourceId = modelIds[i];
-			Model model = bpmnParser.parse("src/main/resources/data/dataset1/models/" + sourceId + ".bpmn");
-			models.add(model);
-		}
-		return models;
-	}
-
 }
