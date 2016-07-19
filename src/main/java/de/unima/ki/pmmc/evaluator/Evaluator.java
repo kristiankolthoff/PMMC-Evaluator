@@ -22,6 +22,7 @@ import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.annotator.Annotator;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.ResultHandler;
+import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
@@ -89,6 +90,7 @@ public class Evaluator {
 	private Consumer<String> flowListener;
 	private Annotator annotator;
 	private Parser parser;
+	private List<Throwable> errors;
 
 	/**
 	 * Important default thresholds used often
@@ -131,6 +133,7 @@ public class Evaluator {
 		this.transformationsAlignment = transAlign;
 		this.parser = parser;
 		this.currAlignments = new ArrayList<>();
+		this.mapResult = new HashMap<>();
 	}
 
 	/**
@@ -153,8 +156,13 @@ public class Evaluator {
 		for(String matcherPath : this.matcherPaths) {
 			results.add(loadResult(matcherPath, extractName(matcherPath)));
 		}
-		searchForResults(this.matchersRootPath);
-		this.mapResult = applyThreshold();
+		if(!thresholds.isEmpty()) {
+			for(double threshold : thresholds) {
+				searchForResults(this.matchersRootPath, threshold);
+			}
+		} else {
+			searchForResults(this.matchersRootPath, THRESHOLD_ZERO);
+		}
 		this.mapResult = applyTransformationsCorrespondence(this.mapResult, this.transformationsCorrespondence);
 		this.mapResult = applyTransformationsAlignment(this.mapResult, this.transformationsAlignment);
 		this.mapResult = applyTransformationsResults(this.mapResult, this.transformationsResult);
@@ -180,7 +188,7 @@ public class Evaluator {
 		}
 		return this;
 	}
-	
+	 
 	private Result applyCTAnnotation(Result result) {
 		for(Alignment alignment : result) {
 			alignment = this.annotator.annotateAlignment(alignment);
@@ -255,27 +263,6 @@ public class Evaluator {
 				+ "t" + String.valueOf(threshold).replace(".", "");
 	}
 	
-	/**
-	 * Applies all specified thresholds to the <code>Result</code>
-	 * collection.
-	 * @return threshold to result mappings
-	 */
-	private Map<Double, List<Result>> applyThreshold() {
-		Map<Double, List<Result>> vals = new HashMap<>();
-		if(!thresholds.isEmpty()) {
-			for(double t : thresholds) {
-				List<Result> tmpResults = getResults();
-				for(Result result : tmpResults) {
-					result.applyThreshold(t);
-				}
-				vals.put(t, tmpResults);
-			}
-		} else {
-			vals.put(THRESHOLD_ZERO, getResults());
-		}
-		return vals;
-	}
-	
 	private List<Model> loadModels(String path) throws ParserConfigurationException, SAXException, IOException {
 		List<Model> models = new ArrayList<>();
 		Files.walk(Paths.get(path)).forEach(filePath -> {
@@ -321,11 +308,13 @@ public class Evaluator {
 	 * @param path the root path used as a starting point to search for results
 	 * @throws IOException
 	 */
-	private void searchForResults(String path) throws IOException {
+	private void searchForResults(String path, double threshold) throws IOException {
+		results = new ArrayList<>();
 		Files.walk(Paths.get(path)).forEach(filePath -> {
 			if(isFileInGS(filePath.getFileName().toString())) {
 				try {
 					Alignment a = alignmentReader.getAlignment(filePath.toString());
+					a.applyThreshold(threshold);
 					a.setName(filePath.getFileName().toString());
 					currAlignments.add(a);
 					currMatcherName = findName(filePath, path);
@@ -343,6 +332,7 @@ public class Evaluator {
 				currAlignments = new ArrayList<>();
 			}
 		});
+		this.mapResult.put(threshold, results);
 	}
 	
 	/**
@@ -363,7 +353,6 @@ public class Evaluator {
 				dirs.add(filePath.getFileName().toString());
 			}
 			filePath = filePath.getParent();
-			System.out.println(filePath.getFileName().toString());
 		}
 		String name = "";
 		for (int i = dirs.size()-1; i >= 0; i--) {
@@ -456,6 +445,18 @@ public class Evaluator {
 		return parser;
 	}
 	
+	public List<Throwable> getErrors() {
+		return errors;
+	}
+	
+	public boolean areErrorsOccured() {
+		return !errors.isEmpty();
+	}
+	
+	public int getNumberOfErrors() {
+		return errors.size();
+	}
+
 	public List<Function<Alignment, Alignment>> getTransformationsAlignment() {
 		return transformationsAlignment;
 	}

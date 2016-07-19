@@ -67,7 +67,6 @@ public class Annotator {
 	}
 	
 	public Alignment annotateAlignment(Alignment alignment) {
-		System.out.println("annotate " + alignment.getName());
 		Alignment finalAlign = new Alignment();
 		for(Correspondence c : alignment) {
 			c.setType(annotateCorrespondence(c));

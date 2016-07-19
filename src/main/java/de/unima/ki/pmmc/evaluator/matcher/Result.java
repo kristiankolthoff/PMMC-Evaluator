@@ -1,4 +1,4 @@
-package de.unima.ki.pmmc.evaluator;
+package de.unima.ki.pmmc.evaluator.matcher;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +10,12 @@ import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
-
+/**
+ * A <code>Result</code> represents a single matcher with its
+ * <code>Alignment</code>s and either <code>Characteristic</code>s or
+ * <code>TypeCharacteristc</code>s. Also it provides the matcher name
+ * and the corresponding path of the input alignments.
+ */
 public class Result implements Iterable<Alignment>{
 
 	private String name;
@@ -57,6 +62,11 @@ public class Result implements Iterable<Alignment>{
 		}
 	}
 	
+	/**
+	 * Computes the minimal confidence value of a <code>Correspondence</code> that this
+	 * matcher contains in its <code>Alignment</code> collection.
+	 * @return minimum confidence value
+	 */
 	public double minConf() {
 		List<Correspondence> cVals = new ArrayList<>();
 		for(Alignment alignment : this.alignments) {
@@ -67,6 +77,11 @@ public class Result implements Iterable<Alignment>{
 		return Collections.min(cVals).getConfidence();
 	}
 	
+	/**
+	 * Computes the maximal confidence value of a <code>Correspondence</code> that this
+	 * matcher contains in its <code>Alignment</code> collection.
+	 * @return maximal confidence value
+	 */
 	public double maxConf() {
 		List<Correspondence> cVals = new ArrayList<>();
 		for(Alignment alignment : this.alignments) {
@@ -166,11 +181,6 @@ public class Result implements Iterable<Alignment>{
 	@Override
 	public String toString() {
 		return "Result [name=" + name + ", path=" + path + "]";
-	}
-
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
 	}
 
 }

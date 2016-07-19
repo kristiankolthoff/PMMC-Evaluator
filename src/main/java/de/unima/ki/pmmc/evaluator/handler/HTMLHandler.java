@@ -1,11 +1,13 @@
 package de.unima.ki.pmmc.evaluator.handler;
 
 import java.awt.Desktop;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -16,62 +18,36 @@ import org.apache.ecs.html.TH;
 import org.apache.ecs.html.TR;
 import org.apache.ecs.html.Table;
 
-import de.unima.ki.pmmc.evaluator.Result;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
+import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 
 
 
-public class HTMLTableHandler implements ResultHandler{
+public class HTMLHandler implements ResultHandler{
 
 	public static final boolean PRETTY_PRINT = true;
 	public static final String FILE_TYPE = ".html";
 	
 	private Table table;
 	private DecimalFormat df;
-	private boolean initialized;
 	private boolean showInBrowser;
 	private String mappingInfo;
 	private Path outputPath;
 	private Consumer<String> listener;
+	private BufferedWriter bw;
 	
-	public HTMLTableHandler(boolean showInBrowser) throws IOException {
-		this.table = new Table();
+	public HTMLHandler(boolean showInBrowser) throws IOException {
 		this.df = new DecimalFormat("#.###");
-		this.initialized = false;
 		this.showInBrowser = showInBrowser;
 	}
 	
-	private void init(List<Characteristic> characteristics) throws CorrespondenceException {
+	private void init() throws CorrespondenceException {
+		this.table = new Table();
 		this.startTable();
 		this.createTableHeadRow1();
 		this.createTableHeadRow2();
-		this.initialized = true;
 	}
-//	
-//	@Override
-//	public void render(List<? extends Characteristic> characteristics, String mappingInfo)
-//			throws IOException, CorrespondenceException {
-//		List<Characteristic> actualCharacteristics = new ArrayList<>();
-//		for(Characteristic c : characteristics) {
-//			actualCharacteristics.add(c);
-//		}
-//		if(!this.initialized) {
-//			this.init(actualCharacteristics);			
-//		}
-//		this.appendMetricData(actualCharacteristics, mappingInfo);
-//	}
-//	
-//	@Override
-//	public void flush() throws IOException {
-//		this.bw.append(this.table.toString());
-//		super.flush();
-//		if(this.showInBrowser) {
-//			File htmlFile = new File(file.getAbsoluteFile().toString());
-//			System.out.println(htmlFile);
-//			Desktop.getDesktop().browse(htmlFile.toURI());
-//		}
-//	}
 
 	private void startTable() {
 		this.table.setBorder(2);
@@ -80,16 +56,16 @@ public class HTMLTableHandler implements ResultHandler{
 		Caption caption = new Caption().addElement("Matcher Evaluation Summary");
 		caption.setStyle("font-size:50;font-weight:bold");
 		this.table.addElement(caption);
-		this.table.setPrettyPrint(HTMLTableHandler.PRETTY_PRINT);
+		this.table.setPrettyPrint(HTMLHandler.PRETTY_PRINT);
 		TR trStart = new TR();
 		trStart.addAttribute("colspan", "13");
-		trStart.setPrettyPrint(HTMLTableHandler.PRETTY_PRINT);
+		trStart.setPrettyPrint(HTMLHandler.PRETTY_PRINT);
 		this.table.addElement(trStart);
 	}
 	
 	private void createTableHeadRow1() {
 		TR trHead1 = new TR();
-		trHead1.setPrettyPrint(HTMLTableHandler.PRETTY_PRINT);
+		trHead1.setPrettyPrint(HTMLHandler.PRETTY_PRINT);
 		trHead1.addElement(new TH().setStyle("border:none;"));
 		TH th1 = new TH();
 		th1.setStyle("border:none;");
@@ -118,7 +94,7 @@ public class HTMLTableHandler implements ResultHandler{
 	private void createTableHeadRow2() {
 		final String AVG_ICON = "&#x2205";
 		TR trHead2 = new TR();
-		trHead2.setPrettyPrint(HTMLTableHandler.PRETTY_PRINT);
+		trHead2.setPrettyPrint(HTMLHandler.PRETTY_PRINT);
 		trHead2.addElement(new TD(new B("Approach")));
 		trHead2.addElement(new TD().setStyle("border:none;"));
 		for (int i = 0; i < 3; i++) {
@@ -188,20 +164,31 @@ public class HTMLTableHandler implements ResultHandler{
 	}
 
 	@Override
-	public void open() {
-		// TODO Auto-generated method stub
-		
+	public void open() throws IOException {
 	}
 
 	@Override
 	public void receive(List<Result> results) {
-		// TODO Auto-generated method stub
-		
+		try {
+			this.bw = Files.newBufferedWriter(Paths.get(this.outputPath + this.mappingInfo + FILE_TYPE));
+			this.init();
+			for(Result result : results) {
+				this.appendMetricData(result.getCharacteristics(), result.getName());
+			}
+			this.bw.append(this.table.toString());
+			this.bw.flush();
+			this.bw.close();
+			if(this.showInBrowser) {
+				File htmlFile = new File(this.outputPath + this.mappingInfo + FILE_TYPE);
+				Desktop.getDesktop().browse(htmlFile.toURI());
+			}
+		} catch (IOException | CorrespondenceException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void close() {
-//		this.b
+	public void close() throws IOException {
 	}
 
 	@Override
@@ -218,7 +205,4 @@ public class HTMLTableHandler implements ResultHandler{
 	public void setMappingInfo(String info) {
 		this.mappingInfo = info;
 	}
-	
-	
-
 }
