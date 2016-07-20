@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -26,7 +27,6 @@ import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
-
 
 /**
  * Starts the evaluation process and allows to easily set up
@@ -102,6 +102,7 @@ public class Evaluator {
 
 	private static final String GOLDSTANDARD_NAME = "goldstandard";
 	private static final String SEPERATOR = "-";
+	private static final Logger LOG = Logger.getLogger(Evaluator.class.getName());
 	
 	public Evaluator(String goldstandardPath, String matchersRootPath,
 			String modelsRootPath, String outputPath, String outputName, Result goldstandard,
@@ -152,10 +153,10 @@ public class Evaluator {
 	 */
 	public Evaluator run() throws IOException, CorrespondenceException, 
 									ParserConfigurationException, SAXException {
-		this.goldstandard = loadResult(this.goldstandardPath, GOLDSTANDARD_NAME);
-		for(String matcherPath : this.matcherPaths) {
-			results.add(loadResult(matcherPath, extractName(matcherPath)));
-		}
+		log("------------Evaluator------------");
+		this.goldstandard = loadResult(this.goldstandardPath, GOLDSTANDARD_NAME, THRESHOLD_ZERO);
+		log("Goldstandard found at : " + this.goldstandard.getPath() + this.goldstandard.getName() 
+				+ " [" + this.goldstandard.size() + "]");
 		if(!thresholds.isEmpty()) {
 			for(double threshold : thresholds) {
 				searchForResults(this.matchersRootPath, threshold);
@@ -168,6 +169,7 @@ public class Evaluator {
 		this.mapResult = applyTransformationsResults(this.mapResult, this.transformationsResult);
 		if(tagCTOn) {
 			this.annotator = new Annotator(loadModels(this.modelsRootPath));
+			log("CTTagging...");
 			this.goldstandard = applyCTAnnotation(this.goldstandard);
 			this.mapResult = applyCTAnnotation(this.mapResult);
 		}
@@ -207,6 +209,7 @@ public class Evaluator {
 	
 	private Map<Double, List<Result>> computeMetrics(Map<Double, List<Result>> results) 
 			throws CorrespondenceException {
+		log("Computing metrics...");
 		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
 			List<Result> currResults = e.getValue();
 			for(Result result : currResults) {
@@ -218,6 +221,7 @@ public class Evaluator {
 	
 	private Map<Double, List<Result>> applyTransformationsResults(Map<Double, List<Result>> results,
 			List<Function<Result,Result>> transformations) {
+		log("Applying Transformation to Results [" + transformations.size() + "]");
 		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
 			for(Result result : e.getValue()) {
 				for(Function<Result, Result> trans : transformations) {
@@ -230,6 +234,7 @@ public class Evaluator {
 	
 	private Map<Double, List<Result>> applyTransformationsCorrespondence(Map<Double, List<Result>> results,
 			List<Function<Correspondence, Correspondence>> transformations) {
+		log("Applying Transformation to Correspondences [" + transformations.size() + "]");
 		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
 			for(Result result : e.getValue()) {
 				for(Alignment alignment : result) {
@@ -246,6 +251,7 @@ public class Evaluator {
 	
 	private Map<Double, List<Result>> applyTransformationsAlignment(Map<Double, List<Result>> results,
 			List<Function<Alignment, Alignment>> transformations) {
+		log("Applying Transformation to Alignments [" + transformations.size() + "]");
 		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
 			for(Result result : e.getValue()) {
 				for(Alignment alignment : result) {
@@ -264,6 +270,7 @@ public class Evaluator {
 	}
 	
 	private List<Model> loadModels(String path) throws ParserConfigurationException, SAXException, IOException {
+		log("Loading models from " + path);
 		List<Model> models = new ArrayList<>();
 		Files.walk(Paths.get(path)).forEach(filePath -> {
 			if(Files.isRegularFile(filePath)) {
@@ -271,7 +278,8 @@ public class Evaluator {
 					String p = filePath.getFileName().toString();
 					if(p.contains(Parser.TYPE_BPMN) ||
 							p.contains(Parser.TYPE_EPK) || p.contains(Parser.TYPE_PNML)) {
-						models.add(parser.parse(filePath.toString()));			
+						models.add(parser.parse(filePath.toString()));
+						log("Found model at " + filePath);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -282,12 +290,13 @@ public class Evaluator {
 	}
 	
 	
-	private Result loadResult(String path, String name) throws IOException {
+	private Result loadResult(String path, String name, double threshold) throws IOException {
 		List<Alignment> alignments = new ArrayList<>();
 		Files.walk(Paths.get(path)).forEach(filePath -> {
 				if(Files.isRegularFile(filePath)) {
 					try {
 						Alignment a = alignmentReader.getAlignment(filePath.toString());
+						a.applyThreshold(threshold);
 						a.setName(filePath.getFileName().toString());
 						alignments.add(a);
 					} catch (Exception e) {
@@ -309,7 +318,11 @@ public class Evaluator {
 	 * @throws IOException
 	 */
 	private void searchForResults(String path, double threshold) throws IOException {
+		log("Generate Results for threshold [" + threshold + "]");
 		results = new ArrayList<>();
+		for(String matcherPath : this.matcherPaths) {
+			results.add(loadResult(matcherPath, extractName(matcherPath), threshold));
+		}
 		Files.walk(Paths.get(path)).forEach(filePath -> {
 			if(isFileInGS(filePath.getFileName().toString())) {
 				try {
@@ -329,6 +342,7 @@ public class Evaluator {
 							+ currMatcherName + "GS: " + goldstandard.size() + " Matcher: " + currAlignments.size());
 				}
 				results.add(new Result(currMatcherName, currMatcherPath, currAlignments));
+				log("[" + currMatcherName + "] @ " + currMatcherPath + " [" + currAlignments.size() + "]");
 				currAlignments = new ArrayList<>();
 			}
 		});
@@ -371,6 +385,12 @@ public class Evaluator {
 			}
 		}
 		return false;
+	}
+	
+	private void log(String info) {
+		if(debugOn) {
+			LOG.info(info);
+		}
 	}
 	
 	public String getGoldstandardPath() {

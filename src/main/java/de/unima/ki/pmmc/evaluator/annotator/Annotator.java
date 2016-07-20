@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
@@ -14,7 +13,16 @@ import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 import de.unima.ki.pmmc.evaluator.model.Model;
-
+/**
+ * The <code>Annotator</code> is responsible for annotating or tagging a
+ * <code>Correspondence</code> with is appropriate <code>CorrespondenceType</code>
+ * tag. Therefore, a chain of <code>CTMatcher</code> is applied, starting at the
+ * low level types and ending in the high level types. That is, first TRIVIAL type
+ * correspondences are annotated, and if the trivial <code>CTMatcher</code> can not
+ * generate and identify the currently annotating <code>Correspondence</code> as TRIVIAL,
+ * the <code>Annotator</code> delegates the <code>Correspondence</code> to the next higher
+ * level.
+ */
 public class Annotator {
 
 	/**
@@ -41,6 +49,9 @@ public class Annotator {
 		this.initModelMap();
 	}
 	
+	/**
+	 * Initializes the activity id to activity label map
+	 */
 	private void initModelMap() {
 		for(Model m : this.models) {
 			for(Activity a : m.getActivities()) {
@@ -49,6 +60,15 @@ public class Annotator {
 		}
 	}
 	
+	/**
+	 * Given a <code>Correspondence</code>, computing the appropriate
+	 * <code>CorrespondenceType</code> based on a collection of <code>
+	 * CTMatcher</code>s.
+	 * @param correspondence the correspondence which should be annotated
+	 * @return the appropriate <code>CorrespondenceType</code> if available,
+	 * and <code>CorrespondenceType.DEFAULT</code> if not allowed elements of the
+	 * models where used to generate the <code>Correspondece</code>
+	 */
 	public CorrespondenceType annotateCorrespondence(Correspondence correspondence) {
 		for(CTMatcher matcher : this.matchers) {
 			String label1 = this.idCache.get(correspondence.getUri1().split(SPLIT)[1]);
@@ -66,6 +86,13 @@ public class Annotator {
 		return CorrespondenceType.DIFFICULT;
 	}
 	
+	/**
+	 * Annotates each <code>Correspondence</code> of the provided
+	 * <code>Alignment</code> and returns the new <code>Alignment</code>
+	 * with annotations.
+	 * @param alignment the alignment to be annotated
+	 * @return alignment with annotated correspondences
+	 */
 	public Alignment annotateAlignment(Alignment alignment) {
 		Alignment finalAlign = new Alignment();
 		for(Correspondence c : alignment) {
@@ -75,6 +102,12 @@ public class Annotator {
 		return finalAlign;
 	}
 	
+	/**
+	  Annotates each <code>Correspondence</code> of each <code>Alignment</code> provided by
+	 * the <code>Characteristic</code> and returns the new <code>TypeCharacteristic</code>.
+	 * @param characteristic the characteristic to be annotated
+	 * @return typecharacteristic
+	 */
 	public TypeCharacteristic annotateCharacteristic(Characteristic characteristic) 
 			throws CorrespondenceException {
 		Alignment alignmentReference = annotateAlignment(characteristic.getAlignmentReference());
@@ -82,6 +115,12 @@ public class Annotator {
 		return new TypeCharacteristic(alignmentMapping, alignmentReference);
 	}
 	
+	/**
+	  Annotates each <code>Correspondence</code> of each <code>Alignment</code> provided by
+	 * each <code>Characteristic</code> and returns the new collection of <code>TypeCharacteristic</code>s.
+	 * @param characteristics the characteristics to be annotated
+	 * @return typecharacteristics
+	 */
 	public List<TypeCharacteristic> annotateCharacteristics(List<Characteristic> characteristics) 
 			throws CorrespondenceException {
 		List<TypeCharacteristic> vals = new ArrayList<>();
