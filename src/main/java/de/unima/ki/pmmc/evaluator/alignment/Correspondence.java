@@ -13,6 +13,7 @@ public class Correspondence implements Comparable<Correspondence> {
 	private String uri1;
 	private String uri2;
 	private double confidence;
+	private Optional<Double> normConfidence;
 	private SemanticRelation relation;
 	private Optional<CorrespondenceType> type;
 	

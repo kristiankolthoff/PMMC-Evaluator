@@ -12,7 +12,8 @@ import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 
 public class ConsoleHandler implements ResultHandler{
 
-	private final String FORMATTER = "| %-25s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s |%n";
+	private final String FORMATTER = "| %-25s | %-4s | %-4s | %-4s "
+			+ "| %-4s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s | %-4s |%n";
 	private DecimalFormat df;
 	private String mappingInfo;
 	

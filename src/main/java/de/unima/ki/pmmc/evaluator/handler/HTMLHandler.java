@@ -56,6 +56,9 @@ public class HTMLHandler implements ResultHandler{
 		Caption caption = new Caption().addElement("Matcher Evaluation Summary");
 		caption.setStyle("font-size:50;font-weight:bold");
 		this.table.addElement(caption);
+		Caption caption1 = new Caption().addElement(this.mappingInfo);
+		caption1.setStyle("font-size:20;font-weight:bold");
+//		this.table.addElement(caption1);
 		this.table.setPrettyPrint(HTMLHandler.PRETTY_PRINT);
 		TR trStart = new TR();
 		trStart.addAttribute("colspan", "13");
@@ -170,7 +173,7 @@ public class HTMLHandler implements ResultHandler{
 	@Override
 	public void receive(List<Result> results) {
 		try {
-			this.bw = Files.newBufferedWriter(Paths.get(this.outputPath + this.mappingInfo + FILE_TYPE));
+			this.bw = Files.newBufferedWriter(Paths.get(this.outputPath + "/" + this.mappingInfo + FILE_TYPE));
 			this.init();
 			for(Result result : results) {
 				this.appendMetricData(result.getCharacteristics(), result.getName());
@@ -179,7 +182,7 @@ public class HTMLHandler implements ResultHandler{
 			this.bw.flush();
 			this.bw.close();
 			if(this.showInBrowser) {
-				File htmlFile = new File(this.outputPath + this.mappingInfo + FILE_TYPE);
+				File htmlFile = new File(this.outputPath + "/" + this.mappingInfo + FILE_TYPE);
 				Desktop.getDesktop().browse(htmlFile.toURI());
 			}
 		} catch (IOException | CorrespondenceException e) {

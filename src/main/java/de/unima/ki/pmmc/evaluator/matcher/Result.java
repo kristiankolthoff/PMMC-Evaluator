@@ -20,6 +20,7 @@ public class Result implements Iterable<Alignment>{
 
 	private String name;
 	private String path;
+	private double appliedThreshold;
 	private List<Alignment> alignments;
 	private List<Characteristic> characteristics;
 	private List<TypeCharacteristic> tCharacteristics;
@@ -37,6 +38,15 @@ public class Result implements Iterable<Alignment>{
 	public Result(String name, String path, List<Alignment> alignments) {
 		this.name = name;
 		this.path = path;
+		this.alignments = alignments;
+		this.characteristics = new ArrayList<>();
+		this.tCharacteristics = new ArrayList<>();
+	}
+	
+	public Result(String name, String path, double appliedThreshold, List<Alignment> alignments) {
+		this.name = name;
+		this.path = path;
+		this.appliedThreshold = appliedThreshold;
 		this.alignments = alignments;
 		this.characteristics = new ArrayList<>();
 		this.tCharacteristics = new ArrayList<>();
@@ -144,6 +154,14 @@ public class Result implements Iterable<Alignment>{
 		this.tCharacteristics = tCharacteristics;
 	}
 	
+	public double getAppliedThreshold() {
+		return appliedThreshold;
+	}
+
+	public void setAppliedThreshold(double appliedThreshold) {
+		this.appliedThreshold = appliedThreshold;
+	}
+	
 	public boolean isFLM() {
 		return Characteristic.isFirstLineMatcher(this.characteristics);
 	}
@@ -180,7 +198,9 @@ public class Result implements Iterable<Alignment>{
 
 	@Override
 	public String toString() {
-		return "Result [name=" + name + ", path=" + path + "]";
+		return "Result [name=" + name + ", path=" + path
+				+ ", appliedThreshold=" + appliedThreshold + ", size=" + alignments.size() + "]";
 	}
 
+	
 }

@@ -28,15 +28,13 @@ public class PMMCEvaluation {
 				setGoldstandardPath(GOLDSTANDARD_PATH).
 				setMatchersRootPath(RESULTS_PATH).
 				setOutputPath(OUTPUT_PATH).
-				setOutputName("result").
+				setOutputName("test").
 				setAlignmentReader(new AlignmentReaderXml()).
 				setParser(Parser.TYPE_BPMN).
 				setModelsRootPath(MODELS_PATH).
-				setTagCTOn(true).
+				setTagCTOn(false).
 				addThreshold(Evaluator.THRESHOLD_ZERO).
-				addThreshold(0.99).
 				setDebugOn(true).
-				addHandler(new ConsoleHandler()).
 				addHandler(new HTMLHandler(SHOW_IN_BROWSER)).
 				build();
 	}

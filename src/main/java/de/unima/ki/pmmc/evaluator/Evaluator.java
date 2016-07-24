@@ -49,7 +49,7 @@ public class Evaluator {
 	/**
 	 * Loaded result for goldstandard
 	 */
-	private Result goldstandard;
+	private Map<Double, Result> goldstandard;
 	/**
 	 * Contains all specified paths to matchers
 	 */
@@ -120,7 +120,10 @@ public class Evaluator {
 		this.modelsRootPath = modelsRootPath;
 		this.outputPath = outputPath;
 		this.outputName = outputName;
-		this.goldstandard = goldstandard;
+		this.goldstandard = new HashMap<>();
+		if(goldstandard != null) {
+			this.goldstandard.put(THRESHOLD_ZERO, goldstandard);
+		}
 		this.matcherPaths = matcherPaths;
 		this.results = results;
 		this.thresholds = thresholds;
@@ -154,14 +157,17 @@ public class Evaluator {
 	public Evaluator run() throws IOException, CorrespondenceException, 
 									ParserConfigurationException, SAXException {
 		log("------------Evaluator------------");
-		this.goldstandard = loadResult(this.goldstandardPath, GOLDSTANDARD_NAME, THRESHOLD_ZERO);
-		log("Goldstandard found at : " + this.goldstandard.getPath() + this.goldstandard.getName() 
-				+ " [" + this.goldstandard.size() + "]");
 		if(!thresholds.isEmpty()) {
 			for(double threshold : thresholds) {
+				this.goldstandard.put(threshold,loadResult(this.goldstandardPath, GOLDSTANDARD_NAME, threshold));
+				log("Goldstandard found at : " + this.goldstandard.get(threshold).getPath() + 
+						this.goldstandard.get(threshold).getName() + " [" + this.goldstandard.get(threshold).size() + "]");
 				searchForResults(this.matchersRootPath, threshold);
 			}
 		} else {
+			this.goldstandard.put(THRESHOLD_ZERO,loadResult(this.goldstandardPath, GOLDSTANDARD_NAME, THRESHOLD_ZERO));
+			log("Goldstandard found at : " + this.goldstandard.get(THRESHOLD_ZERO).getPath() + 
+					this.goldstandard.get(THRESHOLD_ZERO).getName() + " [" + this.goldstandard.get(THRESHOLD_ZERO).size() + "]");
 			searchForResults(this.matchersRootPath, THRESHOLD_ZERO);
 		}
 		this.mapResult = applyTransformationsCorrespondence(this.mapResult, this.transformationsCorrespondence);
@@ -170,7 +176,7 @@ public class Evaluator {
 		if(tagCTOn) {
 			this.annotator = new Annotator(loadModels(this.modelsRootPath));
 			log("CTTagging...");
-			this.goldstandard = applyCTAnnotation(this.goldstandard);
+			this.goldstandard = applyCTAnnotationGS(this.goldstandard);
 			this.mapResult = applyCTAnnotation(this.mapResult);
 		}
 		this.mapResult = computeMetrics(this.mapResult);
@@ -188,6 +194,7 @@ public class Evaluator {
 		for(ResultHandler handler : this.handler) {
 			handler.close();
 		}
+		log("Finished tasks...");
 		return this;
 	}
 	 
@@ -196,6 +203,13 @@ public class Evaluator {
 			alignment = this.annotator.annotateAlignment(alignment);
 		}
 		return result;
+	}
+	
+	private Map<Double, Result> applyCTAnnotationGS(Map<Double, Result> results) {
+		for(Result result : results.values()) {
+			result = applyCTAnnotation(result);
+		}
+		return results;
 	}
 	
 	private Map<Double, List<Result>> applyCTAnnotation(Map<Double, List<Result>> results) {
@@ -213,7 +227,7 @@ public class Evaluator {
 		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
 			List<Result> currResults = e.getValue();
 			for(Result result : currResults) {
-				result.computeCharacteristics(this.goldstandard, this.tagCTOn);
+				result.computeCharacteristics(this.goldstandard.get(result.getAppliedThreshold()), this.tagCTOn);
 			}
 		}
 		return results;
@@ -304,7 +318,7 @@ public class Evaluator {
 					}
 				}
 		});
-		return new Result(name, path, alignments);
+		return new Result(name, path, threshold, alignments);
 	}
 	
 	private String extractName(String path) {
@@ -333,13 +347,15 @@ public class Evaluator {
 					currMatcherName = findName(filePath, path);
 					currMatcherPath = filePath.getParent().toString();
 				} catch (Exception e) {
+					errors.add(e);
 					e.printStackTrace();
 				}
 			} else if(!currAlignments.isEmpty()){
 				//Verify if currently read matcher alignment has the same size as goldstandard
+				Result goldstandard = this.goldstandard.values().iterator().next();
 				if(goldstandard.size() != currAlignments.size()) {
 					throw new IllegalArgumentException("Goldstandard alignment size unequal to matcher alignment size at "
-							+ currMatcherName + "GS: " + goldstandard.size() + " Matcher: " + currAlignments.size());
+							+ currMatcherName + " GS: " + goldstandard.size() + " Matcher: " + currAlignments.size());
 				}
 				results.add(new Result(currMatcherName, currMatcherPath, currAlignments));
 				log("[" + currMatcherName + "] @ " + currMatcherPath + " [" + currAlignments.size() + "]");
@@ -379,7 +395,8 @@ public class Evaluator {
 	}
 	
 	private boolean isFileInGS(String filename) {
-		for(Alignment a : this.goldstandard) {
+		Result goldstandard = this.goldstandard.values().iterator().next();
+		for(Alignment a : goldstandard) {
 			if(a.getName().equals(filename)) {
 				return true;
 			}
@@ -409,8 +426,8 @@ public class Evaluator {
 		return outputName;
 	}
 
-	public Result getGoldstandard() {
-		return goldstandard;
+	public Result getGoldstandard(double threshold) {
+		return goldstandard.get(threshold);
 	}
 
 	public List<String> getMatcherPaths() {
