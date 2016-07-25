@@ -94,11 +94,6 @@ public class NBCharacteristicTest {
 	}
 	
 	@Test
-	public void computeZeroInputRecallTest() {
-		assertTrue(Double.isNaN(Characteristic.computeRecall(0, 0)));
-	}
-	
-	@Test
 	public void computeZeroPrecisionAndRecallFMeasureTest() {
 		assertEquals(0, Characteristic.computeFFromPR(0, 0), 0);
 	}

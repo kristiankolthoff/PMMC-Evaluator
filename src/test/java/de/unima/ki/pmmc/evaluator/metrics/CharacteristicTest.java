@@ -60,10 +60,6 @@ public class CharacteristicTest {
 		assertTrue(Double.isNaN(this.characteristic.getFMeasure()));
 	}
 	
-	@Test
-	public void computeZeroInputRecallTest() {
-		assertTrue(Double.isNaN(Characteristic.computeRecall(0, 0)));
-	}
 	
 	@Test
 	public void computeZeroPrecisionAndRecallFMeasureTest() {

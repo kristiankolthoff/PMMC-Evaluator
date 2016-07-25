@@ -236,6 +236,23 @@ public class Alignment implements Iterable<Correspondence>{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public static Alignment newInstance(Alignment alignment) {
+		Alignment copyAlignment = new Alignment();
+		for(Correspondence c : alignment) {
+			copyAlignment.add(new Correspondence(c.getUri1(), c.getUri2(),
+					c.getRelation(), c.getConfidence(), (c.getCType().isPresent() ? c.getCType().get() : null)));
+		}
+		return copyAlignment;
+	}
+	
+	public static List<Alignment> newInstance(List<Alignment> alignments) {
+		List<Alignment> copyAlignments = new ArrayList<>();
+		for(Alignment alignment : alignments) {
+			copyAlignments.add(newInstance(alignment));
+		}
+		return copyAlignments;
+	}
 
 	@Override
 	public int hashCode() {

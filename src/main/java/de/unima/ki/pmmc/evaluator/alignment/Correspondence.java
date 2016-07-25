@@ -13,7 +13,6 @@ public class Correspondence implements Comparable<Correspondence> {
 	private String uri1;
 	private String uri2;
 	private double confidence;
-	private Optional<Double> normConfidence;
 	private SemanticRelation relation;
 	private Optional<CorrespondenceType> type;
 	
@@ -32,7 +31,7 @@ public class Correspondence implements Comparable<Correspondence> {
 		this.uri2 = uri2;
 		this.relation = relation;
 		this.confidence = confidence;
-		this.type = Optional.of(type);
+		this.type = Optional.ofNullable(type);
 	}
 	
 	public Correspondence(String uri1, String uri2, SemanticRelation relation, double confidence) {
@@ -83,6 +82,10 @@ public class Correspondence implements Comparable<Correspondence> {
 		return Correspondence.symbolTable.get(this.relation);
 	}
 	
+	public void setConfidence(double confidence) {
+		this.confidence = confidence;
+	}
+
 	public String toString() {
 		String relationSymbol = Correspondence.symbolTable.get(this.relation);
 		String type = "";

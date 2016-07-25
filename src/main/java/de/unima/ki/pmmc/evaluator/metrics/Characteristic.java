@@ -1,37 +1,12 @@
-// *****************************************************************************
-//
-// Copyright (c) 2011 Christian Meilicke (University of Mannheim)
-//
-// Permission is hereby granted, free of charge, to any person
-// obtaining a copy of this software and associated documentation
-// files (the "Software"), to deal in the Software without restriction,
-// including without limitation the rights to use, copy, modify, merge,
-// publish, distribute, sublicense, and/or sell copies of the Software,
-// and to permit persons to whom the Software is furnished to do so,
-// subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-// IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-// *********************************************************************************
-
 package de.unima.ki.pmmc.evaluator.metrics;
 
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
+
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
@@ -59,7 +34,6 @@ public class Characteristic {
 	* @throws ALCOMOException Thrown if the namespaces of the mappings differ.
 	*/
 	public Characteristic(Alignment mapping, Alignment reference) {
-		// Mapping correct = reference.getIntersection(mapping); 
 		Alignment correct = new Alignment();
 		if (strictEvaluation) {
 			for (Correspondence r : reference) {
@@ -95,29 +69,11 @@ public class Characteristic {
 		this.alignmentReference.join(c.getAlignmentReference());
 		this.alignmentMapping.join(c.getAlignmentMapping());
 	}
-	
-	/**
-	* Returns a string representation. 
-	* 
-	* @return A string representation.
-	*/
-	public String toString() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("Precision: " + (100.0 * this.getPrecision()) + "%\n");
-		sb.append("Recall:    " + (100.0 * this.getRecall()) + "%\n");
-		sb.append("F-measure: " + (100.0 * this.getFMeasure()) + "%\n");
-		sb.append("NB-Precision: " + (100.0 * this.getNBPrecision()) + "%\n");
-		sb.append("NB-Recall:    " + (100.0 * this.getNBRecall()) + "%\n");
-		sb.append("NB-F-measure: " + (100.0 * this.getNBFMeasure()) + "%\n");
-		sb.append("Correlation: " + (this.getCorrelation(this.allowZeros)) + "\n");
-		sb.append("Gold: " + this.alignmentReference.size() + " Matcher: " + 
-					this.alignmentMapping.size() +  " Correct: " + this.alignmentCorrect.size() + "\n");
-		return sb.toString();
-	}
 
 	/**
-	* Returns the f-measure.
-	* @return The f-measure.
+	* Computes the f-measure based on the
+	* initilaizing <code>Alignment</code>s
+	* @return the f-measure
 	*/
 	public double getFMeasure() {
 		if ((this.getPrecision() == 0.0f) || (this.getRecall() == 0.0f)) {
@@ -127,88 +83,73 @@ public class Characteristic {
 	}
 	
 	/**
-	 * Computes the non-binary F-Measure
-	 * @return
+	 * Computes the non-binary F-Measure using
+	 * the non-binary precision as well as the non-binary recall.
+	 * @return the non-binary f-measure
 	 */
 	public double getNBFMeasure() {
 		if ((this.getNBPrecision() == 0.0f) || (this.getNBRecall() == 0.0f)) { return 0.0f; }
 		return (2 * this.getNBPrecision() * this.getNBRecall()) / (this.getNBPrecision() + this.getNBRecall());
 	}
 
+	/**
+	 * Computes the f-measure based on the provided
+	 * precision and recall values.
+	 * @param precision the precision
+	 * @param recall the recall
+	 * @return the f-measure
+	 */
 	public static double computeFFromPR(double precision, double recall) {
 		if ((precision == 0.0f) || (recall == 0.0f)) { return 0.0f; }
 		return (2 * precision * recall) / (precision + recall);
 	}
 	
 	/**
-	 * 
-	 * @param n1 number of rules from the matcher
-	 * @param n2 number of rules from gold standard
-	 * @return recall
-	 */
-	public static double computeRecall(int n1, int n2) {
-		return (n1/(double)n2);
-	}
-	
-	
-	public String getF() {
-		return toDecimalFormat(this.getFMeasure());
-	}
-	
-	/**
-	* Returns the precision.
-	* 
-	* @return The precision.
+	* Computes the precision based on the
+	* specified <code>Alignment</code>s.
+	* @return the precision
 	*/
 	public double getPrecision() {
 		return (double)this.alignmentCorrect.size() /  (double)this.alignmentMapping.size();
 	}
 
 	/**
-	* Returns the precision.
-	* 
-	* @return The precision.
+	* Computes the non-binary precision based on the
+	* specified <code>Alignment</code>s as the sum of confidences
+	* of the correct <code>Correspondence</code>s divided by the same sum plus
+	* the number of false positives (= sum of confidences of <code>Correspondence</code>s
+	* not found by the matcher).
+	* @return the non-binary precision
 	*/
 	public double getNBPrecision() {
 		return this.getConfSumCorrect() / ((double) this.getFP().size() + this.getConfSumCorrect());
 	}
 	
-	
-	public String getNBP() {
-		return toDecimalFormat(this.getNBPrecision());
-	}
-	
-	public String getP() {
-		return toDecimalFormat(this.getPrecision());
-	}
-	
+	/**
+	* Computes the recall based on the
+	* specified <code>Alignment</code>s.
+	* @return the recall
+	*/
 	public double getRecall() {
 		return (double)this.alignmentCorrect.size() /  (double) this.alignmentReference.size();
 	}
 	
 	/**
-	* Returns the recall.
-	* 
-	* @return The recall.
+	* Computes the non-binary precision based on the
+	* specified <code>Alignment</code>s as the sum of confidences
+	* of the correct <code>Correspondence</code>s divided by the sum of
+	* confidences of the reference </code>Correspondence</code>s.
+	* @return the non-binary precision
 	*/
 	public double getNBRecall() {
 		return this.getConfSumCorrect() / this.getConfSumReference();
 	}
 	
-	public String getNBR() {
-		return toDecimalFormat(this.getNBRecall());
-	}
-	
-	public String getR() {
-		return toDecimalFormat(this.getRecall());
-	}
-
-	
 	public int getNumOfRulesCorrect() {
 		return this.alignmentCorrect.size();
 	}
 
-	public int getNumOfRulesGold() {
+	public int getNumOfRulesReference() {
 		return this.alignmentReference.size();
 	}
 
@@ -216,40 +157,29 @@ public class Characteristic {
 		return this.alignmentMapping.size();
 	}
 
-	public String toShortDesc() {
-		double precision = this.getPrecision();
-		double recall = this.getRecall();
-		double f = this.getFMeasure();
-		double nbPrecision = this.getNBPrecision();
-		double nbRecall = this.getNBRecall();
-		double nbF = this.getNBFMeasure();
-		double correlation = this.getCorrelation(this.allowZeros);
-		return toDecimalFormat(precision) + "\t" + toDecimalFormat(recall) + "\t" + toDecimalFormat(f)
-				+ toDecimalFormat(nbPrecision) + "\t" + toDecimalFormat(nbRecall) + "\t" + toDecimalFormat(nbF)
-				+ "\t" + toDecimalFormat(correlation);
-	}
-
-	private static String toDecimalFormat(double value) {
-		DecimalFormat df = new DecimalFormat("0.000");
-		return df.format(value).replace(',', '.');
-	}
-
-	public static void useDiffuseEvaluation() {
-		strictEvaluation = false;
-	}
-
-	public static boolean strictEvaluationActive() {
-		return strictEvaluation;
-	}
-	
+	/**
+	 * Returns the true positives based on the
+	 * specified <code>Alignment</code>s.
+	 * @return the true positives as an <code>Alignment</code>
+	 */
 	public Alignment getTP() {
 		return this.alignmentCorrect;
 	}
 	
+	/**
+	 * Returns the false positives based on the
+	 * specified <code>Alignment</code>s.
+	 * @return the false positives as an <code>Alignment</code>
+	 */
 	public Alignment getFP() {
 		return this.alignmentMapping.minus(this.alignmentCorrect);
 	}
 	
+	/**
+	 * Returns the true positives based on the
+	 * specified <code>Alignment</code>s.
+	 * @return the true positives as an <code>Alignment</code>
+	 */
 	public Alignment getFN() {
 		return this.alignmentReference.minus(this.alignmentCorrect);
 	}
@@ -638,7 +568,7 @@ public class Characteristic {
 	 */
 	public static double getRecallMicro(List<Characteristic> characteristics) {
 		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
-				c -> {return (double) c.getNumOfRulesGold();});
+				c -> {return (double) c.getNumOfRulesReference();});
 	}
 	
 	/**
@@ -663,11 +593,11 @@ public class Characteristic {
 		int sumNumOfCorrect = 0;
 		for(Characteristic c : characteristics) {
 			sumNumOfMatcher += c.getNumOfRulesMatcher();
-			sumNumOfGold += c.getNumOfRulesGold();
+			sumNumOfGold += c.getNumOfRulesReference();
 			sumNumOfCorrect += c.getNumOfRulesCorrect();
 		}
-		return Characteristic.computeFFromPR(Characteristic.computeRecall(sumNumOfCorrect, sumNumOfMatcher), 
-				Characteristic.computeRecall(sumNumOfCorrect, sumNumOfGold));
+		return Characteristic.computeFFromPR((sumNumOfCorrect / (double) sumNumOfMatcher), 
+				(sumNumOfCorrect / (double) sumNumOfGold));
 	}
 	
 	/**
@@ -736,50 +666,36 @@ public class Characteristic {
 			throw new IllegalArgumentException("Mapping and reference alignment length unequal. Mapping: " + mappings.size()
 					+ " Reference: " + references.size());
 		}
-		List<Correspondence> allMatcherCorres = new ArrayList<>();
-		for(Alignment a : mappings) {
-			allMatcherCorres.addAll(a.getCorrespondences());
-		}
-		Map<Correspondence, Double> confs = null;
-		if(normalize) {
-			confs = getNormalizedConfidences(allMatcherCorres);
-		} else {
-			confs = new HashMap<>();
-			for(Correspondence c : allMatcherCorres) {
-				confs.put(c, c.getConfidence());
-			}
-		}
+		List<Alignment> newAlignment = getNormalizedAlignments(mappings);
 		double sum = 0;
-		for(Map.Entry<Correspondence, Double> e: confs.entrySet()) {
-			Correspondence cRef = null;
-			for(Alignment a : references) {
-				for(Correspondence cCurr : a) {
-					if(e.getKey().equals(cCurr)) {
-						cRef = cCurr;
-						break;
+		for(Alignment a1 : newAlignment) {
+			for(Correspondence cMap : a1) {
+				Correspondence cRef = null;
+				for(Alignment a2 : references) {
+					for(Correspondence cCurr : a2) {
+						if(cMap.equals(cCurr)) {
+							cRef = cCurr;
+							break;
+						}
 					}
-				}
 			}
 			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
 			double sqDev;
-			long numDistinctVals = allMatcherCorres.stream()
-					.mapToDouble(c -> c.getConfidence()).distinct().count();
-			if(numDistinctVals == 1) {
+			if(!isFirstLineAlignment(mappings)) {
 				double delta = (confRef!=0) ? confRef : 1; 
-				sqDev = delta * Math.pow(e.getValue() - confRef, 2);
+				sqDev = delta * Math.pow(cMap.getConfidence() - confRef, 2);
 			} else {
-				sqDev = Math.pow(e.getValue() - confRef, 2);
+				sqDev = Math.pow(cMap.getConfidence() - confRef, 2);
 			}
 			sum += sqDev;
+			}
 		}
 		//Increase sum by squared deviation of correspondences not found by the matcher but
 		//present in the reference alignment
 		for(int i = 0; i < references.size(); i++) {
 			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
 			for(Correspondence cOnlyRef : alignOnlyRef) {
-				long numDistinctVals = allMatcherCorres.stream()
-						.mapToDouble(c -> c.getConfidence()).distinct().count();
-				if(numDistinctVals == 1) {
+				if(!isFirstLineAlignment(mappings)) {
 					sum += cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), 2);
 				} else {
 					sum += Math.pow(cOnlyRef.getConfidence(), 2);
@@ -788,6 +704,46 @@ public class Characteristic {
 		}
 		return sum;
 	}
+	
+	/**
+	 * Normalizes each <code>Correspondence</code> from a collection 
+	 * of <code>Alignment</code>s to a target range.
+	 * Note that First Line Matcher (FLM) producing various confidence
+	 * values for the correspondences, have target range [0.125,1]. Second Line Matcher
+	 * (SLM) producing only binary confidence values, are mapped to 0 and 1.
+	 * @param alignments the alignments which should be normalized
+	 * @return a new copy of the alignment list containing normalized correspondences
+	 */
+	public static List<Alignment> getNormalizedAlignments(List<Alignment> alignments) {
+		List<Alignment> vals = Alignment.newInstance(alignments);
+		List<Correspondence> allCorres = new ArrayList<>();
+		for(Alignment alignment : vals) {
+			allCorres.addAll(alignment.getCorrespondences());
+		}
+		double maxConf = Collections.max(allCorres).getConfidence();
+		//Normalize FLM confidences between 0.125 and 1
+		if(isFirstLineAlignment(alignments)) {
+			for(Correspondence c : allCorres) {
+				c.setConfidence(c.getConfidence() / maxConf);
+			}
+			double minConf = Collections.min(allCorres).getConfidence();
+			final double TARGET_MAX = 1;
+			final double TARGET_MIN = 0.125;
+			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
+			for(Correspondence c : allCorres) {
+				double finalConf = 1 - mult * (1 - c.getConfidence());
+				c.setConfidence(finalConf);
+			}
+		} 
+		//Normalize SLM confidences to 0 and 1
+		else {
+			for(Correspondence c : allCorres) {
+				c.setConfidence((c.getConfidence()>0) ? 1 : 0);
+			}
+		}
+		return vals;
+	}
+	
 	
 	/**
 	 * Computes the relative distance of the matcher alignments to
@@ -809,47 +765,10 @@ public class Characteristic {
 		return getRelativeDistance(mappings, references, normalize);
 	}
 	
-	/**
-	 * Normalizes a given collection of correspondences to a target range.
-	 * Note that First Line Matcher (FLM) producing various confidence
-	 * values for the correspondences, have target range [0.125,1]. Second Line Matcher
-	 * (SLM) producing only binary confidence values, are mapped to 0 and 1.
-	 * @param correspondences - the correspondences to normalize
-	 * @return map of correspondence to its normalized confidence value
-	 */
-	private static Map<Correspondence, Double> getNormalizedConfidences(List<Correspondence> correspondences) {
-		Map<Correspondence, Double> vals = new HashMap<>();
-		Correspondence maxCorrespondence = Collections.max(correspondences);
-		double maxConf = maxCorrespondence.getConfidence();
-		//Check for first line matcher
-		long numDistinctVals = correspondences.stream()
-				.mapToDouble(c -> c.getConfidence()).distinct().count();
-		//The matcher is a second line matcher, simply normalize to 0 and 1
-		if(numDistinctVals == 1) {
-			for(Correspondence c : correspondences) {
-				double confVal = (c.getConfidence()>0) ? 1 : 0;
-				vals.put(c, confVal);
-			}
-		//The matcher is a first line matcher, normalize between 0.125 and 1
-		} else {
-			for(Correspondence c : correspondences) {
-				vals.put(c, c.getConfidence() / maxConf);
-			}
-			double minConf = Collections.min(vals.values());
-			final double TARGET_MAX = 1;
-			final double TARGET_MIN = 0.125;
-			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
-			for(Map.Entry<Correspondence, Double> e : vals.entrySet()) {
-				double finalConf = 1 - mult * (1 - e.getValue());
-				vals.put(e.getKey(), finalConf);
-			}
-		}
-		return vals;
-	}
 	
 	/**
-	 * Checks weather the matcher, which produced the alignments in the each
-	 * characteristic, produces only one single confidence value based on a 
+	 * Checks weather the matcher, which produced the <code>Alignment</code>s in the each
+	 * <code>Characteristic</code>, produces only one single confidence value based on a 
 	 * collection of characteristics. 
 	 * @param characteristics specifying the alignments produced by the matcher
 	 * @return true if the Matcher is a First Line Matcher (FLM), false if the Matcher
@@ -864,6 +783,37 @@ public class Characteristic {
 		return false;
 	}
 	
+	/**
+	 * Checks weather the matcher, which produced the <code>Alignment</code>s, 
+	 * produces only one single confidence value. 
+	 * @param alignments specifying the alignments produced by the matcher
+	 * @return true if the Matcher is a First Line Matcher (FLM), false if the Matcher
+	 * is a Second Line Matcher (SLM)
+	 */
+	public static boolean isFirstLineAlignment(List<Alignment> alignments) {
+		for(Alignment alignment : alignments) {
+			if(isFirstLineAlignment(alignment)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Checks weather the matcher, which produced the <code>Alignment</code>, 
+	 * produces only one single confidence value. 
+	 * @param alignment specifying the alignment produced by the matcher
+	 * @return true if the Matcher is a First Line Matcher (FLM), false if the Matcher
+	 * is a Second Line Matcher (SLM)
+	 */
+	public static boolean isFirstLineAlignment(Alignment alignment) {
+		long numDistinctVals = alignment.getCorrespondences().
+				stream().
+				mapToDouble(c -> c.getConfidence()).
+				distinct().count();
+		return numDistinctVals > 1;
+	}
+	
 
 	/**
 	 * Checks wether the matcher, which produced the alignment hold by
@@ -873,11 +823,7 @@ public class Characteristic {
 	 * the Matcher is a Second Line Matcher
 	 */
 	public boolean isFirstLineMatcher() {
-		long numDistinctVals = this.alignmentMapping.getCorrespondences()
-				.stream()
-				.mapToDouble(c -> c.getConfidence())
-				.distinct().count();
-		return numDistinctVals > 1;
+		return isFirstLineAlignment(this.alignmentMapping);
 	}
 	
 
@@ -899,6 +845,46 @@ public class Characteristic {
 
 	public Alignment getAlignmentCorrect() {
 		return alignmentCorrect;
+	}
+	
+	public static void setDiffuseEvaluation(boolean strictEvaluation) {
+		Characteristic.strictEvaluation = strictEvaluation;
+	}
+
+	public static boolean strictEvaluationActive() {
+		return strictEvaluation;
+	}
+	
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("Precision: " + (100.0 * this.getPrecision()) + "%\n");
+		sb.append("Recall:    " + (100.0 * this.getRecall()) + "%\n");
+		sb.append("F-measure: " + (100.0 * this.getFMeasure()) + "%\n");
+		sb.append("NB-Precision: " + (100.0 * this.getNBPrecision()) + "%\n");
+		sb.append("NB-Recall:    " + (100.0 * this.getNBRecall()) + "%\n");
+		sb.append("NB-F-measure: " + (100.0 * this.getNBFMeasure()) + "%\n");
+		sb.append("Correlation: " + (this.getCorrelation(this.allowZeros)) + "\n");
+		sb.append("Gold: " + this.alignmentReference.size() + " Matcher: " + 
+					this.alignmentMapping.size() +  " Correct: " + this.alignmentCorrect.size() + "\n");
+		return sb.toString();
+	}
+	
+	public String toShortDesc() {
+		double precision = this.getPrecision();
+		double recall = this.getRecall();
+		double f = this.getFMeasure();
+		double nbPrecision = this.getNBPrecision();
+		double nbRecall = this.getNBRecall();
+		double nbF = this.getNBFMeasure();
+		double correlation = this.getCorrelation(this.allowZeros);
+		return toDecimalFormat(precision) + "\t" + toDecimalFormat(recall) + "\t" + toDecimalFormat(f)
+				+ toDecimalFormat(nbPrecision) + "\t" + toDecimalFormat(nbRecall) + "\t" + toDecimalFormat(nbF)
+				+ "\t" + toDecimalFormat(correlation);
+	}
+
+	private static String toDecimalFormat(double value) {
+		DecimalFormat df = new DecimalFormat("0.000");
+		return df.format(value).replace(',', '.');
 	}
 
 }
