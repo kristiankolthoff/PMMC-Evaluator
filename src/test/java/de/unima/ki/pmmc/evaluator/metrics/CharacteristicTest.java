@@ -2,7 +2,6 @@ package de.unima.ki.pmmc.evaluator.metrics;
 
 import static org.junit.Assert.*;
 
-import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +26,20 @@ public class CharacteristicTest {
 	
 	@Before
 	public void init() {
-		this.characteristic = new Characteristic();
-		this.characteristic2 = new Characteristic(100, 50, 25);
-		this.characteristic3 = new Characteristic(10,5,5);
+		this.characteristic = new Characteristic(new Alignment(), new Alignment());
 		this.characteristicsZero = new ArrayList<>();
 		this.characteristicsZero.add(characteristic);
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 1.0));
+		reference.add(new Correspondence("5", "5", 1.0));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.42));
+		matcher.add(new Correspondence("2", "2", 0.48));
+		matcher.add(new Correspondence("4", "4", 0.6));
+		this.characteristic2 = new Characteristic(matcher, reference);
+		this.characteristic3 = new Characteristic(matcher, reference);
 		this.characteristics = new ArrayList<Characteristic>();
 		this.characteristics.add(this.characteristic2);
 		this.characteristics.add(this.characteristic3);
@@ -64,8 +72,8 @@ public class CharacteristicTest {
 	
 	@Test
 	public void getFMeasureTest() {
-		assertEquals(1/(double)3, this.characteristic2.getFMeasure(), 0);
-		assertEquals(2/(double)3, this.characteristic3.getFMeasure(), 0);
+		assertEquals(4/(double)7, this.characteristic2.getFMeasure(), ALLOWED_DEV);
+		assertEquals(4/(double)7, this.characteristic3.getFMeasure(), ALLOWED_DEV);
 	}
 	
 	@Test
@@ -75,33 +83,33 @@ public class CharacteristicTest {
 	
 	@Test
 	public void getRecallMacroTest() {
-		assertEquals(0.375, Characteristic.getRecallMacro(this.characteristics),0);
+		assertEquals(0.5, Characteristic.getRecallMacro(this.characteristics),0);
 	}
 	
 	@Test
 	public void getRecallMicroTest() {
-		assertEquals(30/(double)110, Characteristic.getRecallMicro(this.characteristics), 0);
+		assertEquals(0.5, Characteristic.getRecallMicro(this.characteristics), 0);
 	}
 	
 	@Test
 	public void getPrecisionMacroTest() {
-		assertEquals(0.75, Characteristic.getPrecisionMacro(this.characteristics), 0);
+		assertEquals(2/(double)3, Characteristic.getPrecisionMacro(this.characteristics), 0);
 	}
 	
 	@Test
 	public void getPrecisionMicroTest() {
-		assertEquals(30/(double)55, Characteristic.getPrecisionMicro(this.characteristics), 0);
+		assertEquals(2/(double)3, Characteristic.getPrecisionMicro(this.characteristics), 0);
 	}
 	
 	@Test
 	public void getFMeasureMacroTest() {
-		assertEquals(0.5, Characteristic.getFMeasureMacro(this.characteristics), 0);
+		assertEquals(4/(double)7, Characteristic.getFMeasureMacro(this.characteristics), ALLOWED_DEV);
 	}
 	
 	@Test
 	public void getFMeasureMicroTest() {
-		assertEquals(Characteristic.computeFFromPR(30/(double)55, 30/(double)110), 
-				Characteristic.getFMeasureMicro(this.characteristics), 0);
+		assertEquals(4/(double)7, 
+				Characteristic.getFMeasureMicro(this.characteristics), ALLOWED_DEV);
 	}
 
 	@Test
@@ -270,37 +278,20 @@ public class CharacteristicTest {
 		reference.add(new Correspondence("2", "2", 0.25));
 		reference.add(new Correspondence("3", "3", 0.75));
 		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 1));
 		final Alignment matcher = new Alignment();
-		matcher.add(new Correspondence("1", "1", 1));
-		matcher.add(new Correspondence("2", "2", 1));
 		matcher.add(new Correspondence("3", "3", 1));
 		matcher.add(new Correspondence("4", "4", 1));
+		matcher.add(new Correspondence("5", "5", 1));
+		matcher.add(new Correspondence("6", "6", 1));
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
+		assertEquals(1.0781, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 	@Test
 	public void getRelativeDistanceSLM2Test() {
-		final Alignment reference = new Alignment();
-		reference.add(new Correspondence("1", "1", 0.125));
-		reference.add(new Correspondence("2", "2", 0.25));
-		reference.add(new Correspondence("3", "3", 0.75));
-		reference.add(new Correspondence("4", "4", 0.875));
-		final Alignment matcher = new Alignment();
-		matcher.add(new Correspondence("1", "1", 0.5));
-		matcher.add(new Correspondence("2", "2", 0.5));
-		matcher.add(new Correspondence("3", "3", 0.5));
-		matcher.add(new Correspondence("4", "4", 0.5));
-		Characteristic c = new Characteristic(matcher, reference);
-		List<Characteristic> characteristics = new ArrayList<>();
-		characteristics.add(c);
-		assertEquals(1.406, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
-	}
-	
-	@Test
-	public void getRelativeDistanceSLM3Test() {
 		final Alignment reference = new Alignment();
 		reference.add(new Correspondence("1", "1", 0.125));
 		reference.add(new Correspondence("2", "2", 0.25));
@@ -311,11 +302,10 @@ public class CharacteristicTest {
 		matcher.add(new Correspondence("3", "3", 1));
 		matcher.add(new Correspondence("4", "4", 1));
 		matcher.add(new Correspondence("5", "5", 1));
-		matcher.add(new Correspondence("6", "6", 1));
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		characteristics.add(c);
-		assertEquals(1.156, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
+		assertEquals(0.0781, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
 }

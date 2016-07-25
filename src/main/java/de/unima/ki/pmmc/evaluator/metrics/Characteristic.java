@@ -410,6 +410,40 @@ public class Characteristic {
 		return sum / num;
 	}
 	
+	/**
+	 * General purpose method for computing micro summary
+	 * of values provided by the two function parameters. That is,
+	 * over a list of <code>Characteristic</code>s, this method computes
+	 * the division with the sum of single values of the first function in
+	 * the numerator, and the the sum of single values of the second function
+	 * in the denominator. This method avoids boilerplate code and follows DRY.
+	 * @param characteristics the characteristics to compute the micro summary from
+	 * @param functionNum function for producing values from a single <code>Characteristic</code>
+	 * for the numerator sum
+	 * @param functionDenom function for producing values from a single <code>Characteristic</code>
+	 * for the denominator sum
+	 * @return sum{functionNumVals} / sum{functionDenomVals}
+	 */
+	private static double computeMicro(List<Characteristic> characteristics,
+			Function<Characteristic, Double> functionNum, Function<Characteristic, Double> functionDenom) {
+		double sumNum = 0;
+		double sumDenom = 0;
+		for(Characteristic c : characteristics) {
+			sumNum += functionNum.apply(c);
+			sumDenom += functionDenom.apply(c);
+		}
+		return sumNum / sumDenom;
+	}
+	
+	/**
+	 * General purpose method for computing macro summary of
+	 * values provided by the single input function. Simply sums up
+	 * the individual values provided by the function for each single
+	 * <code>Characteristic</code> and finally computes the average.
+	 * @param characteristics the cahracteristics to compute the macro summary from
+	 * @param function function for producing values from a single <code>Characteristic</code>
+	 * @return the average as sum{functionVals} / numOfVals
+	 */
 	private static double computeMacro(List<Characteristic> characteristics, 
 			Function<Characteristic, Double> function) {
 		double sum = 0;
@@ -424,6 +458,17 @@ public class Characteristic {
 		return sum / numOfOcc;
 	}
 	
+	/**
+	 * Computes the standard deviation over a list of <code>Characteristic</code>s
+	 * based on values provided by the two input functions. The first function is
+	 * used to compute the average value for the <code>Characteristic</code> collection,
+	 * the second function provides the current value for a single <code>Characteristic</code>
+	 * @param characteristics the characteristics to compute the standard deviation from
+	 * @param functionAvg function for producing the average value to compare the single/current
+	 * values against
+	 * @param functionSum function for producing the current value for a single <code>Characteristic</code>
+	 * @return the standard deviation based on the provided functions
+	 */
 	private static double computeStdDev(List<Characteristic> characteristics, 
 			Function<List<Characteristic>, Double> functionAvg, Function<Characteristic, Double> functionSum) {
 		double avgMacro = functionAvg.apply(characteristics);
@@ -471,13 +516,8 @@ public class Characteristic {
 	 * @return micro precision
 	 */
 	public static double getNBPrecisionMicro(List<Characteristic> characteristics) {
-		double sumConfCorr = 0;
-		int sumFP = 0;
-		for(Characteristic c : characteristics) {
-			sumConfCorr += c.getConfSumCorrect();
-			sumFP += c.getFP().size();
-		}
-		return sumConfCorr / ((double)sumFP + sumConfCorr);
+		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();},
+				c -> {return c.getFP().size() + c.getConfSumCorrect();});
 	}
 	
 	/**
@@ -487,13 +527,8 @@ public class Characteristic {
 	 * @return micro recall
 	 */
 	public static double getNBRecallMicro(List<Characteristic> characteristics) {
-		double sumConfCorr = 0;
-		double sumConfRef = 0;
-		for(Characteristic c : characteristics) {
-			sumConfCorr += c.getConfSumCorrect();
-			sumConfRef += c.getConfSumReference();
-		}
-		return sumConfCorr / sumConfRef;
+		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();}, 
+				c -> {return c.getConfSumReference();});
 	}
 	
 	/**
@@ -591,13 +626,8 @@ public class Characteristic {
 	 * @return micro precision
 	 */
 	public static double getPrecisionMicro(List<Characteristic> characteristics) {
-		int sumNumOfRulesCorrect = 0;
-		int sumNumOfRulesMatcher = 0;
-		for(Characteristic c : characteristics) {
-			sumNumOfRulesCorrect += c.getNumOfRulesCorrect();
-			sumNumOfRulesMatcher += c.getNumOfRulesMatcher();
-		}
-		return sumNumOfRulesCorrect / (double)sumNumOfRulesMatcher;
+		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
+				c -> {return (double) c.getNumOfRulesMatcher();});
 	}
 	
 	/**
@@ -607,13 +637,8 @@ public class Characteristic {
 	 * @return micro recall
 	 */
 	public static double getRecallMicro(List<Characteristic> characteristics) {
-		int sumNumOfRulesCorrect = 0;
-		int sumNumOfRulesGold = 0;
-		for(Characteristic c : characteristics) {
-			sumNumOfRulesCorrect += c.getNumOfRulesCorrect();
-			sumNumOfRulesGold += c.getNumOfRulesGold();
-		}
-		return computeRecall(sumNumOfRulesCorrect, sumNumOfRulesGold);
+		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
+				c -> {return (double) c.getNumOfRulesGold();});
 	}
 	
 	/**
@@ -623,11 +648,7 @@ public class Characteristic {
 	 * @return macro f measure
 	 */
 	public static double getFMeasureMacro(List<Characteristic> characteristics) {
-		double sum = 0;
-		for(Characteristic c : characteristics) {
-			sum += c.getFMeasure();
-		}
-		return sum / characteristics.size();
+		return computeMacro(characteristics, c -> {return c.getFMeasure();});
 	}
 	
 	/**
