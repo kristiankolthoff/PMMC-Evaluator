@@ -304,4 +304,13 @@ public class CharacteristicTest {
 		assertEquals(0.0781, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
+	@Test
+	public void getRelativeDistanceZeroInputTest() {
+		final Alignment reference = new Alignment();
+		final Alignment matcher = new Alignment();
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		assertEquals(0, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
+	}
+	
 }

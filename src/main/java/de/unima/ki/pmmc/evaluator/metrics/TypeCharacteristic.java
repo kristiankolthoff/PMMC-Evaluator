@@ -194,6 +194,53 @@ public class TypeCharacteristic extends Characteristic {
 	}
 	
 	/**
+	 * Computes the correlation between matcher and
+	 * reference <code>Alignment</code> for a given <code>CorrespondenceType</code>.
+	 * @param type the correspondence type to compute the correlation from
+	 * @param allowZeros allow zeros in correlation computation
+	 * @return correlation between matcher and goldstandard for a
+	 * specific correspondence type
+	 */
+	public double getCorrelation(CorrespondenceType type, boolean allowZeros) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		mappings.add(this.correspondencesMapping.get(type));
+		references.add(this.corresponendencesRef.get(type));
+		return getCorrelation(mappings, references, allowZeros);
+	}
+	
+	/**
+	 * Computes the micro correlation across the <code>TypeCharacteristc</code>s.
+	 * @param characteristics the characteristics to compute the micro correlation from
+	 * @param allowZeros allow zeros in correlation computation
+	 * @return micro correlation of multiple <code>Characterisitic</code>s
+	 */
+	public static double getCorrelationMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type, 
+			boolean allowZeros) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		for(TypeCharacteristic c : characteristics) {
+			mappings.add(c.getAlignmentMapping(type));
+			references.add(c.getAlignmentReference(type));
+		}
+		return getCorrelation(mappings, references, allowZeros);
+	}
+	
+	/**
+	 * Computes the macro correlation as the plain average of
+	 * the sum of correlations across the <code>Characteristc</code>s
+	 * based on the specified <code>CorrespondenceType</code>.
+	 * @param characteristics the type characteristics to compute the macro correlation from
+	 * @param allowZeros allow zeros in correlation computation
+	 * @return macro correlation of multiple <code>TypeCharacterisitic</code>s
+	 * for a specific <code>CorrespondenceType</code>
+	 */
+	public static double getCorrelationMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type,
+			boolean allowZeros) {
+		return computeMacro(characteristics, c -> {return c.getCorrelation(type, allowZeros);});
+	}
+	
+	/**
 	 * Returns the macro recall for a given correspondence type for mutliple
 	 * <code>TypeCharacteristc</code>s.
 	 * @param characteristics - the characteristics to compute the macro recall from
@@ -262,6 +309,17 @@ public class TypeCharacteristic extends Characteristic {
 		return computeStdDev(characteristics, TypeCharacteristic::getPrecisionMacro, c -> {return c.getPrecision(type);}, type);
 	}
 	
+	/**
+	 * Computes the relative distance of the matcher alignment to
+	 * the reference alignment of the gold standard, based on a <code>
+	 * CorrespondenceType</code>. First normalizes the matcher alignments to a 
+	 * target scale, then computes the sum of squared deviations of the confidence
+	 * values of the matcher and the reference alignment.
+	 * @param type - the correspondence type which should be used
+	 * @param normalize - specifies if the correspondence confidences should be normalized
+	 * @return realtive distance of matcher to reference alignment for the
+	 * specific <code>CorrespondenceType</code>
+	 */
 	public double getRelativeDistance(CorrespondenceType type, boolean normalize) {
 		List<Alignment> mappings = new ArrayList<>();
 		List<Alignment> references = new ArrayList<>();
@@ -269,7 +327,7 @@ public class TypeCharacteristic extends Characteristic {
 		references.add(corresponendencesRef.get(type));
 		return getRelativeDistance(mappings, references, normalize);
 	}
-	
+
 	/**
 	 * Computes the relative distance of the matcher alignments to the reference alignments 
 	 * of the gold standard for a specific <code>CorrespondenceType</code>, based on a collection 
