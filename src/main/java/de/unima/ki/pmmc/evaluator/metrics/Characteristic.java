@@ -295,7 +295,7 @@ public class Characteristic {
 	 * @param allowZeros allow zeros in correlation computation
 	 * @return micro correlation of multiple <code>Characterisitic</code>s
 	 */
-	public static double getCorrelationMicro(List<Characteristic> characteristics, boolean allowZeros) {
+	public static double getCorrelationMicro(List<? extends Characteristic> characteristics, boolean allowZeros) {
 		List<Alignment> mappings = new ArrayList<>();
 		List<Alignment> references = new ArrayList<>();
 		for(Characteristic c : characteristics) {
@@ -331,7 +331,7 @@ public class Characteristic {
 	 * for the denominator sum
 	 * @return sum{functionNumVals} / sum{functionDenomVals}
 	 */
-	private static double computeMicro(List<Characteristic> characteristics,
+	private static double computeMicro(List<? extends Characteristic> characteristics,
 			Function<Characteristic, Double> functionNum, Function<Characteristic, Double> functionDenom) {
 		double sumNum = 0;
 		double sumDenom = 0;
@@ -351,7 +351,7 @@ public class Characteristic {
 	 * @param function function for producing values from a single <code>Characteristic</code>
 	 * @return the average as sum{functionVals} / numOfVals
 	 */
-	private static double computeMacro(List<Characteristic> characteristics, 
+	private static double computeMacro(List<? extends Characteristic> characteristics, 
 			Function<Characteristic, Double> function) {
 		double sum = 0;
 		int numOfOcc = 0;
@@ -376,8 +376,8 @@ public class Characteristic {
 	 * @param functionSum function for producing the current value for a single <code>Characteristic</code>
 	 * @return the standard deviation based on the provided functions
 	 */
-	private static double computeStdDev(List<Characteristic> characteristics, 
-			Function<List<Characteristic>, Double> functionAvg, Function<Characteristic, Double> functionSum) {
+	private static double computeStdDev(List<? extends Characteristic> characteristics, 
+			Function<List<? extends Characteristic>, Double> functionAvg, Function<Characteristic, Double> functionSum) {
 		double avgMacro = functionAvg.apply(characteristics);
 		double dev = 0;
 		int numOfOcc = 0;
@@ -400,7 +400,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the macro precision from
 	 * @return macro precision
 	 */
-	public static double getNBPrecisionMacro(List<Characteristic> characteristics) {
+	public static double getNBPrecisionMacro(List<? extends Characteristic> characteristics) {
 		return computeMacro(characteristics, c -> {return c.getNBPrecision();});
 	}
 	
@@ -412,7 +412,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the macro recall from
 	 * @return macro recall
 	 */
-	public static double getNBRecallMacro(List<Characteristic> characteristics) {
+	public static double getNBRecallMacro(List<? extends Characteristic> characteristics) {
 		return computeMacro(characteristics, c -> {return c.getNBRecall();});
 	}
 	
@@ -422,7 +422,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the micro precision from
 	 * @return micro precision
 	 */
-	public static double getNBPrecisionMicro(List<Characteristic> characteristics) {
+	public static double getNBPrecisionMicro(List<? extends Characteristic> characteristics) {
 		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();},
 				c -> {return c.getFP().size() + c.getConfSumCorrect();});
 	}
@@ -433,7 +433,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the micro recall from
 	 * @return micro recall
 	 */
-	public static double getNBRecallMicro(List<Characteristic> characteristics) {
+	public static double getNBRecallMicro(List<? extends Characteristic> characteristics) {
 		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();}, 
 				c -> {return c.getConfSumReference();});
 	}
@@ -444,7 +444,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the f measure from
 	 * @return macro f measure
 	 */
-	public static double getNBFMeasureMacro(List<Characteristic> characteristics) {
+	public static double getNBFMeasureMacro(List<? extends Characteristic> characteristics) {
 		return computeMacro(characteristics, c -> {return c.getNBFMeasure();});
 	}
 	
@@ -454,7 +454,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the f measure from
 	 * @return micro f measure
 	 */
-	public static double getNBFMeasureMicro(List<Characteristic> characteristics) {
+	public static double getNBFMeasureMicro(List<? extends Characteristic> characteristics) {
 		double confSumRef = 0;
 		double confSumCorr = 0;
 		int numfp = 0;
@@ -476,7 +476,7 @@ public class Characteristic {
 	 * @param characteristics the characteristics to compute the standard deviation of the non-binary precision
 	 * @return standard deviation of non-binary precision
 	 */
-	public static double getNBPrecisionStdDev(List<Characteristic> characteristics) {
+	public static double getNBPrecisionStdDev(List<? extends Characteristic> characteristics) {
 		return computeStdDev(characteristics, Characteristic::getNBPrecisionMacro, c -> {return c.getNBPrecision();});
 	}
 	
@@ -487,7 +487,7 @@ public class Characteristic {
 	 * @param characteristics the characteristics to compute the standard deviation of the non-binary recall
 	 * @return standard deviation of non-binary recall
 	 */
-	public static double getNBRecallStdDev(List<Characteristic> characteristics) {
+	public static double getNBRecallStdDev(List<? extends Characteristic> characteristics) {
 		return computeStdDev(characteristics, Characteristic::getNBRecallMacro, c -> {return c.getNBRecall();});
 	}
 	
@@ -498,7 +498,7 @@ public class Characteristic {
 	 * @param characteristics the characteristics to compute the standard deviation of the non-binary f-measure
 	 * @return standard deviation of non-binary f-measure
 	 */
-	public static double getNBFMeasureStdDev(List<Characteristic> characteristics) {
+	public static double getNBFMeasureStdDev(List<? extends Characteristic> characteristics) {
 		return computeStdDev(characteristics, Characteristic::getNBFMeasureMacro, c -> {return c.getNBFMeasure();});
 	}
 	
@@ -510,7 +510,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the macro precision from
 	 * @return macro precision
 	 */
-	public static double getPrecisionMacro(List<Characteristic> charactersticstics) {
+	public static double getPrecisionMacro(List<? extends Characteristic> charactersticstics) {
 		return computeMacro(charactersticstics, c -> {return c.getPrecision();});
 	}
 	
@@ -522,7 +522,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the macro recall from
 	 * @return macro recall
 	 */
-	public static double getRecallMacro(List<Characteristic> charactersticstics) {
+	public static double getRecallMacro(List<? extends Characteristic> charactersticstics) {
 		return computeMacro(charactersticstics, c -> {return c.getRecall();});
 	}
 	
@@ -532,7 +532,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the micro precision from
 	 * @return micro precision
 	 */
-	public static double getPrecisionMicro(List<Characteristic> characteristics) {
+	public static double getPrecisionMicro(List<? extends Characteristic> characteristics) {
 		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
 				c -> {return (double) c.getNumOfRulesMatcher();});
 	}
@@ -543,7 +543,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the micro recall from
 	 * @return micro recall
 	 */
-	public static double getRecallMicro(List<Characteristic> characteristics) {
+	public static double getRecallMicro(List<? extends Characteristic> characteristics) {
 		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
 				c -> {return (double) c.getNumOfRulesReference();});
 	}
@@ -554,7 +554,7 @@ public class Characteristic {
 	 * @param characteristics - the characteristic to compute the f measure from
 	 * @return macro f measure
 	 */
-	public static double getFMeasureMacro(List<Characteristic> characteristics) {
+	public static double getFMeasureMacro(List<? extends Characteristic> characteristics) {
 		return computeMacro(characteristics, c -> {return c.getFMeasure();});
 	}
 	
@@ -564,7 +564,7 @@ public class Characteristic {
 	 * @param characteristics the characteristic to compute the f measure from
 	 * @return micro f measure
 	 */
-	public static double getFMeasureMicro(List<Characteristic> characteristics) {
+	public static double getFMeasureMicro(List<? extends Characteristic> characteristics) {
 		int sumNumOfMatcher = 0;
 		int sumNumOfGold = 0;
 		int sumNumOfCorrect = 0;
@@ -584,7 +584,7 @@ public class Characteristic {
 	 * @param characteristics the characteristics to compute the standard deviation of the precision
 	 * @return standard deviation of precision
 	 */
-	public static double getPrecisionStdDev(List<Characteristic> characteristics) {
+	public static double getPrecisionStdDev(List<? extends Characteristic> characteristics) {
 		return computeStdDev(characteristics, Characteristic::getPrecisionMacro, c -> {return c.getPrecision();});
 	}
 	
@@ -595,7 +595,7 @@ public class Characteristic {
 	 * @param characteristics the characteristics to compute the standard deviation of the recall
 	 * @return standard deviation of recall
 	 */
-	public static double getRecallStdDev(List<Characteristic> characteristics) {
+	public static double getRecallStdDev(List<? extends Characteristic> characteristics) {
 		return computeStdDev(characteristics, Characteristic::getRecallMacro, c -> {return c.getRecall();});
 	}
 	
@@ -606,7 +606,7 @@ public class Characteristic {
 	 * @param characteristics the characteristics to compute the standard deviation of the f-measure
 	 * @return standard deviation of f-measure
 	 */
-	public static double getFMeasureStdDev(List<Characteristic> characteristics) {
+	public static double getFMeasureStdDev(List<? extends Characteristic> characteristics) {
 		return computeStdDev(characteristics, Characteristic::getFMeasureMacro, c -> {return c.getFMeasure();});
 	}
 	
@@ -638,7 +638,7 @@ public class Characteristic {
 	 * @param normalize - specifies if the correspondence confidences should be normalized
 	 * @return realtive distance of matcher to reference alignment
 	 */
-	public static double getRelativeDistance(List<Characteristic> characteristics, boolean normalize) {
+	public static double getRelativeDistance(List<? extends Characteristic> characteristics, boolean normalize) {
 		List<Alignment> mappings = new ArrayList<>();
 		List<Alignment> references = new ArrayList<>();
 		for(Characteristic c : characteristics) {

@@ -16,7 +16,9 @@ public interface ResultHandler {
 
 	/**
 	 * Called before generated <code>Result</code>s
-	 * are shipped to this handler. If a <code>ResultHandler</code>
+	 * are shipped to this handler. For each list of <code>
+	 * Result</code>s, this method is called before the handler
+	 * receives the <code>Result</code>s. If a <code>ResultHandler</code>
 	 * uses the file system or database connection, establish
 	 * and open the corresponding streams.
 	 * @throws IOException 
@@ -26,17 +28,20 @@ public interface ResultHandler {
 	/**
 	 * Called for each applied threshold with the corresponding
 	 * <code>Result</code> list.
-	 * @param results
+	 * @param results the results which should be handelded
+	 * @param path the path of the currently set output directory
+	 * @param info the current mapping info
 	 */
 	public void receive(List<Result> results);
 	
 	/**
-	 * Called after all receive-operations are finished and
-	 * all <code>Result</code>s were shipped to the
+	 * Called after each receive-operation is finished and
+	 * and one complete collection of <code>Result</code>s were shipped to the
 	 * <code>ResultHandler</code>. For example, used to close database
 	 * connections and file system streams.
 	 */
 	public void close() throws IOException;
+	
 	
 	/**
 	 * Listener that can be used for logging.
@@ -57,4 +62,5 @@ public interface ResultHandler {
 	 * @param info the mapping information
 	 */
 	public void setMappingInfo(String info);
+	
 }

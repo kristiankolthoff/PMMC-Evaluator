@@ -10,6 +10,7 @@ import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
 import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
+import de.unima.ki.pmmc.evaluator.handler.JSONHandler;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 
 public class PMMCEvaluation {
@@ -35,6 +36,7 @@ public class PMMCEvaluation {
 				addThreshold(Evaluator.THRESHOLD_ZERO).
 				setDebugOn(true).
 				addHandler(new HTMLHandler(SHOW_IN_BROWSER)).
+				addHandler(new JSONHandler()).
 				build();
 	}
 	

@@ -181,18 +181,16 @@ public class Evaluator {
 		}
 		this.mapResult = computeMetrics(this.mapResult);
 		for(ResultHandler handler : this.handler) {
-			handler.open();
 			handler.setFlowListener(this.flowListener);
 		}
 		for(Map.Entry<Double, List<Result>> e : this.mapResult.entrySet()) {
 			for(ResultHandler handler : this.handler) {
+				handler.open();
 				handler.setMappingInfo(getFinalOutputName(this.outputName, e.getKey()));
 				handler.setOutputPath(Paths.get(this.outputPath));
 				handler.receive(e.getValue());
+				handler.close();
 			}
-		}
-		for(ResultHandler handler : this.handler) {
-			handler.close();
 		}
 		log("Finished tasks...");
 		return this;

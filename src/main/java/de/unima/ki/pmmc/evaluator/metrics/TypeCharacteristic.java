@@ -309,6 +309,18 @@ public class TypeCharacteristic extends Characteristic {
 		return computeStdDev(characteristics, TypeCharacteristic::getPrecisionMacro, c -> {return c.getPrecision(type);}, type);
 	}
 	
+	public static double getFMeasureMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMacro(characteristics, c -> {return c.getFMeasure(type);});
+	}
+	
+	public static double getFMeasureMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return getFMeasureMicro(characteristics);
+	}
+	
+	public static double getFMeasureStdDev(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeStdDev(characteristics, TypeCharacteristic::getFMeasureMacro, c -> {return c.getFMeasure();}, type);
+	}
+	
 	/**
 	 * Computes the relative distance of the matcher alignment to
 	 * the reference alignment of the gold standard, based on a <code>
