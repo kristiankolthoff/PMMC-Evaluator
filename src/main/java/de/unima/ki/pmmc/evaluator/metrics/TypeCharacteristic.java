@@ -44,17 +44,15 @@ public class TypeCharacteristic extends Characteristic {
 	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
 			throws CorrespondenceException {
 		Map<CorrespondenceType, Alignment> vals = new HashMap<>();
+		for(CorrespondenceType type : CorrespondenceType.values()) {
+			vals.put(type, new Alignment());
+		}
 		for(Correspondence c : alignment) {
 			if(c.getCType().isPresent()) {
-				if(vals.containsKey(c.getCType().get())) {
-					Alignment align = vals.get(c.getCType().get());
-					align.add(c);
-					vals.put(c.getCType().get(), align);
-				} else {
-					Alignment align = new Alignment();
-					align.add(c);
-					vals.put(c.getCType().get(), align);
-				}
+				Alignment align = vals.get(c.getCType().get());
+				align.add(c);
+				vals.put(c.getCType().get(), align);
+			
 			} else {
 				throw new CorrespondenceException(CorrespondenceException.MISSING_TYPE_ANNOTATION, c.toString());
 			}
@@ -314,7 +312,16 @@ public class TypeCharacteristic extends Characteristic {
 	}
 	
 	public static double getFMeasureMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
-		return getFMeasureMicro(characteristics);
+		int sumNumOfMatcher = 0;
+		int sumNumOfGold = 0;
+		int sumNumOfCorrect = 0;
+		for(TypeCharacteristic c : characteristics) {
+			sumNumOfMatcher += c.getAlignmentMapping(type).size();
+			sumNumOfGold += c.getAlignmentMapping(type).size();
+			sumNumOfCorrect += c.getAlignmentCorrect(type).size();
+		}
+		return Characteristic.computeFFromPR((sumNumOfCorrect / (double) sumNumOfMatcher), 
+				(sumNumOfCorrect / (double) sumNumOfGold));
 	}
 	
 	public static double getFMeasureStdDev(List<TypeCharacteristic> characteristics, CorrespondenceType type) {

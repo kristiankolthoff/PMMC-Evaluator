@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -87,6 +88,13 @@ public class Evaluator {
 	private List<Function<Result, Result>> transformationsResult;
 	private List<Function<Alignment, Alignment>> transformationsAlignment;
 	private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
+	/**
+	 * Predicates for filtering Correspondences,
+	 * Alignments and Results
+	 */
+	private List<Predicate<Result>> filterResult;
+	private List<Predicate<Alignment>> filterAlignment;
+	private List<Predicate<Correspondence>> filterCorrespondence;
 	private Consumer<String> flowListener;
 	private Annotator annotator;
 	private Parser parser;
@@ -185,9 +193,9 @@ public class Evaluator {
 		}
 		for(Map.Entry<Double, List<Result>> e : this.mapResult.entrySet()) {
 			for(ResultHandler handler : this.handler) {
-				handler.open();
 				handler.setMappingInfo(getFinalOutputName(this.outputName, e.getKey()));
 				handler.setOutputPath(Paths.get(this.outputPath));
+				handler.open();
 				handler.receive(e.getValue());
 				handler.close();
 			}

@@ -32,10 +32,9 @@ public class PMMCEvaluation {
 				setAlignmentReader(new AlignmentReaderXml()).
 				setParser(Parser.TYPE_BPMN).
 				setModelsRootPath(MODELS_PATH).
-				setTagCTOn(false).
+				setTagCTOn(true).
 				addThreshold(Evaluator.THRESHOLD_ZERO).
 				setDebugOn(true).
-				addHandler(new HTMLHandler(SHOW_IN_BROWSER)).
 				addHandler(new JSONHandler()).
 				build();
 	}

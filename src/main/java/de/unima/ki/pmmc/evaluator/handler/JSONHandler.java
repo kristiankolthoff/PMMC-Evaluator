@@ -124,6 +124,7 @@ public class JSONHandler implements ResultHandler{
 									add(MICRO, microFMeasureNB).
 									add(MACRO, macroFMeasureNB).
 									add(STD_DEV, stdDevFMeasureNB))));
+			JsonArrayBuilder typeArray = Json.createArrayBuilder();
 			if(result.isEmptyCharacteristics()) {
 				List<TypeCharacteristic> typeCharacteristics = result.getTypeCharacteristics();
 				for(CorrespondenceType type : CorrespondenceType.values()) {
@@ -133,10 +134,13 @@ public class JSONHandler implements ResultHandler{
 					String microRecallType = this.df.format(TypeCharacteristic.getRecallMicro(typeCharacteristics, type));
 					String macroRecallType = this.df.format(TypeCharacteristic.getRecallMacro(typeCharacteristics, type));
 					String stdDevRecallType = this.df.format(TypeCharacteristic.getRecallStdDev(typeCharacteristics, type));
+					String microFMeasureType = this.df.format(TypeCharacteristic.getFMeasureMicro(typeCharacteristics, type));
 					String macroFMeasureType = this.df.format(TypeCharacteristic.getPrecisionMacro(typeCharacteristics, type));
 					String stdDevFMeasureType = this.df.format(TypeCharacteristic.getPrecisionStdDev(typeCharacteristics, type));
-					resultBuilder.add("type_metrics", Json.createObjectBuilder().
-							add("type", Json.createObjectBuilder().
+					String correlationType = this.df.format(TypeCharacteristic.getCorrelationMicro(typeCharacteristics, type, true));
+					String relativeDistanceType = this.df.format(TypeCharacteristic.getRelativeDistance(typeCharacteristics, type, true));
+					JsonObjectBuilder typeObject = Json.createObjectBuilder().
+							add("type", type.toString()).add("metrics", Json.createObjectBuilder().
 									add(PRECISION, Json.createObjectBuilder().
 											add(MICRO, microPrecisionType).
 											add(MACRO, macroPrecisionType).
@@ -146,9 +150,15 @@ public class JSONHandler implements ResultHandler{
 											add(MACRO, macroRecallType).
 											add(STD_DEV, stdDevRecallType)).
 									add(FMEASURE, Json.createObjectBuilder().
-											add(MICRO, ""))));
+											add(MICRO, microFMeasureType).
+											add(MACRO, macroFMeasureType).
+											add(STD_DEV, stdDevFMeasureType)).
+									add("correlation", correlationType).
+									add("realtiveDistance", relativeDistanceType));
+					typeArray.add(typeObject);
 				}
 			}
+			json.add("type_metrics", typeArray);
 			jsonArray.add(json);
 		}
 	}

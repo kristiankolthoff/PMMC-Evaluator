@@ -24,6 +24,7 @@ public class Characteristic {
 	*/
 	private static boolean strictEvaluation = false;
 	
+	public static final int NUM_OF_ANNOTATORS = 8;
 	
 	/**
 	* Constructs a characteristic based by comparing two mappings.
@@ -667,6 +668,7 @@ public class Characteristic {
 		if(normalize) {
 			newAlignment = getNormalizedAlignments(mappings);
 		}
+		final long POW_CONST = Math.round(NUM_OF_ANNOTATORS/1.5);
 		double sum = 0;
 		for(Alignment a1 : newAlignment) {
 			for(Correspondence cMap : a1) {
@@ -683,9 +685,9 @@ public class Characteristic {
 			double sqDev;
 			if(!isFirstLineAlignment(mappings)) {
 				double delta = (confRef!=0) ? confRef : 1; 
-				sqDev = delta * Math.pow(cMap.getConfidence() - confRef, 2);
+				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
 			} else {
-				sqDev = Math.pow(cMap.getConfidence() - confRef, 2);
+				sqDev = Math.pow(cMap.getConfidence() - confRef, POW_CONST);
 			}
 			sum += sqDev;
 			}
@@ -696,9 +698,9 @@ public class Characteristic {
 			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
 			for(Correspondence cOnlyRef : alignOnlyRef) {
 				if(!isFirstLineAlignment(mappings)) {
-					sum += cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), 2);
+					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
 				} else {
-					sum += Math.pow(cOnlyRef.getConfidence(), 2);
+					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), POW_CONST));
 				}
 			}
 		}
@@ -722,6 +724,9 @@ public class Characteristic {
 		List<Correspondence> allCorres = new ArrayList<>();
 		for(Alignment alignment : vals) {
 			allCorres.addAll(alignment.getCorrespondences());
+		}
+		if(allCorres.isEmpty()) {
+			return Collections.emptyList();
 		}
 		double maxConf = Collections.max(allCorres).getConfidence();
 		//Normalize FLM confidences between 0.125 and 1
