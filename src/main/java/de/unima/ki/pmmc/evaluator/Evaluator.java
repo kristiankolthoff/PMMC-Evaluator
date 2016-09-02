@@ -122,6 +122,9 @@ public class Evaluator {
 			List<Function<Result, Result>> transResult,
 			List<Function<Correspondence, Correspondence>> transCorr,
 			List<Function<Alignment, Alignment>> transAlign,
+			List<Predicate<Result>> filterResult,
+			List<Predicate<Correspondence>> filterCorrespondence,
+			List<Predicate<Alignment>> filterAlignment,
 			Parser parser) {
 		this.goldstandardPath = goldstandardPath;
 		this.matchersRootPath = matchersRootPath;
@@ -143,6 +146,9 @@ public class Evaluator {
 		this.transformationsResult = transResult;
 		this.transformationsCorrespondence = transCorr;
 		this.transformationsAlignment = transAlign;
+		this.filterResult = filterResult;
+		this.filterCorrespondence = filterCorrespondence;
+		this.filterAlignment = filterAlignment;
 		this.parser = parser;
 		this.currAlignments = new ArrayList<>();
 		this.mapResult = new HashMap<>();
@@ -181,6 +187,9 @@ public class Evaluator {
 		this.mapResult = applyTransformationsCorrespondence(this.mapResult, this.transformationsCorrespondence);
 		this.mapResult = applyTransformationsAlignment(this.mapResult, this.transformationsAlignment);
 		this.mapResult = applyTransformationsResults(this.mapResult, this.transformationsResult);
+		this.mapResult = applyFilterCorrespondence(this.mapResult, this.filterCorrespondence);
+		this.mapResult = applyFilterAlignment(this.mapResult, this.filterAlignment);
+		this.mapResult = applyFilterResults(this.mapResult, this.filterResult);
 		if(tagCTOn) {
 			this.annotator = new Annotator(loadModels(this.modelsRootPath));
 			log("CTTagging...");
@@ -277,6 +286,59 @@ public class Evaluator {
 				for(Alignment alignment : result) {
 					for(Function<Alignment, Alignment> trans : transformations) {
 						alignment = trans.apply(alignment);
+					}
+				}
+			}
+		}
+		return results;
+	}
+	
+	private Map<Double, List<Result>> applyFilterCorrespondence(Map<Double, List<Result>> results,
+			List<Predicate<Correspondence>> filters) {
+		log("Applying Filter to Result [" + filters.size() + "]");
+		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
+			for (int i = 0; i < e.getValue().size(); i++) {
+				for (int j = 0; j < e.getValue().get(i).getAlignments().size(); j++) {
+					Alignment a = e.getValue().get(i).getAlignments().get(j);
+					for (int k = 0; k < a.size(); k++) {
+						for(Predicate<Correspondence> filter : filters) {
+							if(filter.test(a.get(k))) {
+								a.getCorrespondences().remove(k);
+							}
+						}
+					}
+				}
+			}
+		}
+		return results;
+	}
+	
+	
+	private Map<Double, List<Result>> applyFilterAlignment(Map<Double, List<Result>> results,
+			List<Predicate<Alignment>> filters) {
+		log("Applying Filter to Result [" + filters.size() + "]");
+		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
+			for (int i = 0; i < e.getValue().size(); i++) {
+				for (int j = 0; j < e.getValue().get(i).getAlignments().size(); j++) {
+					for(Predicate<Alignment> filter : filters) {
+						if(filter.test(e.getValue().get(i).getAlignments().get(j))) {
+							e.getValue().get(i).getAlignments().remove(j);
+						}
+					}
+				}
+			}
+		}
+		return results;
+	}
+	
+	private Map<Double, List<Result>> applyFilterResults(Map<Double, List<Result>> results,
+			List<Predicate<Result>> filters) {
+		log("Applying Filter to Result [" + filters.size() + "]");
+		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
+			for (int i = 0; i < e.getValue().size(); i++) {
+				for(Predicate<Result> filter : filters) {
+					if(filter.test(e.getValue().get(i))) {
+						e.getValue().remove(i);
 					}
 				}
 			}
@@ -532,6 +594,9 @@ public class Evaluator {
 		private List<Function<Result, Result>> transformationsResult;
 		private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
 		private List<Function<Alignment, Alignment>> transformationsAlignment;
+		private List<Predicate<Result>> filterResult;
+		private List<Predicate<Correspondence>> filterCorrespondence;
+		private List<Predicate<Alignment>> filterAlignment;
 		private Parser parser;
 		
 		public Builder() {
@@ -543,6 +608,9 @@ public class Evaluator {
 			this.transformationsResult = new ArrayList<>();
 			this.transformationsCorrespondence = new ArrayList<>();
 			this.transformationsAlignment = new ArrayList<>();
+			this.filterResult = new ArrayList<>();
+			this.filterCorrespondence = new ArrayList<>();
+			this.filterAlignment = new ArrayList<>();
 			this.outputPath =  System.getProperty("user.dir");
 			this.debugOn = false;
 			this.tagCTOn = false;
@@ -707,6 +775,42 @@ public class Evaluator {
 		}
 		
 		/**
+		 * Adds custom <code>Result</code> filter. This filter
+		 * is applied to each generated <code>Result</code> instance of a matcher,
+		 * and filters the <code>Result</code> based on the filter predicate.
+		 * @param filter which should be applied to the generated results
+		 * @return this
+		 */
+		public Builder addFilterToResult(Predicate<Result> filter) {
+			this.filterResult.add(filter);
+			return this;
+		}
+		
+		/**
+		 * Adds custom <code>Correspondence</code> filter. This filter
+		 * is applied to each <code>Correspondence</code> instance of a matcher,
+		 * and filters the <code>Correspondence</code> based on the filter predicate.
+		 * @param filter which should be applied to the generated correspondences
+		 * @return this
+		 */
+		public Builder addFilterToCorrespondence(Predicate<Correspondence> filter) {
+			this.filterCorrespondence.add(filter);
+			return this;
+		}
+		
+		/**
+		 * Adds custom <code>Alignment</code> filter. This filter
+		 * is applied to each generated <code>Alignment</code> instance of a matcher,
+		 * and filters the <code>Alignment</code> based on the filter predicate.
+		 * @param filter which should be applied to the generated alignments
+		 * @return this
+		 */
+		public Builder addFilterToAlignment(Predicate<Alignment> filter) {
+			this.filterAlignment.add(filter);
+			return this;
+		}
+		
+		/**
 		 * Set root path of goldstandard alignment
 		 * @param goldstandardPath the path to the goldstandard alignments
 		 * @return this
@@ -862,6 +966,9 @@ public class Evaluator {
 					this.transformationsResult, 
 					this.transformationsCorrespondence, 
 					this.transformationsAlignment,
+					this.filterResult,
+					this.filterCorrespondence,
+					this.filterAlignment,
 					this.parser);
 		}
 	}

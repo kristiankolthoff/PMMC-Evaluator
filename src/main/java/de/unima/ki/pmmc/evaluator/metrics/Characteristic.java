@@ -683,7 +683,8 @@ public class Characteristic {
 			}
 			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
 			double sqDev;
-			if(!isFirstLineAlignment(mappings)) {
+//			if(!isFirstLineAlignment(mappings)) {
+			if(true) {
 				double delta = (confRef!=0) ? confRef : 1; 
 				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
 			} else {
@@ -697,7 +698,8 @@ public class Characteristic {
 		for(int i = 0; i < references.size(); i++) {
 			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
 			for(Correspondence cOnlyRef : alignOnlyRef) {
-				if(!isFirstLineAlignment(mappings)) {
+//				if(!isFirstLineAlignment(mappings)) {
+				if(true) {
 					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
 				} else {
 					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), POW_CONST));
@@ -728,27 +730,27 @@ public class Characteristic {
 		if(allCorres.isEmpty()) {
 			return Collections.emptyList();
 		}
-		double maxConf = Collections.max(allCorres).getConfidence();
-		//Normalize FLM confidences between 0.125 and 1
-		if(isFirstLineAlignment(alignments)) {
-			for(Correspondence c : allCorres) {
-				c.setConfidence(c.getConfidence() / maxConf);
-			}
-			double minConf = Collections.min(allCorres).getConfidence();
-			final double TARGET_MAX = 1;
-			final double TARGET_MIN = 0.125;
-			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
-			for(Correspondence c : allCorres) {
-				double finalConf = 1 - mult * (1 - c.getConfidence());
-				c.setConfidence(finalConf);
-			}
-		} 
-		//Normalize SLM confidences to 0 and 1
-		else {
+//		double maxConf = Collections.max(allCorres).getConfidence();
+//		//Normalize FLM confidences between 0.125 and 1
+//		if(isFirstLineAlignment(alignments)) {
+//			for(Correspondence c : allCorres) {
+//				c.setConfidence(c.getConfidence() / maxConf);
+//			}
+//			double minConf = Collections.min(allCorres).getConfidence();
+//			final double TARGET_MAX = 1;
+//			final double TARGET_MIN = 0.125;
+//			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
+//			for(Correspondence c : allCorres) {
+//				double finalConf = 1 - mult * (1 - c.getConfidence());
+//				c.setConfidence(finalConf);
+//			}
+//		} 
+//		//Normalize SLM confidences to 0 and 1
+//		else {
 			for(Correspondence c : allCorres) {
 				c.setConfidence((c.getConfidence()>0) ? 1 : 0);
 			}
-		}
+//		}
 		return vals;
 	}
 	
