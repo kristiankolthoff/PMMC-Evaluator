@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
+import org.apache.ecs.xhtml.font;
+import org.junit.runner.Computer;
+
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 
@@ -214,6 +217,14 @@ public class Characteristic {
 		return getCorrelation(mappings, references, allowZeros);
 	}
 	
+	public double getSpearmanRangCorrelation() {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		mappings.add(this.alignmentMapping);
+		references.add(this.alignmentReference);
+		return getSpearmanRangCorrelation(mappings, references);
+	}
+	
 	/**
 	 * Computes the correlation between the specified <code>Alignment</code>s.
 	 * Note that this method assumes that the <code>Alignment</code>s of matcher 
@@ -290,6 +301,146 @@ public class Characteristic {
 		return sumDev / (Math.sqrt(sumSqDevGold) * Math.sqrt(sumSqDevMapper));
 	}
 	
+	
+	public static double getSpearmanRangCorrelation(List<Alignment> mappings, List<Alignment> references) {
+		if(mappings.size() != references.size()) {
+			throw new IllegalArgumentException("Mapping and reference alignment length unequal. Mapping: " + mappings.size()
+					+ " Reference: " + references.size());
+		}
+		Alignment a = new Alignment();
+		for (int i = 0; i < mappings.size(); i++) {
+			a.add(Alignment.join(mappings.get(i), references.get(i)));
+		}
+		int N = a.size();
+		List<Rank> normRangRef = computeNormalizedRang(computeRang(references, mappings));
+		List<Rank> normRangMap = computeNormalizedRang(computeRang(mappings, references));
+		double T_GS = computeT(normRangRef);
+		double T_M = computeT(normRangMap);
+		double sqDevSum = 0;
+		for(Rank rankRef : normRangRef) {
+			for(Rank rankMap : normRangMap) {
+				if(rankRef.equals(rankMap)) {
+					sqDevSum += Math.pow(rankRef.getNormalizedRank() - rankMap.getNormalizedRank(),2);
+				}
+			}
+		}
+		return getSpearRangCorrCoef(N, T_GS, T_M, sqDevSum);
+	}
+
+	public static double getSpearRangCorrCoef(final int N, final double T_GS, 
+			final double T_M, double sqDevSum) {
+		return (Math.pow(N, 3) - N - 0.5*T_GS - 0.5*T_M - 6*sqDevSum) / 
+				(Math.sqrt((Math.pow(N, 3) - N - T_GS) * (Math.pow(N, 3) - N - T_M)));
+	}
+	
+	private static List<Rank> computeRang(List<Alignment> aligns1, List<Alignment> aligns2) {
+		List<Rank> ranks = new ArrayList<>();
+		for(Alignment a : aligns1) {
+			for(Correspondence c : a) {
+				ranks.add(new Rank(c));
+			}
+		}
+		Alignment fp = new Alignment();
+		for (int i = 0; i < aligns2.size(); i++) {
+			fp.add(aligns2.get(i).minus(aligns1.get(i)));
+		}
+		for(Correspondence c : fp) {
+			ranks.add(new Rank(new Correspondence(c.getUri1(), c.getUri2(), 0)));
+		}
+		Collections.sort(ranks);
+		for (int i = 0; i < ranks.size(); i++) {
+			ranks.get(i).setRank(i+1);
+		}
+		return ranks;
+	}
+	
+	private static List<Rank> computeNormalizedRang(List<Rank> ranks) {
+		double lastVal = ranks.get(0).getC().getConfidence();
+		int min = 1;
+		for (int i = 0; i <= ranks.size(); i++) {
+			if(i == ranks.size() || ranks.get(i).getC().getConfidence() != lastVal) {
+				double mean = getMean(min, i);
+				while(min <= i) {
+					ranks.get(min-1).setNormalizedRank(mean);
+					min++;
+				}
+				if(i != ranks.size()) {
+					lastVal = ranks.get(i).getC().getConfidence();										
+				}
+	
+			}
+		}
+		return ranks;
+	}
+	
+	private static double computeT(List<Rank> vals) {
+		double result = 0;
+		int cnt = 0;
+		double lastVal = vals.get(0).getC().getConfidence();
+		for (int i = 0; i <= vals.size(); i++) {
+			if(i == vals.size() || vals.get(i).getC().getConfidence() != lastVal) {
+				result += Math.pow(cnt, 3) - cnt;
+				cnt = 0;
+				if(i < vals.size()) {
+					lastVal = vals.get(i).getC().getConfidence();					
+				}
+			}
+			cnt++;
+		}
+		return result;
+	}
+	
+	private static double getMean(int min, int max) {
+		int curr = min;
+		double result = 0;
+		while(curr <= max) {
+			result += curr;
+			curr++;
+		}
+		return result / ((max+1)-min);
+	}
+	
+	
+	
+	public static void main(String[] args) {
+//		List<Rank> result = new ArrayList<>();
+//		result.add(new Rank());
+//		result.add(0d);
+//		result.add(0.125);
+//		result.add(0.125);
+//		result.add(0.125);
+//		result.add(0.125);
+//		result.add(0.25);
+//		result.add(0.375);
+//		result.add(0.500);
+//		result.add(0.625);
+//		result.add(0.750);
+//		result.add(0.875);
+//		result.add(1d);
+//		result.add(1d);
+//		result.add(1d);
+//		List<Double> test = Characteristic.computeNormalizedRang(result);
+//		System.out.println(Characteristic.computeT(test));
+//		for(double d : test) {
+//			System.out.println(d);
+//		}
+	}
+	
+	public static double getSpearRangCorrMicro(List<? extends Characteristic> characteristics) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		for(Characteristic c : characteristics) {
+			mappings.add(c.getAlignmentMapping());
+			references.add(c.getAlignmentReference());
+		}
+		return getSpearmanRangCorrelation(mappings, references);
+	}
+
+	
+	public static double getSpearRangCorrMacro(List<Characteristic> characteristics) {
+		return computeMacro(characteristics, c -> {return c.getSpearmanRangCorrelation();});
+	}
+	
 	/**
 	 * Computes the micro correlation across the <code>Characteristc</code>s.
 	 * @param characteristics the characteristics to compute the micro correlation from
@@ -317,6 +468,7 @@ public class Characteristic {
 	public static double getCorrelationMacro(List<Characteristic> characteristics, boolean allowZeros) {
 		return computeMacro(characteristics, c -> {return c.getCorrelation(allowZeros);});
 	}
+	
 	
 	/**
 	 * General purpose method for computing micro summary
@@ -683,8 +835,7 @@ public class Characteristic {
 			}
 			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
 			double sqDev;
-//			if(!isFirstLineAlignment(mappings)) {
-			if(true) {
+			if(!isFirstLineAlignment(mappings)) {
 				double delta = (confRef!=0) ? confRef : 1; 
 				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
 			} else {
@@ -698,8 +849,7 @@ public class Characteristic {
 		for(int i = 0; i < references.size(); i++) {
 			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
 			for(Correspondence cOnlyRef : alignOnlyRef) {
-//				if(!isFirstLineAlignment(mappings)) {
-				if(true) {
+				if(!isFirstLineAlignment(mappings)) {
 					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
 				} else {
 					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), POW_CONST));

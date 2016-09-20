@@ -17,6 +17,7 @@ import org.apache.ecs.html.TD;
 import org.apache.ecs.html.TH;
 import org.apache.ecs.html.TR;
 import org.apache.ecs.html.Table;
+import org.apache.logging.log4j.core.config.plugins.convert.TypeConverters.CharArrayConverter;
 
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.matcher.Result;
@@ -90,6 +91,10 @@ public class HTMLHandler implements ResultHandler{
 		th5.setStyle("border:none;");
 		trHead1.addElement(th5.addAttribute("width", "20"));
 		trHead1.addElement(new TH("Rel. Dist.").addAttribute("colspan", "3"));
+		TH th6 = new TH();
+		th6.setStyle("border:none;");
+		trHead1.addElement(th6.addAttribute("width", "20"));
+		trHead1.addElement(new TH("SpearmanRangCorr.").addAttribute("colspan", "3"));
 		this.table.addElement(trHead1);
 	}
 	
@@ -110,6 +115,7 @@ public class HTMLHandler implements ResultHandler{
 		trHead2.addElement(new TD().setStyle("border:none;"));
 		trHead2.addElement(new TD().setStyle("border:none;"));
 		trHead2.addElement(new TD().setStyle("border:none;"));
+		trHead2.addElement(new TD());
 		trHead2.addElement(new TD());
 		this.table.addElement(trHead2);
 	}
@@ -132,6 +138,7 @@ public class HTMLHandler implements ResultHandler{
 		//TODO create corresponding constants
 		String correlation = this.df.format(Characteristic.getCorrelationMicro(characteristics, false));
 		String relativeDistance = this.df.format(Characteristic.getRelativeDistance(characteristics, true));
+		String spearmanRangCorr = this.df.format(Characteristic.getSpearRangCorrMicro(characteristics));
 		
 		if(Characteristic.isFirstLineMatcher(characteristics)) {
 			this.table.addElement(new TD(mappingInfo + " (FLM)").setStyle("background-color:gray;"));
@@ -156,6 +163,9 @@ public class HTMLHandler implements ResultHandler{
 		this.table.addElement(new TD().setStyle("border:none;"));
 		this.table.addElement(new TD().setStyle("border:none;"));
 		this.table.addElement(new TD(relativeDistance));
+		this.table.addElement(new TD().setStyle("border:none;"));
+		this.table.addElement(new TD().setStyle("border:none;"));
+		this.table.addElement(new TD(spearmanRangCorr));
 	}
 
 	public boolean showInBrowser() {

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ecs.storage.Array;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -349,6 +350,77 @@ public class CharacteristicTest {
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> characteristics = new ArrayList<>();
 		assertEquals(0, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getSpearmanRangCorrTest() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0));
+		reference.add(new Correspondence("2", "2", 0));
+		reference.add(new Correspondence("3", "3", 0.125));
+		reference.add(new Correspondence("4", "4", 0.125));
+		reference.add(new Correspondence("5", "5", 0.125));
+		reference.add(new Correspondence("6", "6", 0.125));
+		reference.add(new Correspondence("7", "7", 0.25));
+		reference.add(new Correspondence("8", "8", 0.375));
+		reference.add(new Correspondence("9", "9", 0.500));
+		reference.add(new Correspondence("10", "10", 0.625));
+		reference.add(new Correspondence("11", "11", 0.750));
+		reference.add(new Correspondence("12", "12", 0.875));
+		reference.add(new Correspondence("13", "13", 1));
+		reference.add(new Correspondence("14", "14", 1));
+		reference.add(new Correspondence("15", "15", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 1));
+		matcher.add(new Correspondence("2", "2", 1));
+		matcher.add(new Correspondence("3", "3", 1));
+		matcher.add(new Correspondence("4", "4", 0));
+		matcher.add(new Correspondence("5", "5", 0));
+		matcher.add(new Correspondence("6", "6", 1));
+		matcher.add(new Correspondence("7", "7", 1));
+		matcher.add(new Correspondence("8", "8", 1));
+		matcher.add(new Correspondence("9", "9", 0));
+		matcher.add(new Correspondence("10", "10", 0));
+		matcher.add(new Correspondence("11", "11", 0));
+		matcher.add(new Correspondence("12", "12", 0));
+		matcher.add(new Correspondence("13", "13", 0));
+		matcher.add(new Correspondence("14", "14", 1));
+		matcher.add(new Correspondence("15", "15", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> cs = new ArrayList<>();
+		cs.add(c);
+		assertEquals(-0.2821, Characteristic.getSpearRangCorrMacro(cs), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getSpearmanRangCorr2Test() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("3", "3", 0.125));
+		reference.add(new Correspondence("4", "4", 0.125));
+		reference.add(new Correspondence("5", "5", 0.125));
+		reference.add(new Correspondence("6", "6", 0.125));
+		reference.add(new Correspondence("7", "7", 0.25));
+		reference.add(new Correspondence("8", "8", 0.375));
+		reference.add(new Correspondence("9", "9", 0.500));
+		reference.add(new Correspondence("10", "10", 0.625));
+		reference.add(new Correspondence("11", "11", 0.750));
+		reference.add(new Correspondence("12", "12", 0.875));
+		reference.add(new Correspondence("13", "13", 1));
+		reference.add(new Correspondence("14", "14", 1));
+		reference.add(new Correspondence("15", "15", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 1));
+		matcher.add(new Correspondence("2", "2", 1));
+		matcher.add(new Correspondence("3", "3", 1));
+		matcher.add(new Correspondence("6", "6", 1));
+		matcher.add(new Correspondence("7", "7", 1));
+		matcher.add(new Correspondence("8", "8", 1));
+		matcher.add(new Correspondence("14", "14", 1));
+		matcher.add(new Correspondence("15", "15", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> cs = new ArrayList<>();
+		cs.add(c);
+		assertEquals(-0.2821, Characteristic.getSpearRangCorrMacro(cs), ALLOWED_DEV);
 	}
 	
 }
