@@ -7,9 +7,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
-import org.apache.ecs.xhtml.font;
-import org.junit.runner.Computer;
-
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 
@@ -302,6 +299,15 @@ public class Characteristic {
 	}
 	
 	
+	/**
+	 * Computes the spearman rang correlation coefficient based on given goldstandard
+	 * <code>Alignment</code>s and the matcher <code>Alignment</code>s. Ranks the including
+	 * <code>Correspondence</code>s ascending by the confidence value and computes normalized
+	 * ranks. Then computes the correlation between both normalized rankings.
+	 * @param mappings <code>Alignment</code>s produced by the matcher
+	 * @param references <code>Alignment</code> of the goldstandard
+	 * @return spearman rang correlation coefficient
+	 */
 	public static double getSpearmanRangCorrelation(List<Alignment> mappings, List<Alignment> references) {
 		if(mappings.size() != references.size()) {
 			throw new IllegalArgumentException("Mapping and reference alignment length unequal. Mapping: " + mappings.size()
@@ -327,12 +333,27 @@ public class Characteristic {
 		return getSpearRangCorrCoef(N, T_GS, T_M, sqDevSum);
 	}
 
+	/**
+	 * Computes spearman rang correlation coefficient.
+	 * @param N the number of annotations in the union set of goldstandard and matcher
+	 * @param T_GS sum of deviations of count on goldstandard
+	 * @param T_M sum of deviations of count on matcher
+	 * @param sqDevSum sum of squared differences of the normalized rank between the matcher and goldstandard
+	 * @return spearman rang correlation coefficient
+	 */
 	public static double getSpearRangCorrCoef(final int N, final double T_GS, 
 			final double T_M, double sqDevSum) {
 		return (Math.pow(N, 3) - N - 0.5*T_GS - 0.5*T_M - 6*sqDevSum) / 
 				(Math.sqrt((Math.pow(N, 3) - N - T_GS) * (Math.pow(N, 3) - N - T_M)));
 	}
 	
+	/**
+	 * Computes the list of <code>Rank</code>s for the first list of <code>Alignment</code>
+	 * required for spearman rang correlation coefficient.
+	 * @param aligns1 first alignments
+	 * @param aligns2 second alignments used to include missing correspondences in the first alignment
+	 * @return <code>Rank</code>s for the first <code>Alignemnt<code>s
+	 */
 	private static List<Rank> computeRang(List<Alignment> aligns1, List<Alignment> aligns2) {
 		List<Rank> ranks = new ArrayList<>();
 		for(Alignment a : aligns1) {
@@ -354,6 +375,12 @@ public class Characteristic {
 		return ranks;
 	}
 	
+	/**
+	 * Computes normalized list of <code>Rank</code>s for
+	 * spearman rang correlation coefficient.
+	 * @param ranks the ranks to normalize
+	 * @return list of <code>Rank</code>s with normalized rankings
+	 */
 	private static List<Rank> computeNormalizedRang(List<Rank> ranks) {
 		double lastVal = ranks.get(0).getC().getConfidence();
 		int min = 1;
@@ -373,6 +400,12 @@ public class Characteristic {
 		return ranks;
 	}
 	
+	/**
+	 * Computes sum of count deviations from normalized ranks
+	 * for spearman rang correlation coefficient.
+	 * @param vals the ranks to compute T from
+	 * @return sum of count deviations from normalized ranks
+	 */
 	private static double computeT(List<Rank> vals) {
 		double result = 0;
 		int cnt = 0;
@@ -390,7 +423,16 @@ public class Characteristic {
 		return result;
 	}
 	
+	/**
+	 * Computes the mean of the sum from min to max value.
+	 * @param min the value to start the sum with
+	 * @param max the value to end the sum with
+	 * @return mean of the given interval
+	 */
 	private static double getMean(int min, int max) {
+		if(min > max) {
+			return -1;
+		}
 		int curr = min;
 		double result = 0;
 		while(curr <= max) {
@@ -401,31 +443,11 @@ public class Characteristic {
 	}
 	
 	
-	
-	public static void main(String[] args) {
-//		List<Rank> result = new ArrayList<>();
-//		result.add(new Rank());
-//		result.add(0d);
-//		result.add(0.125);
-//		result.add(0.125);
-//		result.add(0.125);
-//		result.add(0.125);
-//		result.add(0.25);
-//		result.add(0.375);
-//		result.add(0.500);
-//		result.add(0.625);
-//		result.add(0.750);
-//		result.add(0.875);
-//		result.add(1d);
-//		result.add(1d);
-//		result.add(1d);
-//		List<Double> test = Characteristic.computeNormalizedRang(result);
-//		System.out.println(Characteristic.computeT(test));
-//		for(double d : test) {
-//			System.out.println(d);
-//		}
-	}
-	
+	/**
+	 * Computes the micro spearman rang correlation coefficient across the <code>Characteristc</code>s.
+	 * @param characteristics the characteristics to compute the micro spearman rang correlation coefficient
+	 * @return micro spearman rang correlation coefficient of multiple <code>Characterisitic</code>s
+	 */
 	public static double getSpearRangCorrMicro(List<? extends Characteristic> characteristics) {
 		List<Alignment> mappings = new ArrayList<>();
 		List<Alignment> references = new ArrayList<>();
@@ -437,6 +459,11 @@ public class Characteristic {
 	}
 
 	
+	/**
+	 * Computes the macro spearman rang correlation coefficient across the <code>Characteristc</code>s.
+	 * @param characteristics the characteristics to compute the macro spearman rang correlation coefficient
+	 * @return macro spearman rang correlation coefficient of multiple <code>Characterisitic</code>s
+	 */
 	public static double getSpearRangCorrMacro(List<Characteristic> characteristics) {
 		return computeMacro(characteristics, c -> {return c.getSpearmanRangCorrelation();});
 	}
