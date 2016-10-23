@@ -106,6 +106,24 @@ public class Result implements Iterable<Alignment>{
 		return alignments.size();
 	}
 	
+	public int sizeOfCorrespondences() {
+		int size = 0;
+		for(Alignment a : this.alignments) {
+			size += a.size();
+		}
+		return size;
+	}
+	
+	public double sumConfidences() {
+		double sum = 0;
+		for(Alignment a : this.alignments) {
+			for(Correspondence c : a) {
+				sum += c.getConfidence();
+			}
+		}
+		return sum;
+	}
+	
 	public boolean isEmptyCharacteristics() {
 		return this.characteristics.isEmpty();
 	}

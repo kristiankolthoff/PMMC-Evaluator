@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.function.Function;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
@@ -318,8 +319,8 @@ public class Characteristic {
 			a.add(Alignment.join(mappings.get(i), references.get(i)));
 		}
 		int N = a.size();
-		List<Rank> normRangRef = computeNormalizedRang(computeRang(references, mappings));
-		List<Rank> normRangMap = computeNormalizedRang(computeRang(mappings, references));
+		List<Rank> normRangRef = computeNormalizedRang(computeRang(references, mappings, false));
+		List<Rank> normRangMap = computeNormalizedRang(computeRang(mappings, references, true));
 		double T_GS = computeT(normRangRef);
 		double T_M = computeT(normRangMap);
 		double sqDevSum = 0;
@@ -354,10 +355,13 @@ public class Characteristic {
 	 * @param aligns2 second alignments used to include missing correspondences in the first alignment
 	 * @return <code>Rank</code>s for the first <code>Alignemnt<code>s
 	 */
-	private static List<Rank> computeRang(List<Alignment> aligns1, List<Alignment> aligns2) {
+	private static List<Rank> computeRang(List<Alignment> aligns1, List<Alignment> aligns2, boolean matcher) {
 		List<Rank> ranks = new ArrayList<>();
 		for(Alignment a : aligns1) {
 			for(Correspondence c : a) {
+				if(matcher) {
+					c.setConfidence(1);
+				}
 				ranks.add(new Rank(c));
 			}
 		}
@@ -847,7 +851,8 @@ public class Characteristic {
 		if(normalize) {
 			newAlignment = getNormalizedAlignments(mappings);
 		}
-		final long POW_CONST = Math.round(NUM_OF_ANNOTATORS/1.5);
+		final double POW_NORM = 1.5;
+		final long POW_CONST = Math.round(NUM_OF_ANNOTATORS/POW_NORM);
 		double sum = 0;
 		for(Alignment a1 : newAlignment) {
 			for(Correspondence cMap : a1) {
@@ -866,7 +871,7 @@ public class Characteristic {
 				double delta = (confRef!=0) ? confRef : 1; 
 				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
 			} else {
-				sqDev = Math.pow(cMap.getConfidence() - confRef, POW_CONST);
+				sqDev = Math.pow(cMap.getConfidence() - confRef, 2);
 			}
 			sum += sqDev;
 			}
@@ -879,7 +884,7 @@ public class Characteristic {
 				if(!isFirstLineAlignment(mappings)) {
 					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
 				} else {
-					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), POW_CONST));
+					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), 2));
 				}
 			}
 		}
@@ -907,27 +912,27 @@ public class Characteristic {
 		if(allCorres.isEmpty()) {
 			return Collections.emptyList();
 		}
-//		double maxConf = Collections.max(allCorres).getConfidence();
-//		//Normalize FLM confidences between 0.125 and 1
-//		if(isFirstLineAlignment(alignments)) {
-//			for(Correspondence c : allCorres) {
-//				c.setConfidence(c.getConfidence() / maxConf);
-//			}
-//			double minConf = Collections.min(allCorres).getConfidence();
-//			final double TARGET_MAX = 1;
-//			final double TARGET_MIN = 0.125;
-//			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
-//			for(Correspondence c : allCorres) {
-//				double finalConf = 1 - mult * (1 - c.getConfidence());
-//				c.setConfidence(finalConf);
-//			}
-//		} 
+		double maxConf = Collections.max(allCorres).getConfidence();
+		//Normalize FLM confidences between 0.125 and 1
+		if(isFirstLineAlignment(alignments)) {
+			for(Correspondence c : allCorres) {
+				c.setConfidence(c.getConfidence() / maxConf);
+			}
+			double minConf = Collections.min(allCorres).getConfidence();
+			final double TARGET_MAX = 1;
+			final double TARGET_MIN = 0.125;
+			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
+			for(Correspondence c : allCorres) {
+				double finalConf = 1 - mult * (1 - c.getConfidence());
+				c.setConfidence(finalConf);
+			}
+		} 
 //		//Normalize SLM confidences to 0 and 1
-//		else {
+		else {
 			for(Correspondence c : allCorres) {
 				c.setConfidence((c.getConfidence()>0) ? 1 : 0);
 			}
-//		}
+		}
 		return vals;
 	}
 	
@@ -941,12 +946,11 @@ public class Characteristic {
 	 * is a Second Line Matcher (SLM)
 	 */
 	public static boolean isFirstLineMatcher(List<Characteristic> characteristics) {
+		List<Alignment> alignments = new ArrayList<>();
 		for(Characteristic c : characteristics) {
-			if(c.isFirstLineMatcher()) {
-				return true;
-			}
+			alignments.add(c.getAlignmentMapping());
 		}
-		return false;
+		return isFirstLineAlignment(alignments);
 	}
 	
 	/**
@@ -957,12 +961,25 @@ public class Characteristic {
 	 * is a Second Line Matcher (SLM)
 	 */
 	public static boolean isFirstLineAlignment(List<Alignment> alignments) {
-		for(Alignment alignment : alignments) {
-			if(isFirstLineAlignment(alignment)) {
-				return true;
-			}
+//		for(Alignment alignment : alignments) {
+//			if(isFirstLineAlignment(alignment)) {
+//				return true;
+//			}
+//		}
+//		return false;
+		List<Correspondence> corres = new ArrayList<>();
+		for(Alignment a : alignments) {
+			corres.addAll(a.getCorrespondences());
 		}
-		return false;
+		long numDistinctVals = corres.
+				stream().
+				mapToDouble(c -> c.getConfidence()).
+				distinct().count();
+//		OptionalDouble minConf = corres.
+//				stream().
+//				mapToDouble(c -> c.getConfidence()).
+//				distinct().min();
+		return numDistinctVals > 1 ;//&& minConf.getAsDouble() < 0.70;
 	}
 	
 	/**
@@ -977,6 +994,10 @@ public class Characteristic {
 				stream().
 				mapToDouble(c -> c.getConfidence()).
 				distinct().count();
+		OptionalDouble minConf = alignment.getCorrespondences().
+				stream().
+				mapToDouble(c -> c.getConfidence()).
+				distinct().min();
 		return numDistinctVals > 1;
 	}
 	

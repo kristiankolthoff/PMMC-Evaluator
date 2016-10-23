@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -40,7 +41,7 @@ public class Evaluator {
 	 * root path and root path to the used models
 	 */
 	private String goldstandardPath;
-	private String matchersRootPath;
+	private Optional<String> matchersRootPath;
 	private String modelsRootPath;
 	/**
 	 * Output path and prefix for generated output files
@@ -112,7 +113,7 @@ public class Evaluator {
 	private static final String SEPERATOR = "-";
 	private static final Logger LOG = Logger.getLogger(Evaluator.class.getName());
 	
-	public Evaluator(String goldstandardPath, String matchersRootPath,
+	public Evaluator(String goldstandardPath, Optional<String> matchersRootPath,
 			String modelsRootPath, String outputPath, String outputName, Result goldstandard,
 			List<String> matcherPaths, List<Result> results,
 			List<Double> thresholds, List<ResultHandler> handler,
@@ -210,6 +211,11 @@ public class Evaluator {
 			}
 		}
 		log("Finished tasks...");
+		for(Result r : this.mapResult.get(0.75)) {
+			System.out.println(r.getName());
+			System.out.println(r.sizeOfCorrespondences());
+			System.out.println(r.sumConfidences());
+		}
 		return this;
 	}
 	 
@@ -399,37 +405,39 @@ public class Evaluator {
 	 * @param path the root path used as a starting point to search for results
 	 * @throws IOException
 	 */
-	private void searchForResults(String path, double threshold) throws IOException {
+	private void searchForResults(Optional<String> path, double threshold) throws IOException {
 		log("Generate Results for threshold [" + threshold + "]");
 		results = new ArrayList<>();
 		for(String matcherPath : this.matcherPaths) {
 			results.add(loadResult(matcherPath, extractName(matcherPath), threshold));
 		}
-		Files.walk(Paths.get(path)).forEach(filePath -> {
-			if(isFileInGS(filePath.getFileName().toString())) {
-				try {
-					Alignment a = alignmentReader.getAlignment(filePath.toString());
-					a.applyThreshold(threshold);
-					a.setName(filePath.getFileName().toString());
-					currAlignments.add(a);
-					currMatcherName = findName(filePath, path);
-					currMatcherPath = filePath.getParent().toString();
-				} catch (Exception e) {
-					errors.add(e);
-					e.printStackTrace();
+		if(path.isPresent()) {
+			Files.walk(Paths.get(path.get())).forEach(filePath -> {
+				if(isFileInGS(filePath.getFileName().toString())) {
+					try {
+						Alignment a = alignmentReader.getAlignment(filePath.toString());
+						a.applyThreshold(threshold);
+						a.setName(filePath.getFileName().toString());
+						currAlignments.add(a);
+						currMatcherName = findName(filePath, path.get());
+						currMatcherPath = filePath.getParent().toString();
+					} catch (Exception e) {
+						errors.add(e);
+						e.printStackTrace();
+					}
+				} else if(!currAlignments.isEmpty()){
+					//Verify if currently read matcher alignment has the same size as goldstandard
+					Result goldstandard = this.goldstandard.values().iterator().next();
+					if(goldstandard.size() != currAlignments.size()) {
+						throw new IllegalArgumentException("Goldstandard alignment size unequal to matcher alignment size at "
+								+ currMatcherName + " GS: " + goldstandard.size() + " Matcher: " + currAlignments.size());
+					}
+					results.add(new Result(currMatcherName, currMatcherPath, threshold, currAlignments));
+					log("[" + currMatcherName + "] @ " + currMatcherPath + " [" + currAlignments.size() + "]");
+					currAlignments = new ArrayList<>();
 				}
-			} else if(!currAlignments.isEmpty()){
-				//Verify if currently read matcher alignment has the same size as goldstandard
-				Result goldstandard = this.goldstandard.values().iterator().next();
-				if(goldstandard.size() != currAlignments.size()) {
-					throw new IllegalArgumentException("Goldstandard alignment size unequal to matcher alignment size at "
-							+ currMatcherName + " GS: " + goldstandard.size() + " Matcher: " + currAlignments.size());
-				}
-				results.add(new Result(currMatcherName, currMatcherPath, currAlignments));
-				log("[" + currMatcherName + "] @ " + currMatcherPath + " [" + currAlignments.size() + "]");
-				currAlignments = new ArrayList<>();
-			}
-		});
+			});
+		}
 		this.mapResult.put(threshold, results);
 	}
 	
@@ -482,7 +490,7 @@ public class Evaluator {
 		return goldstandardPath;
 	}
 
-	public String getMatchersRootPath() {
+	public Optional<String> getMatchersRootPath() {
 		return matchersRootPath;
 	}
 
@@ -577,7 +585,7 @@ public class Evaluator {
 	public static class Builder {
 		
 		private String goldstandardPath;
-		private String matchersRootPath;
+		private Optional<String> matchersRootPath;
 		private String modelsRootPath;
 		private String outputPath;
 		private String outputName;
@@ -611,6 +619,7 @@ public class Evaluator {
 			this.filterResult = new ArrayList<>();
 			this.filterCorrespondence = new ArrayList<>();
 			this.filterAlignment = new ArrayList<>();
+			this.matchersRootPath = Optional.empty();
 			this.outputPath =  System.getProperty("user.dir");
 			this.debugOn = false;
 			this.tagCTOn = false;
@@ -829,7 +838,7 @@ public class Evaluator {
 		 * @return this
 		 */
 		public Builder setMatchersRootPath(String matchersPath) {
-			this.matchersRootPath = matchersPath;
+			this.matchersRootPath = Optional.of(matchersPath);
 			return this;
 		}
 		

@@ -286,62 +286,120 @@ public class CharacteristicTest {
 //		assertEquals(1.81, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 //	}
 	
-//	@Test
-//	public void getRelativeDistanceFLM2Test() {
-//		final Alignment reference = new Alignment();
-//		reference.add(new Correspondence("1", "1", 0.125));
-//		reference.add(new Correspondence("2", "2", 0.25));
-//		reference.add(new Correspondence("3", "3", 0.75));
-//		reference.add(new Correspondence("4", "4", 0.875));
-//		reference.add(new Correspondence("5", "5", 1));
-//		final Alignment matcher = new Alignment();
-//		matcher.add(new Correspondence("1", "1", 0.08));
-//		matcher.add(new Correspondence("2", "2", 0.1));
-//		matcher.add(new Correspondence("3", "3", 0.31));
-//		matcher.add(new Correspondence("4", "4", 0.22));
-//		matcher.add(new Correspondence("5", "5", 0.35));
-//		Characteristic c = new Characteristic(matcher, reference);
-//		List<Characteristic> characteristics = new ArrayList<>();
-//		characteristics.add(c);
-//		assertEquals(0.106, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
-//	}
+	@Test
+	public void getNormalizationFLMTest1() {
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.08));
+		matcher.add(new Correspondence("2", "2", 0.1));
+		matcher.add(new Correspondence("3", "3", 0.31));
+		matcher.add(new Correspondence("4", "4", 0.22));
+		matcher.add(new Correspondence("5", "5", 0.35));
+		List<Alignment> alignments = new ArrayList<>();
+		alignments.add(matcher);
+		Alignment normAlignment = Characteristic.getNormalizedAlignments(alignments).get(0);
+		assertEquals(0.125, normAlignment.get(0).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.189, normAlignment.get(1).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.870, normAlignment.get(2).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.579, normAlignment.get(3).getConfidence(), ALLOWED_DEV);
+		assertEquals(1, normAlignment.get(4).getConfidence(), ALLOWED_DEV);
+	}
 	
-//	@Test
-//	public void getRelativeDistanceSLMTest() {
-//		final Alignment reference = new Alignment();
-//		reference.add(new Correspondence("1", "1", 0.125));
-//		reference.add(new Correspondence("2", "2", 0.25));
-//		reference.add(new Correspondence("3", "3", 0.75));
-//		reference.add(new Correspondence("4", "4", 0.875));
-//		reference.add(new Correspondence("5", "5", 1));
-//		final Alignment matcher = new Alignment();
-//		matcher.add(new Correspondence("3", "3", 1));
-//		matcher.add(new Correspondence("4", "4", 1));
-//		matcher.add(new Correspondence("5", "5", 1));
-//		matcher.add(new Correspondence("6", "6", 1));
-//		Characteristic c = new Characteristic(matcher, reference);
-//		List<Characteristic> characteristics = new ArrayList<>();
-//		characteristics.add(c);
-//		assertEquals(1.0781, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
-//	}
+	@Test
+	public void getNormalizationFLMTest2() {
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.33));
+		matcher.add(new Correspondence("2", "2", 0.80));
+		matcher.add(new Correspondence("3", "3", 0.96));
+		matcher.add(new Correspondence("4", "4", 1));
+		matcher.add(new Correspondence("5", "5", 1));
+		matcher.add(new Correspondence("6", "6", 1));
+		List<Alignment> alignments = new ArrayList<>();
+		alignments.add(matcher);
+		Alignment normAlignment = Characteristic.getNormalizedAlignments(alignments).get(0);
+		assertEquals(0.125, normAlignment.get(0).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.739, normAlignment.get(1).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.948, normAlignment.get(2).getConfidence(), ALLOWED_DEV);
+		assertEquals(1, normAlignment.get(3).getConfidence(), ALLOWED_DEV);
+		assertEquals(1, normAlignment.get(4).getConfidence(), ALLOWED_DEV);
+		assertEquals(1, normAlignment.get(5).getConfidence(), ALLOWED_DEV);
+	}
 	
-//	@Test
-//	public void getRelativeDistanceSLM2Test() {
-//		final Alignment reference = new Alignment();
-//		reference.add(new Correspondence("1", "1", 0.125));
-//		reference.add(new Correspondence("2", "2", 0.25));
-//		reference.add(new Correspondence("3", "3", 0.75));
-//		reference.add(new Correspondence("4", "4", 0.875));
-//		reference.add(new Correspondence("5", "5", 1));
-//		final Alignment matcher = new Alignment();
-//		matcher.add(new Correspondence("3", "3", 1));
-//		matcher.add(new Correspondence("4", "4", 1));
-//		matcher.add(new Correspondence("5", "5", 1));
-//		Characteristic c = new Characteristic(matcher, reference);
-//		List<Characteristic> characteristics = new ArrayList<>();
-//		characteristics.add(c);
-//		assertEquals(0.0781, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
-//	}
+	@Test
+	public void getNormalizationFLMTest3() {
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.7));
+		matcher.add(new Correspondence("2", "2", 0.75));
+		matcher.add(new Correspondence("3", "3", 0.80));
+		matcher.add(new Correspondence("4", "4", 0.86));
+		matcher.add(new Correspondence("5", "5", 1));
+		matcher.add(new Correspondence("6", "6", 0.97));
+		List<Alignment> alignments = new ArrayList<>();
+		alignments.add(matcher);
+		Alignment normAlignment = Characteristic.getNormalizedAlignments(alignments).get(0);
+		assertEquals(0.125, normAlignment.get(0).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.271, normAlignment.get(1).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.417, normAlignment.get(2).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.592, normAlignment.get(3).getConfidence(), ALLOWED_DEV);
+		assertEquals(1, normAlignment.get(4).getConfidence(), ALLOWED_DEV);
+		assertEquals(0.913, normAlignment.get(5).getConfidence(), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getRelativeDistanceFLM6Test() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.08));
+		matcher.add(new Correspondence("2", "2", 0.1));
+		matcher.add(new Correspondence("3", "3", 0.31));
+		matcher.add(new Correspondence("4", "4", 0.22));
+		matcher.add(new Correspondence("5", "5", 0.35));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(0.106, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getRelativeDistanceSLMTest() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("3", "3", 1));
+		matcher.add(new Correspondence("4", "4", 1));
+		matcher.add(new Correspondence("5", "5", 1));
+		matcher.add(new Correspondence("6", "6", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(1.001007, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getRelativeDistanceSLM2Test() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("1", "1", 0.125));
+		reference.add(new Correspondence("2", "2", 0.25));
+		reference.add(new Correspondence("3", "3", 0.75));
+		reference.add(new Correspondence("4", "4", 0.875));
+		reference.add(new Correspondence("5", "5", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("3", "3", 1));
+		matcher.add(new Correspondence("4", "4", 1));
+		matcher.add(new Correspondence("5", "5", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> characteristics = new ArrayList<>();
+		characteristics.add(c);
+		assertEquals(0.001007, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
+	}
 
 	@Test
 	public void getRelativeDistanceZeroInputTest() {
@@ -352,45 +410,45 @@ public class CharacteristicTest {
 		assertEquals(0, Characteristic.getRelativeDistance(characteristics, NORMALIZE), ALLOWED_DEV);
 	}
 	
-	@Test
-	public void getSpearmanRangCorrTest() {
-		final Alignment reference = new Alignment();
-		reference.add(new Correspondence("1", "1", 0));
-		reference.add(new Correspondence("2", "2", 0));
-		reference.add(new Correspondence("3", "3", 0.125));
-		reference.add(new Correspondence("4", "4", 0.125));
-		reference.add(new Correspondence("5", "5", 0.125));
-		reference.add(new Correspondence("6", "6", 0.125));
-		reference.add(new Correspondence("7", "7", 0.25));
-		reference.add(new Correspondence("8", "8", 0.375));
-		reference.add(new Correspondence("9", "9", 0.500));
-		reference.add(new Correspondence("10", "10", 0.625));
-		reference.add(new Correspondence("11", "11", 0.750));
-		reference.add(new Correspondence("12", "12", 0.875));
-		reference.add(new Correspondence("13", "13", 1));
-		reference.add(new Correspondence("14", "14", 1));
-		reference.add(new Correspondence("15", "15", 1));
-		final Alignment matcher = new Alignment();
-		matcher.add(new Correspondence("1", "1", 1));
-		matcher.add(new Correspondence("2", "2", 1));
-		matcher.add(new Correspondence("3", "3", 1));
-		matcher.add(new Correspondence("4", "4", 0));
-		matcher.add(new Correspondence("5", "5", 0));
-		matcher.add(new Correspondence("6", "6", 1));
-		matcher.add(new Correspondence("7", "7", 1));
-		matcher.add(new Correspondence("8", "8", 1));
-		matcher.add(new Correspondence("9", "9", 0));
-		matcher.add(new Correspondence("10", "10", 0));
-		matcher.add(new Correspondence("11", "11", 0));
-		matcher.add(new Correspondence("12", "12", 0));
-		matcher.add(new Correspondence("13", "13", 0));
-		matcher.add(new Correspondence("14", "14", 1));
-		matcher.add(new Correspondence("15", "15", 1));
-		Characteristic c = new Characteristic(matcher, reference);
-		List<Characteristic> cs = new ArrayList<>();
-		cs.add(c);
-		assertEquals(-0.2821, Characteristic.getSpearRangCorrMacro(cs), ALLOWED_DEV);
-	}
+//	@Test
+//	public void getSpearmanRangCorrTest() {
+//		final Alignment reference = new Alignment();
+//		reference.add(new Correspondence("1", "1", 0));
+//		reference.add(new Correspondence("2", "2", 0));
+//		reference.add(new Correspondence("3", "3", 0.125));
+//		reference.add(new Correspondence("4", "4", 0.125));
+//		reference.add(new Correspondence("5", "5", 0.125));
+//		reference.add(new Correspondence("6", "6", 0.125));
+//		reference.add(new Correspondence("7", "7", 0.25));
+//		reference.add(new Correspondence("8", "8", 0.375));
+//		reference.add(new Correspondence("9", "9", 0.500));
+//		reference.add(new Correspondence("10", "10", 0.625));
+//		reference.add(new Correspondence("11", "11", 0.750));
+//		reference.add(new Correspondence("12", "12", 0.875));
+//		reference.add(new Correspondence("13", "13", 1));
+//		reference.add(new Correspondence("14", "14", 1));
+//		reference.add(new Correspondence("15", "15", 1));
+//		final Alignment matcher = new Alignment();
+//		matcher.add(new Correspondence("1", "1", 1));
+//		matcher.add(new Correspondence("2", "2", 1));
+//		matcher.add(new Correspondence("3", "3", 1));
+//		matcher.add(new Correspondence("4", "4", 0));
+//		matcher.add(new Correspondence("5", "5", 0));
+//		matcher.add(new Correspondence("6", "6", 1));
+//		matcher.add(new Correspondence("7", "7", 1));
+//		matcher.add(new Correspondence("8", "8", 1));
+//		matcher.add(new Correspondence("9", "9", 0));
+//		matcher.add(new Correspondence("10", "10", 0));
+//		matcher.add(new Correspondence("11", "11", 0));
+//		matcher.add(new Correspondence("12", "12", 0));
+//		matcher.add(new Correspondence("13", "13", 0));
+//		matcher.add(new Correspondence("14", "14", 1));
+//		matcher.add(new Correspondence("15", "15", 1));
+//		Characteristic c = new Characteristic(matcher, reference);
+//		List<Characteristic> cs = new ArrayList<>();
+//		cs.add(c);
+//		assertEquals(-0.2821, Characteristic.getSpearRangCorrMacro(cs), ALLOWED_DEV);
+//	}
 	
 	@Test
 	public void getSpearmanRangCorr2Test() {
@@ -417,6 +475,37 @@ public class CharacteristicTest {
 		matcher.add(new Correspondence("8", "8", 1));
 		matcher.add(new Correspondence("14", "14", 1));
 		matcher.add(new Correspondence("15", "15", 1));
+		Characteristic c = new Characteristic(matcher, reference);
+		List<Characteristic> cs = new ArrayList<>();
+		cs.add(c);
+		assertEquals(-0.2821, Characteristic.getSpearRangCorrMacro(cs), ALLOWED_DEV);
+	}
+	
+	@Test
+	public void getSpearmanRangCorr3Test() {
+		final Alignment reference = new Alignment();
+		reference.add(new Correspondence("3", "3", 0.125));
+		reference.add(new Correspondence("4", "4", 0.125));
+		reference.add(new Correspondence("5", "5", 0.125));
+		reference.add(new Correspondence("6", "6", 0.125));
+		reference.add(new Correspondence("7", "7", 0.25));
+		reference.add(new Correspondence("8", "8", 0.375));
+		reference.add(new Correspondence("9", "9", 0.500));
+		reference.add(new Correspondence("10", "10", 0.625));
+		reference.add(new Correspondence("11", "11", 0.750));
+		reference.add(new Correspondence("12", "12", 0.875));
+		reference.add(new Correspondence("13", "13", 1));
+		reference.add(new Correspondence("14", "14", 1));
+		reference.add(new Correspondence("15", "15", 1));
+		final Alignment matcher = new Alignment();
+		matcher.add(new Correspondence("1", "1", 0.5));
+		matcher.add(new Correspondence("2", "2", 0.6));
+		matcher.add(new Correspondence("3", "3", 0.25));
+		matcher.add(new Correspondence("6", "6", 0.94));
+		matcher.add(new Correspondence("7", "7", 0.1));
+		matcher.add(new Correspondence("8", "8", 0.2));
+		matcher.add(new Correspondence("14", "14", 0.3));
+		matcher.add(new Correspondence("15", "15", 0.9));
 		Characteristic c = new Characteristic(matcher, reference);
 		List<Characteristic> cs = new ArrayList<>();
 		cs.add(c);
