@@ -151,11 +151,12 @@ public class AlignmentReaderXml extends DefaultHandler implements AlignmentReade
     		}
     		SemanticRelation semanticRelation;
 			semanticRelation = relationType;
+			//TODO
 			/**
 			 * Hack that should be improved
 			 * TODO: This is a bug, creates type if type == ** or == ??, there should not be a type here
 			 */
-			if(this.type.isEmpty() || this.type.equals("**") || this.type.equals("??")) {
+			if(this.type.isEmpty() || this.type.equals("**") || this.type.equals("??") || this.type.equals("11")) {
 				correspondence = new Correspondence(this.entity1 , this.entity2, semanticRelation, (double)sim);
 			} else {
 				try {

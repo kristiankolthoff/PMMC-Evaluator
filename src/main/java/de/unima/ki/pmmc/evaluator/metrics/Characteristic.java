@@ -522,6 +522,7 @@ public class Characteristic {
 		for(Characteristic c : characteristics) {
 			sumNum += functionNum.apply(c);
 			sumDenom += functionDenom.apply(c);
+			System.out.println();
 		}
 		return sumNum / sumDenom;
 	}

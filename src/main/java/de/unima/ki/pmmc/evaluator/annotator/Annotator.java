@@ -41,9 +41,8 @@ public class Annotator {
 		this.matchers = new ArrayList<>();
 		this.models = models;
 		this.matchers.add(new CTMatcherTrivial());
-		this.matchers.add(new CTMatcherTrivialNorm());
-		this.matchers.add(new CTMatcherOWS());
-		this.matchers.add(new CTMatcherDSV());
+		this.matchers.add(new CTMatcherOWI());
+		this.matchers.add(new CTMatcherDVI());
 		this.matchers.add(new CTMatcherMisc());
 		this.idCache = new HashMap<>();
 		this.initModelMap();
@@ -70,9 +69,9 @@ public class Annotator {
 	 * models where used to generate the <code>Correspondece</code>
 	 */
 	public CorrespondenceType annotateCorrespondence(Correspondence correspondence) {
+		String label1 = this.idCache.get(correspondence.getUri1().split(SPLIT)[1]);
+		String label2 = this.idCache.get(correspondence.getUri2().split(SPLIT)[1]);
 		for(CTMatcher matcher : this.matchers) {
-			String label1 = this.idCache.get(correspondence.getUri1().split(SPLIT)[1]);
-			String label2 = this.idCache.get(correspondence.getUri2().split(SPLIT)[1]);
 			//Matcher generated correspondence using not allowed events of the model
 			if(label1 == null || label2 == null) {
 				return CorrespondenceType.DEFAULT;
@@ -83,7 +82,7 @@ public class Annotator {
 				}
 			}
 		}
-		return CorrespondenceType.DIFFICULT;
+		return CorrespondenceType.DIFFICULT_NO_WORD_IDENT;
 	}
 	
 	/**

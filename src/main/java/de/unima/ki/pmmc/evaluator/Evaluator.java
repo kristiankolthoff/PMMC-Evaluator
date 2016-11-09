@@ -71,17 +71,13 @@ public class Evaluator {
 	 * each single matcher
 	 */
 	private List<Result> results;
+	private Map<Double, List<Result>> mapResult;
 	/**
 	 * The result handlers which should 
 	 * process the generated results
 	 */
 	private List<ResultHandler> handler;
 	private AlignmentReader alignmentReader;
-	/**
-	 * Map storing the applied thresholds and
-	 * the corresponding result list
-	 */
-	private Map<Double, List<Result>> mapResult;
 	/**
 	 * Functions providing Correspondence, Alignment 
 	 * and Result transformations
@@ -177,7 +173,7 @@ public class Evaluator {
 				this.goldstandard.put(threshold,loadResult(this.goldstandardPath, GOLDSTANDARD_NAME, threshold));
 				log("Goldstandard found at : " + this.goldstandard.get(threshold).getPath() + 
 						this.goldstandard.get(threshold).getName() + " [" + this.goldstandard.get(threshold).size() + "]");
-				searchForResults(this.matchersRootPath, threshold);
+				this.mapResult.put(threshold, this.searchForResults(this.matchersRootPath, THRESHOLD_ZERO));
 			}
 		} else {
 			this.goldstandard.put(THRESHOLD_ZERO,loadResult(this.goldstandardPath, GOLDSTANDARD_NAME, THRESHOLD_ZERO));
@@ -245,10 +241,10 @@ public class Evaluator {
 	private Map<Double, List<Result>> computeMetrics(Map<Double, List<Result>> results) 
 			throws CorrespondenceException {
 		log("Computing metrics...");
-		for(Map.Entry<Double, List<Result>> e : results.entrySet()) {
-			List<Result> currResults = e.getValue();
+		for(double threshold : this.thresholds) {
+			List<Result> currResults = results.get(threshold);
 			for(Result result : currResults) {
-				result.computeCharacteristics(this.goldstandard.get(result.getAppliedThreshold()), this.tagCTOn);
+				result.computeCharacteristics(this.goldstandard.get(threshold), this.tagCTOn);
 			}
 		}
 		return results;
@@ -405,9 +401,9 @@ public class Evaluator {
 	 * @param path the root path used as a starting point to search for results
 	 * @throws IOException
 	 */
-	private void searchForResults(Optional<String> path, double threshold) throws IOException {
+	private List<Result> searchForResults(Optional<String> path, double threshold) throws IOException {
 		log("Generate Results for threshold [" + threshold + "]");
-		results = new ArrayList<>();
+		List<Result> results = new ArrayList<>();
 		for(String matcherPath : this.matcherPaths) {
 			results.add(loadResult(matcherPath, extractName(matcherPath), threshold));
 		}
@@ -438,7 +434,7 @@ public class Evaluator {
 				}
 			});
 		}
-		this.mapResult.put(threshold, results);
+		return results;
 	}
 	
 	/**
@@ -532,14 +528,6 @@ public class Evaluator {
 
 	public AlignmentReader getAlignmentReader() {
 		return alignmentReader;
-	}
-
-	public Map<Double, List<Result>> getMapResult() {
-		return mapResult;
-	}
-	
-	public List<Result> getResults(double threshold) {
-		return this.mapResult.get(threshold);
 	}
 
 	public List<Function<Result, Result>> getTransformationsResult() {

@@ -27,16 +27,16 @@ public class PMMCEvaluation {
 	public PMMCEvaluation() throws IOException {
 		this.evaluator = new Evaluator.Builder().
 				setGoldstandardPath(GOLDSTANDARD_PATH).
-//				setMatchersRootPath(RESULTS_PATH).
-				addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/").
+				setMatchersRootPath(RESULTS_PATH).
+//				addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/").
 				setOutputPath(OUTPUT_PATH).
 				setOutputName("oaei16").
 				setAlignmentReader(new AlignmentReaderXml()).
 				setParser(Parser.TYPE_BPMN).
 				setModelsRootPath(MODELS_PATH).
-//				addThreshold(Evaluator.THRESHOLD_ZERO).
-//				addThreshold(Evaluator.THRESHOLD_LOW).
-//				addThreshold(Evaluator.THRESHOLD_MEDIUM).
+				addThreshold(Evaluator.THRESHOLD_ZERO).
+				addThreshold(Evaluator.THRESHOLD_LOW).
+				addThreshold(Evaluator.THRESHOLD_MEDIUM).
 				addThreshold(Evaluator.THRESHOLD_HIGH).
 				setDebugOn(true).
 				addHandler(new HTMLHandler(SHOW_IN_BROWSER)).

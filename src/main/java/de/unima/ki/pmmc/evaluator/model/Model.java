@@ -79,7 +79,7 @@ public class Model {
 						labels[1] = a.getLabel();
 						if(c.getCType().isPresent()) {
 							labels[1] += " (" + c.getCType().get() + ")";
-							if(c.getCType().get().equals(CorrespondenceType.TRIVIAL_EXTENDED_NORM.getName())) {
+							if(c.getCType().get().equals(CorrespondenceType.TRIVIAL.getName())) {
 								System.err.println(String.join(" = ", labels));
 							}
 						}

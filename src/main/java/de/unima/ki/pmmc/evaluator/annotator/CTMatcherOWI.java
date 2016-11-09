@@ -9,9 +9,9 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 import edu.mit.jwi.item.POS;
 
-public class CTMatcherOWS implements CTMatcher{
+public class CTMatcherOWI implements CTMatcher{
 
-	private static final CorrespondenceType TYPE = CorrespondenceType.ONE_WORD_SIMILAR;
+	private static final CorrespondenceType TYPE = CorrespondenceType.ONE_WORD_IDENT;
 	
 	@Override
 	public CorrespondenceType match(String label1, String label2) {

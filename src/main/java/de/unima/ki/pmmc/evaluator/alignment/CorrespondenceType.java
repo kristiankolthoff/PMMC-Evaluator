@@ -5,13 +5,10 @@ import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 
 public enum CorrespondenceType {
 
-	DIFFICULT ("difficult"),
-	DIFFICULT_SIMILAR_VERB ("difficult-similar-verb"),
-	ONE_WORD_SIMILAR ("one-word-similar"),
 	TRIVIAL ("trivial"),
-	TRIVIAL_NORM ("trivial-norm"),
-	TRIVIAL_BASIC_NORM ("trivial-after-basic-normalization"),
-	TRIVIAL_EXTENDED_NORM ("trivial-after-extended-normalization"),
+	DIFFICULT_NO_WORD_IDENT ("no-word-ident"),
+	DIFFICULT_VERB_IDENT ("verb-ident"),
+	ONE_WORD_IDENT ("one-word-ident"),
 	MISC ("misc"),
 	DEFAULT ("default");
 	

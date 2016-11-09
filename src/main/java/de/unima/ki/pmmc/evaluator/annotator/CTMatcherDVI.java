@@ -8,9 +8,9 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 import edu.mit.jwi.item.POS;
 
-public class CTMatcherDSV implements CTMatcher {
+public class CTMatcherDVI implements CTMatcher {
 
-	private static final CorrespondenceType TYPE = CorrespondenceType.DIFFICULT_SIMILAR_VERB;
+	private static final CorrespondenceType TYPE = CorrespondenceType.DIFFICULT_VERB_IDENT;
 	private static final boolean USE_POS = true;
 	
 	@Override

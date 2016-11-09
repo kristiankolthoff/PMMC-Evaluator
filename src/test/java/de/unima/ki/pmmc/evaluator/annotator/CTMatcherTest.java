@@ -14,10 +14,26 @@ public class CTMatcherTest {
 	 * Recognize CorrespondenceType.TRIVIAL correspondences
 	 */
 	@Test
-	public void matchCTTrivialTest() {
+	public void matchCTTrivialTest1() {
 		this.matcher = new CTMatcherTrivial();
-		final String label1 = "Send documents";
-		final String label2 = "Send documents";
+		final String label1 = "Apply online";
+		final String label2 = "Apply online";
+		assertEquals(CorrespondenceType.TRIVIAL, this.matcher.match(label1, label2));
+	}
+	
+	@Test
+	public void matchCTTrivialTest2() {
+		this.matcher = new CTMatcherTrivial();
+		final String label1 = "send acceptance";
+		final String label2 = "Send Acceptance";
+		assertEquals(CorrespondenceType.TRIVIAL, this.matcher.match(label1, label2));
+	}
+	
+	@Test
+	public void matchCTTrivialTest3() {
+		this.matcher = new CTMatcherTrivial();
+		final String label1 = "send application";
+		final String label2 = "sending applications";
 		assertEquals(CorrespondenceType.TRIVIAL, this.matcher.match(label1, label2));
 	}
 	
@@ -29,62 +45,35 @@ public class CTMatcherTest {
 		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
 	}
 	
-	/**
-	 * Recognize CorrespondenceType.TRIVIAL_NORM correspondences
-	 */
-	@Test
-	public void matchCTTrivialNormTest() {
-		this.matcher = new CTMatcherTrivialNorm();
-		final String label1 = "Sending document";
-		final String label2 = "Send documents";
-		assertEquals(CorrespondenceType.TRIVIAL_NORM, this.matcher.match(label1, label2));
-	}
-	
-	@Test
-	public void matchCTTrivialNormDefaultTest() {
-		this.matcher = new CTMatcherTrivialNorm();
-		final String label1 = "Sending document to university office";
-		final String label2 = "Send documents";
-		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
-	}
 	
 	/**
-	 * Recognize CorrespondenceType.ONE_WORD_SIMILAR correspondences
+	 * Recognize CorrespondenceType.DIFFICULT_ONE_WORD_IDENT correspondences
 	 */
 	@Test
-	public void matchCTOWSTest() {
-		this.matcher = new CTMatcherOWS();
+	public void matchCTDifficultNoWordIdentTest1() {
+		this.matcher = new CTMatcherOWI();
 		final String label1 = "Acceptance";
-		final String label2 = "Send letter of acceptance";
-		assertEquals(CorrespondenceType.ONE_WORD_SIMILAR, this.matcher.match(label1, label2));
+		final String label2 = "Send letter of Acceptance";
+		assertEquals(CorrespondenceType.ONE_WORD_IDENT, this.matcher.match(label1, label2));
+	}
+	
+	@Test
+	public void matchCTDifficultNoWordIdentTest2() {
+		this.matcher = new CTMatcherOWI();
+		final String label1 = "Acceptance";
+		final String label2 = "Send Acceptance";
+		assertEquals(CorrespondenceType.ONE_WORD_IDENT, this.matcher.match(label1, label2));
 	}
 	
 	@Test
 	public void matchCTOWSDefault1Test() {
-		this.matcher = new CTMatcherOWS();
+		this.matcher = new CTMatcherOWI();
 		final String label1 = "Send rejection";
 		final String label2 = "Send letter of acceptance";
 		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
 	}
-//	
-//	@Test
-//	public void matchCTOWSDefault2Test() {
-//		this.matcher = new CTMatcherOWS();
-//		final String label1 = "Send documents to the office";
-//		final String label2 = "Send CV to the university office";
-//		assertEquals(CorrespondenceType.ONE_WORD_SIMILAR, this.matcher.match(label1, label2));
-//	}
+
 	
-	/**
-	 * Recognize CorrespondenceType.DIFFICULT_SIMILAR_VERB correspondences
-	 */
-	@Test
-	public void matchCTDSV1Test() {
-		this.matcher = new CTMatcherDSV();
-		final String label1 = "Send documents by post";
-		final String label2 = "Send application";
-		assertEquals(CorrespondenceType.DIFFICULT_SIMILAR_VERB, this.matcher.match(label1, label2));
-	}
 	
 //	@Test
 //	public void matchCTDSV2Test() {
@@ -94,21 +83,21 @@ public class CTMatcherTest {
 //		assertEquals(CorrespondenceType.DIFFICULT_SIMILAR_VERB, this.matcher.match(label1, label2));
 //	}
 	
-	@Test
-	public void matchCTDSVDefault1Test() {
-		this.matcher = new CTMatcherDSV();
-		final String label1 = "Apply online";
-		final String label2 = "Complete online interview";
-		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
-	}
-	
-	@Test
-	public void matchCTDSVDefault2Test() {
-		this.matcher = new CTMatcherDSV();
-		final String label1 = "Send letter of rejection";
-		final String label2 = "Reject applicant";
-		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
-	}
+//	@Test
+//	public void matchCTDSVDefault1Test() {
+//		this.matcher = new CTMatcherDSV();
+//		final String label1 = "Apply online";
+//		final String label2 = "Complete online interview";
+//		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
+//	}
+//	
+//	@Test
+//	public void matchCTDSVDefault2Test() {
+//		this.matcher = new CTMatcherDSV();
+//		final String label1 = "Send letter of rejection";
+//		final String label2 = "Reject applicant";
+//		assertEquals(CorrespondenceType.DEFAULT, this.matcher.match(label1, label2));
+//	}
 	
 	/**
 	 * Recognize CorrespondenceType.MISC correspondences
