@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>**</type>
+	<onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6008</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-9D9B9D3B-B540-465D-9CAC-AFE4A96DE279"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.4917</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.5953</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-257EB9F2-1203-4F54-8E2E-43FE6ABA096E"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-06E1C87D-D774-4427-A288-8B143E08E392"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.3169</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-7657E804-205F-446E-A919-FE7008355206"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-4C4F7701-49EF-41A8-946A-88EF52B17794"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-D4F6E283-16FB-458A-830A-03336924C1D2"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-159F8867-2DFD-461D-A73A-5E9FEA6837BE"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-7657E804-205F-446E-A919-FE7008355206"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-D4F6E283-16FB-458A-830A-03336924C1D2"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-DB1169F0-5D3C-4463-9A95-B77636938DB3"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9593</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+</Alignment>
+</rdf:RDF>

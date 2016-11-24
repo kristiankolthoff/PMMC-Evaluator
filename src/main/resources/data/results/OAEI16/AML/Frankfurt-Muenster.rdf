@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment'
+	 xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	 alignmentSource='AgreementMakerLight'>
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>11</type>
+	<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+	<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+	<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+	<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Frankfurt#sid-445A78A6-1CA7-40BF-B7BF-B8CCCAAEF703"/>
+			<entity2 rdf:resource="http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6518</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888"/>
+			<entity2 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6298</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Frankfurt#sid-56CF457C-E58D-4519-AD80-5EDE6DD9E302"/>
+			<entity2 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6197</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+</Alignment>
+</rdf:RDF>

@@ -1,0 +1,62 @@
+﻿<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+		xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+		xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+		xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/' 
+		xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-BB1C4222-40C6-4013-A9C7-11BD25E18C16'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://IIS_Erlangen#sid-E80393E3-80C1-4412-9317-635EBAC3AE26'/>
+      <entity2 rdf:resource='http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

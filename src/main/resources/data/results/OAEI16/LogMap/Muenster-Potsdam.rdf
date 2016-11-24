@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF"/>
+		<entity2 rdf:resource="http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671"/>
+		<measure rdf:datatype="xsd:float">0.75</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">0.78</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">0.82</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-7A3C1CD7-9190-48A3-A21E-58EAA921B7C7"/>
+		<entity2 rdf:resource="http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7"/>
+		<measure rdf:datatype="xsd:float">0.84</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">0.75</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">0.78</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B"/>
+		<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-8049BBB8-0B3A-4E42-95C7-4781418558DE"/>
+		<entity2 rdf:resource="http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7"/>
+		<measure rdf:datatype="xsd:float">0.93</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7"/>
+		<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+		<entity2 rdf:resource="http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012"/>
+		<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465"/>
+		<entity2 rdf:resource="http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A"/>
+		<measure rdf:datatype="xsd:float">0.85</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+		<entity2 rdf:resource="http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+</Alignment>
+</rdf:RDF>

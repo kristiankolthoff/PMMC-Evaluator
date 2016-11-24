@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-2F047787-FB05-403C-8F37-ED7C914BEBF8'/>
+      <entity2 rdf:resource='http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7695355666413946</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-2F047787-FB05-403C-8F37-ED7C914BEBF8'/>
+      <entity2 rdf:resource='http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7695355666413946</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6'/>
+      <entity2 rdf:resource='http://Muenster#sid-E75E22AB-D608-459B-A125-3089B5FC6608'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7866666674613952</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874'/>
+      <entity2 rdf:resource='http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874'/>
+      <entity2 rdf:resource='http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-29CFE8F0-3D84-478E-A27A-9FD962B466DB'/>
+      <entity2 rdf:resource='http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-29CFE8F0-3D84-478E-A27A-9FD962B466DB'/>
+      <entity2 rdf:resource='http://Muenster#sid-F59710DB-8CBF-4502-9691-7ED26F1BA3B3'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.7777777711550394</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-16C5EDE2-242D-446A-B150-5E1A5D3F6ED2'/>
+      <entity2 rdf:resource='http://Muenster#sid-0A8BD8F6-562C-4872-8FE8-5244B2F536E7'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F'/>
+      <entity2 rdf:resource='http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.8863636255264282</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A'/>
+      <entity2 rdf:resource='http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>0.761904756228129</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

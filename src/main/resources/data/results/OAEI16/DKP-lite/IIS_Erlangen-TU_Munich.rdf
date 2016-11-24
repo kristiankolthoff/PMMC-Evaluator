@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+ <rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+ xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+ xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+ xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+ xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+ <Alignment>
+<map> 
+<Cell> 
+<entity1 rdf:resource='http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4'></entity1> 
+ <entity2 rdf:resource='http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95'></entity2>
+<relation>=</relation>
+<measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+</Cell> 
+</map>  
+<map> 
+<Cell> 
+<entity1 rdf:resource='http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB'></entity1> 
+ <entity2 rdf:resource='http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E'></entity2>
+<relation>=</relation>
+<measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+</Cell> 
+</map>  
+ </Alignment>
+ </rdf:RDF>

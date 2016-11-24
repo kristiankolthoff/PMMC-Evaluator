@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+    <Alignment>
+        <xml>yes</xml>
+        <level>0</level>
+        <type>**</type>
+        <onto1>
+            <Ontology rdf:about="null">
+                <location>null</location>
+            </Ontology>
+        </onto1>
+        <onto2>
+            <Ontology rdf:about="null">
+                <location>null</location>
+            </Ontology>
+        </onto2>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Cologne#sid-2A61C308-48B4-4C26-9CB3-D489A0BBC1E3'/>
+                <entity2 rdf:resource='http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Cologne#sid-DF0BF153-C7B8-47A6-9436-2217B6A02FB9'/>
+                <entity2 rdf:resource='http://Hohenheim#sid-EA76CC8B-DB97-46CB-A2A0-5F44667C8B2E'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554'/>
+                <entity2 rdf:resource='http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C'/>
+                <entity2 rdf:resource='http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+    </Alignment>
+</rdf:RDF>

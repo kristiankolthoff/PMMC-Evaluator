@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-653B2E61-D08D-4038-A632-603B74BAAD45"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-F1349441-49AF-4AC2-8A31-EB0BA9BACB9D"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170"/>
+		<measure rdf:datatype="xsd:float">0.76</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-5D36CFBD-36D5-4A2F-81E6-83F468923C4B"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-D972785F-B737-4B22-ABAE-23B52642FCEA"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA"/>
+		<measure rdf:datatype="xsd:float">0.91</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-AA30AF0A-8581-4B06-B9CC-377FCB426BA2"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA"/>
+		<measure rdf:datatype="xsd:float">0.85</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+</Alignment>
+</rdf:RDF>

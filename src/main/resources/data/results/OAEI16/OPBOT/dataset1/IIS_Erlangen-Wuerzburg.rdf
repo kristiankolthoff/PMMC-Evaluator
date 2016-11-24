@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+    <Alignment>
+        <xml>yes</xml>
+        <level>0</level>
+        <type>**</type>
+        <onto1>
+            <Ontology rdf:about="null">
+                <location>null</location>
+            </Ontology>
+        </onto1>
+        <onto2>
+            <Ontology rdf:about="null">
+                <location>null</location>
+            </Ontology>
+        </onto2>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365'/>
+                <entity2 rdf:resource='http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365'/>
+                <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7'/>
+                <entity2 rdf:resource='http://Wuerzburg#sid-925591B8-59CC-4806-B43B-3B5F10D7794F'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7'/>
+                <entity2 rdf:resource='http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+        <map>
+            <Cell>
+                <entity1 rdf:resource='http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6'/>
+                <entity2 rdf:resource='http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF'/>
+                <relation>=</relation>
+                <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+            </Cell>
+        </map>
+    </Alignment>
+</rdf:RDF>

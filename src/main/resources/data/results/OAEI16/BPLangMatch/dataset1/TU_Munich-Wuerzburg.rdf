@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+  <Alignment>
+    <xml>yes</xml>
+    <level>0</level>
+    <type>**</type>
+    <onto1>
+      <Ontology rdf:about="null">
+        <location>null</location>
+      </Ontology>
+    </onto1>
+    <onto2>
+      <Ontology rdf:about="null">
+        <location>null</location>
+      </Ontology>
+    </onto2>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://TU_Munich#sid-40FCF57B-44A4-443F-80D6-D2778D1045CD" />
+        <entity2 rdf:resource="http://Wuerzburg#sid-B06626EF-C70E-4D70-B20F-BA3DAC313DD9" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170" />
+        <entity2 rdf:resource="http://Wuerzburg#sid-5A0807EA-8206-4037-A55F-0A3C9605ABF7" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA" />
+        <entity2 rdf:resource="http://Wuerzburg#sid-7334C78B-F3F1-449E-9B9B-D39C17261BD9" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+  </Alignment>
+</rdf:RDF>

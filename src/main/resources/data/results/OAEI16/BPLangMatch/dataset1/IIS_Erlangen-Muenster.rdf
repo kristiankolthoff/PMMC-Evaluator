@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+  <Alignment>
+    <xml>yes</xml>
+    <level>0</level>
+    <type>**</type>
+    <onto1>
+      <Ontology rdf:about="null">
+        <location>null</location>
+      </Ontology>
+    </onto1>
+    <onto2>
+      <Ontology rdf:about="null">
+        <location>null</location>
+      </Ontology>
+    </onto2>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365" />
+        <entity2 rdf:resource="http://Muenster#sid-E3B35EE1-AB9A-4510-8933-07800ED87FDF" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-CB26DB0C-6BB2-4959-BA80-63FE44D0FFEC" />
+        <entity2 rdf:resource="http://Muenster#sid-6AC1166A-C7A0-46B7-99D0-8BE2D24163BB" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-405700D2-A6F9-4EC4-904F-D0611611EAF5" />
+        <entity2 rdf:resource="http://Muenster#sid-8CEAA5CC-554F-4A5D-9682-F91D35CB7059" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-36CD8B1D-483C-4AB0-B548-C8E82A6C993A" />
+        <entity2 rdf:resource="http://Muenster#sid-E82C3C01-40A1-4E7D-B642-E6FFFA9008E8" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-8EBE9433-CCB5-41EF-A5DB-A76BE4A374E7" />
+        <entity2 rdf:resource="http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-9E6AC1EE-583E-4DF0-86A9-2756FA0FE7E2" />
+        <entity2 rdf:resource="http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-E80393E3-80C1-4412-9317-635EBAC3AE26" />
+        <entity2 rdf:resource="http://Muenster#sid-D972785F-B737-4B22-ABAE-23B52642FCEA" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-E80393E3-80C1-4412-9317-635EBAC3AE26" />
+        <entity2 rdf:resource="http://Muenster#sid-653B2E61-D08D-4038-A632-603B74BAAD45" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6" />
+        <entity2 rdf:resource="http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF" />
+        <entity2 rdf:resource="http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-AD174F93-7C65-4F21-8791-2C91779F9457" />
+        <entity2 rdf:resource="http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF" />
+        <entity2 rdf:resource="http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-A212088C-053D-4D7B-B952-B396934B4817" />
+        <entity2 rdf:resource="http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+    <map>
+      <Cell>
+        <entity1 rdf:resource="http://IIS_Erlangen#sid-053A0B4D-160A-4953-B0D9-298A22FAD4CE" />
+        <entity2 rdf:resource="http://Muenster#sid-7A3C1CD7-9190-48A3-A21E-58EAA921B7C7" />
+        <relation>=</relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+      </Cell>
+    </map>
+  </Alignment>
+</rdf:RDF>
