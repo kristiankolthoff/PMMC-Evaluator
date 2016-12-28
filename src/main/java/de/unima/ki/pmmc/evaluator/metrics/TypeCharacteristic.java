@@ -14,31 +14,40 @@ import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 
 public class TypeCharacteristic extends Characteristic {
 
+	private Alignment alignmentCross;
 	/**
 	 * Partition of correspondences into correspondence types 
 	 * of the reference alignment from the characteristic
 	 */
-	private Map<CorrespondenceType, Alignment> corresponendencesRef;
+	private Map<CorrespondenceType, Alignment> alignmentReference;
 	/**
 	 * Partition of correspondences into correspondence types 
 	 * of the matcher alignment from the characteristic
 	 */
-	private Map<CorrespondenceType, Alignment> correspondencesMapping;
+	private Map<CorrespondenceType, Alignment> alignmentMapping;
 	/**
 	 * Partition of correspondences into correspondence types 
 	 * of the correct alignment from the characteristic
 	 */
-	private Map<CorrespondenceType, Alignment> correspondencesCorrect;
+	private Map<CorrespondenceType, Alignment> alignmentCorrect;
+	/**
+	 * Partition of correspondences into correspondence types 
+	 * of the cross product of the two models of the original alignment
+	 */
+	private Map<CorrespondenceType, Alignment> alignmentCrossProduct;
 	
-	public TypeCharacteristic(Alignment mapping, Alignment reference) throws CorrespondenceException {
+	public TypeCharacteristic(Alignment mapping, Alignment reference,
+			Alignment crossProduct) throws CorrespondenceException {
 		super(mapping, reference);
+		this.alignmentCross = crossProduct;
 		this.init();
 	}
 	
 	private void init() throws CorrespondenceException {
-		this.corresponendencesRef = extractCTMap(getAlignmentReference());
-		this.correspondencesMapping = extractCTMap(getAlignmentMapping());
-		this.correspondencesCorrect = extractCTMap(getAlignmentCorrect());
+		this.alignmentReference = extractCTMap(getAlignmentReference());
+		this.alignmentMapping = extractCTMap(getAlignmentMapping());
+		this.alignmentCorrect = extractCTMap(getAlignmentCorrect());
+		this.alignmentCrossProduct = extractCTMap(getAlignmentCrossProduct());
 	}
 	
 	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
@@ -59,13 +68,21 @@ public class TypeCharacteristic extends Characteristic {
 		}
 		return vals;
 	}
+	
+	/**
+	 * Returns a copy of the <code>Alignment</code>
+	 * of the cross product.
+	 */
+	public Alignment getAlignmentCrossProduct() {
+		return Alignment.newInstance(alignmentCross);
+	}
 
 	public double getPrecision(CorrespondenceType type) {
-		return correspondencesCorrect.get(type).size() / (double) correspondencesMapping.get(type).size();
+		return alignmentCorrect.get(type).size() / (double) alignmentMapping.get(type).size();
 	}
 	
 	public double getRecall(CorrespondenceType type) {
-		return correspondencesCorrect.get(type).size() / (double) corresponendencesRef.get(type).size();
+		return alignmentCorrect.get(type).size() / (double) alignmentReference.get(type).size();
 	}
 	
 	public double getFMeasure(CorrespondenceType type) {
@@ -80,7 +97,7 @@ public class TypeCharacteristic extends Characteristic {
 	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
 	 */
 	public Alignment getAlignmentReference(CorrespondenceType type) {
-		return this.corresponendencesRef.get(type);
+		return this.alignmentReference.get(type);
 	}
 	
 	/**
@@ -91,7 +108,7 @@ public class TypeCharacteristic extends Characteristic {
 	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
 	 */
 	public Alignment getAlignmentMapping(CorrespondenceType type) {
-		return this.correspondencesMapping.get(type);
+		return this.alignmentMapping.get(type);
 	}
 	
 	/**
@@ -103,15 +120,23 @@ public class TypeCharacteristic extends Characteristic {
 	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
 	 */
 	public Alignment getAlignmentCorrect(CorrespondenceType type) {
-		return this.correspondencesCorrect.get(type);
+		return this.alignmentCorrect.get(type);
+	}
+	
+	public Alignment getAlignmentCrossProduct(CorrespondenceType type) {
+		return this.alignmentCrossProduct.get(type);
+	}
+	
+	public int getCrossProductSize() {
+		return this.alignmentCrossProduct.size();
 	}
 	
 	@Override
 	public String toString() {
 		return "TypeCharacteristic [corresponendencesRef="
-				+ corresponendencesRef + ", correspondencesMapping="
-				+ correspondencesMapping + ", correspondencesCorrect="
-				+ correspondencesCorrect + "]";
+				+ alignmentReference + ", correspondencesMapping="
+				+ alignmentMapping + ", correspondencesCorrect="
+				+ alignmentCorrect + "]";
 	}
 	
 	/**
@@ -202,8 +227,8 @@ public class TypeCharacteristic extends Characteristic {
 	public double getCorrelation(CorrespondenceType type, boolean allowZeros) {
 		List<Alignment> mappings = new ArrayList<>();
 		List<Alignment> references = new ArrayList<>();
-		mappings.add(this.correspondencesMapping.get(type));
-		references.add(this.corresponendencesRef.get(type));
+		mappings.add(this.alignmentMapping.get(type));
+		references.add(this.alignmentReference.get(type));
 		return getCorrelation(mappings, references, allowZeros);
 	}
 	
@@ -342,8 +367,8 @@ public class TypeCharacteristic extends Characteristic {
 	public double getRelativeDistance(CorrespondenceType type, boolean normalize) {
 		List<Alignment> mappings = new ArrayList<>();
 		List<Alignment> references = new ArrayList<>();
-		mappings.add(correspondencesMapping.get(type));
-		references.add(corresponendencesRef.get(type));
+		mappings.add(alignmentMapping.get(type));
+		references.add(alignmentReference.get(type));
 		return getRelativeDistance(mappings, references, normalize);
 	}
 

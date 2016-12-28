@@ -25,6 +25,7 @@ public class Characteristic {
 	*/
 	private static boolean strictEvaluation = false;
 	
+	//TODO move constant to other class and insert member variable
 	public static final int NUM_OF_ANNOTATORS = 8;
 	
 	/**
@@ -522,7 +523,6 @@ public class Characteristic {
 		for(Characteristic c : characteristics) {
 			sumNum += functionNum.apply(c);
 			sumDenom += functionDenom.apply(c);
-			System.out.println();
 		}
 		return sumNum / sumDenom;
 	}

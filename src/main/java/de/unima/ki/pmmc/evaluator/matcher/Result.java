@@ -63,7 +63,7 @@ public class Result implements Iterable<Alignment>{
 			for(Alignment aMatcher : this) {
 				if(aRef.equals(aMatcher)) {
 					if(typeOn) {
-						this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef));
+						this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef, null));
 					} else {
 						this.characteristics.add(new Characteristic(aMatcher, aRef));						
 					}

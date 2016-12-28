@@ -111,7 +111,8 @@ public class Annotator {
 			throws CorrespondenceException {
 		Alignment alignmentReference = annotateAlignment(characteristic.getAlignmentReference());
 		Alignment alignmentMapping = annotateAlignment(characteristic.getAlignmentMapping());
-		return new TypeCharacteristic(alignmentMapping, alignmentReference);
+		//TODO null
+		return new TypeCharacteristic(alignmentMapping, alignmentReference, null);
 	}
 	
 	/**

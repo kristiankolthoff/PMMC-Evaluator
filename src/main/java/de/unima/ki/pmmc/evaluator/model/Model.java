@@ -13,11 +13,13 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 
 public class Model {
 
+	private String name;
 	private String id;
 	private Set<Activity> activities;
 	private Set<Flow> flows;
 	
-	public Model(String id) {
+	public Model(String name, String id) {
+		this.name = name;
 		this.id = id;
 		this.activities = new HashSet<>();
 		this.flows = new HashSet<>();
@@ -90,4 +92,19 @@ public class Model {
 		}
 		return correspondences;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Model [name=" + name + ", id=" + id;
+	}
+	
+	
 }

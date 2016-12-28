@@ -12,12 +12,14 @@ import edu.mit.jwi.item.POS;
 public class CTMatcherOWI implements CTMatcher{
 
 	private static final CorrespondenceType TYPE = CorrespondenceType.ONE_WORD_IDENT;
+	private static final boolean USE_POS = true;
 	
 	@Override
 	public CorrespondenceType match(String label1, String label2) {
 		label1 = NLPHelper.getSanitizeLabel(label1);
+		label1 = NLPHelper.getStemmedString(label1, USE_POS);
 		label2 = NLPHelper.getSanitizeLabel(label2);
-		//TODO needs to normalize
+		label2 = NLPHelper.getStemmedString(label2, USE_POS);
 		List<String> label1Tokens = NLPHelper.getTokens(label1);
 		List<String> label2Tokens = NLPHelper.getTokens(label2);
 		List<String> sameTokens = new ArrayList<>();

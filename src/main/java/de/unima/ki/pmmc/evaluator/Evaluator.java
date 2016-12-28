@@ -70,6 +70,7 @@ public class Evaluator {
 	 * Loaded results list. One result for
 	 * each single matcher
 	 */
+	private List<Model> models;
 	private List<Result> results;
 	private Map<Double, List<Result>> mapResult;
 	/**
@@ -168,6 +169,7 @@ public class Evaluator {
 	public Evaluator run() throws IOException, CorrespondenceException, 
 									ParserConfigurationException, SAXException {
 		log("------------Evaluator------------");
+		this.models = loadModels(this.modelsRootPath);
 		if(!thresholds.isEmpty()) {
 			for(double threshold : thresholds) {
 				this.goldstandard.put(threshold,loadResult(this.goldstandardPath, GOLDSTANDARD_NAME, threshold));
@@ -188,7 +190,7 @@ public class Evaluator {
 		this.mapResult = applyFilterAlignment(this.mapResult, this.filterAlignment);
 		this.mapResult = applyFilterResults(this.mapResult, this.filterResult);
 		if(tagCTOn) {
-			this.annotator = new Annotator(loadModels(this.modelsRootPath));
+			this.annotator = new Annotator(this.models);
 			log("CTTagging...");
 			this.goldstandard = applyCTAnnotationGS(this.goldstandard);
 			this.mapResult = applyCTAnnotation(this.mapResult);
@@ -207,11 +209,6 @@ public class Evaluator {
 			}
 		}
 		log("Finished tasks...");
-		for(Result r : this.mapResult.get(0.75)) {
-			System.out.println(r.getName());
-			System.out.println(r.sizeOfCorrespondences());
-			System.out.println(r.sumConfidences());
-		}
 		return this;
 	}
 	 
@@ -362,7 +359,9 @@ public class Evaluator {
 					String p = filePath.getFileName().toString();
 					if(p.contains(Parser.TYPE_BPMN) ||
 							p.contains(Parser.TYPE_EPK) || p.contains(Parser.TYPE_PNML)) {
-						models.add(parser.parse(filePath.toString()));
+						Model model = parser.parse(filePath.toString());
+						model.setName(p.split("\\.")[0]);
+						models.add(model);
 						log("Found model at " + filePath);
 					}
 				} catch (Exception e) {
@@ -381,6 +380,10 @@ public class Evaluator {
 					try {
 						Alignment a = alignmentReader.getAlignment(filePath.toString());
 						a.applyThreshold(threshold);
+						List<Model> sourceTargetModels = findModels(filePath);
+						//TODO what if list empty or only contains one model
+						a.setSourceModel(sourceTargetModels.get(0));
+						a.setTargetModel(sourceTargetModels.get(1));
 						a.setName(filePath.getFileName().toString());
 						alignments.add(a);
 					} catch (Exception e) {
@@ -414,6 +417,10 @@ public class Evaluator {
 						Alignment a = alignmentReader.getAlignment(filePath.toString());
 						a.applyThreshold(threshold);
 						a.setName(filePath.getFileName().toString());
+						List<Model> sourceTargetModels = findModels(filePath);
+						//TODO what if list empty or only contains one model
+						a.setSourceModel(sourceTargetModels.get(0));
+						a.setTargetModel(sourceTargetModels.get(1));
 						currAlignments.add(a);
 						currMatcherName = findName(filePath, path.get());
 						currMatcherPath = filePath.getParent().toString();
@@ -422,6 +429,7 @@ public class Evaluator {
 						e.printStackTrace();
 					}
 				} else if(!currAlignments.isEmpty()){
+					//TODO make check with models to verify explicitly
 					//Verify if currently read matcher alignment has the same size as goldstandard
 					Result goldstandard = this.goldstandard.values().iterator().next();
 					if(goldstandard.size() != currAlignments.size()) {
@@ -435,6 +443,16 @@ public class Evaluator {
 			});
 		}
 		return results;
+	}
+	
+	private List<Model> findModels(Path path) {
+		List<Model> models = new ArrayList<>();
+		for(Model model : this.models) {
+			if(path.toString().contains(model.getName())) {
+				models.add(model);
+			}
+		}
+		return models;
 	}
 	
 	/**
@@ -565,6 +583,11 @@ public class Evaluator {
 	public void setTransformationsAlignment(List<Function<Alignment, Alignment>> transformationsAlignment) {
 		this.transformationsAlignment = transformationsAlignment;
 	}
+	
+	public List<Model> getModels() {
+		return models;
+	}
+
 
 	/**
 	 * Allows to easily create and configure an <code>Evaluator</code>
