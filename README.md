@@ -22,6 +22,20 @@ Evaluator evaluator = new Evaluator.Builder().
 				setAlignmentReader(new AlignmentReaderXml()).
 				build();
 ```
+If you want to evaluate multiple matcher outputs at once,
+Evaluator comes with matcher output search. That is, only
+specify the root path of the outputs and Evaluator will
+automatically detect the multiple outputs and load them.
+
+```java
+Evaluator evaluator = new Evaluator.Builder().
+				setGoldstandardPath(GOLDSTANDARD_PATH).
+				setMatchersRootPath(RESULTS_PATH).
+				setOutputPath(OUTPUT_PATH).
+				setOutputName("output-name").
+				setAlignmentReader(new AlignmentReaderXml()).
+				build();
+```
 
 The Evaluator also supports thresholding of experiments, which can
 be simply added to the Evaluator. If now threshold is set explicitly,
@@ -52,7 +66,7 @@ Evaluator evaluator = new Evaluator.Builder().
 				addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/").
 				setOutputPath(OUTPUT_PATH).
 				setOutputName("output-name").
-				addHandler(new HTMLHandler(SHOW_IN_BROSWER));++
+				addHandler(new HTMLHandler(SHOW_IN_BROSWER));
 				addHandler(new JSONHandler());
 				setAlignmentReader(new AlignmentReaderXml()).
 				build();
