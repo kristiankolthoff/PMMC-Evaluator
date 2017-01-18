@@ -60,3 +60,10 @@ Evaluator evaluator = new Evaluator.Builder().
 
 Of course, you can also programmatically receive the results 
 from the Evaluator and do additional processing of the data.
+After successfully building the Evaluator instance, you start
+the process with the following call.
+
+```java
+evaluator.run();
+```
+
