@@ -1,6 +1,7 @@
 package de.unima.ki.pmmc.evaluator.alignment;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,7 @@ public class Correspondence implements Comparable<Correspondence> {
 	private double confidence;
 	private SemanticRelation relation;
 	private Optional<CorrespondenceType> type;
+	private Optional<List<String>> annotators;
 	
 	private static Map<SemanticRelation, String> symbolTable = new HashMap<SemanticRelation, String>();
 	
@@ -32,6 +34,7 @@ public class Correspondence implements Comparable<Correspondence> {
 		this.relation = relation;
 		this.confidence = confidence;
 		this.type = Optional.ofNullable(type);
+		this.annotators = Optional.empty();
 	}
 	
 	public Correspondence(String uri1, String uri2, SemanticRelation relation, double confidence) {
@@ -40,6 +43,7 @@ public class Correspondence implements Comparable<Correspondence> {
 		this.relation = relation;
 		this.confidence = confidence;
 		this.type = Optional.empty();
+		this.annotators = Optional.empty();
 	}
 	
 	public Correspondence(String uri1, String uri2, SemanticRelation relation) {
@@ -70,6 +74,14 @@ public class Correspondence implements Comparable<Correspondence> {
 		return this.uri2;
 	}
 	
+	public void setUri1(String uri1) {
+		this.uri1 = uri1;
+	}
+
+	public void setUri2(String uri2) {
+		this.uri2 = uri2;
+	}
+
 	public double getConfidence() {
 		return this.confidence;
 	}
@@ -134,6 +146,14 @@ public class Correspondence implements Comparable<Correspondence> {
 
 	public void setType(CorrespondenceType type) {
 		this.type = Optional.ofNullable(type);
+	}
+
+	public Optional<List<String>> getAnnotators() {
+		return annotators;
+	}
+
+	public void setAnnotators(Optional<List<String>> annotators) {
+		this.annotators = annotators;
 	}
 
 }

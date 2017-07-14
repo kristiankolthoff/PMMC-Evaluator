@@ -1,5 +1,7 @@
 package de.unima.ki.pmmc.evaluator.annotator;
 
+import java.util.Set;
+
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 
@@ -7,7 +9,6 @@ public class CTMatcherMisc implements CTMatcher{
 
 	private static final CorrespondenceType TYPE = CorrespondenceType.MISC;
 	private static final boolean USE_POS = true;
-	private static final double JACCARD_THRESHOLD = 0.4;
 	
 	@Override
 	public CorrespondenceType match(String label1, String label2) {
@@ -15,7 +16,8 @@ public class CTMatcherMisc implements CTMatcher{
 		label1 = NLPHelper.getStemmedString(label1, USE_POS);
 		label2 = NLPHelper.getSanitizeLabel(label2);
 		label2 = NLPHelper.getStemmedString(label2, USE_POS);
-		if(NLPHelper.jaccardSimilarity(label1, label2) >= JACCARD_THRESHOLD) {
+		Set<String> words = NLPHelper.identicalTokens(label1, label2);
+		if(NLPHelper.identicalTokens(label1, label2).size() >= 2) {
 			return TYPE;
 		} else {
 			return CorrespondenceType.DEFAULT;

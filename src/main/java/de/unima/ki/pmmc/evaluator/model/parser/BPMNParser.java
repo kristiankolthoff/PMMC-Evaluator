@@ -21,8 +21,10 @@ public class BPMNParser implements Parser {
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 		
 		BPMNParser parser = new BPMNParser();
-		parser.parse("data/dataset1/models/Cologne.bpmn");
-		
+		Model model = parser.parse("src/main/resources/data/dataset1/models/Cologne.bpmn");
+		for(Activity a : model.getActivities()) {
+			System.out.println(a);
+		}
 	}
 	
 	

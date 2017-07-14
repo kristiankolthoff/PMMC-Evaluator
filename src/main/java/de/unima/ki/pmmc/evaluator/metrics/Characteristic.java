@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.function.Function;
 
+import org.apache.xmlbeans.xml.stream.CharacterData;
+
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 
@@ -26,7 +28,7 @@ public class Characteristic {
 	private static boolean strictEvaluation = false;
 	
 	//TODO move constant to other class and insert member variable
-	public static final int NUM_OF_ANNOTATORS = 8;
+	public static final int NUM_OF_ANNOTATORS = 1;
 	
 	/**
 	* Constructs a characteristic based by comparing two mappings.
@@ -112,6 +114,9 @@ public class Characteristic {
 	* @return the precision
 	*/
 	public double getPrecision() {
+//		if(alignmentMapping.isEmpty()) {
+//			return 0d;
+//		}
 		return (double)this.alignmentCorrect.size() /  (double)this.alignmentMapping.size();
 	}
 
@@ -124,7 +129,11 @@ public class Characteristic {
 	* @return the non-binary precision
 	*/
 	public double getNBPrecision() {
-		return this.getConfSumCorrect() / ((double) this.getFP().size() + this.getConfSumCorrect());
+		double sum = (double) this.getFP().size() + this.getConfSumCorrect();
+//		if(sum == 0) {
+//			return 0d;
+//		}
+		return this.getConfSumCorrect() / sum;
 	}
 	
 	/**
@@ -133,6 +142,9 @@ public class Characteristic {
 	* @return the recall
 	*/
 	public double getRecall() {
+//		if(alignmentReference.isEmpty()) {
+//			return 0d;
+//		}
 		return (double)this.alignmentCorrect.size() /  (double) this.alignmentReference.size();
 	}
 	
@@ -144,7 +156,11 @@ public class Characteristic {
 	* @return the non-binary precision
 	*/
 	public double getNBRecall() {
-		return this.getConfSumCorrect() / this.getConfSumReference();
+		double confSumReference = this.getConfSumReference();
+//		if(confSumReference == 0) {
+//			return 0d;
+//		}
+		return this.getConfSumCorrect() / confSumReference;
 	}
 	
 	public int getNumOfRulesCorrect() {
@@ -168,6 +184,7 @@ public class Characteristic {
 		return this.alignmentCorrect;
 	}
 	
+	//TODO create copy of alignment
 	/**
 	 * Returns the false positives based on the
 	 * specified <code>Alignment</code>s.
@@ -177,6 +194,7 @@ public class Characteristic {
 		return this.alignmentMapping.minus(this.alignmentCorrect);
 	}
 	
+	//TODO create copy of alignment
 	/**
 	 * Returns the true positives based on the
 	 * specified <code>Alignment</code>s.
@@ -469,7 +487,7 @@ public class Characteristic {
 	 * @param characteristics the characteristics to compute the macro spearman rang correlation coefficient
 	 * @return macro spearman rang correlation coefficient of multiple <code>Characterisitic</code>s
 	 */
-	public static double getSpearRangCorrMacro(List<Characteristic> characteristics) {
+	public static double getSpearRangCorrMacro(List<? extends Characteristic> characteristics) {
 		return computeMacro(characteristics, c -> {return c.getSpearmanRangCorrelation();});
 	}
 	
@@ -543,8 +561,8 @@ public class Characteristic {
 		for(Characteristic c : characteristics) {
 			double currPrecision = function.apply(c);
 			if(!Double.isNaN(currPrecision)) {
-				sum += currPrecision;
 				numOfOcc++;
+				sum += currPrecision;
 			}
 		}
 		return sum / numOfOcc;
@@ -833,6 +851,56 @@ public class Characteristic {
 		return getRelativeDistance(mappings, references, normalize);
 	}
 	
+	public static double getRelativeDistanceGSMacro(List<? extends Characteristic> characteristics, boolean normalize) {
+		double sum = 0;
+		for (int i = 0; i < characteristics.size() / 36; i++) {
+			sum += Characteristic.getRelativeDistance(characteristics.subList(i*36, (i+1)*36), normalize);
+		}
+		return sum / (characteristics.size() / 36);
+	}
+	
+	public static double getSpearRangCorrGSMacro(List<? extends Characteristic> characteristics) {
+		return Characteristic.getGSMacro(characteristics, Characteristic::getSpearRangCorrMacro, 36);
+	}
+	
+	public static double getFMeasureGSMacro(List<? extends Characteristic> characteristics) {
+		//TODO hardcoding of goldstandard size
+		return Characteristic.getGSMacro(characteristics, Characteristic::getFMeasureMacro, 36);
+	}
+	
+	public static double getNBFMeasureGSMicro(List<? extends Characteristic> characteristics) {
+		return Characteristic.getGSMacro(characteristics, Characteristic::getNBFMeasureMicro, 36);
+	}
+	
+	public static double getNBPrecisionGSMacro(List<? extends Characteristic> characteristics) {
+		return Characteristic.getGSMacro(characteristics, Characteristic::getNBPrecisionMacro, 36);
+	}
+	
+	public static double getNBPrecisionGSMicro(List<? extends Characteristic> characteristics) {
+		return Characteristic.getGSMacro(characteristics, Characteristic::getNBPrecisionMicro, 36);
+	}
+	
+	public static double getNBRecallGSMacro(List<? extends Characteristic> characteristics) {
+		return Characteristic.getGSMacro(characteristics, Characteristic::getNBRecallMacro, 36);
+	}
+	
+	public static double getNBRecallGSMicro(List<? extends Characteristic> characteristics) {
+		return Characteristic.getGSMacro(characteristics, Characteristic::getNBRecallMicro, 36);
+	}
+	
+	public static double getNBFMeasureGSMacro(List<? extends Characteristic> characteristics) {
+		return Characteristic.getGSMacro(characteristics, Characteristic::getNBFMeasureMacro, 36);
+	}
+	
+	public static double getGSMacro(List<? extends Characteristic> characteristics, 
+			Function<List<? extends Characteristic>, Double> function, int sizeGS) {
+		double sum = 0;
+		for (int i = 0; i < characteristics.size() / sizeGS; i++) {
+			sum += function.apply(characteristics.subList(i*36, (i+1)*36));
+		}
+		return sum / (characteristics.size() / sizeGS);
+	}
+	
 	/**
 	 * Computes the relative distance of the matcher alignments to
 	 * the reference alignments of the gold standard, based on a collection
@@ -868,12 +936,12 @@ public class Characteristic {
 			}
 			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
 			double sqDev;
-			if(!isFirstLineAlignment(mappings)) {
+//			if(!isFirstLineAlignment(mappings)) {
 				double delta = (confRef!=0) ? confRef : 1; 
-				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
-			} else {
-				sqDev = Math.pow(cMap.getConfidence() - confRef, 2);
-			}
+				sqDev = Math.abs(Math.pow(cMap.getConfidence() - confRef, 2));
+//			} else {
+//				sqDev = Math.pow(cMap.getConfidence() - confRef, 2);
+//			}
 			sum += sqDev;
 			}
 		}
@@ -882,11 +950,11 @@ public class Characteristic {
 		for(int i = 0; i < references.size(); i++) {
 			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
 			for(Correspondence cOnlyRef : alignOnlyRef) {
-				if(!isFirstLineAlignment(mappings)) {
-					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
-				} else {
-					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), 2));
-				}
+//				if(!isFirstLineAlignment(mappings)) {
+					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), 2));
+//				} else {
+//					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), 2));
+//				}
 			}
 		}
 		return sum;
@@ -915,25 +983,25 @@ public class Characteristic {
 		}
 		double maxConf = Collections.max(allCorres).getConfidence();
 		//Normalize FLM confidences between 0.125 and 1
-		if(isFirstLineAlignment(alignments)) {
-			for(Correspondence c : allCorres) {
-				c.setConfidence(c.getConfidence() / maxConf);
-			}
-			double minConf = Collections.min(allCorres).getConfidence();
-			final double TARGET_MAX = 1;
-			final double TARGET_MIN = 0.125;
-			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
-			for(Correspondence c : allCorres) {
-				double finalConf = 1 - mult * (1 - c.getConfidence());
-				c.setConfidence(finalConf);
-			}
-		} 
-//		//Normalize SLM confidences to 0 and 1
-		else {
+//		if(isFirstLineAlignment(alignments)) {
+//			for(Correspondence c : allCorres) {
+//				c.setConfidence(c.getConfidence() / maxConf);
+//			}
+//			double minConf = Collections.min(allCorres).getConfidence();
+//			final double TARGET_MAX = 1;
+//			final double TARGET_MIN = 0.125;
+//			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
+//			for(Correspondence c : allCorres) {
+//				double finalConf = 1 - mult * (1 - c.getConfidence());
+//				c.setConfidence(finalConf);
+//			}
+//		} 
+////		//Normalize SLM confidences to 0 and 1
+//		else {
 			for(Correspondence c : allCorres) {
 				c.setConfidence((c.getConfidence()>0) ? 1 : 0);
 			}
-		}
+//		}
 		return vals;
 	}
 	
@@ -946,7 +1014,7 @@ public class Characteristic {
 	 * @return true if the Matcher is a First Line Matcher (FLM), false if the Matcher
 	 * is a Second Line Matcher (SLM)
 	 */
-	public static boolean isFirstLineMatcher(List<Characteristic> characteristics) {
+	public static boolean isFirstLineMatcher(List<? extends Characteristic> characteristics) {
 		List<Alignment> alignments = new ArrayList<>();
 		for(Characteristic c : characteristics) {
 			alignments.add(c.getAlignmentMapping());
@@ -976,11 +1044,11 @@ public class Characteristic {
 				stream().
 				mapToDouble(c -> c.getConfidence()).
 				distinct().count();
-//		OptionalDouble minConf = corres.
-//				stream().
-//				mapToDouble(c -> c.getConfidence()).
-//				distinct().min();
-		return numDistinctVals > 1 ;//&& minConf.getAsDouble() < 0.70;
+		OptionalDouble minConf = corres.
+				stream().
+				mapToDouble(c -> c.getConfidence()).
+				distinct().min();
+		return numDistinctVals > 1 && minConf.getAsDouble() < 0.70;
 	}
 	
 	/**

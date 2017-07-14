@@ -13,6 +13,10 @@ import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 import de.unima.ki.pmmc.evaluator.model.Model;
+import de.unima.ki.pmmc.evaluator.model.parser.BPMNParser;
+import de.unima.ki.pmmc.evaluator.model.parser.EPMLParser;
+import de.unima.ki.pmmc.evaluator.model.parser.PNMLParser;
+import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 /**
  * The <code>Annotator</code> is responsible for annotating or tagging a
  * <code>Correspondence</code> with is appropriate <code>CorrespondenceType</code>
@@ -30,6 +34,7 @@ public class Annotator {
 	 */
 	private List<CTMatcher> matchers;
 	private List<Model> models;
+	private Parser parser;
 	/**
 	 * Cached IDs to actual labels
 	 */
@@ -40,10 +45,12 @@ public class Annotator {
 	public Annotator(List<Model> models) {
 		this.matchers = new ArrayList<>();
 		this.models = models;
-		this.matchers.add(new CTMatcherTrivial());
+//		this.matchers.add(new CTMatcherTrivial());
+		this.matchers.add(new CTMatcherTrivalDist());
 		this.matchers.add(new CTMatcherOWI());
 		this.matchers.add(new CTMatcherDVI());
 		this.matchers.add(new CTMatcherMisc());
+//		this.matchers.add(new CTMatcherSubNoun());
 		this.idCache = new HashMap<>();
 		this.initModelMap();
 	}
@@ -69,8 +76,21 @@ public class Annotator {
 	 * models where used to generate the <code>Correspondece</code>
 	 */
 	public CorrespondenceType annotateCorrespondence(Correspondence correspondence) {
-		String label1 = this.idCache.get(correspondence.getUri1().split(SPLIT)[1]);
-		String label2 = this.idCache.get(correspondence.getUri2().split(SPLIT)[1]);
+		String label1 = null, label2 = null;
+		String uri1 = null, uri2 = null;
+		if(parser == null || parser instanceof BPMNParser || parser instanceof PNMLParser) {
+			label1 = this.idCache.get(correspondence.getUri1().split(SPLIT)[1]);
+			label2 = this.idCache.get(correspondence.getUri2().split(SPLIT)[1]);
+		} else if(parser instanceof EPMLParser) {
+			try {
+				uri1 = correspondence.getUri1().split("source/")[1];
+				uri2 = correspondence.getUri2().split("target/")[1];
+				label1 = this.idCache.get(correspondence.getUri1().split("source/")[1]);
+				label2 = this.idCache.get(correspondence.getUri2().split("target/")[1]);
+			} catch(Exception e) {
+				return CorrespondenceType.DEFAULT;
+			}
+		}
 		for(CTMatcher matcher : this.matchers) {
 			//Matcher generated correspondence using not allowed events of the model
 			if(label1 == null || label2 == null) {
@@ -129,4 +149,13 @@ public class Annotator {
 		}
 		return vals;
 	}
+
+	public Parser getParser() {
+		return parser;
+	}
+
+	public void setParser(Parser parser) {
+		this.parser = parser;
+	}
+
 }

@@ -13,7 +13,12 @@ public class CTMatcherTrivial implements CTMatcher {
 		label1 = NLPHelper.getSanitizeLabel(label1);
 		label1 = NLPHelper.getStemmedString(label1, USE_POS);
 		label2 = NLPHelper.getSanitizeLabel(label2);
-		label2 = NLPHelper.getStemmedString(label2, USE_POS);
+//		try
+//		{
+			label2 = NLPHelper.getStemmedString(label2, USE_POS);
+//		} catch(StringIndexOutOfBoundsException e) {
+//			System.out.println();
+//		}
 		return label1.equals(label2) ? TYPE : CorrespondenceType.DEFAULT;
 	}
 

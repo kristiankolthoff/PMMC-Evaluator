@@ -15,6 +15,7 @@ public class Model {
 
 	private String name;
 	private String id;
+	private String prefix;
 	private Set<Activity> activities;
 	private Set<Flow> flows;
 	
@@ -92,7 +93,16 @@ public class Model {
 		}
 		return correspondences;
 	}
-
+	
+	public static String getLabelFromId(Model model, String id) {
+		for(Activity a : model.getActivities()) {
+			if(a.getId().equals(id)) {
+				return a.getLabel();
+			}
+		}
+		return null;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -104,6 +114,14 @@ public class Model {
 	@Override
 	public String toString() {
 		return "Model [name=" + name + ", id=" + id;
+	}
+
+	public String getPrefix() {
+		return prefix;
+	}
+
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
 	}
 	
 	

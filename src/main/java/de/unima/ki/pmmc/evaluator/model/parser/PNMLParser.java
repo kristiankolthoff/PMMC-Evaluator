@@ -44,7 +44,7 @@ public class PNMLParser implements Parser {
 		
 		Document document = builder.parse(in);
 
-		
+		//Load transitions
 		NodeList transitionList = document.getDocumentElement().getElementsByTagName("transition");
 		
 		for (int i = 0; i < transitionList.getLength(); i++) {
@@ -70,6 +70,33 @@ public class PNMLParser implements Parser {
 				}
 			}
 		}
+		
+//		//Load places
+//		NodeList placesList = document.getDocumentElement().getElementsByTagName("place");
+//		
+//		for (int i = 0; i < placesList.getLength(); i++) {
+//			Node place = placesList.item(i);
+//			String id = place.getAttributes().getNamedItem("id").getNodeValue();
+//			// System.out.println("ID: " +  id);
+//			NodeList l1 = place.getChildNodes();
+//			// System.out.println(l1.getLength());
+//			for (int j = 0; j < l1.getLength(); j++) {
+//				if (l1.item(j).getNodeName().equals("name")) {
+//					NodeList l2 = l1.item(j).getChildNodes();
+//					for (int k = 0; k < l2.getLength(); k++) {
+//						if (l2.item(k).getNodeName().equals("text")) {
+//							String label = l2.item(k).getTextContent();
+//							// System.out.println("Label: " + l2.item(k).getTextContent());
+//							if (!(label.matches("^t\\d*"))) {
+//								Activity activity = new Activity(id, label);
+//								pm.addActivity(activity);
+//							}
+//						}
+//					}
+//					
+//				}
+//			}
+//		}
 		return pm;
 		
 	}

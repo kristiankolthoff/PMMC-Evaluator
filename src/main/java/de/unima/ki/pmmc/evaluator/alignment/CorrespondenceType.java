@@ -6,8 +6,12 @@ import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 public enum CorrespondenceType {
 
 	TRIVIAL ("trivial"),
+//	TRIVIAL_BN("trivial-basic-norm"),
+//	TRIVIAL_EN("trivial-ext-norm"),
+	TRIVIAL_NORM("trivial-norm"),
 	DIFFICULT_NO_WORD_IDENT ("no-word-ident"),
 	DIFFICULT_VERB_IDENT ("verb-ident"),
+//	DIFFICULT_SUB_NOUN ("sub-noun"),
 	ONE_WORD_IDENT ("one-word-ident"),
 	MISC ("misc"),
 	DEFAULT ("default");

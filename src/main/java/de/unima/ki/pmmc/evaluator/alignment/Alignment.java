@@ -243,6 +243,9 @@ public class Alignment implements Iterable<Correspondence>{
 	
 	public static Alignment newInstance(Alignment alignment) {
 		Alignment copyAlignment = new Alignment();
+		copyAlignment.setName(alignment.getName());
+		copyAlignment.setSourceModel(alignment.getSourceModel());
+		copyAlignment.setTargetModel(alignment.getTargetModel());
 		for(Correspondence c : alignment) {
 			copyAlignment.add(new Correspondence(c.getUri1(), c.getUri2(),
 					c.getRelation(), c.getConfidence(), (c.getCType().isPresent() ? c.getCType().get() : null)));
