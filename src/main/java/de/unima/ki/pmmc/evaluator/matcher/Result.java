@@ -2,21 +2,26 @@ package de.unima.ki.pmmc.evaluator.matcher;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
+import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
+import de.unima.ki.pmmc.evaluator.model.Activity;
+import de.unima.ki.pmmc.evaluator.model.Model;
 /**
  * A <code>Result</code> represents a single matcher with its
  * <code>Alignment</code>s and either <code>Characteristic</code>s or
  * <code>TypeCharacteristc</code>s. Also it provides the matcher name
  * and the corresponding path of the input alignments.
  */
-public class Result implements Iterable<Alignment>{
+public class Result implements Iterable<Alignment>, Comparable<Result>{
 
 	private String name;
 	private String path;
@@ -58,18 +63,47 @@ public class Result implements Iterable<Alignment>{
 		}
 	}
 	
-	public void computeCharacteristics(Result goldstandard, boolean typeOn) throws CorrespondenceException {
-		for(Alignment aRef : goldstandard) {
-			for(Alignment aMatcher : this) {
-				if(aRef.equals(aMatcher)) {
-					if(typeOn) {
-						this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef, null));
-					} else {
-						this.characteristics.add(new Characteristic(aMatcher, aRef));						
+	public void printStats() {
+		Map<CorrespondenceType, Integer> vals = new HashMap<>();
+		for(CorrespondenceType type : CorrespondenceType.values()) {
+			vals.put(type, 0);
+		}
+		for(Alignment a : alignments) {
+			for(Correspondence c : a) {
+				int curr = vals.get(c.getCType().get());
+				vals.put(c.getCType().get(), curr+1);
+			}
+		}
+		int sum = 0;
+		for(Map.Entry<CorrespondenceType, Integer> e : vals.entrySet()) {
+			sum += e.getValue();
+		}
+		for(Map.Entry<CorrespondenceType, Integer> e : vals.entrySet()) {
+			System.out.println(e.getKey() + " " + e.getValue() + " "+ (e.getValue()/(double)sum));
+		}
+	}
+	
+	//TODO create different class hierachy, result as interface and type and simple characteristic are implementations
+	public void computeCharacteristics(List<Result> goldstandards, Map<String, Alignment> crossProduct, boolean typeOn) throws CorrespondenceException {
+		for(Result result : goldstandards) {
+			for(Alignment aRef : result) {
+				for(Alignment aMatcher : this) {
+					if(aRef.equals(aMatcher)) {
+						if(typeOn) {
+							Model sourceModel = aRef.getSourceModel();
+							Model targetModel = aRef.getTargetModel();
+							this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef, 
+									null));
+	//						this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef, 
+	//								crossProduct.get(sourceModel.getName()+targetModel.getName())));
+						} else {
+							this.characteristics.add(new Characteristic(aMatcher, aRef));						
+						}
 					}
 				}
 			}
 		}
+		System.out.println(characteristics.size());
 	}
 	
 	/**
@@ -78,13 +112,10 @@ public class Result implements Iterable<Alignment>{
 	 * @return minimum confidence value
 	 */
 	public double minConf() {
-		List<Correspondence> cVals = new ArrayList<>();
-		for(Alignment alignment : this.alignments) {
-			for(Correspondence c : alignment) {
-				cVals.add(c);
-			}
-		}
-		return Collections.min(cVals).getConfidence();
+		return this.alignments.stream().
+				flatMap(alignment -> {return alignment.getCorrespondences().stream();}).
+				mapToDouble(corres -> {return corres.getConfidence();}).
+				filter(value -> {return value > 0;}).min().getAsDouble();
 	}
 	
 	/**
@@ -93,13 +124,25 @@ public class Result implements Iterable<Alignment>{
 	 * @return maximal confidence value
 	 */
 	public double maxConf() {
-		List<Correspondence> cVals = new ArrayList<>();
-		for(Alignment alignment : this.alignments) {
-			for(Correspondence c : alignment) {
-				cVals.add(c);
-			}
-		}
-		return Collections.max(cVals).getConfidence();
+		return this.alignments.stream().
+				flatMap(alignment -> {return alignment.getCorrespondences().stream();}).
+				mapToDouble(corres -> {return corres.getConfidence();})
+				.max().getAsDouble();
+	}
+	
+	public double meanConf() {
+		return this.alignments.stream().
+				flatMap(alignment -> {return alignment.getCorrespondences().stream();}).
+				mapToDouble(corres -> {return corres.getConfidence();}).average().getAsDouble();
+	}
+	
+	public double stdDevConf() {
+		double mean = meanConf();
+		double sqsum =  this.alignments.stream().
+				flatMap(alignment -> {return alignment.getCorrespondences().stream();}).
+				mapToDouble(corres -> {return Math.pow(corres.getConfidence() - mean, 2);}).
+				average().getAsDouble();
+		return Math.sqrt(sqsum);
 	}
 	
 	public int size() {
@@ -218,6 +261,19 @@ public class Result implements Iterable<Alignment>{
 	public String toString() {
 		return "Result [name=" + name + ", path=" + path
 				+ ", appliedThreshold=" + appliedThreshold + ", size=" + alignments.size() + "]";
+	}
+
+	@Override
+	public int compareTo(Result that) {
+		//TODO bug changing between t and characteristics
+		double diff = Characteristic.getNBFMeasureMicro(that.getCharacteristics()) - Characteristic.getNBFMeasureMicro(this.characteristics);
+		if(diff < 0) {
+			return -1;
+		} else if(diff > 0) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	

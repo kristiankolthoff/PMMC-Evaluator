@@ -47,7 +47,7 @@ public class TypeCharacteristic extends Characteristic {
 		this.alignmentReference = extractCTMap(getAlignmentReference());
 		this.alignmentMapping = extractCTMap(getAlignmentMapping());
 		this.alignmentCorrect = extractCTMap(getAlignmentCorrect());
-		this.alignmentCrossProduct = extractCTMap(getAlignmentCrossProduct());
+//		this.alignmentCrossProduct = extractCTMap(getAlignmentCrossProduct());
 	}
 	
 	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
@@ -69,6 +69,24 @@ public class TypeCharacteristic extends Characteristic {
 		return vals;
 	}
 	
+	public Alignment getTP(CorrespondenceType type) {
+		return Alignment.newInstance(alignmentCorrect.get(type));
+	}
+	
+	public Alignment getTN(CorrespondenceType type) {
+		Alignment a = Alignment.newInstance(alignmentCrossProduct.get(type).
+				minus(alignmentMapping.get(type).minus(alignmentReference.get(type))));
+		return a;
+	}
+	
+	public Alignment getFP(CorrespondenceType type) {
+		return Alignment.newInstance(alignmentMapping.get(type).minus(alignmentCorrect.get(type)));
+	}
+	
+	public Alignment getFN(CorrespondenceType type) {
+		return Alignment.newInstance(alignmentReference.get(type).minus(alignmentMapping.get(type)));
+	}
+	
 	/**
 	 * Returns a copy of the <code>Alignment</code>
 	 * of the cross product.
@@ -81,12 +99,40 @@ public class TypeCharacteristic extends Characteristic {
 		return alignmentCorrect.get(type).size() / (double) alignmentMapping.get(type).size();
 	}
 	
+	public double getNBPrecision(CorrespondenceType type) {
+		return getConfSumCorrect(type) / ((double)getFP(type).size() + getConfSumCorrect(type));
+	}
+	
 	public double getRecall(CorrespondenceType type) {
 		return alignmentCorrect.get(type).size() / (double) alignmentReference.get(type).size();
 	}
 	
+	public double getNBRecall(CorrespondenceType type) {
+		return getConfSumCorrect(type) / getConfSumReference(type);
+	}
+	
+	private double getConfSumReference(CorrespondenceType type) {
+		double sum = 0;
+		for(Correspondence cRef : this.alignmentReference.get(type)) {
+			sum += cRef.getConfidence();
+		}
+		return sum;
+	}
+	
+	private double getConfSumCorrect(CorrespondenceType type) {
+		double sum = 0;
+		for(Correspondence cRef : this.alignmentCorrect.get(type)) {
+			sum += cRef.getConfidence();
+		}
+		return sum;
+	}
+	
 	public double getFMeasure(CorrespondenceType type) {
 		return computeFFromPR(getPrecision(type), getRecall(type));
+	}
+	
+	public double getNBFMeasure(CorrespondenceType type) {
+		return computeFFromPR(getNBPrecision(type), getNBRecall(type));
 	}
 	
 	/**
@@ -184,7 +230,8 @@ public class TypeCharacteristic extends Characteristic {
 				numOfOcc++;
 			}
 		}
-		return sum / numOfOcc;
+		double val = sum / numOfOcc;
+		return (Double.isNaN(val)) ? 0 : val;
 	}
 	
 	/**
@@ -214,6 +261,61 @@ public class TypeCharacteristic extends Characteristic {
 		}
 		return Math.sqrt(dev/numOfOcc);
 		
+	}
+	
+	public double getAccuracy(CorrespondenceType type) {
+		final int TP = getTP(type).size();
+		final int TN = getTN(type).size();
+		final int FP = getFP(type).size();
+		final int FN = getFN(type).size();
+		if(TP+TN+FP+FN <= 0) {
+			double test = (TP + TN) / (double)(TP + TN + FP + FN);
+			System.out.println("empty " + type);
+		}
+		return (TP + TN) / (double)(TP + TN + FP + FN);
+	}
+	
+	public static double getAccuracyMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMicro(characteristics, c -> {return (double)(c.getTN(type).size() + c.getTP(type).size());}, 
+				c -> {return (double)(c.getTN(type).size() + c.getTP(type).size() 
+						+ c.getFN(type).size() + c.getFP(type).size());});
+	}
+	
+	public static double getAccuracyMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMacro(characteristics, c -> {return c.getAccuracy(type);});
+	}
+	
+	public static double getAccuracyStdDev(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeStdDev(characteristics, TypeCharacteristic::getAccuracyMacro, 
+				c -> {return c.getAccuracy(type);}, type);
+	}
+	
+	public static Map<CorrespondenceType, Integer> getMatcherTypeCount(List<TypeCharacteristic> characteristics) {
+		Map<CorrespondenceType, Integer> vals = new HashMap<>();
+		for(TypeCharacteristic c : characteristics) {
+			for(Map.Entry<CorrespondenceType, Alignment> e : c.alignmentMapping.entrySet()) {
+				if(vals.containsKey(e.getKey())) {
+					vals.put(e.getKey(), vals.get(e.getKey()) + e.getValue().size());
+				} else {
+					vals.put(e.getKey(), e.getValue().size());
+				}
+			}
+		}
+		return vals;
+	}
+	
+	public static int getFNSum(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return characteristics.
+				stream().
+				map((list) -> {return list.getFN(type).size();}).
+				reduce(0, (i,j) -> {return i+j;});
+	}
+	
+	public static int getFPSum(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return characteristics.
+				stream().
+				map((list) -> {return list.getFP(type).size();}).
+				reduce(0, (i,j) -> {return i+j;});
 	}
 	
 	/**
@@ -273,6 +375,10 @@ public class TypeCharacteristic extends Characteristic {
 	public static double getRecallMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
 		return computeMacro(characteristics, c -> {return c.getRecall(type);});
 	}
+	
+	public static double getNBRecallMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMacro(characteristics, c -> {return c.getNBRecall(type);});
+	}
 
 	/**
 	 * Returns the micro recall for a given correspondence type for multiple
@@ -284,6 +390,11 @@ public class TypeCharacteristic extends Characteristic {
 	public static double getRecallMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
 		return computeMicro(characteristics, c -> {return (double) c.getAlignmentCorrect(type).size();}, 
 				c -> {return (double) c.getAlignmentReference(type).size();});
+	}
+	
+	public static double getNBRecallMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMicro(characteristics, c -> {return c.getConfSumCorrect(type);}, 
+				c -> {return c.getConfSumReference(type);});
 	}
 	
 	/**
@@ -309,6 +420,10 @@ public class TypeCharacteristic extends Characteristic {
 		return computeMacro(characteristics, c -> {return c.getPrecision(type);});
 	}
 	
+	public static double getNBPrecisionMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMacro(characteristics, c -> {return c.getNBPrecision(type);});
+	}
+	
 	/**
 	 * Compute the micro precision over a list of <code>TypeCharacteristic</code>s. 
 	 * Avoids biasing the value by unequally large data sets.
@@ -317,8 +432,13 @@ public class TypeCharacteristic extends Characteristic {
 	 * @return micro precision for a specific <code>CorrespondenceType</code>
 	 */
 	public static double getPrecisionMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
-		return computeMicro(characteristics, c -> {return (double) c.getAlignmentCorrect().size();}, 
+		return computeMicro(characteristics, c -> {return (double) c.getAlignmentCorrect(type).size();}, 
 				c -> {return (double) c.getAlignmentMapping(type).size();});
+	}
+	
+	public static double getNBPrecisionMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMicro(characteristics, c -> {return c.getConfSumCorrect(type);}, 
+				c -> {return ((double)c.getFP(type).size() + c.getConfSumCorrect(type));});
 	}
 	
 	/**
@@ -336,13 +456,17 @@ public class TypeCharacteristic extends Characteristic {
 		return computeMacro(characteristics, c -> {return c.getFMeasure(type);});
 	}
 	
+	public static double getNBFMeasureMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+		return computeMacro(characteristics, c -> {return c.getNBFMeasure(type);});
+	}
+	
 	public static double getFMeasureMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
 		int sumNumOfMatcher = 0;
 		int sumNumOfGold = 0;
 		int sumNumOfCorrect = 0;
 		for(TypeCharacteristic c : characteristics) {
 			sumNumOfMatcher += c.getAlignmentMapping(type).size();
-			sumNumOfGold += c.getAlignmentMapping(type).size();
+			sumNumOfGold += c.getAlignmentReference(type).size();
 			sumNumOfCorrect += c.getAlignmentCorrect(type).size();
 		}
 		return Characteristic.computeFFromPR((sumNumOfCorrect / (double) sumNumOfMatcher), 
