@@ -19,7 +19,7 @@ import javax.json.JsonWriterFactory;
 import javax.json.stream.JsonGenerator;
 
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
-import de.unima.ki.pmmc.evaluator.matcher.Result;
+import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 

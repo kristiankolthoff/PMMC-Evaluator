@@ -6,8 +6,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.function.Consumer;
 
-
-import de.unima.ki.pmmc.evaluator.matcher.Result;
+import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 
 public class ConsoleHandler implements ResultHandler{

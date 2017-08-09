@@ -332,5 +332,25 @@ public class NLPHelper {
 		}
 		return tagger;
 	}
+
+	public static String getSanitizeLabel2(String label1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List<TaggedWord> getTaggedSentenceWithoutStopwords(String label1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Set<String> identicalTokens(String label1, String label2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static String getStemmedStringWithoutStopWords(String label1, boolean usePos) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

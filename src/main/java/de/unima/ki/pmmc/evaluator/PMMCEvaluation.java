@@ -9,13 +9,13 @@ import org.xml.sax.SAXException;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
+import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.handler.JSONHandler;
 import de.unima.ki.pmmc.evaluator.handler.LaTexHandler;
 import de.unima.ki.pmmc.evaluator.handler.LaTexHandlerType;
-import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.utils.GSPartitioner;
 import edu.stanford.nlp.parser.metrics.Eval;

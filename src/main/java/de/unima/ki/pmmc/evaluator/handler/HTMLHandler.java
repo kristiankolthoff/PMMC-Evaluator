@@ -24,8 +24,8 @@ import org.apache.logging.log4j.core.config.plugins.convert.TypeConverters.CharA
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
+import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 

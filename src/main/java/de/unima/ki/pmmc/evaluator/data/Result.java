@@ -1,4 +1,4 @@
-package de.unima.ki.pmmc.evaluator.matcher;
+package de.unima.ki.pmmc.evaluator.data;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,12 +23,12 @@ import de.unima.ki.pmmc.evaluator.model.Model;
  */
 public class Result implements Iterable<Alignment>, Comparable<Result>{
 
+	//What about mulitple goldstandards
 	private String name;
 	private String path;
 	private double appliedThreshold;
 	private List<Alignment> alignments;
 	private List<Characteristic> characteristics;
-	private List<TypeCharacteristic> tCharacteristics;
 	
 	public Result(String name, String path, List<Alignment> alignments,
 			List<Characteristic> characteristics,
@@ -37,7 +37,6 @@ public class Result implements Iterable<Alignment>, Comparable<Result>{
 		this.path = path;
 		this.alignments = alignments;
 		this.characteristics = characteristics;
-		this.tCharacteristics = tCharacteristics;
 	}
 
 	public Result(String name, String path, List<Alignment> alignments) {
@@ -45,7 +44,6 @@ public class Result implements Iterable<Alignment>, Comparable<Result>{
 		this.path = path;
 		this.alignments = alignments;
 		this.characteristics = new ArrayList<>();
-		this.tCharacteristics = new ArrayList<>();
 	}
 	
 	public Result(String name, String path, double appliedThreshold, List<Alignment> alignments) {
@@ -54,7 +52,6 @@ public class Result implements Iterable<Alignment>, Comparable<Result>{
 		this.appliedThreshold = appliedThreshold;
 		this.alignments = alignments;
 		this.characteristics = new ArrayList<>();
-		this.tCharacteristics = new ArrayList<>();
 	}
 	
 	public void applyThreshold(double threshold) {
@@ -89,16 +86,7 @@ public class Result implements Iterable<Alignment>, Comparable<Result>{
 			for(Alignment aRef : result) {
 				for(Alignment aMatcher : this) {
 					if(aRef.equals(aMatcher)) {
-						if(typeOn) {
-							Model sourceModel = aRef.getSourceModel();
-							Model targetModel = aRef.getTargetModel();
-							this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef, 
-									null));
-	//						this.tCharacteristics.add(new TypeCharacteristic(aMatcher, aRef, 
-	//								crossProduct.get(sourceModel.getName()+targetModel.getName())));
-						} else {
 							this.characteristics.add(new Characteristic(aMatcher, aRef));						
-						}
 					}
 				}
 			}
@@ -171,9 +159,6 @@ public class Result implements Iterable<Alignment>, Comparable<Result>{
 		return this.characteristics.isEmpty();
 	}
 	
-	public boolean isEmptyTypeCharacteristics() {
-		return this.tCharacteristics.isEmpty();
-	}
 
 	public String getName() {
 		return name;
@@ -207,14 +192,7 @@ public class Result implements Iterable<Alignment>, Comparable<Result>{
 		this.characteristics = characteristics;
 	}
 
-	public List<TypeCharacteristic> getTypeCharacteristics() {
-		return tCharacteristics;
-	}
 
-	public void setTypeCharacteristics(List<TypeCharacteristic> tCharacteristics) {
-		this.tCharacteristics = tCharacteristics;
-	}
-	
 	public double getAppliedThreshold() {
 		return appliedThreshold;
 	}

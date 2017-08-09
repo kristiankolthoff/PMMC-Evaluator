@@ -14,8 +14,8 @@ import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
+import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.model.Model;
 

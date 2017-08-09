@@ -18,8 +18,8 @@ import org.apache.ecs.html.TD;
 
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
+import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 

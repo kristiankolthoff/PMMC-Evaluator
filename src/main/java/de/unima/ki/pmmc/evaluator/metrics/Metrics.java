@@ -1,5 +1,6 @@
 package de.unima.ki.pmmc.evaluator.metrics;
 
+
 public enum Metrics {
 
 	PRECISION_MICRO("prec-mic"),
@@ -23,7 +24,6 @@ public enum Metrics {
 	ACCURACY("acc"),
 	SPEAR_RANG_CORR("spear-rang"),
 	REALTIVE_DIST("rel-dist"),
-	//Multiple goldstandards metrics
 	NB_PRECISION_MICRO_GS("nb-prec-gs-mic"),
 	NB_PRECISION_MACRO_GS("nb-prec-gs-mac"),
 	NB_PRECISION_STD_GS("nb-prec"),

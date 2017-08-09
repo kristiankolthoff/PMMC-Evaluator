@@ -4,23 +4,54 @@ package de.unima.ki.pmmc.evaluator.metrics;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.OptionalDouble;
 import java.util.function.Function;
 
-import org.apache.xmlbeans.xml.stream.CharacterData;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
+import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
+import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 
 /**
 * Characterises the relation between two mappings in terms of recall, precision and f-value.
 */
 public class Characteristic {
 	
+	/**
+	 * Alignment of the matcher
+	 */
 	private Alignment alignmentMapping;
+	/**
+	 * Alignment of the goldstandard
+	 */
 	private Alignment alignmentReference;
+	/**
+	 * Alignment with TP of the matcher alignment
+	 */
 	private Alignment alignmentCorrect;
+	/**
+	 * Partition of correspondences into correspondence types 
+	 * of the reference alignment from the characteristic
+	 */
+	private Map<CorrespondenceType, Alignment> alignmentReferenceTyped;
+	/**
+	 * Partition of correspondences into correspondence types 
+	 * of the matcher alignment from the characteristic
+	 */
+	private Map<CorrespondenceType, Alignment> alignmentMappingTyped;
+	/**
+	 * Partition of correspondences into correspondence types 
+	 * of the correct alignment from the characteristic
+	 */
+	private Map<CorrespondenceType, Alignment> alignmentCorrectTyped;
+	/**
+	 * Partition of correspondences into correspondence types 
+	 * of the cross product of the two models of the original alignment
+	 */
 	private boolean allowZeros;
 	/**
 	* If set to false, it uses jeromes way of counting. 
@@ -35,9 +66,10 @@ public class Characteristic {
 	* 
 	* @param mapping The mapping under discussion.
 	* @param reference The reference mapping.
+	 * @throws CorrespondenceException 
 	* @throws ALCOMOException Thrown if the namespaces of the mappings differ.
 	*/
-	public Characteristic(Alignment mapping, Alignment reference) {
+	public Characteristic(Alignment mapping, Alignment reference) throws CorrespondenceException {
 		Alignment correct = new Alignment();
 		if (strictEvaluation) {
 			for (Correspondence r : reference) {
@@ -60,13 +92,39 @@ public class Characteristic {
 		this.alignmentReference = reference;
 		this.alignmentMapping = mapping;
 		this.alignmentCorrect = correct;
-	}	
+		this.init();
+	}
+	
+	private void init() throws CorrespondenceException {
+		this.alignmentReferenceTyped = extractCTMap(getAlignmentReference());
+		this.alignmentMappingTyped = extractCTMap(getAlignmentMapping());
+		this.alignmentCorrectTyped = extractCTMap(getAlignmentCorrect());
+	}
+	
+	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
+			throws CorrespondenceException {
+		Map<CorrespondenceType, Alignment> vals = new HashMap<>();
+		for(CorrespondenceType type : CorrespondenceType.values()) {
+			vals.put(type, new Alignment());
+		}
+		for(Correspondence c : alignment) {
+			if(c.getCType().isPresent()) {
+				Alignment align = vals.get(c.getCType().get());
+				align.add(c);
+				vals.put(c.getCType().get(), align);
+			
+			} else {
+				throw new CorrespondenceException(CorrespondenceException.MISSING_TYPE_ANNOTATION, c.toString());
+			}
+		}
+		return vals;
+	}
 	
 	/**
 	* Joins this mapping with another mapping by summing up relevant characteristics
 	* in absolute numbers. Larger matching problems are thus to a greater extent weighted.
 	*  
-	* @param c The other charcteristic.
+	* @param c The other characteristic.
 	*/
 	public void join(Characteristic c) {
 		this.alignmentCorrect.join(c.getAlignmentCorrect());
@@ -75,8 +133,7 @@ public class Characteristic {
 	}
 
 	/**
-	* Computes the f-measure based on the
-	* initilaizing <code>Alignment</code>s
+	* Computes the f1-measure
 	* @return the f-measure
 	*/
 	public double getFMeasure() {
@@ -109,10 +166,10 @@ public class Characteristic {
 	}
 	
 	/**
-	* Computes the precision based on the
-	* specified <code>Alignment</code>s.
+	* Computes the precision
 	* @return the precision
 	*/
+	//TODO include empty checks
 	public double getPrecision() {
 //		if(alignmentMapping.isEmpty()) {
 //			return 0d;
@@ -175,6 +232,7 @@ public class Characteristic {
 		return this.alignmentMapping.size();
 	}
 
+	//TODO create copy of the alignment
 	/**
 	 * Returns the true positives based on the
 	 * specified <code>Alignment</code>s.
@@ -219,6 +277,161 @@ public class Characteristic {
 		}
 		return sum;
 	}
+	
+	public Alignment getTP(CorrespondenceType type) {
+		return Alignment.newInstance(alignmentCorrectTyped.get(type));
+	}
+	
+	
+	public Alignment getFP(CorrespondenceType type) {
+		return Alignment.newInstance(alignmentMappingTyped.get(type).minus(alignmentCorrectTyped.get(type)));
+	}
+	
+	public Alignment getFN(CorrespondenceType type) {
+		return Alignment.newInstance(alignmentReferenceTyped.get(type).minus(alignmentMappingTyped.get(type)));
+	}
+	
+
+	public double getPrecision(CorrespondenceType type) {
+		return alignmentCorrectTyped.get(type).size() / (double) alignmentMappingTyped.get(type).size();
+	}
+	
+	public double getNBPrecision(CorrespondenceType type) {
+		return getConfSumCorrect(type) / ((double)getFP(type).size() + getConfSumCorrect(type));
+	}
+	
+	public double getRecall(CorrespondenceType type) {
+		return alignmentCorrectTyped.get(type).size() / (double) alignmentReferenceTyped.get(type).size();
+	}
+	
+	public double getNBRecall(CorrespondenceType type) {
+		return getConfSumCorrect(type) / getConfSumReference(type);
+	}
+	
+	private double getConfSumReference(CorrespondenceType type) {
+		double sum = 0;
+		for(Correspondence cRef : this.alignmentReferenceTyped.get(type)) {
+			sum += cRef.getConfidence();
+		}
+		return sum;
+	}
+	
+	private double getConfSumCorrect(CorrespondenceType type) {
+		double sum = 0;
+		for(Correspondence cRef : this.alignmentCorrectTyped.get(type)) {
+			sum += cRef.getConfidence();
+		}
+		return sum;
+	}
+	
+	public double getFMeasure(CorrespondenceType type) {
+		return computeFFromPR(getPrecision(type), getRecall(type));
+	}
+	
+	public double getNBFMeasure(CorrespondenceType type) {
+		return computeFFromPR(getNBPrecision(type), getNBRecall(type));
+	}
+	
+	/**
+	 * Returns an <code>Alignment</code> corresponding to the
+	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
+	 * in the <code>Alignment</code> is of the specified type and belongs to the goldstandard.
+	 * @param type the type the <code>Correspondence</code>s should have
+	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
+	 */
+	public Alignment getAlignmentReference(CorrespondenceType type) {
+		return this.alignmentReferenceTyped.get(type);
+	}
+	
+	/**
+	 * Returns an <code>Alignment</code> corresponding to the
+	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
+	 * in the <code>Alignment</code> is of the specified type and is generated by the matcher.
+	 * @param type the type the <code>Correspondence</code>s should have
+	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
+	 */
+	public Alignment getAlignmentMapping(CorrespondenceType type) {
+		return this.alignmentMappingTyped.get(type);
+	}
+	
+	/**
+	 * Returns an <code>Alignment</code> corresponding to the
+	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
+	 * in the <code>Alignment</code> is of the specified type and is correctly
+	 * identified by the matcher.
+	 * @param type the type the <code>Correspondence</code>s should have
+	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
+	 */
+	public Alignment getAlignmentCorrect(CorrespondenceType type) {
+		return this.alignmentCorrectTyped.get(type);
+	}
+	
+	
+	/**
+	 * Computes the relative distance of the matcher alignment to
+	 * the reference alignment of the gold standard, based on a <code>
+	 * CorrespondenceType</code>. First normalizes the matcher alignments to a 
+	 * target scale, then computes the sum of squared deviations of the confidence
+	 * values of the matcher and the reference alignment.
+	 * @param type - the correspondence type which should be used
+	 * @param normalize - specifies if the correspondence confidences should be normalized
+	 * @return realtive distance of matcher to reference alignment for the
+	 * specific <code>CorrespondenceType</code>
+	 */
+	public double getRelativeDistance(CorrespondenceType type, boolean normalize) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		mappings.add(alignmentMappingTyped.get(type));
+		references.add(alignmentReferenceTyped.get(type));
+		return getRelativeDistance(mappings, references, normalize);
+	}
+	
+	
+	/**
+	 * Computes the correlation between matcher and
+	 * reference <code>Alignment</code> for a given <code>CorrespondenceType</code>.
+	 * @param type the correspondence type to compute the correlation from
+	 * @param allowZeros allow zeros in correlation computation
+	 * @return correlation between matcher and goldstandard for a
+	 * specific correspondence type
+	 */
+	public double getCorrelation(CorrespondenceType type, boolean allowZeros) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		mappings.add(this.alignmentMappingTyped.get(type));
+		references.add(this.alignmentReferenceTyped.get(type));
+		return getCorrelation(mappings, references, allowZeros);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Computes the correlation between matcher and
@@ -554,7 +767,7 @@ public class Characteristic {
 	 * @param function function for producing values from a single <code>Characteristic</code>
 	 * @return the average as sum{functionVals} / numOfVals
 	 */
-	private static double computeMacro(List<? extends Characteristic> characteristics, 
+	public static double computeMacro(List<? extends Characteristic> characteristics, 
 			Function<Characteristic, Double> function) {
 		double sum = 0;
 		int numOfOcc = 0;

@@ -23,9 +23,10 @@ import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.annotator.Annotator;
+import de.unima.ki.pmmc.evaluator.data.Report;
+import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.ResultHandler;
-import de.unima.ki.pmmc.evaluator.matcher.Result;
 import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
@@ -150,6 +151,14 @@ public class Evaluator {
 		this.parser = parser;
 		this.currAlignments = new ArrayList<>();
 		this.mapResult = new HashMap<>();
+	}
+	
+	public Evaluator(Configuration configuration) {
+		
+	}
+	
+	public Report dorun() {
+		
 	}
 
 	/**
