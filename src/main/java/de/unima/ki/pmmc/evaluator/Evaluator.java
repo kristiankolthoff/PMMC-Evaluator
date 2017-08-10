@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -130,6 +131,13 @@ public class Evaluator {
 		this.outputPath = configuration.getOutputPath();
 		this.validator = new SizeValidator();
 		this.flowListener = configuration.getFlowListener();
+		this.goldstandards = new HashMap<>();
+		this.matcherPaths = configuration.getMatcherPaths();
+		this.matchersRootPath = configuration.getMatchersRootPath();
+		this.generator = new ReportGenerator(configuration);
+		this.handler = configuration.getHandler();
+		this.debugOn = configuration.isDebugOn();
+		this.tagCTOn = configuration.isCtTagOn();
 	}
 	
 	

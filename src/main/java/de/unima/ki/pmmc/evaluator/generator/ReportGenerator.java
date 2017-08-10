@@ -56,13 +56,13 @@ public class ReportGenerator {
 		Report report = new Report();
 		report.setSolution(matcher);
 		for(MetricGroup group : configuration) {
-			MetricGroupBinding groupBinding = new MetricGroupBinding(group.getName());
-			groupBinding.setInfo(group.getInfo());
+			MetricGroupBinding groupBinding = new MetricGroupBinding(group);
 			for(Metric metric : group) {
 				double result = metric.compute(characteristics);
 				MetricBinding binding = new MetricBinding(metric, result);
 				groupBinding.addMetricBinding(binding);
 			}
+			report.addBinding(groupBinding);
 		}
 		return report;
 	}

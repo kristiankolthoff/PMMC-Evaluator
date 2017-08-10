@@ -320,10 +320,22 @@ public class Configuration implements Iterable<MetricGroup>{
 		
 		public Builder() {
 			this.metricGroups = new ArrayList<>();
+			this.goldstandardPaths = new ArrayList<>();
+			this.matcherPaths = new ArrayList<>();
+			this.modelPaths = new ArrayList<>();
+			this.thresholds = new ArrayList<>();
+			this.handler = new ArrayList<>();
+			this.transformationsAlignment = new ArrayList<>();
+			this.transformationsCorrespondence = new ArrayList<>();
+			this.transformationsResult = new ArrayList<>();
+			this.filterAlignment = new ArrayList<>();
+			this.filterCorrespondence = new ArrayList<>();
+			this.filterResult = new ArrayList<>();
+			this.matchersRootPath = Optional.empty();
 		}
 		
-		public Builder addMetric(Metric metric) {
-			metricGroups.add(new MetricGroup("unnamed", metric));
+		public Builder addMetric(String name, Metric metric) {
+			metricGroups.add(new MetricGroup(name, metric));
 			return this;
 		}
 		
@@ -676,7 +688,6 @@ public class Configuration implements Iterable<MetricGroup>{
 						.addMetric(new PrecisionMacro())
 						.addMetric(new PrecisionStdDev()))
 				.addMetricGroup(factory.create(MetricGroup.PRECISION_GROUP))
-				.addMetric(new PrecisionMacro())
 				.addMetrics("min-conf", new MinimumConfidence())
 				.persistToFile(true);
 		for(CorrespondenceType type : CorrespondenceType.values()) {

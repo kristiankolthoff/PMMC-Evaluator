@@ -8,9 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
 import org.apache.ecs.html.B;
@@ -19,17 +17,11 @@ import org.apache.ecs.html.TD;
 import org.apache.ecs.html.TH;
 import org.apache.ecs.html.TR;
 import org.apache.ecs.html.Table;
-import org.apache.logging.log4j.core.config.plugins.convert.TypeConverters.CharArrayConverter;
 
-import de.unima.ki.pmmc.evaluator.alignment.Alignment;
-import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
-import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.Report;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.generator.MetricBinding;
 import de.unima.ki.pmmc.evaluator.generator.MetricGroupBinding;
-import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
-import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 
 
 
@@ -84,7 +76,7 @@ public class HTMLHandler implements ReportHandler{
 			TH th1 = new TH();
 			th1.setStyle("border:none;");
 			trHead1.addElement(th1.addAttribute("width", "15"));
-			trHead1.addElement(new TH(groupBinding.getName()).
+			trHead1.addElement(new TH(groupBinding.getGroup().getName()).
 					addAttribute("colspan", String.valueOf(groupBinding.size())));
 		}
 		
@@ -156,7 +148,7 @@ public class HTMLHandler implements ReportHandler{
 		trHead2.addElement(new TD().setStyle("border:none;"));
 		Report report = reports.get(0);
 		for(MetricGroupBinding groupBinding : report) {
-			for(MetricBinding metricBinding : groupBinding.getBindings()) {
+			for(MetricBinding metricBinding : groupBinding) {
 				trHead2.addElement(new TD(metricBinding.getMetric().getName()));
 			}
 			trHead2.addElement(new TD().setStyle("border:none;"));
@@ -197,6 +189,14 @@ public class HTMLHandler implements ReportHandler{
 
 	private void appendReport(Report report) throws CorrespondenceException {
 		this.table.addElement(new TR().addAttribute("colspan", "13"));
+		this.table.addElement(new TD(report.getSolution().getName()));
+		for(MetricGroupBinding groupBinding : report) {
+			this.table.addElement(new TD().setStyle("border:none;"));
+			for(MetricBinding metricBinding : groupBinding) {
+				String value = this.df.format(metricBinding.getValue());
+				this.table.addElement(new TD(value));
+			}
+		}
 //		/**
 //		 * Standard metrics
 //		 */

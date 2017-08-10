@@ -54,6 +54,7 @@ public class Loader {
 		if(path.isPresent()) {
 			Files.walk(Paths.get(path.get())).forEach(filePath -> {
 					try {
+						System.out.println(filePath.toString());
 						Alignment a = reader.getAlignment(filePath.toString());
 						a.applyThreshold(threshold);
 						a.setName(filePath.getFileName().toString());

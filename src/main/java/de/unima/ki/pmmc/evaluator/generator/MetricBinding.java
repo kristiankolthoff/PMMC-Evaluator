@@ -5,12 +5,12 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 public class MetricBinding {
 
 	public Metric metric;
-	public double result;
+	public double value;
 	
 	
 	public MetricBinding(Metric metric, double result) {
 		this.metric = metric;
-		this.result = result;
+		this.value = result;
 	}
 
 	public Metric getMetric() {
@@ -23,13 +23,13 @@ public class MetricBinding {
 	}
 
 
-	public double getResult() {
-		return result;
+	public double getValue() {
+		return value;
 	}
 
 
-	public void setResult(double result) {
-		this.result = result;
+	public void setValue(double result) {
+		this.value = result;
 	}
 	
 	

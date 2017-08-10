@@ -1,12 +1,29 @@
 package de.unima.ki.pmmc.evaluator;
 
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
+import de.unima.ki.pmmc.evaluator.data.Evaluation;
+import de.unima.ki.pmmc.evaluator.data.Report;
+import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
+import de.unima.ki.pmmc.evaluator.generator.MetricGroupBinding;
+import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionStdDev;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMacro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMicro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RecallStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
+import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 
 public class PMMCNewEvaluationAdmission {
 
@@ -22,39 +39,53 @@ public class PMMCNewEvaluationAdmission {
 	public final String RESULTS_PATH = "src/main/resources/data/results/OAEI16/";
 	public final String MODELS_PATH = "src/main/resources/data/dataset1/models/";
 	
-	public PMMCNewEvaluationAdmission() {
+	public PMMCNewEvaluationAdmission() throws IOException {
 		this.init();
 	}
 	
-	private void init() {
+	private void init() throws IOException {
+		@SuppressWarnings("unused")
 		MetricGroupFactory factory = MetricGroupFactory.getInstance();
 		builder = new Configuration.Builder().
-				addMetricGroup(new MetricGroup("recall", "recall info")
+				addMetricGroup(new MetricGroup("Precision", "prec-info")
 						.addMetric(new PrecisionMicro())
 						.addMetric(new PrecisionMacro())
 						.addMetric(new PrecisionStdDev()))
-				.addMetricGroup(factory.create(MetricGroup.PRECISION_GROUP))
-				.addMetric(new PrecisionMacro())
-				.addMetrics("min-conf", new MinimumConfidence())
+				.addMetricGroup(new MetricGroup("Recall", "rec-info")
+						.addMetric(new RecallMicro())
+						.addMetric(new RecallMacro())
+						.addMetric(new RecallStdDev()))
+				.addMetric("Min.", new MinimumConfidence())
+				.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
+				.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
+				.setModelsRootPath(MODELS_PATH)
+				.setAlignmentReader(new AlignmentReaderXml())
+				.setOutputName("oaei16-new-gs")
+				.setOutputPath(OUTPUT_PATH)
+				.setParser(Parser.TYPE_BPMN)
+				.setCTTagOn(false)
+				.setDebugOn(true)
 				.persistToFile(true);
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		PMMCNewEvaluationAdmission eval = new PMMCNewEvaluationAdmission();
 		eval.oldGoldstandardExperiment();
 	}
 	
 	public void oldGoldstandardExperiment() {
-		builder.addGoldstandardPath("").
-				addThreshold(Evaluator.THRESHOLD_ZERO).
-				addThreshold(Evaluator.THRESHOLD_HIGH);
+		builder.addGoldstandardPath(GOLDSTANDARD_NEW_PATH);
 		Evaluator evaluator = new Evaluator(builder.build());
+		try {
+			Evaluation evaluation = evaluator.run();
+			List<Report> reports = evaluation.getReports();
+			Report report = reports.get(0);
+			List<MetricGroupBinding> groupBindings = report.getBindings();
+			groupBindings.get(0);
+			System.err.println(reports.size());
+		} catch (CorrespondenceException | ParserConfigurationException | SAXException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void newGoldstandardExperiment() {
-		builder.addGoldstandardPath("").
-		addThreshold(Evaluator.THRESHOLD_ZERO).
-		addThreshold(Evaluator.THRESHOLD_HIGH);
-		Evaluator evaluator = new Evaluator(builder.build());
-	}
 }

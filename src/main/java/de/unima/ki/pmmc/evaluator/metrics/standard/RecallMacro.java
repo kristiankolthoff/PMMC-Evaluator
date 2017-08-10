@@ -5,19 +5,16 @@ import java.util.List;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
-public class PrecisionStdDev implements Metric{
+public class RecallMacro implements Metric {
 
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeStdDev(characteristics, 
-				new PrecisionMacro()::compute, 
-				c -> {return c.getPrecision();});
+		return Metric.computeMacro(characteristics, c -> {return c.getRecall();});
 	}
 
 	@Override
 	public String getName() {
-		return "prec-std-dev";
+		return "rec-mac";
 	}
 
-	
 }

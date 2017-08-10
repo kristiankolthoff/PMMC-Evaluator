@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import de.unima.ki.pmmc.evaluator.Evaluator;
+
 public class Evaluation {
 
 	private String name;
@@ -34,6 +36,10 @@ public class Evaluation {
 
 	public List<Report> getReports(double threshold) {
 		return reports.get(threshold);
+	}
+	
+	public List<Report> getReports() {
+		return reports.get(Evaluator.THRESHOLD_ZERO);
 	}
 
 	public void setReports(Map<Double, List<Report>> reports) {
