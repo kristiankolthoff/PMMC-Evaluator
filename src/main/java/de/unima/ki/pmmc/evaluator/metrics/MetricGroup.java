@@ -80,4 +80,8 @@ public class MetricGroup implements Iterable<Metric>{
 		this.info = info;
 		return this;
 	}
+	
+	public int size() {
+		return metrics.size();
+	}
 }

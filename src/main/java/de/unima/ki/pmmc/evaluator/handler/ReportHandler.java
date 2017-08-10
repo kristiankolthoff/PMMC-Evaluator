@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Consumer;
 
+import de.unima.ki.pmmc.evaluator.data.Report;
 import de.unima.ki.pmmc.evaluator.data.Result;
 /**
  * A <code>ResultHandler</code> is responsible for processing collections
@@ -12,7 +13,7 @@ import de.unima.ki.pmmc.evaluator.data.Result;
  * For example, a <code>Result</code> could be written to specific format like JSON or XML, 
  * but also written into database.
  */
-public interface ResultHandler {
+public interface ReportHandler {
 
 	/**
 	 * Called before generated <code>Result</code>s
@@ -32,7 +33,7 @@ public interface ResultHandler {
 	 * @param path the path of the currently set output directory
 	 * @param info the current mapping info
 	 */
-	public void receive(List<Result> results);
+	public void receive(List<Report> reports);
 	
 	/**
 	 * Called after each receive-operation is finished and

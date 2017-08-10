@@ -17,7 +17,7 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 
 /**
-* Characterises the relation between two mappings in terms of recall, precision and f-value.
+* Characterizes the relation between two mappings in terms of recall, precision and f-value.
 */
 public class Characteristic {
 	

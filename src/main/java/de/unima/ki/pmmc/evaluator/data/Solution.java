@@ -1,10 +1,11 @@
 package de.unima.ki.pmmc.evaluator.data;
 
+import java.util.Iterator;
 import java.util.List;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 
-public class Solution {
+public class Solution implements Iterable<Alignment>{
 
 	private String name;
 	private String path;
@@ -56,6 +57,12 @@ public class Solution {
 
 	public void setAlignments(List<Alignment> alignments) {
 		this.alignments = alignments;
+	}
+
+
+	@Override
+	public Iterator<Alignment> iterator() {
+		return alignments.iterator();
 	}
 	
 	

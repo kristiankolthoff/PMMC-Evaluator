@@ -14,7 +14,7 @@ import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.Result;
-import de.unima.ki.pmmc.evaluator.handler.ResultHandler;
+import de.unima.ki.pmmc.evaluator.handler.ReportHandler;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
@@ -34,7 +34,9 @@ public class Configuration implements Iterable<MetricGroup>{
 	private List<MetricGroup> metricGroups;
 	private boolean persistToFile;
 	private boolean debugOn;
-	private String goldstandardPath;
+	private boolean ctTagOn;
+	private boolean sortReports;
+	private List<String> goldstandardPaths;
 	private Optional<String> matchersRootPath;
 	private String modelsRootPath;
 	private String outputPath;
@@ -43,7 +45,7 @@ public class Configuration implements Iterable<MetricGroup>{
 	private List<String> modelPaths;
 	private List<Double> thresholds;
 	private AlignmentReader alignmentReader;
-	private List<ResultHandler> handler;
+	private List<ReportHandler> handler;
 	private Consumer<String> flowListener;
 	private List<Function<Result, Result>> transformationsResult;
 	private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
@@ -55,15 +57,17 @@ public class Configuration implements Iterable<MetricGroup>{
 	
 	
 	public Configuration(List<MetricGroup> metricGroups, 
-			boolean persistToFile, String goldstandardPath,
+			boolean persistToFile, List<String> goldstandardPaths,
 			Optional<String> matchersRootPath, 
 			String modelsRootPath, String outputPath, 
 			String outputName,
 			List<String> matcherPaths, 
 			List<String> modelPaths, List<Double> thresholds,
 			boolean debugOn,
+			boolean ctTagOn,
+			boolean sortReports,
 			AlignmentReader alignmentReader,
-			List<ResultHandler> handler, Consumer<String> flowListener,
+			List<ReportHandler> handler, Consumer<String> flowListener,
 			List<Function<Result, Result>> transformationsResult,
 			List<Function<Correspondence, Correspondence>> transformationsCorrespondence,
 			List<Function<Alignment, Alignment>> transformationsAlignment, 
@@ -73,7 +77,7 @@ public class Configuration implements Iterable<MetricGroup>{
 			Parser parser) {
 		this.metricGroups = metricGroups;
 		this.persistToFile = persistToFile;
-		this.goldstandardPath = goldstandardPath;
+		this.goldstandardPaths = goldstandardPaths;
 		this.matchersRootPath = matchersRootPath;
 		this.modelsRootPath = modelsRootPath;
 		this.outputPath = outputPath;
@@ -82,6 +86,8 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.modelPaths = modelPaths;
 		this.thresholds = thresholds;
 		this.debugOn = debugOn;
+		this.ctTagOn = ctTagOn;
+		this.sortReports = sortReports;
 		this.alignmentReader = alignmentReader;
 		this.handler = handler;
 		this.flowListener = flowListener;
@@ -116,12 +122,12 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.metricGroups = metricGroups;
 	}
 
-	public String getGoldstandardPath() {
-		return goldstandardPath;
+	public List<String> getGoldstandardPaths() {
+		return goldstandardPaths;
 	}
 
-	public void setGoldstandardPath(String goldstandardPath) {
-		this.goldstandardPath = goldstandardPath;
+	public void setGoldstandardPath(List<String> goldstandardPaths) {
+		this.goldstandardPaths = goldstandardPaths;
 	}
 
 	public Optional<String> getMatchersRootPath() {
@@ -196,11 +202,11 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.alignmentReader = alignmentReader;
 	}
 
-	public List<ResultHandler> getHandler() {
+	public List<ReportHandler> getHandler() {
 		return handler;
 	}
 
-	public void setHandler(List<ResultHandler> handler) {
+	public void setHandler(List<ReportHandler> handler) {
 		this.handler = handler;
 	}
 
@@ -268,6 +274,22 @@ public class Configuration implements Iterable<MetricGroup>{
 	public void setParser(Parser parser) {
 		this.parser = parser;
 	}
+	
+	public boolean isSortReports() {
+		return sortReports;
+	}
+
+	public void setSortReports(boolean sortReports) {
+		this.sortReports = sortReports;
+	}
+	
+	public boolean isCtTagOn() {
+		return ctTagOn;
+	}
+
+	public void setCtTagOn(boolean ctTagOn) {
+		this.ctTagOn = ctTagOn;
+	}
 
 
 	public static class Builder {
@@ -275,8 +297,9 @@ public class Configuration implements Iterable<MetricGroup>{
 		private List<MetricGroup> metricGroups;
 		private boolean persistToFile;
 		private boolean debugOn;
-		private boolean sort;
-		private String goldstandardPath;
+		private boolean ctTagOn;
+		private boolean sortReports;
+		private List<String> goldstandardPaths;
 		private Optional<String> matchersRootPath;
 		private String modelsRootPath;
 		private String outputPath;
@@ -285,7 +308,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		private List<String> modelPaths;
 		private List<Double> thresholds;
 		private AlignmentReader alignmentReader;
-		private List<ResultHandler> handler;
+		private List<ReportHandler> handler;
 		private Consumer<String> flowListener;
 		private List<Function<Result, Result>> transformationsResult;
 		private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
@@ -331,7 +354,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		 * @param handler the handler which should be added
 		 * @return this
 		 */
-		public Builder addHandler(ResultHandler handler) {
+		public Builder addHandler(ReportHandler handler) {
 			this.handler.add(handler);
 			return this;
 		}
@@ -342,7 +365,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		 * @param handler the handler which should be removed
 		 * @return this
 		 */
-		public Builder removeHandler(ResultHandler handler) {
+		public Builder removeHandler(ReportHandler handler) {
 			for (int i = 0; i < this.handler.size(); i++) {
 				if(this.handler.get(i).getClass().getName().equals(handler.getClass().getName())) {
 					this.handler.remove(i);
@@ -416,6 +439,11 @@ public class Configuration implements Iterable<MetricGroup>{
 		 */
 		public Builder setDebugOn(boolean debugOn) {
 			this.debugOn = debugOn;
+			return this;
+		}
+		
+		public Builder setSortReports(boolean sortReports) {
+			this.sortReports = sortReports;
 			return this;
 		}
 
@@ -493,8 +521,8 @@ public class Configuration implements Iterable<MetricGroup>{
 		 * @param goldstandardPath the path to the goldstandard alignments
 		 * @return this
 		 */
-		public Builder setGoldstandardPath(String goldstandardPath) {
-			this.goldstandardPath = goldstandardPath;
+		public Builder addGoldstandardPath(String goldstandardPath) {
+			this.goldstandardPaths.add(goldstandardPath);
 			return this;
 		}
 		
@@ -601,10 +629,22 @@ public class Configuration implements Iterable<MetricGroup>{
 			return this;
 		}
 		
+		/**
+		 * If set to true, correspondences will be annotated with
+		 * CorrespondenceType and metrics can be computed per type.
+		 * @param ctTagOn
+		 * @return
+		 */
+		public Builder setCTTagOn(boolean ctTagOn) {
+			this.ctTagOn = ctTagOn;
+			return this;
+		}
+		
 		public Configuration build() {
-			return new Configuration(metricGroups, 
+			return new Configuration(
+					metricGroups, 
 					persistToFile, 
-					goldstandardPath, 
+					goldstandardPaths, 
 					matchersRootPath, 
 					modelsRootPath, 
 					outputPath, 
@@ -612,7 +652,9 @@ public class Configuration implements Iterable<MetricGroup>{
 					matcherPaths, 
 					modelPaths, 
 					thresholds, 
-					debugOn, 
+					debugOn,
+					ctTagOn,
+					sortReports,
 					alignmentReader,
 					handler, 
 					flowListener, 

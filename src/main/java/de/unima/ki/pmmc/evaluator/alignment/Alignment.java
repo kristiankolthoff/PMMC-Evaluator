@@ -27,6 +27,7 @@ public class Alignment implements Iterable<Correspondence>{
 	public static final int FORMAT_RDF = 1;
 	
 	private List<Correspondence> correspondences = new ArrayList<Correspondence>();
+	//TODO remove models, dont need this dependency here
 	private Model sourceModel;
 	private Model targetModel;
 	private String name;
