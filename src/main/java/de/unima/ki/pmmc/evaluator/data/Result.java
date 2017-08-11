@@ -21,6 +21,7 @@ import de.unima.ki.pmmc.evaluator.model.Model;
  * <code>TypeCharacteristc</code>s. Also it provides the matcher name
  * and the corresponding path of the input alignments.
  */
+//TODO remove from API
 public class Result implements Iterable<Alignment>, Comparable<Result>{
 
 	//What about mulitple goldstandards
