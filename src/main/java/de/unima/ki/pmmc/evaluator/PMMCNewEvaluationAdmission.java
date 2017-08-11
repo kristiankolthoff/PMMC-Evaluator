@@ -71,7 +71,9 @@ public class PMMCNewEvaluationAdmission {
 						.addMetric(new MinimumConfidence())
 						.addMetric(new NumCorrespondences())
 						.addMetric(new FunctionMetric(list -> 
-						{return (double) list.stream().mapToInt(c -> {return c.getAlignmentCorrect().size();}).max().getAsInt();})))
+						{return (double) list.stream()
+								.mapToInt(c -> {return c.getAlignmentCorrect().size();})
+								.max().getAsInt();})))
 				.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset1/")
