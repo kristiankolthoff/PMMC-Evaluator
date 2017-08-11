@@ -808,223 +808,223 @@ public class Characteristic {
 		return Math.sqrt(dev/numOfOcc);
 	}
 	
-	/**
-	 * Compute the macro precision over a list of characteristics. The
-	 * macro precision is the average of all the precision values of
-	 * all characteristics. Note that this metric can be easily biased
-	 * if the testsets are not equally large.
-	 * @param characteristics - the characteristic to compute the macro precision from
-	 * @return macro precision
-	 */
-	public static double getNBPrecisionMacro(List<? extends Characteristic> characteristics) {
-		return computeMacro(characteristics, c -> {return c.getNBPrecision();});
-	}
+//	/**
+//	 * Compute the macro precision over a list of characteristics. The
+//	 * macro precision is the average of all the precision values of
+//	 * all characteristics. Note that this metric can be easily biased
+//	 * if the testsets are not equally large.
+//	 * @param characteristics - the characteristic to compute the macro precision from
+//	 * @return macro precision
+//	 */
+//	public static double getNBPrecisionMacro(List<? extends Characteristic> characteristics) {
+//		return computeMacro(characteristics, c -> {return c.getNBPrecision();});
+//	}
 	
-	/**
-	 * Compute the macro recall over a list of characteristics. The
-	 * macro recall is the average of all the recall values of
-	 * all characteristics. Note that this metric can be easily biased
-	 * if the testsets are not equally large.
-	 * @param characteristics - the characteristic to compute the macro recall from
-	 * @return macro recall
-	 */
-	public static double getNBRecallMacro(List<? extends Characteristic> characteristics) {
-		return computeMacro(characteristics, c -> {return c.getNBRecall();});
-	}
+//	/**
+//	 * Compute the macro recall over a list of characteristics. The
+//	 * macro recall is the average of all the recall values of
+//	 * all characteristics. Note that this metric can be easily biased
+//	 * if the testsets are not equally large.
+//	 * @param characteristics - the characteristic to compute the macro recall from
+//	 * @return macro recall
+//	 */
+//	public static double getNBRecallMacro(List<? extends Characteristic> characteristics) {
+//		return computeMacro(characteristics, c -> {return c.getNBRecall();});
+//	}
 	
-	/**
-	 * Compute the micro precision over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics - the characteristic to compute the micro precision from
-	 * @return micro precision
-	 */
-	public static double getNBPrecisionMicro(List<? extends Characteristic> characteristics) {
-		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();},
-				c -> {return c.getFP().size() + c.getConfSumCorrect();});
-	}
+//	/**
+//	 * Compute the micro precision over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics - the characteristic to compute the micro precision from
+//	 * @return micro precision
+//	 */
+//	public static double getNBPrecisionMicro(List<? extends Characteristic> characteristics) {
+//		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();},
+//				c -> {return c.getFP().size() + c.getConfSumCorrect();});
+//	}
 	
-	/**
-	 * Compute the micro recall over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics - the characteristic to compute the micro recall from
-	 * @return micro recall
-	 */
-	public static double getNBRecallMicro(List<? extends Characteristic> characteristics) {
-		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();}, 
-				c -> {return c.getConfSumReference();});
-	}
+//	/**
+//	 * Compute the micro recall over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics - the characteristic to compute the micro recall from
+//	 * @return micro recall
+//	 */
+//	public static double getNBRecallMicro(List<? extends Characteristic> characteristics) {
+//		return computeMicro(characteristics, c -> {return c.getConfSumCorrect();}, 
+//				c -> {return c.getConfSumReference();});
+//	}
 	
-	/**
-	 * Compute the macro f measure over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics - the characteristic to compute the f measure from
-	 * @return macro f measure
-	 */
-	public static double getNBFMeasureMacro(List<? extends Characteristic> characteristics) {
-		return computeMacro(characteristics, c -> {return c.getNBFMeasure();});
-	}
+//	/**
+//	 * Compute the macro f measure over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics - the characteristic to compute the f measure from
+//	 * @return macro f measure
+//	 */
+//	public static double getNBFMeasureMacro(List<? extends Characteristic> characteristics) {
+//		return computeMacro(characteristics, c -> {return c.getNBFMeasure();});
+//	}
 	
-	/**
-	 * Compute the micro f measure over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics - the characteristic to compute the f measure from
-	 * @return micro f measure
-	 */
-	public static double getNBFMeasureMicro(List<? extends Characteristic> characteristics) {
-		double confSumRef = 0;
-		double confSumCorr = 0;
-		int numfp = 0;
-		for(Characteristic c : characteristics) {
-			confSumRef += c.getConfSumReference();
-			confSumCorr += c.getConfSumCorrect();
-			numfp += c.getFP().size();
-		}
-		double recall = confSumCorr / confSumRef;
-		double precision = confSumCorr / ((double)numfp + confSumCorr) ;
-		double fmeasure = Characteristic.computeFFromPR(precision, recall);
-		return fmeasure;
-	}
+//	/**
+//	 * Compute the micro f measure over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics - the characteristic to compute the f measure from
+//	 * @return micro f measure
+//	 */
+//	public static double getNBFMeasureMicro(List<? extends Characteristic> characteristics) {
+//		double confSumRef = 0;
+//		double confSumCorr = 0;
+//		int numfp = 0;
+//		for(Characteristic c : characteristics) {
+//			confSumRef += c.getConfSumReference();
+//			confSumCorr += c.getConfSumCorrect();
+//			numfp += c.getFP().size();
+//		}
+//		double recall = confSumCorr / confSumRef;
+//		double precision = confSumCorr / ((double)numfp + confSumCorr) ;
+//		double fmeasure = Characteristic.computeFFromPR(precision, recall);
+//		return fmeasure;
+//	}
 	
-	/**
-	 * Computes the standard deviation of the non-binary precision over
-	 * a list of characteristics. As a reference for the average value,
-	 * the non-binary macro precision is used.
-	 * @param characteristics the characteristics to compute the standard deviation of the non-binary precision
-	 * @return standard deviation of non-binary precision
-	 */
-	public static double getNBPrecisionStdDev(List<? extends Characteristic> characteristics) {
-		return computeStdDev(characteristics, Characteristic::getNBPrecisionMacro, c -> {return c.getNBPrecision();});
-	}
+//	/**
+//	 * Computes the standard deviation of the non-binary precision over
+//	 * a list of characteristics. As a reference for the average value,
+//	 * the non-binary macro precision is used.
+//	 * @param characteristics the characteristics to compute the standard deviation of the non-binary precision
+//	 * @return standard deviation of non-binary precision
+//	 */
+//	public static double getNBPrecisionStdDev(List<? extends Characteristic> characteristics) {
+//		return computeStdDev(characteristics, Characteristic::getNBPrecisionMacro, c -> {return c.getNBPrecision();});
+//	}
 	
-	/**
-	 * Computes the standard deviation of the non-binary recall over
-	 * a list of characteristics. As a reference for the average value,
-	 * the non-binary macro recall is used.
-	 * @param characteristics the characteristics to compute the standard deviation of the non-binary recall
-	 * @return standard deviation of non-binary recall
-	 */
-	public static double getNBRecallStdDev(List<? extends Characteristic> characteristics) {
-		return computeStdDev(characteristics, Characteristic::getNBRecallMacro, c -> {return c.getNBRecall();});
-	}
+//	/**
+//	 * Computes the standard deviation of the non-binary recall over
+//	 * a list of characteristics. As a reference for the average value,
+//	 * the non-binary macro recall is used.
+//	 * @param characteristics the characteristics to compute the standard deviation of the non-binary recall
+//	 * @return standard deviation of non-binary recall
+//	 */
+//	public static double getNBRecallStdDev(List<? extends Characteristic> characteristics) {
+//		return computeStdDev(characteristics, Characteristic::getNBRecallMacro, c -> {return c.getNBRecall();});
+//	}
 	
-	/**
-	 * Computes the standard deviation of the non-binary f-measure over
-	 * a list of characteristics. As a reference for the average value,
-	 * the non-binary f-measure is used.
-	 * @param characteristics the characteristics to compute the standard deviation of the non-binary f-measure
-	 * @return standard deviation of non-binary f-measure
-	 */
-	public static double getNBFMeasureStdDev(List<? extends Characteristic> characteristics) {
-		return computeStdDev(characteristics, Characteristic::getNBFMeasureMacro, c -> {return c.getNBFMeasure();});
-	}
+//	/**
+//	 * Computes the standard deviation of the non-binary f-measure over
+//	 * a list of characteristics. As a reference for the average value,
+//	 * the non-binary f-measure is used.
+//	 * @param characteristics the characteristics to compute the standard deviation of the non-binary f-measure
+//	 * @return standard deviation of non-binary f-measure
+//	 */
+//	public static double getNBFMeasureStdDev(List<? extends Characteristic> characteristics) {
+//		return computeStdDev(characteristics, Characteristic::getNBFMeasureMacro, c -> {return c.getNBFMeasure();});
+//	}
 	
-	/**
-	 * Compute the macro precision over a list of characteristics. The
-	 * macro precision is the average of all the precision values of
-	 * all characteristics. Note that this metric can be easily biased
-	 * if the test sets are not equally large.
-	 * @param characteristics - the characteristic to compute the macro precision from
-	 * @return macro precision
-	 */
-	public static double getPrecisionMacro(List<? extends Characteristic> charactersticstics) {
-		return computeMacro(charactersticstics, c -> {return c.getPrecision();});
-	}
+//	/**
+//	 * Compute the macro precision over a list of characteristics. The
+//	 * macro precision is the average of all the precision values of
+//	 * all characteristics. Note that this metric can be easily biased
+//	 * if the test sets are not equally large.
+//	 * @param characteristics - the characteristic to compute the macro precision from
+//	 * @return macro precision
+//	 */
+//	public static double getPrecisionMacro(List<? extends Characteristic> charactersticstics) {
+//		return computeMacro(charactersticstics, c -> {return c.getPrecision();});
+//	}
 	
-	/**
-	 * Compute the macro recall over a list of characteristics. The
-	 * macro recall is the average of all the recall values of
-	 * all characteristics. Note that this metric can be easily biased
-	 * if the testsets are not equally large.
-	 * @param characteristics - the characteristic to compute the macro recall from
-	 * @return macro recall
-	 */
-	public static double getRecallMacro(List<? extends Characteristic> charactersticstics) {
-		return computeMacro(charactersticstics, c -> {return c.getRecall();});
-	}
+//	/**
+//	 * Compute the macro recall over a list of characteristics. The
+//	 * macro recall is the average of all the recall values of
+//	 * all characteristics. Note that this metric can be easily biased
+//	 * if the testsets are not equally large.
+//	 * @param characteristics - the characteristic to compute the macro recall from
+//	 * @return macro recall
+//	 */
+//	public static double getRecallMacro(List<? extends Characteristic> charactersticstics) {
+//		return computeMacro(charactersticstics, c -> {return c.getRecall();});
+//	}
 	
-	/**
-	 * Compute the micro precision over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics - the characteristic to compute the micro precision from
-	 * @return micro precision
-	 */
-	public static double getPrecisionMicro(List<? extends Characteristic> characteristics) {
-		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
-				c -> {return (double) c.getNumOfRulesMatcher();});
-	}
+//	/**
+//	 * Compute the micro precision over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics - the characteristic to compute the micro precision from
+//	 * @return micro precision
+//	 */
+//	public static double getPrecisionMicro(List<? extends Characteristic> characteristics) {
+//		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
+//				c -> {return (double) c.getNumOfRulesMatcher();});
+//	}
 	
-	/**
-	 * Compute the micro recall over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics - the characteristic to compute the micro recall from
-	 * @return micro recall
-	 */
-	public static double getRecallMicro(List<? extends Characteristic> characteristics) {
-		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
-				c -> {return (double) c.getNumOfRulesReference();});
-	}
+//	/**
+//	 * Compute the micro recall over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics - the characteristic to compute the micro recall from
+//	 * @return micro recall
+//	 */
+//	public static double getRecallMicro(List<? extends Characteristic> characteristics) {
+//		return computeMicro(characteristics, c -> {return (double) c.getNumOfRulesCorrect();},
+//				c -> {return (double) c.getNumOfRulesReference();});
+//	}
 	
-	/**
-	 * Compute the macro f measure over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics - the characteristic to compute the f measure from
-	 * @return macro f measure
-	 */
-	public static double getFMeasureMacro(List<? extends Characteristic> characteristics) {
-		return computeMacro(characteristics, c -> {return c.getFMeasure();});
-	}
+//	/**
+//	 * Compute the macro f measure over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics - the characteristic to compute the f measure from
+//	 * @return macro f measure
+//	 */
+//	public static double getFMeasureMacro(List<? extends Characteristic> characteristics) {
+//		return computeMacro(characteristics, c -> {return c.getFMeasure();});
+//	}
 	
-	/**
-	 * Compute the micro f measure over a list of characteristics. 
-	 * Avoids biasing the value by unequally large data sets.
-	 * @param characteristics the characteristic to compute the f measure from
-	 * @return micro f measure
-	 */
-	public static double getFMeasureMicro(List<? extends Characteristic> characteristics) {
-		int sumNumOfMatcher = 0;
-		int sumNumOfGold = 0;
-		int sumNumOfCorrect = 0;
-		for(Characteristic c : characteristics) {
-			sumNumOfMatcher += c.getNumOfRulesMatcher();
-			sumNumOfGold += c.getNumOfRulesReference();
-			sumNumOfCorrect += c.getNumOfRulesCorrect();
-		}
-		return Characteristic.computeFFromPR((sumNumOfCorrect / (double) sumNumOfMatcher), 
-				(sumNumOfCorrect / (double) sumNumOfGold));
-	}
+//	/**
+//	 * Compute the micro f measure over a list of characteristics. 
+//	 * Avoids biasing the value by unequally large data sets.
+//	 * @param characteristics the characteristic to compute the f measure from
+//	 * @return micro f measure
+//	 */
+//	public static double getFMeasureMicro(List<? extends Characteristic> characteristics) {
+//		int sumNumOfMatcher = 0;
+//		int sumNumOfGold = 0;
+//		int sumNumOfCorrect = 0;
+//		for(Characteristic c : characteristics) {
+//			sumNumOfMatcher += c.getNumOfRulesMatcher();
+//			sumNumOfGold += c.getNumOfRulesReference();
+//			sumNumOfCorrect += c.getNumOfRulesCorrect();
+//		}
+//		return Characteristic.computeFFromPR((sumNumOfCorrect / (double) sumNumOfMatcher), 
+//				(sumNumOfCorrect / (double) sumNumOfGold));
+//	}
 	
-	/**
-	 * Computes the standard deviation of the precision over
-	 * a list of characteristics. As a reference for the average value,
-	 * the macro precision is used.
-	 * @param characteristics the characteristics to compute the standard deviation of the precision
-	 * @return standard deviation of precision
-	 */
-	public static double getPrecisionStdDev(List<? extends Characteristic> characteristics) {
-		return computeStdDev(characteristics, Characteristic::getPrecisionMacro, c -> {return c.getPrecision();});
-	}
+//	/**
+//	 * Computes the standard deviation of the precision over
+//	 * a list of characteristics. As a reference for the average value,
+//	 * the macro precision is used.
+//	 * @param characteristics the characteristics to compute the standard deviation of the precision
+//	 * @return standard deviation of precision
+//	 */
+//	public static double getPrecisionStdDev(List<? extends Characteristic> characteristics) {
+//		return computeStdDev(characteristics, Characteristic::getPrecisionMacro, c -> {return c.getPrecision();});
+//	}
 	
-	/**
-	 * Computes the standard deviation of the recall over
-	 * a list of characteristics. As a reference for the average value,
-	 * the macro recall is used.
-	 * @param characteristics the characteristics to compute the standard deviation of the recall
-	 * @return standard deviation of recall
-	 */
-	public static double getRecallStdDev(List<? extends Characteristic> characteristics) {
-		return computeStdDev(characteristics, Characteristic::getRecallMacro, c -> {return c.getRecall();});
-	}
+//	/**
+//	 * Computes the standard deviation of the recall over
+//	 * a list of characteristics. As a reference for the average value,
+//	 * the macro recall is used.
+//	 * @param characteristics the characteristics to compute the standard deviation of the recall
+//	 * @return standard deviation of recall
+//	 */
+//	public static double getRecallStdDev(List<? extends Characteristic> characteristics) {
+//		return computeStdDev(characteristics, Characteristic::getRecallMacro, c -> {return c.getRecall();});
+//	}
 	
-	/**
-	 * Computes the standard deviation of the f-measure over
-	 * a list of characteristics. As a reference for the average value,
-	 * the macro f-measure is used.
-	 * @param characteristics the characteristics to compute the standard deviation of the f-measure
-	 * @return standard deviation of f-measure
-	 */
-	public static double getFMeasureStdDev(List<? extends Characteristic> characteristics) {
-		return computeStdDev(characteristics, Characteristic::getFMeasureMacro, c -> {return c.getFMeasure();});
-	}
+//	/**
+//	 * Computes the standard deviation of the f-measure over
+//	 * a list of characteristics. As a reference for the average value,
+//	 * the macro f-measure is used.
+//	 * @param characteristics the characteristics to compute the standard deviation of the f-measure
+//	 * @return standard deviation of f-measure
+//	 */
+//	public static double getFMeasureStdDev(List<? extends Characteristic> characteristics) {
+//		return computeStdDev(characteristics, Characteristic::getFMeasureMacro, c -> {return c.getFMeasure();});
+//	}
 	
 	/**
 	 * Computes the relative distance of the matcher alignment to
@@ -1070,48 +1070,6 @@ public class Characteristic {
 			sum += Characteristic.getRelativeDistance(characteristics.subList(i*36, (i+1)*36), normalize);
 		}
 		return sum / (characteristics.size() / 36);
-	}
-	
-	public static double getSpearRangCorrGSMacro(List<? extends Characteristic> characteristics) {
-		return Characteristic.getGSMacro(characteristics, Characteristic::getSpearRangCorrMacro, 36);
-	}
-	
-	public static double getFMeasureGSMacro(List<? extends Characteristic> characteristics) {
-		//TODO hardcoding of goldstandard size
-		return Characteristic.getGSMacro(characteristics, Characteristic::getFMeasureMacro, 36);
-	}
-	
-	public static double getNBFMeasureGSMicro(List<? extends Characteristic> characteristics) {
-		return Characteristic.getGSMacro(characteristics, Characteristic::getNBFMeasureMicro, 36);
-	}
-	
-	public static double getNBPrecisionGSMacro(List<? extends Characteristic> characteristics) {
-		return Characteristic.getGSMacro(characteristics, Characteristic::getNBPrecisionMacro, 36);
-	}
-	
-	public static double getNBPrecisionGSMicro(List<? extends Characteristic> characteristics) {
-		return Characteristic.getGSMacro(characteristics, Characteristic::getNBPrecisionMicro, 36);
-	}
-	
-	public static double getNBRecallGSMacro(List<? extends Characteristic> characteristics) {
-		return Characteristic.getGSMacro(characteristics, Characteristic::getNBRecallMacro, 36);
-	}
-	
-	public static double getNBRecallGSMicro(List<? extends Characteristic> characteristics) {
-		return Characteristic.getGSMacro(characteristics, Characteristic::getNBRecallMicro, 36);
-	}
-	
-	public static double getNBFMeasureGSMacro(List<? extends Characteristic> characteristics) {
-		return Characteristic.getGSMacro(characteristics, Characteristic::getNBFMeasureMacro, 36);
-	}
-	
-	public static double getGSMacro(List<? extends Characteristic> characteristics, 
-			Function<List<? extends Characteristic>, Double> function, int sizeGS) {
-		double sum = 0;
-		for (int i = 0; i < characteristics.size() / sizeGS; i++) {
-			sum += function.apply(characteristics.subList(i*36, (i+1)*36));
-		}
-		return sum / (characteristics.size() / sizeGS);
 	}
 	
 	/**

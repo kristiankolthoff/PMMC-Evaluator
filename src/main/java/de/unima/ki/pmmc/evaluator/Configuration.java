@@ -13,7 +13,7 @@ import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
-import de.unima.ki.pmmc.evaluator.data.Result;
+import de.unima.ki.pmmc.evaluator.data.Report;
 import de.unima.ki.pmmc.evaluator.handler.ReportHandler;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
@@ -47,10 +47,10 @@ public class Configuration implements Iterable<MetricGroup>{
 	private AlignmentReader alignmentReader;
 	private List<ReportHandler> handler;
 	private Consumer<String> flowListener;
-	private List<Function<Result, Result>> transformationsResult;
+	private List<Function<Report, Report>> transformationsResult;
 	private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
 	private List<Function<Alignment, Alignment>> transformationsAlignment;
-	private List<Predicate<Result>> filterResult;
+	private List<Predicate<Report>> filterResult;
 	private List<Predicate<Correspondence>> filterCorrespondence;
 	private List<Predicate<Alignment>> filterAlignment;
 	private Parser parser;
@@ -68,10 +68,10 @@ public class Configuration implements Iterable<MetricGroup>{
 			boolean sortReports,
 			AlignmentReader alignmentReader,
 			List<ReportHandler> handler, Consumer<String> flowListener,
-			List<Function<Result, Result>> transformationsResult,
+			List<Function<Report, Report>> transformationsResult,
 			List<Function<Correspondence, Correspondence>> transformationsCorrespondence,
 			List<Function<Alignment, Alignment>> transformationsAlignment, 
-			List<Predicate<Result>> filterResult,
+			List<Predicate<Report>> filterResult,
 			List<Predicate<Correspondence>> filterCorrespondence, 
 			List<Predicate<Alignment>> filterAlignment,
 			Parser parser) {
@@ -218,11 +218,11 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.flowListener = flowListener;
 	}
 
-	public List<Function<Result, Result>> getTransformationsResult() {
+	public List<Function<Report, Report>> getTransformationsResult() {
 		return transformationsResult;
 	}
 
-	public void setTransformationsResult(List<Function<Result, Result>> transformationsResult) {
+	public void setTransformationsResult(List<Function<Report, Report>> transformationsResult) {
 		this.transformationsResult = transformationsResult;
 	}
 
@@ -243,11 +243,11 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.transformationsAlignment = transformationsAlignment;
 	}
 
-	public List<Predicate<Result>> getFilterResult() {
+	public List<Predicate<Report>> getFilterResult() {
 		return filterResult;
 	}
 
-	public void setFilterResult(List<Predicate<Result>> filterResult) {
+	public void setFilterResult(List<Predicate<Report>> filterResult) {
 		this.filterResult = filterResult;
 	}
 
@@ -310,10 +310,10 @@ public class Configuration implements Iterable<MetricGroup>{
 		private AlignmentReader alignmentReader;
 		private List<ReportHandler> handler;
 		private Consumer<String> flowListener;
-		private List<Function<Result, Result>> transformationsResult;
+		private List<Function<Report, Report>> transformationsResult;
 		private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
 		private List<Function<Alignment, Alignment>> transformationsAlignment;
-		private List<Predicate<Result>> filterResult;
+		private List<Predicate<Report>> filterResult;
 		private List<Predicate<Correspondence>> filterCorrespondence;
 		private List<Predicate<Alignment>> filterAlignment;
 		private Parser parser;
@@ -465,7 +465,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		 * @param transformation which should be applied to the generated results
 		 * @return this
 		 */
-		public Builder addTransformationToResult(Function<Result, Result> transformation) {
+		public Builder addTransformationToResult(Function<Report, Report> transformation) {
 			this.transformationsResult.add(transformation);
 			return this;
 		}
@@ -499,7 +499,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		 * @param filter which should be applied to the generated results
 		 * @return this
 		 */
-		public Builder addFilterToResult(Predicate<Result> filter) {
+		public Builder addFilterToResult(Predicate<Report> filter) {
 			this.filterResult.add(filter);
 			return this;
 		}

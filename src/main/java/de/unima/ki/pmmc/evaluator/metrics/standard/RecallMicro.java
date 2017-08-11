@@ -6,6 +6,10 @@ import java.util.Optional;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
+/**
+ * Compute the micro recall over a list of characteristics. 
+ * Avoids biasing the value by unequally large data sets.
+ */
 public class RecallMicro implements Metric {
 
 	private Optional<String> name;

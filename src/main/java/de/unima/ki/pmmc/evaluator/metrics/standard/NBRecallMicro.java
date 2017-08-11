@@ -5,6 +5,10 @@ import java.util.List;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
+/**
+ * Compute the micro recall over a list of characteristics. 
+ * Avoids biasing the value by unequally large data sets.
+ */
 public class NBRecallMicro implements Metric {
 
 	@Override

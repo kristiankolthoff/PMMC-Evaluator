@@ -26,7 +26,6 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.annotator.Annotator;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.data.Report;
-import de.unima.ki.pmmc.evaluator.data.Result;
 import de.unima.ki.pmmc.evaluator.data.Solution;
 import de.unima.ki.pmmc.evaluator.data.ValidationReport;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
@@ -84,14 +83,14 @@ public class Evaluator {
 	 * Functions providing Correspondence, Alignment 
 	 * and Result transformations
 	 */
-	private List<Function<Result, Result>> transformationsResult;
+	private List<Function<Report, Report>> transformationsResult;
 	private List<Function<Alignment, Alignment>> transformationsAlignment;
 	private List<Function<Correspondence, Correspondence>> transformationsCorrespondence;
 	/**
 	 * Predicates for filtering Correspondences,
 	 * Alignments and Results
 	 */
-	private List<Predicate<Result>> filterResult;
+	private List<Predicate<Report>> filterResult;
 	private List<Predicate<Alignment>> filterAlignment;
 	private List<Predicate<Correspondence>> filterCorrespondence;
 	private Consumer<String> flowListener;
@@ -514,7 +513,7 @@ public class Evaluator {
 		return alignmentReader;
 	}
 
-	public List<Function<Result, Result>> getTransformationsResult() {
+	public List<Function<Report, Report>> getTransformationsResult() {
 		return transformationsResult;
 	}
 

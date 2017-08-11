@@ -5,6 +5,11 @@ import java.util.List;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
+/**
+ * Computes the standard deviation of the recall over
+ * a list of characteristics. As a reference for the average value,
+ * the macro recall is used.
+ */
 public class RecallStdDev implements Metric {
 
 	@Override

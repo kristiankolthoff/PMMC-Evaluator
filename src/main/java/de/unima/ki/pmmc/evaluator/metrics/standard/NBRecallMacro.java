@@ -5,6 +5,12 @@ import java.util.List;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
+/**
+ * Compute the macro recall over a list of characteristics. The
+ * macro recall is the average of all the recall values of
+ * all characteristics. Note that this metric can be easily biased
+ * if the testsets are not equally large.
+ */
 public class NBRecallMacro implements Metric {
 
 	@Override

@@ -5,6 +5,12 @@ import java.util.List;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
+/**
+ * Compute the macro precision over a list of characteristics. The
+ * macro precision is the average of all the precision values of
+ * all characteristics. Note that this metric can be easily biased
+ * if the testsets are not equally large.
+ */
 public class NBPrecisionMacro implements Metric {
 
 	@Override
