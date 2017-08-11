@@ -28,6 +28,7 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallStdDev;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.FunctionMetric;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondences;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
@@ -68,7 +69,9 @@ public class PMMCNewEvaluationAdmission {
 						.addMetric(new FMeasureStdDev()))
 				.addMetricGroup(new MetricGroup("Stats")
 						.addMetric(new MinimumConfidence())
-						.addMetric(new NumCorrespondences()))
+						.addMetric(new NumCorrespondences())
+						.addMetric(new FunctionMetric(list -> 
+						{return (double) list.stream().mapToInt(c -> {return c.getAlignmentCorrect().size();}).max().getAsInt();})))
 				.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset1/")
