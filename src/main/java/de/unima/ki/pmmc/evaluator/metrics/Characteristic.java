@@ -262,7 +262,7 @@ public class Characteristic {
 		return this.alignmentReference.minus(this.alignmentCorrect);
 	}
 	
-	private double getConfSumReference() {
+	public double getConfSumReference() {
 		double sum = 0;
 		for(Correspondence cRef : this.alignmentReference) {
 			sum += cRef.getConfidence();
@@ -270,7 +270,7 @@ public class Characteristic {
 		return sum;
 	}
 
-	private double getConfSumCorrect() {
+	public double getConfSumCorrect() {
 		double sum = 0;
 		for(Correspondence cCorr : this.alignmentCorrect) {
 			sum += cCorr.getConfidence();

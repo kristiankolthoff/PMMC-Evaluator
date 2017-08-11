@@ -16,6 +16,12 @@ import de.unima.ki.pmmc.evaluator.generator.MetricGroupBinding;
 import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
+import de.unima.ki.pmmc.evaluator.metrics.standard.FMeasureMacro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.FMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.FMeasureStdDev;
+import de.unima.ki.pmmc.evaluator.metrics.standard.NBPrecisionMacro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.NBPrecisionMicro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.NBPrecisionStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionStdDev;
@@ -23,6 +29,7 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondences;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 
 public class PMMCNewEvaluationAdmission {
@@ -48,16 +55,24 @@ public class PMMCNewEvaluationAdmission {
 		MetricGroupFactory factory = MetricGroupFactory.getInstance();
 		builder = new Configuration.Builder().
 				addMetricGroup(new MetricGroup("Precision", "prec-info")
-						.addMetric(new PrecisionMicro())
-						.addMetric(new PrecisionMacro())
-						.addMetric(new PrecisionStdDev()))
+						.addMetric(new NBPrecisionMicro())
+						.addMetric(new NBPrecisionMacro())
+						.addMetric(new NBPrecisionStdDev()))
 				.addMetricGroup(new MetricGroup("Recall", "rec-info")
 						.addMetric(new RecallMicro())
 						.addMetric(new RecallMacro())
 						.addMetric(new RecallStdDev()))
-				.addMetric("Min.", new MinimumConfidence())
+				.addMetricGroup(new MetricGroup("F1-Measure")
+						.addMetric(new FMeasureMicro())
+						.addMetric(new FMeasureMacro())
+						.addMetric(new FMeasureStdDev()))
+				.addMetricGroup(new MetricGroup("Stats")
+						.addMetric(new MinimumConfidence())
+						.addMetric(new NumCorrespondences()))
 				.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset1/")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset1/")
 				.setModelsRootPath(MODELS_PATH)
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputName("oaei16-new-gs")
@@ -74,7 +89,7 @@ public class PMMCNewEvaluationAdmission {
 	}
 	
 	public void oldGoldstandardExperiment() {
-		builder.addGoldstandardPath(GOLDSTANDARD_NEW_PATH);
+		builder.addGoldstandardPath(GOLDSTANDARD_NEW_ADAPTED_PATH);
 		Evaluator evaluator = new Evaluator(builder.build());
 		try {
 			Evaluation evaluation = evaluator.run();
