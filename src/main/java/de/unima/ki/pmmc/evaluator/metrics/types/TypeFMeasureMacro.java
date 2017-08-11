@@ -6,23 +6,23 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
-public class PrecisionMacroType implements Metric {
+public class TypeFMeasureMacro implements Metric{
 
 	private CorrespondenceType type;
 	
-	
-	public PrecisionMacroType(CorrespondenceType type) {
+	public TypeFMeasureMacro(CorrespondenceType type) {
 		this.type = type;
 	}
 
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeMacro(characteristics, c -> {return c.getPrecision(type);});
+		return Metric.computeMacro(characteristics, 
+				c -> {return c.getFMeasure(type);});
 	}
 
 	@Override
 	public String getName() {
-		return "prec-macro-" + type.getName();
+		return "fm-mac-" + type.getName();
 	}
 
 }

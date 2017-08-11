@@ -6,24 +6,24 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
-public class PrecisionStdDevType implements Metric {
+public class TypeFMeasureStdDev implements Metric{
 
-	public CorrespondenceType type;
+	private CorrespondenceType type;
 	
-	
-	public PrecisionStdDevType(CorrespondenceType type) {
+	public TypeFMeasureStdDev(CorrespondenceType type) {
 		this.type = type;
 	}
 
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeStdDev(characteristics, new PrecisionMacroType(type)::compute, 
-				c -> {return c.getPrecision(type);});
+		return Metric.computeStdDev(characteristics,
+				new TypeFMeasureMacro(type)::compute, 
+				c -> {return c.getFMeasure(type);});
 	}
 
 	@Override
 	public String getName() {
-		return "prec-std-dev" + type.getName();
+		return "fm-std-dev-" + type.getName();
 	}
 
 }

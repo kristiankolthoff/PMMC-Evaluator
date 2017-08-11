@@ -22,9 +22,9 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
-import de.unima.ki.pmmc.evaluator.metrics.types.PrecisionMacroType;
-import de.unima.ki.pmmc.evaluator.metrics.types.PrecisionMicroType;
-import de.unima.ki.pmmc.evaluator.metrics.types.PrecisionStdDevType;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionStdDev;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
 
@@ -692,9 +692,9 @@ public class Configuration implements Iterable<MetricGroup>{
 				.persistToFile(true);
 		for(CorrespondenceType type : CorrespondenceType.values()) {
 			builder.addMetricGroup(new MetricGroup(type.getName())
-					.addMetric(new PrecisionMacroType(type))
-					.addMetric(new PrecisionMicroType(type))
-					.addMetric(new PrecisionStdDevType(type)));
+					.addMetric(new TypePrecisionMacro(type))
+					.addMetric(new TypePrecisionMicro(type))
+					.addMetric(new TypePrecisionStdDev(type)));
 		}
 		@SuppressWarnings("unused")
 		Evaluator evaluator = new Evaluator(builder.build());
