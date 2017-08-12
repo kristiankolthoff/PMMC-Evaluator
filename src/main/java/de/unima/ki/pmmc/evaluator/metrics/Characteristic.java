@@ -308,7 +308,7 @@ public class Characteristic {
 		return getConfSumCorrect(type) / getConfSumReference(type);
 	}
 	
-	private double getConfSumReference(CorrespondenceType type) {
+	public double getConfSumReference(CorrespondenceType type) {
 		double sum = 0;
 		for(Correspondence cRef : this.alignmentReferenceTyped.get(type)) {
 			sum += cRef.getConfidence();
@@ -316,7 +316,7 @@ public class Characteristic {
 		return sum;
 	}
 	
-	private double getConfSumCorrect(CorrespondenceType type) {
+	public double getConfSumCorrect(CorrespondenceType type) {
 		double sum = 0;
 		for(Correspondence cRef : this.alignmentCorrectTyped.get(type)) {
 			sum += cRef.getConfidence();

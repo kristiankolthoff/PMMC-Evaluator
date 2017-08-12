@@ -1,314 +1,314 @@
-package de.unima.ki.pmmc.evaluator.metrics;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import de.unima.ki.pmmc.evaluator.alignment.Alignment;
-import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
-import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
-import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-
-public class TypeCharacteristic extends Characteristic {
-
-	/**
-	 * Partition of correspondences into correspondence types 
-	 * of the reference alignment from the characteristic
-	 */
-	private Map<CorrespondenceType, Alignment> alignmentReference;
-	/**
-	 * Partition of correspondences into correspondence types 
-	 * of the matcher alignment from the characteristic
-	 */
-	private Map<CorrespondenceType, Alignment> alignmentMapping;
-	/**
-	 * Partition of correspondences into correspondence types 
-	 * of the correct alignment from the characteristic
-	 */
-	private Map<CorrespondenceType, Alignment> alignmentCorrect;
-	/**
-	 * Partition of correspondences into correspondence types 
-	 * of the cross product of the two models of the original alignment
-	 */
-	
-	public TypeCharacteristic(Alignment mapping, Alignment reference,
-			Alignment crossProduct) throws CorrespondenceException {
-		super(mapping, reference);
-		this.init();
-	}
-	
-	private void init() throws CorrespondenceException {
-		this.alignmentReference = extractCTMap(getAlignmentReference());
-		this.alignmentMapping = extractCTMap(getAlignmentMapping());
-		this.alignmentCorrect = extractCTMap(getAlignmentCorrect());
-	}
-	
-	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
-			throws CorrespondenceException {
-		Map<CorrespondenceType, Alignment> vals = new HashMap<>();
-		for(CorrespondenceType type : CorrespondenceType.values()) {
-			vals.put(type, new Alignment());
-		}
-		for(Correspondence c : alignment) {
-			if(c.getCType().isPresent()) {
-				Alignment align = vals.get(c.getCType().get());
-				align.add(c);
-				vals.put(c.getCType().get(), align);
-			
-			} else {
-				throw new CorrespondenceException(CorrespondenceException.MISSING_TYPE_ANNOTATION, c.toString());
-			}
-		}
-		return vals;
-	}
-	
-//	public Alignment getTP(CorrespondenceType type) {
-//		return Alignment.newInstance(alignmentCorrect.get(type));
-//	}
-//	
-//	
-//	public Alignment getFP(CorrespondenceType type) {
-//		return Alignment.newInstance(alignmentMapping.get(type).minus(alignmentCorrect.get(type)));
-//	}
-//	
-//	public Alignment getFN(CorrespondenceType type) {
-//		return Alignment.newInstance(alignmentReference.get(type).minus(alignmentMapping.get(type)));
-//	}
-//	
+//package de.unima.ki.pmmc.evaluator.metrics;
 //
-//	public double getPrecision(CorrespondenceType type) {
-//		return alignmentCorrect.get(type).size() / (double) alignmentMapping.get(type).size();
+//import java.util.ArrayList;
+//import java.util.HashMap;
+//import java.util.List;
+//import java.util.Map;
+//
+//import de.unima.ki.pmmc.evaluator.alignment.Alignment;
+//import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
+//import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
+//import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
+//
+//public class TypeCharacteristic extends Characteristic {
+//
+//	/**
+//	 * Partition of correspondences into correspondence types 
+//	 * of the reference alignment from the characteristic
+//	 */
+//	private Map<CorrespondenceType, Alignment> alignmentReference;
+//	/**
+//	 * Partition of correspondences into correspondence types 
+//	 * of the matcher alignment from the characteristic
+//	 */
+//	private Map<CorrespondenceType, Alignment> alignmentMapping;
+//	/**
+//	 * Partition of correspondences into correspondence types 
+//	 * of the correct alignment from the characteristic
+//	 */
+//	private Map<CorrespondenceType, Alignment> alignmentCorrect;
+//	/**
+//	 * Partition of correspondences into correspondence types 
+//	 * of the cross product of the two models of the original alignment
+//	 */
+//	
+//	public TypeCharacteristic(Alignment mapping, Alignment reference,
+//			Alignment crossProduct) throws CorrespondenceException {
+//		super(mapping, reference);
+//		this.init();
 //	}
 //	
-//	public double getNBPrecision(CorrespondenceType type) {
-//		return getConfSumCorrect(type) / ((double)getFP(type).size() + getConfSumCorrect(type));
+//	private void init() throws CorrespondenceException {
+//		this.alignmentReference = extractCTMap(getAlignmentReference());
+//		this.alignmentMapping = extractCTMap(getAlignmentMapping());
+//		this.alignmentCorrect = extractCTMap(getAlignmentCorrect());
 //	}
 //	
-//	public double getRecall(CorrespondenceType type) {
-//		return alignmentCorrect.get(type).size() / (double) alignmentReference.get(type).size();
-//	}
-//	
-//	public double getNBRecall(CorrespondenceType type) {
-//		return getConfSumCorrect(type) / getConfSumReference(type);
-//	}
-//	
-//	private double getConfSumReference(CorrespondenceType type) {
-//		double sum = 0;
-//		for(Correspondence cRef : this.alignmentReference.get(type)) {
-//			sum += cRef.getConfidence();
+//	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
+//			throws CorrespondenceException {
+//		Map<CorrespondenceType, Alignment> vals = new HashMap<>();
+//		for(CorrespondenceType type : CorrespondenceType.values()) {
+//			vals.put(type, new Alignment());
 //		}
-//		return sum;
-//	}
-//	
-//	private double getConfSumCorrect(CorrespondenceType type) {
-//		double sum = 0;
-//		for(Correspondence cRef : this.alignmentCorrect.get(type)) {
-//			sum += cRef.getConfidence();
-//		}
-//		return sum;
-//	}
-//	
-//	public double getFMeasure(CorrespondenceType type) {
-//		return computeFFromPR(getPrecision(type), getRecall(type));
-//	}
-//	
-//	public double getNBFMeasure(CorrespondenceType type) {
-//		return computeFFromPR(getNBPrecision(type), getNBRecall(type));
-//	}
-//	
-//	/**
-//	 * Returns an <code>Alignment</code> corresponding to the
-//	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
-//	 * in the <code>Alignment</code> is of the specified type and belongs to the goldstandard.
-//	 * @param type the type the <code>Correspondence</code>s should have
-//	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
-//	 */
-//	public Alignment getAlignmentReference(CorrespondenceType type) {
-//		return this.alignmentReference.get(type);
-//	}
-//	
-//	/**
-//	 * Returns an <code>Alignment</code> corresponding to the
-//	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
-//	 * in the <code>Alignment</code> is of the specified type and is generated by the matcher.
-//	 * @param type the type the <code>Correspondence</code>s should have
-//	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
-//	 */
-//	public Alignment getAlignmentMapping(CorrespondenceType type) {
-//		return this.alignmentMapping.get(type);
-//	}
-//	
-//	/**
-//	 * Returns an <code>Alignment</code> corresponding to the
-//	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
-//	 * in the <code>Alignment</code> is of the specified type and is correctly
-//	 * identified by the matcher.
-//	 * @param type the type the <code>Correspondence</code>s should have
-//	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
-//	 */
-//	public Alignment getAlignmentCorrect(CorrespondenceType type) {
-//		return this.alignmentCorrect.get(type);
-//	}
-//	
-//	
-//	@Override
-//	public String toString() {
-//		return "TypeCharacteristic [corresponendencesRef="
-//				+ alignmentReference + ", correspondencesMapping="
-//				+ alignmentMapping + ", correspondencesCorrect="
-//				+ alignmentCorrect + "]";
-//	}
-	
-//	/**
-//	 * General purpose method for computing micro summary
-//	 * of values provided by the two function parameters. That is,
-//	 * over a list of <code>TypeCharacteristic</code>s, this method computes
-//	 * the division with the sum of single values of the first function in
-//	 * the numerator, and the the sum of single values of the second function
-//	 * in the denominator. This method avoids boilerplate code and follows DRY.
-//	 * @param characteristics the typecharacteristics to compute the micro summary from
-//	 * @param functionNum function for producing values from a single <code>TypeCharacteristic</code>
-//	 * for the numerator sum
-//	 * @param functionDenom function for producing values from a single <code>TypeCharacteristic</code>
-//	 * for the denominator sum
-//	 * @return sum{functionNumVals} / sum{functionDenomVals}
-//	 */
-//	private static double computeMicro(List<TypeCharacteristic> characteristics,
-//			Function<TypeCharacteristic, Double> functionNum, Function<TypeCharacteristic, Double> functionDenom) {
-//		double sumNum = 0;
-//		double sumDenom = 0;
-//		for(TypeCharacteristic c : characteristics) {
-//			sumNum += functionNum.apply(c);
-//			sumDenom += functionDenom.apply(c);
-//		}
-//		return sumNum / sumDenom;
-//	}
-	
-//	/**
-//	 * General purpose method for computing macro summary of
-//	 * values provided by the single input function. Simply sums up
-//	 * the individual values provided by the function for each single
-//	 * <code>TypeCharacteristic</code> and finally computes the average.
-//	 * @param characteristics the typecharacteristics to compute the macro summary from
-//	 * @param function function for producing values from a single <code>TypeCharacteristic</code>
-//	 * @return the average as sum{functionVals} / numOfVals
-//	 */
-//	private static double computeMacro(List<TypeCharacteristic> characteristics,
-//			Function<TypeCharacteristic, Double> function) {
-//		double sum = 0;
-//		int numOfOcc = 0;
-//		for(TypeCharacteristic c : characteristics) {
-//			double val = function.apply(c);
-//			if(!Double.isNaN(val)) {
-//				sum += val;
-//				numOfOcc++;
+//		for(Correspondence c : alignment) {
+//			if(c.getCType().isPresent()) {
+//				Alignment align = vals.get(c.getCType().get());
+//				align.add(c);
+//				vals.put(c.getCType().get(), align);
+//			
+//			} else {
+//				throw new CorrespondenceException(CorrespondenceException.MISSING_TYPE_ANNOTATION, c.toString());
 //			}
 //		}
-//		double val = sum / numOfOcc;
-//		return (Double.isNaN(val)) ? 0 : val;
+//		return vals;
 //	}
-	
-//	/**
-//	 * Computes the standard deviation over a list of <code>TypeCharacteristic</code>s
-//	 * based on values provided by the two input functions. The first function is
-//	 * used to compute the average value for the <code>TypeCharacteristic</code> collection,
-//	 * the second function provides the current value for a single <code>TypeCharacteristic</code>
-//	 * @param characteristics the typecharacteristics to compute the standard deviation from
-//	 * @param functionAvg function for producing the average value to compare the single/current
-//	 * values against
-//	 * @param functionSum function for producing the current value for a single <code>TypeCharacteristic</code>
-//	 * @return the standard deviation based on the provided functions
-//	 */
-//	private static double computeStdDev(List<TypeCharacteristic> characteristics, 
-//			BiFunction<List<TypeCharacteristic>, CorrespondenceType, Double> functionAvg, 
-//			Function<TypeCharacteristic, Double> functionSum, CorrespondenceType type) {
-//		double avgMacro = functionAvg.apply(characteristics, type);
-//		double dev = 0;
-//		int numOfOcc = 0;
+//	
+////	public Alignment getTP(CorrespondenceType type) {
+////		return Alignment.newInstance(alignmentCorrect.get(type));
+////	}
+////	
+////	
+////	public Alignment getFP(CorrespondenceType type) {
+////		return Alignment.newInstance(alignmentMapping.get(type).minus(alignmentCorrect.get(type)));
+////	}
+////	
+////	public Alignment getFN(CorrespondenceType type) {
+////		return Alignment.newInstance(alignmentReference.get(type).minus(alignmentMapping.get(type)));
+////	}
+////	
+////
+////	public double getPrecision(CorrespondenceType type) {
+////		return alignmentCorrect.get(type).size() / (double) alignmentMapping.get(type).size();
+////	}
+////	
+////	public double getNBPrecision(CorrespondenceType type) {
+////		return getConfSumCorrect(type) / ((double)getFP(type).size() + getConfSumCorrect(type));
+////	}
+////	
+////	public double getRecall(CorrespondenceType type) {
+////		return alignmentCorrect.get(type).size() / (double) alignmentReference.get(type).size();
+////	}
+////	
+////	public double getNBRecall(CorrespondenceType type) {
+////		return getConfSumCorrect(type) / getConfSumReference(type);
+////	}
+////	
+////	private double getConfSumReference(CorrespondenceType type) {
+////		double sum = 0;
+////		for(Correspondence cRef : this.alignmentReference.get(type)) {
+////			sum += cRef.getConfidence();
+////		}
+////		return sum;
+////	}
+////	
+////	private double getConfSumCorrect(CorrespondenceType type) {
+////		double sum = 0;
+////		for(Correspondence cRef : this.alignmentCorrect.get(type)) {
+////			sum += cRef.getConfidence();
+////		}
+////		return sum;
+////	}
+////	
+////	public double getFMeasure(CorrespondenceType type) {
+////		return computeFFromPR(getPrecision(type), getRecall(type));
+////	}
+////	
+////	public double getNBFMeasure(CorrespondenceType type) {
+////		return computeFFromPR(getNBPrecision(type), getNBRecall(type));
+////	}
+////	
+////	/**
+////	 * Returns an <code>Alignment</code> corresponding to the
+////	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
+////	 * in the <code>Alignment</code> is of the specified type and belongs to the goldstandard.
+////	 * @param type the type the <code>Correspondence</code>s should have
+////	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
+////	 */
+////	public Alignment getAlignmentReference(CorrespondenceType type) {
+////		return this.alignmentReference.get(type);
+////	}
+////	
+////	/**
+////	 * Returns an <code>Alignment</code> corresponding to the
+////	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
+////	 * in the <code>Alignment</code> is of the specified type and is generated by the matcher.
+////	 * @param type the type the <code>Correspondence</code>s should have
+////	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
+////	 */
+////	public Alignment getAlignmentMapping(CorrespondenceType type) {
+////		return this.alignmentMapping.get(type);
+////	}
+////	
+////	/**
+////	 * Returns an <code>Alignment</code> corresponding to the
+////	 * <code>CorrespondenceType</code>. That is, each <Code>Correspondence</code>
+////	 * in the <code>Alignment</code> is of the specified type and is correctly
+////	 * identified by the matcher.
+////	 * @param type the type the <code>Correspondence</code>s should have
+////	 * @return the <code>Alignment</code> containing <code>Correspondence</code>s corresponding to the type
+////	 */
+////	public Alignment getAlignmentCorrect(CorrespondenceType type) {
+////		return this.alignmentCorrect.get(type);
+////	}
+////	
+////	
+////	@Override
+////	public String toString() {
+////		return "TypeCharacteristic [corresponendencesRef="
+////				+ alignmentReference + ", correspondencesMapping="
+////				+ alignmentMapping + ", correspondencesCorrect="
+////				+ alignmentCorrect + "]";
+////	}
+//	
+////	/**
+////	 * General purpose method for computing micro summary
+////	 * of values provided by the two function parameters. That is,
+////	 * over a list of <code>TypeCharacteristic</code>s, this method computes
+////	 * the division with the sum of single values of the first function in
+////	 * the numerator, and the the sum of single values of the second function
+////	 * in the denominator. This method avoids boilerplate code and follows DRY.
+////	 * @param characteristics the typecharacteristics to compute the micro summary from
+////	 * @param functionNum function for producing values from a single <code>TypeCharacteristic</code>
+////	 * for the numerator sum
+////	 * @param functionDenom function for producing values from a single <code>TypeCharacteristic</code>
+////	 * for the denominator sum
+////	 * @return sum{functionNumVals} / sum{functionDenomVals}
+////	 */
+////	private static double computeMicro(List<TypeCharacteristic> characteristics,
+////			Function<TypeCharacteristic, Double> functionNum, Function<TypeCharacteristic, Double> functionDenom) {
+////		double sumNum = 0;
+////		double sumDenom = 0;
+////		for(TypeCharacteristic c : characteristics) {
+////			sumNum += functionNum.apply(c);
+////			sumDenom += functionDenom.apply(c);
+////		}
+////		return sumNum / sumDenom;
+////	}
+//	
+////	/**
+////	 * General purpose method for computing macro summary of
+////	 * values provided by the single input function. Simply sums up
+////	 * the individual values provided by the function for each single
+////	 * <code>TypeCharacteristic</code> and finally computes the average.
+////	 * @param characteristics the typecharacteristics to compute the macro summary from
+////	 * @param function function for producing values from a single <code>TypeCharacteristic</code>
+////	 * @return the average as sum{functionVals} / numOfVals
+////	 */
+////	private static double computeMacro(List<TypeCharacteristic> characteristics,
+////			Function<TypeCharacteristic, Double> function) {
+////		double sum = 0;
+////		int numOfOcc = 0;
+////		for(TypeCharacteristic c : characteristics) {
+////			double val = function.apply(c);
+////			if(!Double.isNaN(val)) {
+////				sum += val;
+////				numOfOcc++;
+////			}
+////		}
+////		double val = sum / numOfOcc;
+////		return (Double.isNaN(val)) ? 0 : val;
+////	}
+//	
+////	/**
+////	 * Computes the standard deviation over a list of <code>TypeCharacteristic</code>s
+////	 * based on values provided by the two input functions. The first function is
+////	 * used to compute the average value for the <code>TypeCharacteristic</code> collection,
+////	 * the second function provides the current value for a single <code>TypeCharacteristic</code>
+////	 * @param characteristics the typecharacteristics to compute the standard deviation from
+////	 * @param functionAvg function for producing the average value to compare the single/current
+////	 * values against
+////	 * @param functionSum function for producing the current value for a single <code>TypeCharacteristic</code>
+////	 * @return the standard deviation based on the provided functions
+////	 */
+////	private static double computeStdDev(List<TypeCharacteristic> characteristics, 
+////			BiFunction<List<TypeCharacteristic>, CorrespondenceType, Double> functionAvg, 
+////			Function<TypeCharacteristic, Double> functionSum, CorrespondenceType type) {
+////		double avgMacro = functionAvg.apply(characteristics, type);
+////		double dev = 0;
+////		int numOfOcc = 0;
+////		for(TypeCharacteristic c : characteristics) {
+////			double val = functionSum.apply(c);
+////			if(!Double.isNaN(val)) {
+////				double currDev = Math.abs(val - avgMacro);
+////				dev += Math.pow(currDev, 2);
+////				numOfOcc++;
+////			}
+////		}
+////		return Math.sqrt(dev/numOfOcc);
+////		
+////	}
+//	
+////	public double getAccuracy(CorrespondenceType type) {
+////		final int TP = getTP(type).size();
+////		final int TN = getTN(type).size();
+////		final int FP = getFP(type).size();
+////		final int FN = getFN(type).size();
+////		if(TP+TN+FP+FN <= 0) {
+////			double test = (TP + TN) / (double)(TP + TN + FP + FN);
+////			System.out.println("empty " + type);
+////		}
+////		return (TP + TN) / (double)(TP + TN + FP + FN);
+////	}
+//	
+////	public static double getAccuracyMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+////		return computeMicro(characteristics, c -> {return (double)(c.getTN(type).size() + c.getTP(type).size());}, 
+////				c -> {return (double)(c.getTN(type).size() + c.getTP(type).size() 
+////						+ c.getFN(type).size() + c.getFP(type).size());});
+////	}
+////	
+////	public static double getAccuracyMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+////		return computeMacro(characteristics, c -> {return c.getAccuracy(type);});
+////	}
+////	
+////	public static double getAccuracyStdDev(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+////		return computeStdDev(characteristics, TypeCharacteristic::getAccuracyMacro, 
+////				c -> {return c.getAccuracy(type);}, type);
+////	}
+//	
+//	public static Map<CorrespondenceType, Integer> getMatcherTypeCount(List<TypeCharacteristic> characteristics) {
+//		Map<CorrespondenceType, Integer> vals = new HashMap<>();
 //		for(TypeCharacteristic c : characteristics) {
-//			double val = functionSum.apply(c);
-//			if(!Double.isNaN(val)) {
-//				double currDev = Math.abs(val - avgMacro);
-//				dev += Math.pow(currDev, 2);
-//				numOfOcc++;
+//			for(Map.Entry<CorrespondenceType, Alignment> e : c.alignmentMapping.entrySet()) {
+//				if(vals.containsKey(e.getKey())) {
+//					vals.put(e.getKey(), vals.get(e.getKey()) + e.getValue().size());
+//				} else {
+//					vals.put(e.getKey(), e.getValue().size());
+//				}
 //			}
 //		}
-//		return Math.sqrt(dev/numOfOcc);
-//		
-//	}
-	
-//	public double getAccuracy(CorrespondenceType type) {
-//		final int TP = getTP(type).size();
-//		final int TN = getTN(type).size();
-//		final int FP = getFP(type).size();
-//		final int FN = getFN(type).size();
-//		if(TP+TN+FP+FN <= 0) {
-//			double test = (TP + TN) / (double)(TP + TN + FP + FN);
-//			System.out.println("empty " + type);
-//		}
-//		return (TP + TN) / (double)(TP + TN + FP + FN);
-//	}
-	
-//	public static double getAccuracyMicro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
-//		return computeMicro(characteristics, c -> {return (double)(c.getTN(type).size() + c.getTP(type).size());}, 
-//				c -> {return (double)(c.getTN(type).size() + c.getTP(type).size() 
-//						+ c.getFN(type).size() + c.getFP(type).size());});
+//		return vals;
 //	}
 //	
-//	public static double getAccuracyMacro(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
-//		return computeMacro(characteristics, c -> {return c.getAccuracy(type);});
+//	public static int getFNSum(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+//		return characteristics.
+//				stream().
+//				map((list) -> {return list.getFN(type).size();}).
+//				reduce(0, (i,j) -> {return i+j;});
 //	}
 //	
-//	public static double getAccuracyStdDev(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
-//		return computeStdDev(characteristics, TypeCharacteristic::getAccuracyMacro, 
-//				c -> {return c.getAccuracy(type);}, type);
+//	public static int getFPSum(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
+//		return characteristics.
+//				stream().
+//				map((list) -> {return list.getFP(type).size();}).
+//				reduce(0, (i,j) -> {return i+j;});
 //	}
-	
-	public static Map<CorrespondenceType, Integer> getMatcherTypeCount(List<TypeCharacteristic> characteristics) {
-		Map<CorrespondenceType, Integer> vals = new HashMap<>();
-		for(TypeCharacteristic c : characteristics) {
-			for(Map.Entry<CorrespondenceType, Alignment> e : c.alignmentMapping.entrySet()) {
-				if(vals.containsKey(e.getKey())) {
-					vals.put(e.getKey(), vals.get(e.getKey()) + e.getValue().size());
-				} else {
-					vals.put(e.getKey(), e.getValue().size());
-				}
-			}
-		}
-		return vals;
-	}
-	
-	public static int getFNSum(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
-		return characteristics.
-				stream().
-				map((list) -> {return list.getFN(type).size();}).
-				reduce(0, (i,j) -> {return i+j;});
-	}
-	
-	public static int getFPSum(List<TypeCharacteristic> characteristics, CorrespondenceType type) {
-		return characteristics.
-				stream().
-				map((list) -> {return list.getFP(type).size();}).
-				reduce(0, (i,j) -> {return i+j;});
-	}
-	
-	/**
-	 * Computes the correlation between matcher and
-	 * reference <code>Alignment</code> for a given <code>CorrespondenceType</code>.
-	 * @param type the correspondence type to compute the correlation from
-	 * @param allowZeros allow zeros in correlation computation
-	 * @return correlation between matcher and goldstandard for a
-	 * specific correspondence type
-	 */
-	public double getCorrelation(CorrespondenceType type, boolean allowZeros) {
-		List<Alignment> mappings = new ArrayList<>();
-		List<Alignment> references = new ArrayList<>();
-		mappings.add(this.alignmentMapping.get(type));
-		references.add(this.alignmentReference.get(type));
-		return getCorrelation(mappings, references, allowZeros);
-	}
-	
+//	
+//	/**
+//	 * Computes the correlation between matcher and
+//	 * reference <code>Alignment</code> for a given <code>CorrespondenceType</code>.
+//	 * @param type the correspondence type to compute the correlation from
+//	 * @param allowZeros allow zeros in correlation computation
+//	 * @return correlation between matcher and goldstandard for a
+//	 * specific correspondence type
+//	 */
+//	public double getCorrelation(CorrespondenceType type, boolean allowZeros) {
+//		List<Alignment> mappings = new ArrayList<>();
+//		List<Alignment> references = new ArrayList<>();
+//		mappings.add(this.alignmentMapping.get(type));
+//		references.add(this.alignmentReference.get(type));
+//		return getCorrelation(mappings, references, allowZeros);
+//	}
+//	
 //	/**
 //	 * Computes the micro correlation across the <code>TypeCharacteristc</code>s.
 //	 * @param characteristics the characteristics to compute the micro correlation from
@@ -452,25 +452,25 @@ public class TypeCharacteristic extends Characteristic {
 //		return computeStdDev(characteristics, TypeCharacteristic::getFMeasureMacro, c -> {return c.getFMeasure();}, type);
 //	}
 //	
-	/**
-	 * Computes the relative distance of the matcher alignment to
-	 * the reference alignment of the gold standard, based on a <code>
-	 * CorrespondenceType</code>. First normalizes the matcher alignments to a 
-	 * target scale, then computes the sum of squared deviations of the confidence
-	 * values of the matcher and the reference alignment.
-	 * @param type - the correspondence type which should be used
-	 * @param normalize - specifies if the correspondence confidences should be normalized
-	 * @return realtive distance of matcher to reference alignment for the
-	 * specific <code>CorrespondenceType</code>
-	 */
-	public double getRelativeDistance(CorrespondenceType type, boolean normalize) {
-		List<Alignment> mappings = new ArrayList<>();
-		List<Alignment> references = new ArrayList<>();
-		mappings.add(alignmentMapping.get(type));
-		references.add(alignmentReference.get(type));
-		return getRelativeDistance(mappings, references, normalize);
-	}
-
+//	/**
+//	 * Computes the relative distance of the matcher alignment to
+//	 * the reference alignment of the gold standard, based on a <code>
+//	 * CorrespondenceType</code>. First normalizes the matcher alignments to a 
+//	 * target scale, then computes the sum of squared deviations of the confidence
+//	 * values of the matcher and the reference alignment.
+//	 * @param type - the correspondence type which should be used
+//	 * @param normalize - specifies if the correspondence confidences should be normalized
+//	 * @return realtive distance of matcher to reference alignment for the
+//	 * specific <code>CorrespondenceType</code>
+//	 */
+//	public double getRelativeDistance(CorrespondenceType type, boolean normalize) {
+//		List<Alignment> mappings = new ArrayList<>();
+//		List<Alignment> references = new ArrayList<>();
+//		mappings.add(alignmentMapping.get(type));
+//		references.add(alignmentReference.get(type));
+//		return getRelativeDistance(mappings, references, normalize);
+//	}
+//
 //	/**
 //	 * Computes the relative distance of the matcher alignments to the reference alignments 
 //	 * of the gold standard for a specific <code>CorrespondenceType</code>, based on a collection 
@@ -491,5 +491,5 @@ public class TypeCharacteristic extends Characteristic {
 //		}
 //		return getRelativeDistance(mappings, references, normalize);
 //	}
-	
-}
+//	
+//}

@@ -104,13 +104,13 @@ public interface Metric {
 	 * @param functionSum function for producing the current value for a single <code>TypeCharacteristic</code>
 	 * @return the standard deviation based on the provided functions
 	 */
-	static double computeStdDev(List<TypeCharacteristic> characteristics, 
-			BiFunction<List<TypeCharacteristic>, CorrespondenceType, Double> functionAvg, 
-			Function<TypeCharacteristic, Double> functionSum, CorrespondenceType type) {
+	static double computeStdDev(List<Characteristic> characteristics, 
+			BiFunction<List<Characteristic>, CorrespondenceType, Double> functionAvg, 
+			Function<Characteristic, Double> functionSum, CorrespondenceType type) {
 		double avgMacro = functionAvg.apply(characteristics, type);
 		double dev = 0;
 		int numOfOcc = 0;
-		for(TypeCharacteristic c : characteristics) {
+		for(Characteristic c : characteristics) {
 			double val = functionSum.apply(c);
 			if(!Double.isNaN(val)) {
 				double currDev = Math.abs(val - avgMacro);
