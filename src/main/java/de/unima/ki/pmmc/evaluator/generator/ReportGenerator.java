@@ -1,12 +1,12 @@
 package de.unima.ki.pmmc.evaluator.generator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import de.unima.ki.pmmc.evaluator.Configuration;
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
+import de.unima.ki.pmmc.evaluator.data.Evaluation;
+import de.unima.ki.pmmc.evaluator.data.GoldstandardGroup;
 import de.unima.ki.pmmc.evaluator.data.Report;
 import de.unima.ki.pmmc.evaluator.data.Solution;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
@@ -22,21 +22,26 @@ public class ReportGenerator {
 		this.configuration = configuration;
 	}
 	
-	public Map<Double, List<Report>> generate(Map<Double, List<Solution>> goldstandards, List<Solution> matchers) throws CorrespondenceException {
-		Map<Double, List<Report>> reports = new HashMap<>();
-		for(Map.Entry<Double, List<Solution>> e : goldstandards.entrySet()) {
-			double currThreshold = e.getKey();
-			List<Solution> currGoldstandards = e.getValue();
-			//For each matcher solution, compute complete characteristic list over
-			//all available goldstandards
-			List<Report> reportPerThreshold = new ArrayList<>();
-			for(Solution matcher : matchers) {
-				List<Characteristic> characteristics = computeCharacteristics(currGoldstandards, matcher);
-				reportPerThreshold.add(computeMetrics(characteristics, matcher));
+	public Evaluation generate(List<GoldstandardGroup> groups, 
+			List<Solution> matchers, List<Double> thresholds) throws CorrespondenceException {
+		Evaluation evaluation = new Evaluation();
+		List<Report> reportPerThresholdAndGroup = new ArrayList<>();
+		for(double threshold : thresholds) {
+			for(GoldstandardGroup group : groups) {
+				List<Solution> currGoldstandards = group.getGoldstandards(threshold);
+				//For each matcher solution, compute complete characteristic list over
+				//all available goldstandards
+				for(Solution matcher : matchers) {
+					List<Characteristic> characteristics = computeCharacteristics(currGoldstandards, matcher);
+					Report report = computeMetrics(characteristics, matcher);
+					report.setGroup(group);
+					report.setGoldstandards(currGoldstandards);
+					reportPerThresholdAndGroup.add(report);
+				}
 			}
-			reports.put(currThreshold, reportPerThreshold);
 		}
-		return reports;
+		evaluation.addReports(reportPerThresholdAndGroup);
+		return evaluation;
 	}
 	
 	private List<Characteristic> computeCharacteristics(List<Solution> goldstandards, Solution matcher) throws CorrespondenceException {

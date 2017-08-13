@@ -10,7 +10,6 @@ import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
-import de.unima.ki.pmmc.evaluator.metrics.TypeCharacteristic;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.BPMNParser;
@@ -127,12 +126,12 @@ public class Annotator {
 	 * @param characteristic the characteristic to be annotated
 	 * @return typecharacteristic
 	 */
-	public TypeCharacteristic annotateCharacteristic(Characteristic characteristic) 
+	public Characteristic annotateCharacteristic(Characteristic characteristic) 
 			throws CorrespondenceException {
 		Alignment alignmentReference = annotateAlignment(characteristic.getAlignmentReference());
 		Alignment alignmentMapping = annotateAlignment(characteristic.getAlignmentMapping());
 		//TODO null
-		return new TypeCharacteristic(alignmentMapping, alignmentReference, null);
+		return new Characteristic(alignmentMapping, alignmentReference);
 	}
 	
 	/**
@@ -141,9 +140,9 @@ public class Annotator {
 	 * @param characteristics the characteristics to be annotated
 	 * @return typecharacteristics
 	 */
-	public List<TypeCharacteristic> annotateCharacteristics(List<Characteristic> characteristics) 
+	public List<Characteristic> annotateCharacteristics(List<Characteristic> characteristics) 
 			throws CorrespondenceException {
-		List<TypeCharacteristic> vals = new ArrayList<>();
+		List<Characteristic> vals = new ArrayList<>();
 		for(Characteristic c : characteristics) {
 			vals.add(annotateCharacteristic(c));
 		}

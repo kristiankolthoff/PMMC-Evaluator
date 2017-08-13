@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Consumer;
 
+import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.data.Report;
 /**
  * A <code>ReportHandler</code> is responsible for processing collections
@@ -32,7 +33,7 @@ public interface ReportHandler {
 	 * @param path the path of the currently set output directory
 	 * @param info the current mapping info
 	 */
-	public void receive(List<Report> reports);
+	public void receive(Evaluation evaluation);
 	
 	/**
 	 * Called after each receive-operation is finished and

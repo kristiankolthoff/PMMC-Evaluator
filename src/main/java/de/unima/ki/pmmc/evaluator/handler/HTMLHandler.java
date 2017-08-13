@@ -18,6 +18,7 @@ import org.apache.ecs.html.TH;
 import org.apache.ecs.html.TR;
 import org.apache.ecs.html.Table;
 
+import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.data.Report;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.generator.MetricBinding;
@@ -189,7 +190,7 @@ public class HTMLHandler implements ReportHandler{
 
 	private void appendReport(Report report) throws CorrespondenceException {
 		this.table.addElement(new TR().addAttribute("colspan", "13"));
-		this.table.addElement(new TD(report.getSolution().getName()));
+		this.table.addElement(new TD(report.getMatcher().getName()));
 		for(MetricGroupBinding groupBinding : report) {
 			this.table.addElement(new TD().setStyle("border:none;"));
 			for(MetricBinding metricBinding : groupBinding) {
@@ -282,20 +283,32 @@ public class HTMLHandler implements ReportHandler{
 	}
 
 	@Override
-	public void receive(List<Report> results) {
+	public void receive(Evaluation evaluation) {
 		try {
-			this.bw = Files.newBufferedWriter(Paths.get(this.outputPath + "/" + this.mappingInfo + FILE_TYPE));
-			this.init(results);
-			for(Report report : results) {
-				System.out.println(report.getSolution().getName());
-				this.appendReport(report);
-			}
-			this.bw.append(this.table.toString());
-			this.bw.flush();
-			this.bw.close();
-			if(this.showInBrowser) {
-				File htmlFile = new File(this.outputPath + "/" + this.mappingInfo + FILE_TYPE);
-				Desktop.getDesktop().browse(htmlFile.toURI());
+			System.out.println(evaluation.getGroupNames());
+			System.out.println(evaluation.getThresholds());
+			System.out.println(evaluation.getReports());
+			for(String groupName : evaluation.getGroupNames()) {
+				File dir = new File(this.outputPath + "/" + groupName);
+				dir.mkdir();
+				for(double threshold : evaluation.getThresholds()) {
+					List<Report> results = evaluation.getReports(groupName, threshold);
+					this.bw = Files.newBufferedWriter(Paths.get(this.outputPath + "/" 
+									+ groupName + "/" + this.mappingInfo + "t-" + threshold+ FILE_TYPE));
+					this.init(results);
+					for(Report report : results) {
+						System.out.println(report.getMatcher().getName());
+						this.appendReport(report);
+					}
+					this.bw.append(this.table.toString());
+					this.bw.flush();
+					this.bw.close();
+					if(this.showInBrowser) {
+						File htmlFile = new File(this.outputPath + "/" 
+								+ groupName + "/" + this.mappingInfo + "t-" + threshold+ FILE_TYPE);
+						Desktop.getDesktop().browse(htmlFile.toURI());
+					}
+				}
 			}
 		} catch (IOException | CorrespondenceException e) {
 			e.printStackTrace();

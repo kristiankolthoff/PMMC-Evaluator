@@ -25,6 +25,7 @@ import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.annotator.Annotator;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
+import de.unima.ki.pmmc.evaluator.data.GoldstandardGroup;
 import de.unima.ki.pmmc.evaluator.data.Report;
 import de.unima.ki.pmmc.evaluator.data.Solution;
 import de.unima.ki.pmmc.evaluator.data.ValidationReport;
@@ -44,11 +45,12 @@ import de.unima.ki.pmmc.evaluator.validation.Validator;
 public class Evaluator {
 	
 	private Configuration configuration;
+	private String evaluationName;
 	/**
 	 * Paths to goldstandard alignments, multiple matchers
 	 * root path and root path to the used models
 	 */
-	private List<String> goldstandardPaths;
+	private List<GoldstandardGroup> gsgroups;
 	private Optional<String> matchersRootPath;
 	private String modelsRootPath;
 	/**
@@ -56,10 +58,6 @@ public class Evaluator {
 	 */
 	private String outputPath;
 	private String outputName;
-	/**
-	 * Loaded result for goldstandard
-	 */
-	private Map<Double, List<Solution>> goldstandards;
 	/**
 	 * Contains all specified paths to matchers
 	 */
@@ -114,6 +112,7 @@ public class Evaluator {
 	private static final Logger LOG = Logger.getLogger(Evaluator.class.getName());
 	
 	public Evaluator(Configuration configuration) {
+		this.evaluationName = configuration.getEvaluationName();
 		this.configuration = configuration;
 		this.transformationsAlignment = configuration.getTransformationsAlignment();
 		this.transformationsCorrespondence = configuration.getTransformationsCorrespondence();
@@ -125,18 +124,18 @@ public class Evaluator {
 		this.parser = configuration.getParser();
 		this.loader = new Loader(configuration.getAlignmentReader());
 		this.thresholds = configuration.getThresholds();
-		this.goldstandardPaths = configuration.getGoldstandardPaths();
+		this.gsgroups = configuration.getGoldstandardGroups();
 		this.outputName = configuration.getOutputName();
 		this.outputPath = configuration.getOutputPath();
 		this.validator = new SizeValidator();
 		this.flowListener = configuration.getFlowListener();
-		this.goldstandards = new HashMap<>();
 		this.matcherPaths = configuration.getMatcherPaths();
 		this.matchersRootPath = configuration.getMatchersRootPath();
 		this.generator = new ReportGenerator(configuration);
 		this.handler = configuration.getHandler();
 		this.debugOn = configuration.isDebugOn();
 		this.tagCTOn = configuration.isCtTagOn();
+		this.thresholds = configuration.getThresholds();
 	}
 	
 	
@@ -160,22 +159,23 @@ public class Evaluator {
 		if(!thresholds.isEmpty()) {
 			//Load all goldstandard solutions for all thresholds
 			for(double threshold : thresholds) {
-				List<Solution> golds = new ArrayList<>();
-				for(String goldstandardPath : goldstandardPaths) {
-					Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, threshold);
-					golds.add(gs);
+				for(GoldstandardGroup group : gsgroups) {
+					for(String goldstandardPath : group.getPaths()) {
+						Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, threshold);
+						group.addSolution(gs);
+					}
 				}
-				goldstandards.put(threshold, golds);
 			}
 			
 		} else {
+			thresholds.add(THRESHOLD_ZERO);
 			//Load all goldstandards solutions without threshold
-			List<Solution> golds = new ArrayList<>();
-			for(String goldstandardPath : goldstandardPaths) {
-				Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, THRESHOLD_ZERO);
-				golds.add(gs);
+			for(GoldstandardGroup group : gsgroups) {
+				for(String goldstandardPath : group.getPaths()) {
+					Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, THRESHOLD_ZERO);
+					group.addSolution(gs);
+				}
 			}
-			goldstandards.put(THRESHOLD_ZERO, golds);
 		}
 		//Load matcher solutions
 		matcherSolutions = loader.loadAll(matchersRootPath, matcherPaths, THRESHOLD_ZERO);
@@ -194,36 +194,34 @@ public class Evaluator {
 			for(Solution matcher : matcherSolutions) {
 				defaultTypes(matcher);
 			}
-			for(List<Solution> solutions : goldstandards.values()) {
-				for(Solution solution : solutions) {
-					defaultTypes(solution);
+			for(GoldstandardGroup group : gsgroups) {
+				for(Solution gs : group.getGoldstandards()) {
+					defaultTypes(gs);
 				}
 			}
 		}
 
-		//Generate reports
-		Map<Double, List<Report>> reports = generator.generate(goldstandards, matcherSolutions);
+		//Generate evaluation
+		Evaluation evaluation = generator.generate(gsgroups, matcherSolutions, thresholds);
+		evaluation.setName(evaluationName);
+		evaluation.setCreationDate(new Date());
 		//Distribute reports to the ReportHandlers
 		for(ReportHandler handler : this.handler) {
 			handler.setFlowListener(this.flowListener);
 		}
-		for(Map.Entry<Double, List<Report>> e : reports.entrySet()) {
-			for(ReportHandler handler : this.handler) {
-				handler.setMappingInfo(getFinalOutputName(this.outputName, e.getKey()));
+		for(ReportHandler handler : this.handler) {
+				handler.setMappingInfo(this.outputName);
 				handler.setOutputPath(Paths.get(this.outputPath));
 				handler.open();
-				handler.receive(e.getValue());
+				handler.receive(evaluation);
 				handler.close();
-			}
 		}
-		Evaluation evaluation = new Evaluation("", new Date(), reports);
 		log("Finished tasks...");
 		return evaluation;
 	}
 
 	private ValidationReport validate() {
-		List<Solution> goldstandards = this.goldstandards.get(THRESHOLD_ZERO);
-		Solution goldstandard = goldstandards.get(0);
+		Solution goldstandard = gsgroups.get(0).getGoldstandards().get(0);
 		for(Solution matcher : matcherSolutions) {
 			ValidationReport report = validator.validate(goldstandard, matcher);
 			if(!report.isOk()) {
@@ -232,12 +230,6 @@ public class Evaluator {
 		}
 		return new ValidationReport();
 	}
-	
-	private String getFinalOutputName(String prefix, double threshold) {
-		return prefix + SEPERATOR
-				+ "t" + String.valueOf(threshold).replace(".", "");
-	}
-	
 	
 	private void defaultTypes(Solution solution) {
 		for(Alignment a : solution) {
@@ -473,8 +465,8 @@ public class Evaluator {
 		}
 	}
 	
-	public List<String> getGoldstandardPath() {
-		return goldstandardPaths;
+	public List<GoldstandardGroup> getGoldstandardGroups() {
+		return gsgroups;
 	}
 
 	public Optional<String> getMatchersRootPath() {

@@ -13,6 +13,7 @@ import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
+import de.unima.ki.pmmc.evaluator.data.GoldstandardGroup;
 import de.unima.ki.pmmc.evaluator.data.Report;
 import de.unima.ki.pmmc.evaluator.handler.ReportHandler;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
@@ -31,12 +32,13 @@ import de.unima.ki.pmmc.evaluator.model.parser.ParserFactory;
 
 public class Configuration implements Iterable<MetricGroup>{
 
+	private String evaluationName;
 	private List<MetricGroup> metricGroups;
 	private boolean persistToFile;
 	private boolean debugOn;
 	private boolean ctTagOn;
 	private boolean sortReports;
-	private List<String> goldstandardPaths;
+	private List<GoldstandardGroup> gsgroups;
 	private Optional<String> matchersRootPath;
 	private String modelsRootPath;
 	private String outputPath;
@@ -56,8 +58,9 @@ public class Configuration implements Iterable<MetricGroup>{
 	private Parser parser;
 	
 	
-	public Configuration(List<MetricGroup> metricGroups, 
-			boolean persistToFile, List<String> goldstandardPaths,
+	public Configuration(String name,
+			List<MetricGroup> metricGroups, 
+			boolean persistToFile, List<GoldstandardGroup> gsgroups,
 			Optional<String> matchersRootPath, 
 			String modelsRootPath, String outputPath, 
 			String outputName,
@@ -75,9 +78,10 @@ public class Configuration implements Iterable<MetricGroup>{
 			List<Predicate<Correspondence>> filterCorrespondence, 
 			List<Predicate<Alignment>> filterAlignment,
 			Parser parser) {
+		this.evaluationName = name;
 		this.metricGroups = metricGroups;
 		this.persistToFile = persistToFile;
-		this.goldstandardPaths = goldstandardPaths;
+		this.gsgroups = gsgroups;
 		this.matchersRootPath = matchersRootPath;
 		this.modelsRootPath = modelsRootPath;
 		this.outputPath = outputPath;
@@ -122,12 +126,12 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.metricGroups = metricGroups;
 	}
 
-	public List<String> getGoldstandardPaths() {
-		return goldstandardPaths;
+	public List<GoldstandardGroup> getGoldstandardGroups() {
+		return gsgroups;
 	}
 
-	public void setGoldstandardPath(List<String> goldstandardPaths) {
-		this.goldstandardPaths = goldstandardPaths;
+	public void setGoldstandardPath(List<GoldstandardGroup> groups) {
+		this.gsgroups = groups;
 	}
 
 	public Optional<String> getMatchersRootPath() {
@@ -291,15 +295,24 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.ctTagOn = ctTagOn;
 	}
 
+	public String getEvaluationName() {
+		return evaluationName;
+	}
+
+	public void setEvaluationName(String evaluationName) {
+		this.evaluationName = evaluationName;
+	}
+
 
 	public static class Builder {
 		
+		private String evaluationName;
 		private List<MetricGroup> metricGroups;
 		private boolean persistToFile;
 		private boolean debugOn;
 		private boolean ctTagOn;
 		private boolean sortReports;
-		private List<String> goldstandardPaths;
+		private List<GoldstandardGroup> gsgroups;
 		private Optional<String> matchersRootPath;
 		private String modelsRootPath;
 		private String outputPath;
@@ -320,7 +333,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		
 		public Builder() {
 			this.metricGroups = new ArrayList<>();
-			this.goldstandardPaths = new ArrayList<>();
+			this.gsgroups = new ArrayList<>();
 			this.matcherPaths = new ArrayList<>();
 			this.modelPaths = new ArrayList<>();
 			this.thresholds = new ArrayList<>();
@@ -357,6 +370,11 @@ public class Configuration implements Iterable<MetricGroup>{
 		
 		public Builder persistToFile(boolean persist) {
 			this.persistToFile = persist;
+			return this;
+		}
+		
+		public Builder setEvaluationName(String name) {
+			this.evaluationName = name;
 			return this;
 		}
 		
@@ -528,13 +546,23 @@ public class Configuration implements Iterable<MetricGroup>{
 			return this;
 		}
 		
-		/**
-		 * Set root path of goldstandard alignment
-		 * @param goldstandardPath the path to the goldstandard alignments
-		 * @return this
-		 */
-		public Builder addGoldstandardPath(String goldstandardPath) {
-			this.goldstandardPaths.add(goldstandardPath);
+		public Builder addGoldstandardGroup(GoldstandardGroup group) {
+			this.gsgroups.add(group);
+			return this;
+		}
+		
+		public Builder addGoldstandardGroup(String groupName, String ...paths) {
+			GoldstandardGroup group = new GoldstandardGroup(groupName);
+			group.getPaths().addAll(Arrays.asList(paths));
+			this.gsgroups.add(group);
+			return this;
+		}
+		
+		public Builder addGoldstandard(String path) {
+			GoldstandardGroup group = new GoldstandardGroup("");
+			group.addPath(path);
+			this.gsgroups.clear();
+			this.gsgroups.add(group);
 			return this;
 		}
 		
@@ -654,9 +682,10 @@ public class Configuration implements Iterable<MetricGroup>{
 		
 		public Configuration build() {
 			return new Configuration(
+					evaluationName,
 					metricGroups, 
 					persistToFile, 
-					goldstandardPaths, 
+					gsgroups, 
 					matchersRootPath, 
 					modelsRootPath, 
 					outputPath, 

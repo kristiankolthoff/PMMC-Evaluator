@@ -9,7 +9,9 @@ import de.unima.ki.pmmc.evaluator.generator.MetricGroupBinding;
 public class Report implements Iterable<MetricGroupBinding>{
 
 	private List<MetricGroupBinding> bindings;
-	private Solution solution;
+	private GoldstandardGroup group;
+	private Solution matcher;
+	private List<Solution> goldstandard;
 
 	public Report() {
 		this.bindings = new ArrayList<>();
@@ -33,12 +35,32 @@ public class Report implements Iterable<MetricGroupBinding>{
 		return bindings.iterator();
 	}
 
-	public Solution getSolution() {
-		return solution;
+	public Solution getMatcher() {
+		return matcher;
 	}
 
 	public void setSolution(Solution solution) {
-		this.solution = solution;
+		this.matcher = solution;
+	}
+
+	public List<Solution> getGoldstandards() {
+		return goldstandard;
+	}
+
+	public void setGoldstandards(List<Solution> goldstandard) {
+		this.goldstandard = goldstandard;
+	}
+	
+	public double getTreshold() {
+		return this.goldstandard.get(0).getThreshold();
+	}
+
+	public GoldstandardGroup getGroup() {
+		return group;
+	}
+
+	public void setGroup(GoldstandardGroup group) {
+		this.group = group;
 	}
 
 }
