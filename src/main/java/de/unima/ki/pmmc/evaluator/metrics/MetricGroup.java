@@ -43,6 +43,10 @@ public class MetricGroup implements Iterable<Metric>{
 		this.metrics = new ArrayList<>();
 	}
 	
+	public boolean isEmpty() {
+		return this.metrics.isEmpty();
+	}
+	
 	public MetricGroup addMetric(Metric metric) {
 		metrics.add(metric);
 		return this;

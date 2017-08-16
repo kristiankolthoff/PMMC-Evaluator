@@ -24,6 +24,7 @@ import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.annotator.Annotator;
+import de.unima.ki.pmmc.evaluator.binding.BindingResult;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.data.GoldstandardGroup;
 import de.unima.ki.pmmc.evaluator.data.Report;
@@ -155,7 +156,9 @@ public class Evaluator {
 	 */
 	public Evaluation run() throws ParserConfigurationException, SAXException, IOException, CorrespondenceException {
 		log("------------Evaluator------------");
-		this.models = loadModels(this.modelsRootPath);
+		if(modelsRootPath != null) {
+			this.models = loadModels(this.modelsRootPath);
+		}
 		if(!thresholds.isEmpty()) {
 			//Load all goldstandard solutions for all thresholds
 			for(double threshold : thresholds) {
@@ -180,12 +183,12 @@ public class Evaluator {
 		//Load matcher solutions
 		matcherSolutions = loader.loadAll(matchersRootPath, matcherPaths, THRESHOLD_ZERO);
 		//Validate matcher solutions against goldstandard
-		ValidationReport report = validate();
-		if(!report.isOk()) {
-			System.err.println(report.getInfoMessage());
-			System.exit(0);
-		}
-		if(tagCTOn) {
+//		ValidationReport report = validate();
+//		if(!report.isOk()) {
+//			System.err.println(report.getInfoMessage());
+//			System.exit(0);
+//		}
+		if(tagCTOn && models != null) {
 			this.annotator = new Annotator(this.models);
 //			log("CTTagging...");
 //			this.goldstandard = applyCTAnnotationGS(this.goldstandard);
@@ -218,6 +221,10 @@ public class Evaluator {
 		}
 		log("Finished tasks...");
 		return evaluation;
+	}
+	
+	public BindingResult bind() {
+		return null;
 	}
 
 	private ValidationReport validate() {

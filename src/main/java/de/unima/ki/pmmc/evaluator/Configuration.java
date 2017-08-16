@@ -363,8 +363,13 @@ public class Configuration implements Iterable<MetricGroup>{
 			return this;
 		}
 		
-		public Builder removeMetrics() {
+		public Builder clearMetricGroups() {
 			metricGroups.clear();
+			return this;
+		}
+		
+		public Builder clearGoldstandardGroups() {
+			gsgroups.clear();
 			return this;
 		}
 		
