@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.ecs.storage.Hash;
 
@@ -320,10 +321,11 @@ public class NLPHelper {
 	}
 	
 	public static void main(String[] args) {
-		List<TaggedWord> taggedWords = NLPHelper.getPOSSentence("Complete online interview");
-		for(TaggedWord t : taggedWords) {
-			System.out.println(t.word() + " " + t.tag());
-		}
+//		List<TaggedWord> taggedWords = NLPHelper.getTaggedSentenceWithoutStopwords("Complet the online interview of the university");
+//		for(TaggedWord t : taggedWords) {
+//			System.out.println(t.word() + " " + t.tag());
+//		}
+		System.out.println(NLPHelper.identicalTokens("Apply at the university with documents", "Send application documents to the university"));
 	}
 	
 	public static MaxentTagger getMaxentTagger() {
@@ -333,24 +335,42 @@ public class NLPHelper {
 		return tagger;
 	}
 
-	public static String getSanitizeLabel2(String label1) {
-		// TODO Auto-generated method stub
-		return null;
+	public static String getSanitizeLabel2(String label) {
+		label = label.trim();
+		label = label.toLowerCase();
+		label = getTokenizedString(label);
+		label = label.replace("\n", "");
+		return label;
 	}
 
-	public static List<TaggedWord> getTaggedSentenceWithoutStopwords(String label1) {
-		// TODO Auto-generated method stub
-		return null;
+	public static List<TaggedWord> getTaggedSentenceWithoutStopwords(String label) {
+		label = getSanitizeLabel(label);
+		String[] tokens = label.split(" ");
+		List<Word> words = new ArrayList<>();
+		for(String token : tokens) {
+			words.add(new Word(token));
+		}
+		return getMaxentTagger().tagSentence(words)
+				.stream()
+				.filter(taggedWord -> {return !isStopword(taggedWord.value());})
+				.collect(Collectors.toList());
 	}
 
 	public static Set<String> identicalTokens(String label1, String label2) {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> tokens1 = getTokens(label1);
+		List<String> tokens2 = getTokens(label2);
+		return tokens1.stream()
+				.filter(token -> {return tokens2.contains(token);})
+				.collect(Collectors.toSet());
 	}
 
-	public static String getStemmedStringWithoutStopWords(String label1, boolean usePos) {
-		// TODO Auto-generated method stub
-		return null;
+	public static String getStemmedStringWithoutStopWords(String label, boolean usePos) {
+		label = getSanitizeLabel(label);
+		return getStemmedTokens(label, usePos)
+			.stream()
+			.filter(token -> {return !isStopword(token);})
+			.reduce((first, second) -> {return first + " " + second;})
+			.get();
 	}
 	
 }

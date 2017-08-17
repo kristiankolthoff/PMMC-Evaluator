@@ -73,7 +73,7 @@ public class PMMCNewEvaluationAdmission {
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset1/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset1/")
-//				.setModelsRootPath(MODELS_PATH)
+				.setModelsRootPath(MODELS_PATH)
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputName("oaei16-new-gs")
 				.setOutputPath(OUTPUT_PATH)
