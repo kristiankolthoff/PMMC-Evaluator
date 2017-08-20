@@ -24,7 +24,7 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.FunctionMetric;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
-import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondences;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 
 public class PMMCNewEvaluationAssetDataset {
@@ -59,7 +59,7 @@ public class PMMCNewEvaluationAssetDataset {
 						.addMetric(new NBFMeasureStdDev()))
 				.addMetricGroup(new MetricGroup("Stats")
 						.addMetric(new MinimumConfidence())
-						.addMetric(new NumCorrespondences())
+						.addMetric(new NumCorrespondencesMatcher())
 						.addMetric(new FunctionMetric(list -> 
 						{return (double) list.stream()
 								.mapToInt(c -> {return c.getAlignmentCorrect().size();})

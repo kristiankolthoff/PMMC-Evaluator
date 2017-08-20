@@ -1,8 +1,10 @@
 package de.unima.ki.pmmc.evaluator.metrics;
 
 
+import java.security.cert.CRLReason;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -294,6 +296,21 @@ public class Characteristic {
 
 	public double getPrecision(CorrespondenceType type) {
 		return alignmentCorrectTyped.get(type).size() / (double) alignmentMappingTyped.get(type).size();
+	}
+	
+	public double getPrecision(CorrespondenceType ...types) {
+		return getPrecision(Arrays.asList(types));
+	}
+	
+	public double getPrecision(List<CorrespondenceType> types) {
+		double sumCorrect = 0, sumMapping = 0;
+		for(Correspondence c : alignmentCorrect) {
+			if(types.contains(c.getCType().get())) sumCorrect++;
+		}
+		for(Correspondence c : alignmentMapping) {
+			if(types.contains(c.getCType().get())) sumMapping++;
+		}
+		return sumCorrect / sumMapping;
 	}
 	
 	public double getNBPrecision(CorrespondenceType type) {

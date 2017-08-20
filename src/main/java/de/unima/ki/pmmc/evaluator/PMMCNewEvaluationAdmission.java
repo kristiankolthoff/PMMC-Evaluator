@@ -8,6 +8,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
+import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
@@ -24,9 +25,15 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.FunctionMetric;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
-import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondences;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesGS;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesMatcher;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesGS;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesMatcher;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMacro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
-import edu.stanford.nlp.parser.metrics.Eval;
 
 public class PMMCNewEvaluationAdmission {
 
@@ -63,13 +70,22 @@ public class PMMCNewEvaluationAdmission {
 						.addMetric(new NBFMeasureMacro())
 						.addMetric(new NBFMeasureStdDev()))
 				.addMetricGroup(new MetricGroup("Stats")
-						.addMetric(new MinimumConfidence())
-						.addMetric(new NumCorrespondences())
+						.addMetric(new NumCorrespondencesGS())
+						.addMetric(new NumCorrespondencesMatcher())
 						.addMetric(new FunctionMetric(list -> 
 						{return (double) list.stream()
 								.mapToInt(c -> {return c.getAlignmentCorrect().size();})
-								.max().getAsInt();})))
-				.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
+								.max().getAsInt();})));
+				for(CorrespondenceType type : CorrespondenceType.values()) {
+					builder.addMetricGroup(new MetricGroup(type.getName())
+							.addMetric(new TypeNumCorrespondencesGS(type))
+							.addMetric(new TypeFracCorrespondencesGS(type))
+							.addMetric(new TypeNumCorrespondencesMatcher(type))
+							.addMetric(new TypeNBPrecisionMacro(type))
+							.addMetric(new TypeNBRecallMacro(type))
+							.addMetric(new TypeNBFMeasureMacro(type)));
+				}
+				builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset1/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset1/")
@@ -78,7 +94,7 @@ public class PMMCNewEvaluationAdmission {
 				.setOutputName("oaei16-new-gs")
 				.setOutputPath(OUTPUT_PATH)
 				.setParser(Parser.TYPE_BPMN)
-				.setCTTagOn(false)
+				.setCTTagOn(true)
 				.setDebugOn(true)
 				.persistToFile(true);
 	}
@@ -89,11 +105,11 @@ public class PMMCNewEvaluationAdmission {
 	}
 	
 	public void oldGoldstandardExperiment() {
-		builder.addGoldstandardGroup("admission new", GOLDSTANDARD_NEW_ADAPTED_PATH, 
-				GOLDSTANDARD_NEW_ADAPTED_PATH);
+		builder.addGoldstandardGroup("admission new", GOLDSTANDARD_NEW_ADAPTED_PATH);
 //				.addGoldstandardGroup("admission old sub", GOLDSTANDARD_OLD_SUB_PATH);
 		Evaluator evaluator = new Evaluator(builder.build());
 		try {
+			@SuppressWarnings("unused")
 			Evaluation evaluation = evaluator.run();
 		} catch (CorrespondenceException | ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();

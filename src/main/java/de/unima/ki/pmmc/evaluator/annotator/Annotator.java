@@ -44,8 +44,8 @@ public class Annotator {
 	public Annotator(List<Model> models) {
 		this.matchers = new ArrayList<>();
 		this.models = models;
-		this.matchers.add(new CTMatcherTrivial());
-//		this.matchers.add(new CTMatcherTrivalDist());
+//		this.matchers.add(new CTMatcherTrivial());
+		this.matchers.add(new CTMatcherTrivalDist());
 		this.matchers.add(new CTMatcherOWI());
 		this.matchers.add(new CTMatcherDVI());
 		this.matchers.add(new CTMatcherMisc());

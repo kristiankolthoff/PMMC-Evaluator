@@ -1,17 +1,17 @@
 package de.unima.ki.pmmc.evaluator.nlp;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.ecs.storage.Hash;
 
 import de.unima.ki.pmmc.evaluator.utils.Utils;
 import edu.mit.jwi.IRAMDictionary;
@@ -24,22 +24,26 @@ import edu.mit.jwi.item.IWordID;
 import edu.mit.jwi.item.POS;
 import edu.mit.jwi.morph.WordnetStemmer;
 import edu.stanford.nlp.ling.CoreLabel;
-import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.ling.Word;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
+import opennlp.tools.postag.POSModel;
+import opennlp.tools.postag.POSTaggerME;
 
 public class NLPHelper {
 	
 	private static IRAMDictionary dict;
 	private static HashSet<String> stopwords;
 	private static MaxentTagger tagger;
+	private static POSTaggerME posTagger;
 	
 	public static final String WORDNET_DIRECTORY = "src/main/resources/libs/wordnet/dict";
 	public static final String TAGGER_BIDIR_DIRECTORY = "src/main/resources/libs/tagger/english-bidirectional-distsim.tagger";
 	public static final String TAGGER_LEFT_DIRECTORY = "src/main/resources/libs/tagger/english-left3words-distsim.tagger";
+	public static final String POS_TAGGER_MAXENT = "src/main/resources/libs/tagger/en-pos-maxent.bin";
+	public static final String POS_TAGGER_PERCEPTRON = "src/main/resources/libs/tagger/en-pos-perceptron.bin";
 	private static final String[] STOP_WORDS;
 	
 	static {
@@ -325,7 +329,13 @@ public class NLPHelper {
 //		for(TaggedWord t : taggedWords) {
 //			System.out.println(t.word() + " " + t.tag());
 //		}
-		System.out.println(NLPHelper.identicalTokens("Apply at the university with documents", "Send application documents to the university"));
+//		System.out.println(NLPHelper.identicalTokens("Apply at the university with documents", "Send application documents to the university"));
+		String[] sentence = new String[]{"check", "if", "bachelor", "is", "sufficient"};
+		String[] posTags = getPOSTaggerME().tag(sentence);
+		for (int i = 0; i < posTags.length; i++) {
+			System.out.print(sentence[i] + "_" + posTags[i]);
+			System.out.println();
+		}
 	}
 	
 	public static MaxentTagger getMaxentTagger() {
@@ -333,6 +343,20 @@ public class NLPHelper {
 			tagger = new MaxentTagger(TAGGER_LEFT_DIRECTORY);
 		}
 		return tagger;
+	}
+	
+	public static POSTaggerME getPOSTaggerME() {
+		if(posTagger == null) {
+			try {
+			InputStream modelIn = new FileInputStream(POS_TAGGER_PERCEPTRON);
+			POSModel model = new POSModel(modelIn);
+			posTagger = new POSTaggerME(model);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return posTagger;
 	}
 
 	public static String getSanitizeLabel2(String label) {

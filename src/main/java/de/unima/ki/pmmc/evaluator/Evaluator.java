@@ -1,5 +1,6 @@
 package de.unima.ki.pmmc.evaluator;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -158,6 +159,7 @@ public class Evaluator {
 		log("------------Evaluator------------");
 		if(modelsRootPath != null) {
 			this.models = loadModels(this.modelsRootPath);
+			this.loader.setModels(models);
 		}
 		if(!thresholds.isEmpty()) {
 			//Load all goldstandard solutions for all thresholds
@@ -190,9 +192,11 @@ public class Evaluator {
 //		}
 		if(tagCTOn && models != null) {
 			this.annotator = new Annotator(this.models);
-//			log("CTTagging...");
-//			this.goldstandard = applyCTAnnotationGS(this.goldstandard);
-//			this.mapResult = applyCTAnnotation(this.mapResult);
+			log("CTTagging...");
+			tagMatcherSolutions();
+			tagGoldstandardGroups();
+			printGoldstandardTypes();
+			
 		} else {
 			for(Solution matcher : matcherSolutions) {
 				defaultTypes(matcher);
@@ -223,6 +227,67 @@ public class Evaluator {
 		return evaluation;
 	}
 	
+	private void printGoldstandardTypes() {
+		Map<CorrespondenceType, List<Correspondence>> corres = new HashMap<>();
+		Solution gs = gsgroups.get(0).getGoldstandards().get(0);
+		for(Alignment a : gs.getAlignments()) {
+			for(Correspondence c : a) {
+				if(corres.containsKey(c.getCType().get())) {
+					List<Correspondence> cs = corres.get(c.getCType().get());
+					cs.add(c);
+					corres.put(c.getCType().get(), cs);
+				} else {
+					List<Correspondence> cs = new ArrayList<>();
+					cs.add(c);
+					corres.put(c.getCType().get(), cs);
+				}
+			}
+		}
+		for(CorrespondenceType type : corres.keySet()) {
+			try {
+				BufferedWriter writer = Files.newBufferedWriter(Paths.get("src/main/resources/data/" 
+									+ type.getName() + ".out"));
+				for(Correspondence c : corres.get(type)) {
+					writer.newLine();
+					writer.append("--------Correspondence---------");
+					writer.newLine();
+					writer.append(c.getCType().get().getName());
+					writer.newLine();
+					String label1 = Model.getLabelFromId(models, c.getUri1().split("#")[1]);
+					String label2 = Model.getLabelFromId(models, c.getUri2().split("#")[1]);
+					writer.append(c.getUri1() + " : " + label1);
+					writer.newLine();
+					writer.append(c.getUri2() + " : " + label2);
+					writer.newLine();
+				}
+				writer.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+	}
+
+
+	private void tagGoldstandardGroups() {
+		gsgroups.stream()
+			.flatMap(group -> {return group.getGoldstandards().stream();})
+			.flatMap(solution -> {return solution.getAlignments().stream();})
+			.forEach(alignment -> {alignment = annotator.annotateAlignment(alignment);});
+	}
+
+
+	private void tagMatcherSolutions() {
+		for(Solution solution : matcherSolutions) {
+			for(Alignment a : solution.getAlignments()) {
+				a = annotator.annotateAlignment(a);
+			}
+		}
+	}
+
+
 	public BindingResult bind() {
 		return null;
 	}

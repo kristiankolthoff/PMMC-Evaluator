@@ -11,6 +11,7 @@ import java.util.Optional;
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReader;
 import de.unima.ki.pmmc.evaluator.data.Solution;
+import de.unima.ki.pmmc.evaluator.model.Model;
 
 public class Loader {
 
@@ -18,6 +19,7 @@ public class Loader {
 	private List<Alignment> currAlignments;
 	private String currMatcherName;
 	private String currMatcherPath;
+	private List<Model> models;
 	
 	private static final String SEPERATOR = "-";
 
@@ -57,6 +59,10 @@ public class Loader {
 						System.out.println(filePath.toString());
 						Alignment a = reader.getAlignment(filePath.toString());
 						a.applyThreshold(threshold);
+						List<Model> sourceTargetModels = findModels(filePath);
+						//TODO what if list empty or only contains one model
+						a.setSourceModel(sourceTargetModels.get(0));
+						a.setTargetModel(sourceTargetModels.get(1));
 						a.setName(filePath.getFileName().toString());
 						currAlignments.add(a);
 						currMatcherName = findName(filePath, path.get());
@@ -96,8 +102,26 @@ public class Loader {
 		return name;
 	}
 	
+	private List<Model> findModels(Path path) {
+		List<Model> models = new ArrayList<>();
+		for(Model model : this.models) {
+			if(path.toString().contains(model.getName())) {
+				models.add(model);
+			}
+		}
+		return models;
+	}
+	
 	private String extractName(String path) {
 		return path;
+	}
+
+	public List<Model> getModels() {
+		return models;
+	}
+
+	public void setModels(List<Model> models) {
+		this.models = models;
 	}
 
 }

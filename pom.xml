@@ -47,6 +47,13 @@
 	<artifactId>jwi</artifactId>
 	<version>2.2.3</version>
    </dependency>
+   <!-- https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
+<dependency>
+    <groupId>org.apache.opennlp</groupId>
+    <artifactId>opennlp-tools</artifactId>
+    <version>1.8.1</version>
+</dependency>
+   
    <dependency>
     	<groupId>edu.stanford.nlp</groupId>
     	<artifactId>stanford-corenlp</artifactId>

@@ -103,6 +103,17 @@ public class Model {
 		return null;
 	}
 	
+	public static String getLabelFromId(List<Model> models, String id) {
+		for(Model model : models) {
+			for(Activity a : model.getActivities()) {
+				if(a.getId().equals(id)) {
+					return a.getLabel();
+				}
+			} 
+		}
+		return null;
+	}
+	
 	public String getName() {
 		return name;
 	}
