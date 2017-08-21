@@ -8,9 +8,9 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeRecallMacro implements Metric{
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
-	public TypeRecallMacro(CorrespondenceType type) {
+	public TypeRecallMacro(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -22,7 +22,7 @@ public class TypeRecallMacro implements Metric{
 
 	@Override
 	public String getName() {
-		return "rec-mac-" + type.getName();
+		return "rec-mac";
 	}
 
 }

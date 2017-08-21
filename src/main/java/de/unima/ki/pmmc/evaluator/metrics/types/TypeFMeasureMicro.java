@@ -8,9 +8,9 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeFMeasureMicro implements Metric {
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
-	public TypeFMeasureMicro(CorrespondenceType type) {
+	public TypeFMeasureMicro(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -30,7 +30,7 @@ public class TypeFMeasureMicro implements Metric {
 
 	@Override
 	public String getName() {
-		return "fm-mic-" + type.getName();
+		return "fm-mic";
 	}
 
 }

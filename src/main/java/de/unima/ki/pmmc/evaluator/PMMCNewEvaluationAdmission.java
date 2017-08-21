@@ -2,6 +2,7 @@ package de.unima.ki.pmmc.evaluator;
 
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -31,8 +32,11 @@ import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMacro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMacro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 
 public class PMMCNewEvaluationAdmission {
@@ -54,6 +58,8 @@ public class PMMCNewEvaluationAdmission {
 	}
 	
 	private void init() throws IOException {
+		CorrespondenceType[] excludedValues = CorrespondenceType
+					.valuesWithout(CorrespondenceType.TRIVIAL, CorrespondenceType.TRIVIAL_NORM);
 		@SuppressWarnings("unused")
 		MetricGroupFactory factory = MetricGroupFactory.getInstance();
 		builder = new Configuration.Builder().
@@ -69,6 +75,10 @@ public class PMMCNewEvaluationAdmission {
 						.addMetric(new NBFMeasureMicro())
 						.addMetric(new NBFMeasureMacro())
 						.addMetric(new NBFMeasureStdDev()))
+				.addMetricGroup(new MetricGroup("Pre-rec-f1-w/trivial")
+						.addMetric(new TypeNBPrecisionMacro(excludedValues))
+						.addMetric(new TypeNBRecallMacro(excludedValues))
+						.addMetric(new TypeNBFMeasureMacro(excludedValues)))
 				.addMetricGroup(new MetricGroup("Stats")
 						.addMetric(new NumCorrespondencesGS())
 						.addMetric(new NumCorrespondencesMatcher())

@@ -55,4 +55,21 @@ public enum CorrespondenceType {
 		return false;
 	}
 	
+	public static CorrespondenceType[] valuesWithout(CorrespondenceType ...types) {
+		CorrespondenceType[] vals = new CorrespondenceType[values().length - types.length];
+		int position = 0;
+		for (int i = 0; i < values().length; i++) {
+			CorrespondenceType curr = values()[i];
+			boolean included = false;
+			for (int j = 0; j < types.length; j++) {
+				if(curr == types[j]) {
+					included = true;
+					break;
+				}
+			}
+			if(!included) vals[position++] = curr;
+		}
+		return vals;
+	}
+	
 }

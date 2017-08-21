@@ -9,10 +9,10 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeNBPrecisionMicro implements Metric{
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
 	
-	public TypeNBPrecisionMicro(CorrespondenceType type) {
+	public TypeNBPrecisionMicro(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -25,7 +25,7 @@ public class TypeNBPrecisionMicro implements Metric{
 
 	@Override
 	public String getName() {
-		return "nb-pre-mic-" + type.getName();
+		return "nb-pre-mic";
 	}
 
 }

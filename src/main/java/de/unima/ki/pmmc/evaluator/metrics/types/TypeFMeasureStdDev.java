@@ -8,9 +8,9 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeFMeasureStdDev implements Metric{
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
-	public TypeFMeasureStdDev(CorrespondenceType type) {
+	public TypeFMeasureStdDev(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -23,7 +23,7 @@ public class TypeFMeasureStdDev implements Metric{
 
 	@Override
 	public String getName() {
-		return "fm-std-dev-" + type.getName();
+		return "fm-std-dev";
 	}
 
 }

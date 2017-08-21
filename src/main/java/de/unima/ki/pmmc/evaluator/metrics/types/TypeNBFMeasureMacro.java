@@ -8,10 +8,10 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeNBFMeasureMacro implements Metric {
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
 	
-	public TypeNBFMeasureMacro(CorrespondenceType type) {
+	public TypeNBFMeasureMacro(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -23,7 +23,7 @@ public class TypeNBFMeasureMacro implements Metric {
 
 	@Override
 	public String getName() {
-		return "nb-fm-mac-" + type.getName();
+		return "nb-fm-mac";
 	}
 
 }

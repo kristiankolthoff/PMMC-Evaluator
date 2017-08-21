@@ -8,10 +8,10 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypePrecisionMicro implements Metric {
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
 	
-	public TypePrecisionMicro(CorrespondenceType type) {
+	public TypePrecisionMicro(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -24,7 +24,7 @@ public class TypePrecisionMicro implements Metric {
 
 	@Override
 	public String getName() {
-		return "prec-micro-" + type.getName();
+		return "prec-micro";
 	}
 
 }

@@ -8,10 +8,10 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeNBPrecisionMacro implements Metric{
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
 	
-	public TypeNBPrecisionMacro(CorrespondenceType type) {
+	public TypeNBPrecisionMacro(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -23,7 +23,7 @@ public class TypeNBPrecisionMacro implements Metric{
 
 	@Override
 	public String getName() {
-		return "nb-pre-mac-" + type.getName();
+		return "nb-pre-mac";
 	}
 
 }

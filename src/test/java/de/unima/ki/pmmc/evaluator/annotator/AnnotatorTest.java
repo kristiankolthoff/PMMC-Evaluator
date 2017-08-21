@@ -114,7 +114,7 @@ public class AnnotatorTest {
 	/**
 	 * Recognize CorrespondenceType.DIFFICULT_VERB_IDENT correspondences
 	 */
-	@Test
+	@Test @Ignore
 	public void annotateCTDVITest() {
 		List<Model> models = new ArrayList<>();
 		Model m1 = new Model();

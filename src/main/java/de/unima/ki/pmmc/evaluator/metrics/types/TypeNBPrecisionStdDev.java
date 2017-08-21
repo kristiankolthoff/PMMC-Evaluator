@@ -8,10 +8,10 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeNBPrecisionStdDev implements Metric {
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
 	
-	public TypeNBPrecisionStdDev(CorrespondenceType type) {
+	public TypeNBPrecisionStdDev(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -24,7 +24,7 @@ public class TypeNBPrecisionStdDev implements Metric {
 
 	@Override
 	public String getName() {
-		return "pre-std-dev" + type.getName();
+		return "pre-std-dev";
 	}
 
 }

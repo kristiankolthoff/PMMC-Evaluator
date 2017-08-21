@@ -1,7 +1,6 @@
 package de.unima.ki.pmmc.evaluator.metrics;
 
 
-import java.security.cert.CRLReason;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -233,7 +232,32 @@ public class Characteristic {
 	public int getNumOfRulesMatcher() {
 		return this.alignmentMapping.size();
 	}
-
+	
+	public Alignment getAlignmentMapping(CorrespondenceType ...types) {
+		Alignment alignment = new Alignment();
+		for(CorrespondenceType type : types) {
+			alignment.join(Alignment.newInstance(alignmentMappingTyped.get(type)));
+		}
+		return alignment;
+	}
+	
+	public Alignment getAlignmentReference(CorrespondenceType ...types) {
+		Alignment alignment = new Alignment();
+		for(CorrespondenceType type : types) {
+			alignment.join(Alignment.newInstance(alignmentReferenceTyped.get(type)));
+		}
+		return alignment;
+	}
+	
+	
+	public Alignment getAlignmentCorrect(CorrespondenceType ...types) {
+		Alignment alignment = new Alignment();
+		for(CorrespondenceType type : types) {
+			alignment.join(Alignment.newInstance(alignmentCorrectTyped.get(type)));
+		}
+		return alignment;
+	}
+	
 	//TODO create copy of the alignment
 	/**
 	 * Returns the true positives based on the
@@ -284,47 +308,61 @@ public class Characteristic {
 		return Alignment.newInstance(alignmentCorrectTyped.get(type));
 	}
 	
+	public Alignment getTP(CorrespondenceType ...types) {
+		return Alignment.newInstance(getAlignmentCorrect(types));
+	}
 	
 	public Alignment getFP(CorrespondenceType type) {
 		return Alignment.newInstance(alignmentMappingTyped.get(type).minus(alignmentCorrectTyped.get(type)));
+	}
+	
+	public Alignment getFP(CorrespondenceType ...types) {
+		return Alignment.newInstance(getAlignmentMapping(types).minus(getAlignmentCorrect(types)));
 	}
 	
 	public Alignment getFN(CorrespondenceType type) {
 		return Alignment.newInstance(alignmentReferenceTyped.get(type).minus(alignmentMappingTyped.get(type)));
 	}
 	
-
+	public Alignment getFN(CorrespondenceType ...types) { 
+		return Alignment.newInstance(getAlignmentReference(types).minus(getAlignmentMapping(types)));
+	}
+	
+	//TODO implement nan checks
 	public double getPrecision(CorrespondenceType type) {
-		return alignmentCorrectTyped.get(type).size() / (double) alignmentMappingTyped.get(type).size();
+		double result = alignmentCorrectTyped.get(type).size() / (double) alignmentMappingTyped.get(type).size();
+		return Double.isNaN(result) ? 0.0 : result;
 	}
 	
 	public double getPrecision(CorrespondenceType ...types) {
-		return getPrecision(Arrays.asList(types));
-	}
-	
-	public double getPrecision(List<CorrespondenceType> types) {
-		double sumCorrect = 0, sumMapping = 0;
-		for(Correspondence c : alignmentCorrect) {
-			if(types.contains(c.getCType().get())) sumCorrect++;
-		}
-		for(Correspondence c : alignmentMapping) {
-			if(types.contains(c.getCType().get())) sumMapping++;
-		}
-		return sumCorrect / sumMapping;
+		return getAlignmentCorrect(types).size() / (double) getAlignmentMapping(types).size();
 	}
 	
 	public double getNBPrecision(CorrespondenceType type) {
 		return getConfSumCorrect(type) / ((double)getFP(type).size() + getConfSumCorrect(type));
 	}
 	
+	public double getNBPrecision(CorrespondenceType ...types) {
+		return getConfSumCorrect(types) / ((double)getFP(types).size() + getConfSumCorrect(types));
+	}
+	
 	public double getRecall(CorrespondenceType type) {
 		return alignmentCorrectTyped.get(type).size() / (double) alignmentReferenceTyped.get(type).size();
+	}
+	
+	public double getRecall(CorrespondenceType ...types) {
+		return getAlignmentCorrect(types).size() / (double) getAlignmentReference(types).size();
 	}
 	
 	public double getNBRecall(CorrespondenceType type) {
 		return getConfSumCorrect(type) / getConfSumReference(type);
 	}
 	
+	public double getNBRecall(CorrespondenceType ...types) {
+		return getConfSumCorrect(types) / (getConfSumReference(types));
+	}
+	
+	//TODO remove
 	public double getConfSumReference(CorrespondenceType type) {
 		double sum = 0;
 		for(Correspondence cRef : this.alignmentReferenceTyped.get(type)) {
@@ -333,6 +371,15 @@ public class Characteristic {
 		return sum;
 	}
 	
+	public double getConfSumReference(CorrespondenceType ...types) {
+		return Arrays.asList(types).stream()
+			.map(type -> {return alignmentReferenceTyped.get(type);})
+			.flatMap(alignment -> {return alignment.getCorrespondences().stream();})
+			.mapToDouble(corres -> {return corres.getConfidence();})
+			.sum();
+	}
+	
+	//TODO remove
 	public double getConfSumCorrect(CorrespondenceType type) {
 		double sum = 0;
 		for(Correspondence cRef : this.alignmentCorrectTyped.get(type)) {
@@ -341,12 +388,28 @@ public class Characteristic {
 		return sum;
 	}
 	
+	public double getConfSumCorrect(CorrespondenceType ...types) {
+		return Arrays.asList(types).stream()
+				.map(type -> {return alignmentCorrectTyped.get(type);})
+				.flatMap(alignment -> {return alignment.getCorrespondences().stream();})
+				.mapToDouble(corres -> {return corres.getConfidence();})
+				.sum();
+	}
+	
 	public double getFMeasure(CorrespondenceType type) {
 		return computeFFromPR(getPrecision(type), getRecall(type));
 	}
 	
+	public double getFMeasure(CorrespondenceType ...types) {
+		return computeFFromPR(getPrecision(types), getRecall(types));
+	}
+	
 	public double getNBFMeasure(CorrespondenceType type) {
 		return computeFFromPR(getNBPrecision(type), getNBRecall(type));
+	}
+	
+	public double getNBFMeasure(CorrespondenceType ...types) {
+		return computeFFromPR(getNBPrecision(types), getNBRecall(types));
 	}
 	
 	/**

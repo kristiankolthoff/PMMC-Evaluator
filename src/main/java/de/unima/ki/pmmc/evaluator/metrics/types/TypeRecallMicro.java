@@ -8,9 +8,9 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeRecallMicro implements Metric {
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
-	public TypeRecallMicro(CorrespondenceType type) {
+	public TypeRecallMicro(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -23,7 +23,7 @@ public class TypeRecallMicro implements Metric {
 
 	@Override
 	public String getName() {
-		return "rec-mic-" + type.getName();
+		return "rec-mic";
 	}
 
 }

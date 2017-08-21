@@ -8,10 +8,10 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class TypeNBRecallStdDev implements Metric{
 
-	private CorrespondenceType type;
+	private CorrespondenceType[] type;
 	
 	
-	public TypeNBRecallStdDev(CorrespondenceType type) {
+	public TypeNBRecallStdDev(CorrespondenceType ...type) {
 		this.type = type;
 	}
 
@@ -24,7 +24,7 @@ public class TypeNBRecallStdDev implements Metric{
 
 	@Override
 	public String getName() {
-		return "nb-rec-std-dev-" + type.getName();
+		return "nb-rec-std-dev";
 	}
 
 }
