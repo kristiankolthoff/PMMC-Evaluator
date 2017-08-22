@@ -16,6 +16,7 @@ public class CTMatcherOWI implements CTMatcher{
 	private static final CorrespondenceType TYPE = CorrespondenceType.ONE_WORD_IDENT;
 	private static final boolean USE_POS = true;
 	
+	//TODO refactor pair
 	@Override
 	public CorrespondenceType match(String label1, String label2) {
 		label1 = NLPHelper.getSanitizeLabel2(label1);

@@ -1,0 +1,6 @@
+1In_b3z3
+1Er_ixso
+Time Sheet Processing,Direct Activity Assignment Using Time Sheet Processing
+Time Sheet Permit,Time Sheet Permit
+Time Sheet Report,Time Sheet Report
+Forwarding of Time Sheet Data to PM,Transfer Time Sheet Data to CO

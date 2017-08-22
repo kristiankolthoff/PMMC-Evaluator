@@ -1,0 +1,10 @@
+L4
+1Be_2n9n
+Check regulatory / safety requirements,Vendor Quotation Processing
+Determine document requirements,Vendor Quotation Processing
+Determine machine requirements,Vendor Quotation Processing
+Report results,Vendor Quotation Processing
+Perform Q & R assessments,Vendor Quotation Processing
+Initiate NPI assessments,Vendor Quotation Processing
+Determine training requirements,Vendor Quotation Processing
+Create Q & R matrix's,Vendor Quotation Processing

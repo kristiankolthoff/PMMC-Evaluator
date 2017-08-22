@@ -1,0 +1,12 @@
+L3 p
+1Be_1y63
+Invoice approval,Invoice Verification
+Supplier submits invoice,Purchasing
+Forward approved PM to buyer / planner,Purchasing
+Generate PO,Purchasing
+Purchase authorization,Purchase Requisition
+Authorize purchase agreement ,Purchase Requisition
+Negotiate pricing,Purchase Requisition
+Submit purchase agreement,Purchase Requisition
+Authorize procurement,Purchase Requisition
+Generate / revise PM,Purchase Requisition

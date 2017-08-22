@@ -1,0 +1,50 @@
+
+--------Correspondence---------
+default
+http://birthCertificate_p31#t21 : Finalize message
+http://birthCertificate_p32#t48 : null
+
+--------Correspondence---------
+default
+http://birthCertificate_p31#t30 : Send notifications
+http://birthCertificate_p32#t55 : null
+
+--------Correspondence---------
+default
+http://birthCertificate_p31#t32 : Finalize message exch.
+http://birthCertificate_p32#t56 : null
+
+--------Correspondence---------
+default
+http://birthCertificate_p32#t55 : null
+http://birthCertificate_p249#t34 : Conform choice of name
+
+--------Correspondence---------
+default
+http://birthCertificate_p32#t56 : null
+http://birthCertificate_p249#t34 : Conform choice of name
+
+--------Correspondence---------
+default
+http://birthCertificate_p32#t55 : null
+http://birthCertificate_p250#t23 : Sign certificate
+
+--------Correspondence---------
+default
+http://birthCertificate_p32#t56 : null
+http://birthCertificate_p250#t23 : Sign certificate
+
+--------Correspondence---------
+default
+http://birthCertificate_p32#t55 : null
+http://birthCertificate_p33#t18 : Check validity
+
+--------Correspondence---------
+default
+http://birthCertificate_p32#t56 : null
+http://birthCertificate_p33#t18 : Check validity
+
+--------Correspondence---------
+default
+http://birthCertificate_p32#t48 : null
+http://birthCertificate_p34#t1 : Receive notification birth

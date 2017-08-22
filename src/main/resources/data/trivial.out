@@ -1,507 +1,430 @@
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-885F9233-8A3A-470C-90D9-FA7F483D69CA : Evaluate
-http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7 : Evaluate
+http://birthCertificate_p246#t1 : Receive notification birth
+http://birthCertificate_p247#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B : Check documents
-http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20 : Check documents
+http://birthCertificate_p246#t3 : Confirm identity
+http://birthCertificate_p247#t3 : Confirm identity
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768 : Send documents by post
-http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888 : Send documents by post
+http://birthCertificate_p246#t13 : Create birth certificate
+http://birthCertificate_p247#t13 : Create birth certificate
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
+http://birthCertificate_p246#p1 : Start
+http://birthCertificate_p247#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978 : Apply online
-http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047 : Apply online
+http://birthCertificate_p246#t5 : Confirm identity with passport
+http://birthCertificate_p247#t5 : Confirm identity with passport
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
+http://birthCertificate_p246#p2 : p2
+http://birthCertificate_p247#p2 : p2
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554 : Accepted
-http://Frankfurt#sid-56CF457C-E58D-4519-AD80-5EDE6DD9E302 : Accepted
+http://birthCertificate_p246#p3 : p3
+http://birthCertificate_p247#p3 : p3
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C : Rejected
-http://Frankfurt#sid-445A78A6-1CA7-40BF-B7BF-B8CCCAAEF703 : Rejected
+http://birthCertificate_p246#p7 : p7
+http://birthCertificate_p247#p7 : p7
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-DF0BF153-C7B8-47A6-9436-2217B6A02FB9 : Wait for results
-http://Frankfurt#sid-B296B105-D85C-47FE-A200-50F7C64E65CF : Wait for results
+http://birthCertificate_p246#t1 : Receive notification birth
+http://birthCertificate_p248#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-885F9233-8A3A-470C-90D9-FA7F483D69CA : Evaluate
-http://TU_Munich#sid-8C188CB2-5CD5-451F-B76D-B14C777E9556 : Evaluate
+http://birthCertificate_p246#t3 : Confirm identity
+http://birthCertificate_p248#t3 : Confirm identity
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B : Check documents
-http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E : Check documents
+http://birthCertificate_p246#t13 : Create birth certificate
+http://birthCertificate_p248#t13 : Create birth certificate
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768 : Send documents by post
-http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284 : Send documents by post
+http://birthCertificate_p246#p1 : Start
+http://birthCertificate_p248#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978 : Apply online
-http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2 : Apply online
+http://birthCertificate_p246#p7 : p7
+http://birthCertificate_p248#p7 : p7
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554 : Accepted
-http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704 : Accepted
+http://birthCertificate_p246#t1 : Receive notification birth
+http://birthCertificate_p249#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C : Rejected
-http://TU_Munich#sid-701A0B1D-BFF0-482A-A658-A6713BC21F13 : Rejected
+http://birthCertificate_p246#p1 : Start
+http://birthCertificate_249#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-DF0BF153-C7B8-47A6-9436-2217B6A02FB9 : Wait for results
-http://TU_Munich#sid-40FCF57B-44A4-443F-80D6-D2778D1045CD : Wait for results
+http://birthCertificate_p246#t1 : Receive notification birth
+http://birthCertificate_249#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2 : Send letter of rejection
+http://birthCertificate_p246#p2 : p2
+http://birthCertificate_249#p2 : p2
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95 : Send letter of rejection
+http://birthCertificate_p246#t1 : Receive notification birth
+http://birthCertificate_p250#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
+http://birthCertificate_p246#t2 : Return documents 1
+http://birthCertificate_p250#t2 : Return documents 1
 
 --------Correspondence---------
 trivial
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E : Send letter of acceptance
+http://birthCertificate_p246#p1 : Start
+http://birthCertificate_250#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7 : Evaluate
-http://TU_Munich#sid-8C188CB2-5CD5-451F-B76D-B14C777E9556 : Evaluate
+http://birthCertificate_p246#t1 : Receive notification birth
+http://birthCertificate_250#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20 : Check documents
-http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E : Check documents
+http://birthCertificate_p246#t2 : Return documents 1
+http://birthCertificate_250#t2 : Return documents 1
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888 : Send documents by post
-http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284 : Send documents by post
+http://birthCertificate_p247#t1 : Receive notification birth
+http://birthCertificate_p248#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047 : Apply online
-http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2 : Apply online
+http://birthCertificate_p247#t3 : Confirm identity
+http://birthCertificate_p248#t3 : Confirm identity
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-56CF457C-E58D-4519-AD80-5EDE6DD9E302 : Accepted
-http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704 : Accepted
+http://birthCertificate_p247#t4 : Confirm identity without
+http://birthCertificate_p248#t4 : Confirm identity without
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-445A78A6-1CA7-40BF-B7BF-B8CCCAAEF703 : Rejected
-http://TU_Munich#sid-701A0B1D-BFF0-482A-A658-A6713BC21F13 : Rejected
+http://birthCertificate_p247#t24 : Return documents
+http://birthCertificate_p248#t17 : Send data
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-B296B105-D85C-47FE-A200-50F7C64E65CF : Wait for results
-http://TU_Munich#sid-40FCF57B-44A4-443F-80D6-D2778D1045CD : Wait for results
+http://birthCertificate_p247#t13 : Create birth certificate
+http://birthCertificate_p248#t13 : Create birth certificate
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2 : Send letter of rejection
+http://birthCertificate_p247#p1 : Start
+http://birthCertificate_p248#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95 : Send letter of rejection
+http://birthCertificate_p247#p2 : p2
+http://birthCertificate_p248#p2 : p2
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
+http://birthCertificate_p247#p3 : p3
+http://birthCertificate_p248#p3 : p3
 
 --------Correspondence---------
 trivial
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
-http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E : Send letter of acceptance
+http://birthCertificate_p247#p8 : p8
+http://birthCertificate_p248#p8 : p8
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282 : Add certificate of German language
-http://IIS_Erlangen#sid-9E6AC1EE-583E-4DF0-86A9-2756FA0FE7E2 : Add certificate of German language
+http://birthCertificate_p247#t1 : Receive notification birth
+http://birthCertificate_p249#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3 : Check application complete
-http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF : Check application complete
+http://birthCertificate_p247#p1 : Start
+http://birthCertificate_p249#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111 : Check application in time
-http://IIS_Erlangen#sid-AD174F93-7C65-4F21-8791-2C91779F9457 : Check application in time
+http://birthCertificate_p247#p8 : p8
+http://birthCertificate_p249#p8 : p8
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC : Complete application
-http://IIS_Erlangen#sid-5655D4E3-47A7-4059-9E04-F9BFCFE28EAF : Complete application
+http://birthCertificate_p247#t1 : Receive notification birth
+http://birthCertificate_p250#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC : Hand application over to examining board
-http://IIS_Erlangen#sid-9966DEA0-43B5-40A7-926C-5EA6653A5516 : Hand application over to examining board
+http://birthCertificate_p247#p1 : Start
+http://birthCertificate_p250#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-DBE82358-A50E-45CA-AB6B-F0EF44F8B668 : Immatriculate
-http://IIS_Erlangen#sid-ECB2E4CE-141A-4D17-A9AF-35EC03B08FB9 : Immatriculate
+http://birthCertificate_p247#p8 : p8
+http://birthCertificate_p250#p8 : p8
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC : Receive acceptance
-http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF : Receive acceptance
+http://birthCertificate_p248#t1 : Receive notification birth
+http://birthCertificate_p249#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E : Receive rejection
-http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6 : Receive rejection
+http://birthCertificate_p248#p1 : Start
+http://birthCertificate_p249#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
-http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB : Send acceptance
+http://birthCertificate_p248#p8 : p8
+http://birthCertificate_p249#p8 : p8
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
+http://birthCertificate_p248#t1 : Receive notification birth
+http://birthCertificate_p250#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-9C365BD2-58D0-443D-9FD4-AC287BF377F6 : Take
-interview
-http://IIS_Erlangen#sid-E80393E3-80C1-4412-9317-635EBAC3AE26 : Take
-interview
+http://birthCertificate_p248#p1 : Start
+http://birthCertificate_p250#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3 : Check application complete
-http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72 : Check application complete
+http://birthCertificate_p248#p8 : p8
+http://birthCertificate_p250#p8 : p8
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC : Receive acceptance
-http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B : Receive acceptance
+http://birthCertificate_p249#t1 : Receive notification birth
+http://birthCertificate_p250#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E : Receive rejection
-http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7 : Receive rejection
+http://birthCertificate_p249#p1 : Start
+http://birthCertificate_p250#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
-http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A : Send acceptance
+http://birthCertificate_p249#p8 : p8
+http://birthCertificate_p250#p8 : p8
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
+http://birthCertificate_p31#t19 : Send notifications
+http://birthCertificate_p246#t19 : Send notifications
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282 : Add certificate of German language
-http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB : Add certificate of German language
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p246#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3 : Check application complete
-http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9 : Check application complete
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p247#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111 : Check application in time
-http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A : Check application in time
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p248#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC : Complete application
-http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C : Complete application
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p249#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC : Hand application over to examining board
-http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A : Hand application over to examining board
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-DBE82358-A50E-45CA-AB6B-F0EF44F8B668 : Immatriculate
-http://Potsdam#sid-8331F5EE-D58A-48EC-BC26-C10543262F66 : Immatriculate
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p250#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC : Receive acceptance
-http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88 : Receive acceptance
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p32#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E : Receive rejection
-http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463 : Receive rejection
+http://birthCertificate_p31#t1 : Receive notification birth
+http://birthCertificate_p33#t1 : Receive notification birth
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
-http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD : Send acceptance
+http://birthCertificate_p31#t11 : Search GBA data
+http://birthCertificate_p33#t11 : Search GBA data
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7 : Send application
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p33#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
+http://birthCertificate_p31#t6 : Refuse continuation
+http://birthCertificate_p34#t6 : Refuse continuation
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-C8972681-3E1C-408F-8595-59226D48CF52 : Set additional requirements
-http://Potsdam#sid-CBF7C869-D493-4C33-95CC-B6E0DCC0C95B : Set additional requirements
+http://birthCertificate_p31#p1 : Start
+http://birthCertificate_p34#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E : Receive rejection
-http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF : Receive rejection
+http://birthCertificate_p32#p1 : Start
+http://birthCertificate_p246#p1 : Start
 
 --------Correspondence---------
 trivial
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
-http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0 : Send rejection
+http://birthCertificate_p32#p1 : Start
+http://birthCertificate_p247#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874 : Receive application
-http://IIS_Erlangen#sid-A212088C-053D-4D7B-B952-B396934B4817 : Receive application
+http://birthCertificate_p32#p1 : Start
+http://birthCertificate_p248#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Hohenheim#sid-16C5EDE2-242D-446A-B150-5E1A5D3F6ED2 : Enrollment
-http://Muenster#sid-0A8BD8F6-562C-4872-8FE8-5244B2F536E7 : Enrollment
+http://birthCertificate_p32#p1 : Start
+http://birthCertificate_p249#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874 : Receive application
-http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012 : Receive application
+http://birthCertificate_p32#p1 : Start
+http://birthCertificate_p250#p1 : Start
 
 --------Correspondence---------
 trivial
-http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874 : Receive application
-http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A : Receive application
+http://birthCertificate_p32#p1 : Start
+http://birthCertificate_p33#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF : Receive acceptance
-http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B : Receive acceptance
+http://birthCertificate_p32#p44 : End
+http://birthCertificate_p33#p27 : p27
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB : Send acceptance
-http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A : Send acceptance
+http://birthCertificate_p32#p1 : Start
+http://birthCertificate_p34#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6 : Receive rejection
-http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7 : Receive rejection
+http://birthCertificate_p32#p44 : End
+http://birthCertificate_p34#p11 : p11
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
+http://birthCertificate_p33#p1 : Start
+http://birthCertificate_p246#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF : Check application complete
-http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72 : Check application complete
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p247#t18 : Check validity
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-A212088C-053D-4D7B-B952-B396934B4817 : Receive application
-http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012 : Receive application
+http://birthCertificate_p33#p1 : Start
+http://birthCertificate_p247#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-AD174F93-7C65-4F21-8791-2C91779F9457 : Check application in time
-http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A : Check application in time
+http://birthCertificate_p33#p1 : Start
+http://birthCertificate_p248#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF : Receive acceptance
-http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88 : Receive acceptance
+http://birthCertificate_p33#p1 : Start
+http://birthCertificate_p249#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-A5F778C1-162A-4616-BF72-B27C8D984B7C : Accept application
-http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7 : Accept application
+http://birthCertificate_p33#t17 : Send data
+http://birthCertificate_p250#t24 : Return documents
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB : Send acceptance
-http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD : Send acceptance
+http://birthCertificate_p33#p1 : Start
+http://birthCertificate_p250#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-ECB2E4CE-141A-4D17-A9AF-35EC03B08FB9 : Immatriculate
-http://Potsdam#sid-8331F5EE-D58A-48EC-BC26-C10543262F66 : Immatriculate
+http://birthCertificate_p33#t4 : Confirm identity without
+http://birthCertificate_p34#t4 : Confirm identity without
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-7FE86054-7714-47D1-B91A-7215AC3688B0 : Sum scores
-http://Potsdam#sid-B969BD21-9ED6-4153-9A4A-16D3FF6EB8E6 : Sum scores
+http://birthCertificate_p33#p1 : Start
+http://birthCertificate_p34#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-9966DEA0-43B5-40A7-926C-5EA6653A5516 : Hand application over to examining board
-http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A : Hand application over to examining board
+http://birthCertificate_p33#p27 : p27
+http://birthCertificate_p34#p11 : p11
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-9E6AC1EE-583E-4DF0-86A9-2756FA0FE7E2 : Add certificate of German language
-http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB : Add certificate of German language
+http://birthCertificate_p34#t8 : Fill in birth registration form
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-CB26DB0C-6BB2-4959-BA80-63FE44D0FFEC : Add certificate of bachelor degree
-http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C : Add certificate of bachelor degree
+http://birthCertificate_p34#p1 : Start
+http://birthCertificate_p246#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF : Check application complete
-http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9 : Check application complete
+http://birthCertificate_p34#p1 : Start
+http://birthCertificate_p247#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365 : Fill out application form
-http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671 : Fill out application form
+http://birthCertificate_p34#t6 : Refuse continuation
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-121FB47D-8E7F-4575-8475-845CE385DEBE : Add certificates of qualification
-http://Potsdam#sid-FB567539-2B9F-4B9C-A2A8-4C8A9097CE89 : Add certificates of qualification
+http://birthCertificate_p34#t9 : Check GBA data
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
+http://birthCertificate_p34#p1 : Start
+http://birthCertificate_p248#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-405700D2-A6F9-4EC4-904F-D0611611EAF5 : Create and add CV
-http://Potsdam#sid-D3AE1325-5912-4B94-9B35-72D7EBE6BE16 : Create and add CV
+http://birthCertificate_p34#p1 : Start
+http://birthCertificate_p249#p1 : Start
 
 --------Correspondence---------
 trivial
-http://IIS_Erlangen#sid-A212088C-053D-4D7B-B952-B396934B4817 : Receive application
-http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A : Receive application
-
---------Correspondence---------
-trivial
-http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6 : Receive rejection
-http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463 : Receive rejection
-
---------Correspondence---------
-trivial
-http://IIS_Erlangen#sid-5655D4E3-47A7-4059-9E04-F9BFCFE28EAF : Complete application
-http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C : Complete application
-
---------Correspondence---------
-trivial
-http://IIS_Erlangen#sid-C849D28D-C573-445E-B502-9555E993FFE6 : Reject application
-http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45 : Reject application
-
---------Correspondence---------
-trivial
-http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6 : Receive rejection
-http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF : Receive rejection
-
---------Correspondence---------
-trivial
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
-http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0 : Send rejection
-
---------Correspondence---------
-trivial
-http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72 : Check application complete
-http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9 : Check application complete
-
---------Correspondence---------
-trivial
-http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B : Receive acceptance
-http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88 : Receive acceptance
-
---------Correspondence---------
-trivial
-http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7 : Receive rejection
-http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463 : Receive rejection
-
---------Correspondence---------
-trivial
-http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A : Send acceptance
-http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD : Send acceptance
-
---------Correspondence---------
-trivial
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
-
---------Correspondence---------
-trivial
-http://Muenster#sid-44A1166A-B085-4824-B038-02F1987DD012 : Receive application
-http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A : Receive application
-
---------Correspondence---------
-trivial
-http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7 : Receive rejection
-http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF : Receive rejection
-
---------Correspondence---------
-trivial
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
-http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0 : Send rejection
-
---------Correspondence---------
-trivial
-http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463 : Receive rejection
-http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF : Receive rejection
-
---------Correspondence---------
-trivial
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
-http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0 : Send rejection
+http://birthCertificate_p34#p1 : Start
+http://birthCertificate_p250#p1 : Start

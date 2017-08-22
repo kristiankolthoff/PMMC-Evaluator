@@ -1,0 +1,5 @@
+search2
+1Ve_6dlt
+Picking,Picking (Lean WM)
+Packing Processing,Packing Processing
+Goods Issue Processing,Goods Issue for Consignment Fill-Up

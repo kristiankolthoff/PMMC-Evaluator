@@ -138,6 +138,7 @@ public class Evaluator {
 		this.debugOn = configuration.isDebugOn();
 		this.tagCTOn = configuration.isCtTagOn();
 		this.thresholds = configuration.getThresholds();
+		this.parser = configuration.getParser();
 	}
 	
 	
@@ -192,10 +193,11 @@ public class Evaluator {
 //		}
 		if(tagCTOn && models != null) {
 			this.annotator = new Annotator(this.models);
+			annotator.setParser(parser);
 			log("CTTagging...");
 			tagMatcherSolutions();
 			tagGoldstandardGroups();
-			printGoldstandardTypes();
+//			printGoldstandardTypes();
 			
 		} else {
 			for(Solution matcher : matcherSolutions) {
@@ -516,8 +518,9 @@ public class Evaluator {
 			if(Files.isRegularFile(filePath)) {
 				try {
 					String p = filePath.getFileName().toString();
-					if(p.contains(Parser.TYPE_BPMN) ||
-							p.contains(Parser.TYPE_EPML) || p.contains(Parser.TYPE_PNML)) {
+					if(p.contains(Parser.Type.BPMN.getSuffix()) ||
+							p.contains(Parser.Type.EPML.getSuffix()) || 
+							p.contains(Parser.Type.PNML.getSuffix())) {
 						Model model = parser.parse(filePath.toString());
 						model.setName(p.split("\\.")[0]);
 						models.add(model);

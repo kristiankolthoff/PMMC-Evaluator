@@ -1,0 +1,6 @@
+1Pr_dgrn
+1Ku_9soy
+Time Sheet Approval,Time Sheet Permit
+Time Sheet Report,Time Sheet Report
+Time Sheet Creation,Time Sheet Processing
+Transfer to PS of Time Recorded,Forwarding of Time Sheet Data to CS

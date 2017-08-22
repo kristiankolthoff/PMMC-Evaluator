@@ -1,0 +1,11 @@
+L3 OM
+1Ve_8bao
+Review order,Sales Order Processing
+Update planning file,Sales Order Processing
+Generate order summary,Sales Order Processing
+System destination,Sales Order Processing
+Maintain customer file,Sales Order Processing
+Review order summary,Sales Order Processing
+Process customer order,Sales Order Processing
+Revise order,Sales Order Processing
+Review regulatory requirements,Sales Order Processing

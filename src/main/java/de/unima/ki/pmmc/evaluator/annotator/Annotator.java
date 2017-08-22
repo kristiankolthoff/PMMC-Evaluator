@@ -15,6 +15,7 @@ import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.BPMNParser;
 import de.unima.ki.pmmc.evaluator.model.parser.EPMLParser;
 import de.unima.ki.pmmc.evaluator.model.parser.PNMLParser;
+import de.unima.ki.pmmc.evaluator.model.parser.PNMLParser2;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 /**
  * The <code>Annotator</code> is responsible for annotating or tagging a
@@ -77,7 +78,7 @@ public class Annotator {
 	public CorrespondenceType annotateCorrespondence(Correspondence correspondence) {
 		String label1 = null, label2 = null;
 		String uri1 = null, uri2 = null;
-		if(parser == null || parser instanceof BPMNParser || parser instanceof PNMLParser) {
+		if(parser == null || parser instanceof BPMNParser || parser instanceof PNMLParser || parser instanceof PNMLParser2) {
 			label1 = this.idCache.get(correspondence.getUri1().split(SPLIT)[1]);
 			label2 = this.idCache.get(correspondence.getUri2().split(SPLIT)[1]);
 		} else if(parser instanceof EPMLParser) {

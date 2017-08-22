@@ -1,401 +1,415 @@
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B : Confirm provisional acceptance
+http://birthCertificate_p246#t16 : Determine next action
+http://birthCertificate_p248#t12 : Sign birth certificate
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC : Receive acceptance
+http://birthCertificate_p246#t12 : Sign birth certificate
+http://birthCertificate_p248#t16 : Determine next action
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-D4F6E283-16FB-458A-830A-03336924C1D2 : Rank students according to GPA and the test results
-http://FU_Berlin#sid-DB1169F0-5D3C-4463-9A95-B77636938DB3 : Rank with other applicants
+http://birthCertificate_p246#t18 : Check validity
+http://birthCertificate_p248#t22 : Archive documents
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978 : Apply online
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
+http://birthCertificate_p247#t18 : Check validity
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3 : Rejection
+http://birthCertificate_p247#p5 : p5
+http://birthCertificate_p248#p4 : Child already acknowledged?
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-D4F6E283-16FB-458A-830A-03336924C1D2 : Rank students according to GPA and the test results
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
+http://birthCertificate_p247#t9 : Check GBA data
+http://birthCertificate_p249#t31 : Send PL
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
+http://birthCertificate_p247#t21 : Finalize message
+http://birthCertificate_p249#t42 : Check accuracy
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
+http://birthCertificate_p247#t31 : Send PL
+http://birthCertificate_p249#t43 : Send PL
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF : Receive acceptance
+http://birthCertificate_p247#t18 : Check validity
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-D4F6E283-16FB-458A-830A-03336924C1D2 : Rank students according to GPA and the test results
-http://Muenster#sid-BDCFC466-A624-4FD3-B69D-D5C08CEC4BC9 : Create ranking
+http://birthCertificate_p247#t24 : Return documents
+http://birthCertificate_p250#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978 : Apply online
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
+http://birthCertificate_p247#t26 : Send Data
+http://birthCertificate_p250#t31 : Send PL
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768 : Send documents by post
-http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA : Collect additional required documents
+http://birthCertificate_p247#t8 : Fill in birth registration form
+http://birthCertificate_p250#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-D4F6E283-16FB-458A-830A-03336924C1D2 : Rank students according to GPA and the test results
-http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11 : Rank case
+http://birthCertificate_p248#t21 : Finalize message
+http://birthCertificate_p249#t42 : Check accuracy
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-B11703D1-08C3-416B-8947-76CE10A27978 : Apply online
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p248#t17 : Send data
+http://birthCertificate_p250#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://Cologne#sid-B41B5C8F-D1D5-4641-943B-DB396FD69D0B : Check documents
-http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540 : Precheck of documents
+http://birthCertificate_p249#t45 : Archive documents
+http://birthCertificate_p250#t32 : Finalize message exch.
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B : Confirm provisional acceptance
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
+http://birthCertificate_p31#t6 : Refuse continuation
+http://birthCertificate_p247#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3 : Rejection
+http://birthCertificate_p31#t25 : Determine GBA municipality
+http://birthCertificate_p247#t13 : Create birth certificate
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047 : Apply online
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p247#t13 : Create birth certificate
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p247#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p247#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-F35D58FD-3344-495B-8646-DAAF7C4167B4 : Send letter of 
-provisional acceptance
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p247#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047 : Apply online
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
+http://birthCertificate_p31#t33 : Archive documents
+http://birthCertificate_p248#t15 : Update GBA
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888 : Send documents by post
-http://Muenster#sid-222C84E3-5DAD-480E-B504-E79874210FEA : Collect additional required documents
+http://birthCertificate_p31#t36 : Return documents 2
+http://birthCertificate_p249#t34 : Conform choice of name
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-64E18B0C-527B-4E00-97A1-DD9A8EA9FEB5 : Conduct oral examination
-http://TU_Munich#sid-86BEFE55-806A-4B19-9DF6-EB0B403B6890 : Conduct interview
+http://birthCertificate_p31#t36 : Return documents 2
+http://birthCertificate_p250#t22 : Archive documents
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-35577374-6299-4B8E-90A5-5D7C1D89477B : Confirm provisional acceptance
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
+http://birthCertificate_p31#t37 : Determine GBA municipality
+http://birthCertificate_p32#t59 : Register baby as german 1
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047 : Apply online
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p31#t37 : Determine GBA municipality
+http://birthCertificate_p32#t43 : Send PL
 
 --------Correspondence---------
 one-word-ident
-http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20 : Check documents
-http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540 : Precheck of documents
+http://birthCertificate_p31#t37 : Determine GBA municipality
+http://birthCertificate_p32#t49 : Register nationality of baby
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-DB1169F0-5D3C-4463-9A95-B77636938DB3 : Rank with other applicants
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p32#t53 : Clarify name
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E : Receive rejection
-http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8 : Rejection
+http://birthCertificate_p31#t21 : Finalize message
+http://birthCertificate_p32#t42 : Check accuracy
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
-http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3 : Rejection
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p32#t53 : Clarify name
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2 : Print out the online application form (GER)
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p33#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6 : Print out the online application form (INT)
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p33#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-E8AD3C41-2A2F-47FA-879A-648F728C4D17 : Check if bachelor is sufficient
-http://IIS_Erlangen#sid-6DFE0930-0501-4B8A-A303-C56864B1E852 : Score bachelors grade
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p33#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-4C4F7701-49EF-41A8-946A-88EF52B17794 : Talk to applicant
-http://IIS_Erlangen#sid-053A0B4D-160A-4953-B0D9-298A22FAD4CE : Appoint applicant
+http://birthCertificate_p31#t37 : Determine GBA municipality
+http://birthCertificate_p33#t15 : Update GBA
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC : Complete application
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
+http://birthCertificate_p31#p2 : p2
+http://birthCertificate_p34#p3 : p3
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC : Hand application over to examining board
-http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C : Send application to selection committee
+http://birthCertificate_p31#t36 : Return documents 2
+http://birthCertificate_p34#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-DB1169F0-5D3C-4463-9A95-B77636938DB3 : Rank with other applicants
-http://Muenster#sid-BDCFC466-A624-4FD3-B69D-D5C08CEC4BC9 : Create ranking
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-9C365BD2-58D0-443D-9FD4-AC287BF377F6 : Take
-interview
-http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA : Go to the interview
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC : Complete application
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p247#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC : Complete application
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
+http://birthCertificate_p32#t42 : Check accuracy
+http://birthCertificate_p247#t21 : Finalize message
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8 : Rejection
-http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6 : Receive rejection
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p247#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758 : Assessment of application
-http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4 : Check and evaluate application
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
-http://Muenster#sid-BDCFC466-A624-4FD3-B69D-D5C08CEC4BC9 : Create ranking
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8 : Rejection
-http://Muenster#sid-A91510C7-052B-42D7-AE79-5117D98E57B7 : Receive rejection
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
-http://Muenster#sid-91E6E18C-CEDF-403F-9E17-73231413E6D4 : Check and evaluate application
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758 : Assessment of application
-http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7 : Accept application
+http://birthCertificate_p32#t57 : Create certificate of birth
+http://birthCertificate_p248#t16 : Determine next action
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
-http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11 : Rank case
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
-http://Potsdam#sid-2134BCB7-AA6C-4D36-98BD-96A11AA724F7 : Score bachelors grade by §7(1)(a) * 51
+http://birthCertificate_p32#t42 : Check accuracy
+http://birthCertificate_p250#t22 : Archive documents
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
-http://Potsdam#sid-27F26039-B6AE-470D-A325-A997E655AC70 : Score qualifications by §7(1)(b) * 34
+http://birthCertificate_p32#t49 : Register nationality of baby
+http://birthCertificate_p250#t22 : Archive documents
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-BEB61ACC-4977-43FF-BA82-A8D400C1FDB3 : Rank application on scale from 1 to 10
-http://Potsdam#sid-997AFA4D-FFA4-45FD-9E52-B2D45BD24785 : Score qualifications by §7(1)(c) * 15
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8 : Rejection
-http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463 : Receive rejection
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p33#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
-http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2 : Apply online
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p33#t18 : Check validity
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F : Send documents to selection committee
-http://TU_Munich#sid-465F693F-A9A4-43B7-86FB-B6F16EAD8DE7 : Forward documents
+http://birthCertificate_p32#t49 : Register nationality of baby
+http://birthCertificate_p34#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
-http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2 : Send letter of rejection
+http://birthCertificate_p32#t59 : Register baby as german 1
+http://birthCertificate_p34#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
-http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95 : Send letter of rejection
+http://birthCertificate_p32#t43 : Send PL
+http://birthCertificate_p34#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p34#t6 : Refuse continuation
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E : Publishing the letters
-http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E : Send letter of acceptance
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p34#t8 : Fill in birth registration form
 
 --------Correspondence---------
 one-word-ident
-http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8 : Rejection
-http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF : Receive rejection
+http://birthCertificate_p32#t53 : Clarify name
+http://birthCertificate_p34#t9 : Check GBA data
 
 --------Correspondence---------
 one-word-ident
-http://IIS_Erlangen#sid-9966DEA0-43B5-40A7-926C-5EA6653A5516 : Hand application over to examining board
-http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C : Send application to selection committee
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p34#t6 : Refuse continuation
 
 --------Correspondence---------
 one-word-ident
-http://IIS_Erlangen#sid-405700D2-A6F9-4EC4-904F-D0611611EAF5 : Create and add CV
-http://Muenster#sid-8CEAA5CC-554F-4A5D-9682-F91D35CB7059 : Upload cv
+http://birthCertificate_p32#t42 : Check accuracy
+http://birthCertificate_p34#p2 : p2
 
 --------Correspondence---------
 one-word-ident
-http://IIS_Erlangen#sid-5655D4E3-47A7-4059-9E04-F9BFCFE28EAF : Complete application
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
+http://birthCertificate_p32#p33 : p33
+http://birthCertificate_p34#p2 : p2
 
 --------Correspondence---------
 one-word-ident
-http://IIS_Erlangen#sid-6DFE0930-0501-4B8A-A303-C56864B1E852 : Score bachelors grade
-http://Potsdam#sid-15689096-B676-4EFE-87E9-AC7E50725AB8 : Check if bachelor equivalent to Uni Potsdam
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p34#t8 : Fill in birth registration form
 
 --------Correspondence---------
 one-word-ident
-http://IIS_Erlangen#sid-E80393E3-80C1-4412-9317-635EBAC3AE26 : Take
-interview
-http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA : Go to the interview
+http://birthCertificate_p32#t52 : Give married name of parents
+http://birthCertificate_p34#t9 : Check GBA data
 
 --------Correspondence---------
 one-word-ident
-http://IIS_Erlangen#sid-5655D4E3-47A7-4059-9E04-F9BFCFE28EAF : Complete application
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 one-word-ident
-http://IIS_Erlangen#sid-5655D4E3-47A7-4059-9E04-F9BFCFE28EAF : Complete application
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
+http://birthCertificate_p33#t9 : Check GBA data
+http://birthCertificate_p247#t31 : Send PL
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
-http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C : Complete application
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-BDCFC466-A624-4FD3-B69D-D5C08CEC4BC9 : Create ranking
-http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11 : Rank case
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C : Send application to selection committee
-http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A : Hand application over to examining board
+http://birthCertificate_p33#t17 : Send data
+http://birthCertificate_p248#t16 : Determine next action
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-F82549DA-EE9A-45E6-A7A2-CD07DEAA9769 : Send information to application office
-http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A : Hand application over to examining board
+http://birthCertificate_p33#t4 : Confirm identity without
+http://birthCertificate_p248#p6 : Identity confirmed
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-8CEAA5CC-554F-4A5D-9682-F91D35CB7059 : Upload cv
-http://Potsdam#sid-D3AE1325-5912-4B94-9B35-72D7EBE6BE16 : Create and add CV
+http://birthCertificate_p33#t9 : Check GBA data
+http://birthCertificate_p249#t43 : Send PL
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
-http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2 : Apply online
+http://birthCertificate_p33#t21 : Finalize message
+http://birthCertificate_p250#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-5D36CFBD-36D5-4A2F-81E6-83F468923C4B : Do the interview
-http://TU_Munich#sid-86BEFE55-806A-4B19-9DF6-EB0B403B6890 : Conduct interview
+http://birthCertificate_p33#t9 : Check GBA data
+http://birthCertificate_p250#t31 : Send PL
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-C28F8767-5ADE-4467-9F6B-92B0B07939A5 : Invite applicant for interview
-http://TU_Munich#sid-AFB67B06-BDE2-40B6-B3C2-A3665192D791 : Send interview invitation
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-653B2E61-D08D-4038-A632-603B74BAAD45 : Take interview
-http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA : Go to the interview
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p34#t6 : Refuse continuation
 
 --------Correspondence---------
 one-word-ident
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p34#t8 : Fill in birth registration form
 
 --------Correspondence---------
 one-word-ident
-http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C : Complete application
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p33#t18 : Check validity
+http://birthCertificate_p34#t9 : Check GBA data
 
 --------Correspondence---------
 one-word-ident
-http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C : Complete application
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
+http://birthCertificate_p33#t15 : Update GBA
+http://birthCertificate_p34#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2 : Apply online
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p33#t12 : Sign birth certificate
+http://birthCertificate_p34#t2 : Return documents 1
 
 --------Correspondence---------
 one-word-ident
-http://TU_Munich#sid-906427E0-F446-4C6B-851B-F3872CE2302E : Check documents
-http://Wuerzburg#sid-4C472B5F-9246-41F6-8544-E43B5C588540 : Precheck of documents
+http://birthCertificate_p34#t6 : Refuse continuation
+http://birthCertificate_p247#t18 : Check validity
+
+--------Correspondence---------
+one-word-ident
+http://birthCertificate_p34#t8 : Fill in birth registration form
+http://birthCertificate_p247#t18 : Check validity
+
+--------Correspondence---------
+one-word-ident
+http://birthCertificate_p34#t9 : Check GBA data
+http://birthCertificate_p247#t18 : Check validity
+
+--------Correspondence---------
+one-word-ident
+http://birthCertificate_p34#t11 : Search GBA data
+http://birthCertificate_p248#t16 : Determine next action
+
+--------Correspondence---------
+one-word-ident
+http://birthCertificate_p34#t2 : Return documents 1
+http://birthCertificate_p250#t22 : Archive documents

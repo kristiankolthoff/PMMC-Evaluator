@@ -58,6 +58,7 @@ public class PMMCNewEvaluationAdmission {
 	}
 	
 	private void init() throws IOException {
+		@SuppressWarnings("unused")
 		CorrespondenceType[] excludedValues = CorrespondenceType
 					.valuesWithout(CorrespondenceType.TRIVIAL, CorrespondenceType.TRIVIAL_NORM);
 		@SuppressWarnings("unused")
@@ -75,10 +76,6 @@ public class PMMCNewEvaluationAdmission {
 						.addMetric(new NBFMeasureMicro())
 						.addMetric(new NBFMeasureMacro())
 						.addMetric(new NBFMeasureStdDev()))
-				.addMetricGroup(new MetricGroup("Pre-rec-f1-w/trivial")
-						.addMetric(new TypeNBPrecisionMacro(excludedValues))
-						.addMetric(new TypeNBRecallMacro(excludedValues))
-						.addMetric(new TypeNBFMeasureMacro(excludedValues)))
 				.addMetricGroup(new MetricGroup("Stats")
 						.addMetric(new NumCorrespondencesGS())
 						.addMetric(new NumCorrespondencesMatcher())
@@ -103,7 +100,7 @@ public class PMMCNewEvaluationAdmission {
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputName("oaei16-new-gs")
 				.setOutputPath(OUTPUT_PATH)
-				.setParser(Parser.TYPE_BPMN)
+				.setParser(Parser.Type.BPMN)
 				.setCTTagOn(true)
 				.setDebugOn(true)
 				.persistToFile(true);

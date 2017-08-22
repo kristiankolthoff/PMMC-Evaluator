@@ -1,0 +1,15 @@
+A1 d
+1Be_2xk1
+Send confirmation of  requested arrival +  price indication to  Key-Market,Transmission of Purchase Orders
+Send confirmation of  requested arrival +  price indication to  Key-Market,Transmission of Scheduling Agreements
+Shipping ultrasound  devices by key  markets,Delivery and Acknowledgment Expediter
+Fill ultrasound  excel sheet with  RAR report data,Inbound EDI Processing
+Fill ultrasound  excel sheet with  RAR report data,Processing of Shipping Notifications/ Confirmations
+registration of  arrival + RAR to  determine  equipment value,Inbound EDI Processing
+registration of  arrival + RAR to  determine  equipment value,Processing of Shipping Notifications/ Confirmations
+Put in article  number into  Exact,Inbound EDI Processing
+Put in article  number into  Exact,Processing of Shipping Notifications/ Confirmations
+Request project  number from F&A,Inbound EDI Processing
+Request project  number from F&A,Processing of Shipping Notifications/ Confirmations
+Enter deal  information in  Ultrasound excel  sheet,Purchase Order Processing
+Have PO  created,Purchase Order Processing

@@ -1,0 +1,10 @@
+search7
+1Ve_6294
+Billing,Billing
+Risk/ Credit Management,Risk/ Credit Management
+Shipping,Shipping
+Sales Order,Sales Order
+Warehouse Management,Warehouse Management
+Backorder Processing,Backorder Processing
+Costing,Costing
+Shipment,Transport

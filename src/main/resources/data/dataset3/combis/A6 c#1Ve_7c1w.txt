@@ -1,0 +1,7 @@
+A6 c
+1Ve_7c1w
+Prepare delivery time confirmation,Shipping
+Inform key market regarding delivery date,Shipping
+Create sales order,Sales order
+Forward sales order internally,Sales order
+Confirm purchase order receival,Customer Outline Agreement

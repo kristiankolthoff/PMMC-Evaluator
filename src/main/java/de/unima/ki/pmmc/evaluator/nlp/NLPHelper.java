@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.text.WordUtils;
 
 import de.unima.ki.pmmc.evaluator.utils.Utils;
 import edu.mit.jwi.IRAMDictionary;
@@ -96,7 +97,7 @@ public class NLPHelper {
 				pos.add(POS.VERB);
 			}
 			if (w1.endsWith("nn") || w1.endsWith("tt")) {
-				String w3 = w1.substring(0, w.length() - 1);
+				String w3 = w1.substring(0, w1.length() - 1);
 				indexWord = dict.getIndexWord(w3, POS.VERB);
 				synsets = getSynsetsByIndexWord(indexWord);
 				if (synsets.size() > 0) {
@@ -113,7 +114,6 @@ public class NLPHelper {
 				pos.add(POS.NOUN);
 			}
 		}
-		
 		return pos;
 	}
 	
@@ -250,6 +250,11 @@ public class NLPHelper {
 			} else {
 				possibleStems = getWordStem(tokens.get(i));
 			}
+			for (int j = 0; j < possibleStems.size(); j++) {
+				if(Character.isUpperCase(tokens.get(i).charAt(0))) {
+					possibleStems.set(j, WordUtils.capitalize(possibleStems.get(j)));
+				}
+			}
 			if(possibleStems.size() > 1) {
 				for(String stem : possibleStems) {
 					if(!tokens.get(i).equals(stem)) {
@@ -325,22 +330,24 @@ public class NLPHelper {
 	}
 	
 	public static void main(String[] args) {
-//		List<TaggedWord> taggedWords = NLPHelper.getTaggedSentenceWithoutStopwords("Complet the online interview of the university");
-//		for(TaggedWord t : taggedWords) {
-//			System.out.println(t.word() + " " + t.tag());
-//		}
-//		System.out.println(NLPHelper.identicalTokens("Apply at the university with documents", "Send application documents to the university"));
-		String[] sentence = new String[]{"check", "if", "bachelor", "is", "sufficient"};
-		String[] posTags = getPOSTaggerME().tag(sentence);
-		for (int i = 0; i < posTags.length; i++) {
-			System.out.print(sentence[i] + "_" + posTags[i]);
-			System.out.println();
+		String label = NLPHelper.getSanitizeLabel2("Receiving acceptance letter");
+		List<TaggedWord> taggedWords = NLPHelper.getTaggedSentenceWithoutStopwords(label);
+		for(TaggedWord t : taggedWords) {
+			System.out.println(t.word() + " " + t.tag());
 		}
+//		System.out.println(NLPHelper.getSanitizeLabel2("Checking if complete"));
+////		System.out.println(NLPHelper.identicalTokens("Apply at the university with documents", "Send application documents to the university"));
+//		String[] sentence = new String[]{"Checking", "if", "complete"};
+//		String[] posTags = getPOSTaggerME().tag(sentence);
+//		for (int i = 0; i < posTags.length; i++) {
+//			System.out.print(sentence[i] + "_" + posTags[i]);
+//			System.out.println();
+//		}
 	}
 	
 	public static MaxentTagger getMaxentTagger() {
 		if(tagger == null) {
-			tagger = new MaxentTagger(TAGGER_LEFT_DIRECTORY);
+			tagger = new MaxentTagger(TAGGER_BIDIR_DIRECTORY);
 		}
 		return tagger;
 	}
@@ -361,14 +368,12 @@ public class NLPHelper {
 
 	public static String getSanitizeLabel2(String label) {
 		label = label.trim();
-		label = label.toLowerCase();
-		label = getTokenizedString(label);
+		label = getStemmedString(label, true);
 		label = label.replace("\n", "");
 		return label;
 	}
 
 	public static List<TaggedWord> getTaggedSentenceWithoutStopwords(String label) {
-		label = getSanitizeLabel(label);
 		String[] tokens = label.split(" ");
 		List<Word> words = new ArrayList<>();
 		for(String token : tokens) {
@@ -376,6 +381,7 @@ public class NLPHelper {
 		}
 		return getMaxentTagger().tagSentence(words)
 				.stream()
+				.map(taggedWord -> {taggedWord.setValue(getSanitizeLabel(taggedWord.value())); return taggedWord;})
 				.filter(taggedWord -> {return !isStopword(taggedWord.value());})
 				.collect(Collectors.toList());
 	}

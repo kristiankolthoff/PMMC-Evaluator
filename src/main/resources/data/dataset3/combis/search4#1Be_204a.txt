@@ -1,0 +1,7 @@
+search4
+1Be_204a
+Release Invoice,Invoice Release
+Retrieve invoices,Invoice Overview
+Verify invoice,Invoice Processing with Reference
+Effectuate payment agreement,Invoicing Plan Settlement
+Carry out invoicing arrangement,Evaluated Receipt Settlement (ERS)

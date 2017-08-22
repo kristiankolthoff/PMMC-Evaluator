@@ -1,0 +1,15 @@
+1Pr_smx-
+1Pr_10om
+Edit Classes,Edit Classes
+Document Processing,Document Processing
+Material BOM Processing,Material BOM Processing
+Classification,Classification
+Integrated Product and Process Data Processing - EWB,Integrated Product and Process Data Processing - EWB
+Production Resource/ Tool Processing,Production Resource/ Tool Processing
+Material Master Processing,Material Master Processing
+Order BOM Processing,Order BOM Processing
+Inspection Plan Processing,Inspection Plan Processing
+Graphical Product Structure Processing,Graphical Product Structure Processing
+Routing Processing,Routing Processing
+Characteristic Processing,Characteristic Processing
+Product description using Configuration Management,Product description using Configuration Management

@@ -1,0 +1,45 @@
+1Un_jh6h
+1Er_hhi9
+Transfer of Depreciation/ Interest (Activity-Independent),Transfer of Depreciation/ Interest (Activity-Independent)
+Planned Price Calculation,Planned Price Calculation
+Process Quantity Planning,Process Quantity Planning
+Order Budgeting,Order Budgeting
+Plan Reconciliation,Plan Reconciliation
+Plan Cost Distribution,Plan Cost Distribution
+Formula Planning,Formula Planning
+Resource Planning,Resource Planning
+Transfer of Scheduled Activity from PP to CO-OM-CCA,Transfer of Scheduled Activity from PP to CO-OM-CCA
+Process Cost Planning,Process Cost Planning
+Budget Planning,Budget Planning
+Secondary Cost Planning (Full Costs),Secondary Cost Planning (Full Costs)
+Overhead Calculation (Business Process),Overhead Calculation (Business Process)
+Plan Indirect Activity Allocation (Indirect Entry),Plan Indirect Activity Allocation (Indirect Entry)
+Plan Cost Assessment,Plan Cost Assessment
+Overall Planning (Order),Overall Planning (Order)
+Transfer of Depreciation/ Interest (Activity-Dependent),Transfer of Depreciation/ Interest (Activity-Dependent)
+Transfer of Scheduled Activity PP - CO-ABC,Transfer of Scheduled Activity PP -> CO-ABC
+Plan Indirect Activity Allocation (Manual Entry),Plan Indirect Activity Allocation (Manual Entry)
+Copy Actual Data to Cost Center Plan,Copy Actual Data to Cost Center Plan
+Primary Cost Planning (Full Costs),Primary Cost Planning (Full Costs)
+Primary Cost Planning (Prop./ Fixed),Primary Cost Planning (Prop./ Fixed)
+Manual Planning of Statistical Key Figures,Manual Planning of Statistical Key Figures
+Template Allocation,Template Allocation
+Redefinition of Plan Version,Redefinition of Plan Version
+Splitting,Splitting
+Secondary Cost Planning (Prop./ Fixed),Secondary Cost Planning (Prop./ Fixed)
+Transfer of Statistical Key Figures from LIS (Plan),Transfer of Statistical Key Figures from LIS (Plan)
+Cost Element Planning (Order),Cost Element Planning (Order)
+Unit Costing (Order),Unit Costing (Order)
+Overhead Calculation [Overhead Order],Overhead Calculation (Overhead Cost Order)
+Overhead Calculation (Cost Center),Overhead Calculation (Cost Center)
+Settlement of Overhead Cost Orders (Planning Data),Settlement of Overhead Cost Orders (Planning Data)
+Periodic Reposting of Plan Data,Periodic Reposting of Plan Data
+Planning Revaluation,Planning Revaluation
+Planned Interest Calculation for Order,Planned Interest Calculation for Order
+Transfer of Personnel Costs,Transfer of Personnel Costs
+Activity Type Planning,Activity Type Planning
+Resource Planning (Order),Resource Planning (Order)
+Copy Plan from Previous Year to Cost Center Planning,Copy Plan from Previous Year to Cost Center Planning
+Definition of Activity Type for Cost Center,Definition of Activity Type for Cost Center
+Cost Element Planning (Order with Integrated Planning),Cost Element Planning (Order with Integrated Planning)
+Imputed Costs - Plan,Cost Accrual - Plan

@@ -1,0 +1,7 @@
+A4
+1Ve_6a59
+Receive request for delivery,Shipment Cost Calculation and Settlement
+internal communication,Shipment Cost Calculation and Settlement
+confirm,Shipment Cost Calculation and Settlement
+shipment,Transportation Planning and Processing
+Preparation  shipment,Transportation Planning and Processing

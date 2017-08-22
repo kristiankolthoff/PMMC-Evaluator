@@ -1,0 +1,12 @@
+1In_awpb
+1Ku_97uj
+Time Sheet Report,Time Sheet Report
+Time Sheet Processing,Time Sheet Processing
+Time Sheet Permit,Time Sheet Permit
+Individual Time Confirmation,Individual Time Confirmation
+Overall Completion Confirmation,Overall Completion Confirmation
+Collective Time Confirmation,Collective Time Confirmation
+Entry of Technical Findings,Entry of Technical Findings
+Measurement Document Processing,Measurement Document Processing
+Measurement Document Archiving,Measurement Document Archiving
+Forwarding of Time Sheet Data to PM,Forwarding of Time Sheet Data to CS

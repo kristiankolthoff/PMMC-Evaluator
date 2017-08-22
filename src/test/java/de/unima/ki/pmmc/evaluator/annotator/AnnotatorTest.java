@@ -114,13 +114,43 @@ public class AnnotatorTest {
 	/**
 	 * Recognize CorrespondenceType.DIFFICULT_VERB_IDENT correspondences
 	 */
-	@Test @Ignore
+	@Test
 	public void annotateCTDVITest() {
 		List<Model> models = new ArrayList<>();
 		Model m1 = new Model();
 		m1.addActivity(new Activity("id1", "Check documents"));
 		Model m2 = new Model();
 		m2.addActivity(new Activity("id2", "Check application complete"));
+		models.add(m1);
+		models.add(m2);
+		Correspondence c = new Correspondence("http#id1", "http#id2");
+		Annotator annotator = new Annotator(models);
+		annotator = new Annotator(models);
+		assertEquals(CorrespondenceType.DIFFICULT_VERB_IDENT, annotator.annotateCorrespondence(c));
+	}
+	
+	@Test
+	public void annotateCTDVI6Test() {
+		List<Model> models = new ArrayList<>();
+		Model m1 = new Model();
+		m1.addActivity(new Activity("id1", "Check documents"));
+		Model m2 = new Model();
+		m2.addActivity(new Activity("id2", "Checking if complete"));
+		models.add(m1);
+		models.add(m2);
+		Correspondence c = new Correspondence("http#id1", "http#id2");
+		Annotator annotator = new Annotator(models);
+		annotator = new Annotator(models);
+		assertEquals(CorrespondenceType.DIFFICULT_VERB_IDENT, annotator.annotateCorrespondence(c));
+	}
+	
+	@Test
+	public void annotateCTDVI7Test() {
+		List<Model> models = new ArrayList<>();
+		Model m1 = new Model();
+		m1.addActivity(new Activity("id1", "Receiving acceptance letter"));
+		Model m2 = new Model();
+		m2.addActivity(new Activity("id2", "Receive Commitment"));
 		models.add(m1);
 		models.add(m2);
 		Correspondence c = new Correspondence("http#id1", "http#id2");
@@ -165,7 +195,7 @@ public class AnnotatorTest {
 		assertEquals(CorrespondenceType.DIFFICULT_VERB_IDENT, annotator.annotateCorrespondence(c));
 	}
 	
-	@Test @Ignore
+	@Test
 	public void annotateCTDVITwoVerbsTest() {
 		List<Model> models = new ArrayList<>();
 		Model m1 = new Model();
@@ -177,7 +207,7 @@ public class AnnotatorTest {
 		Correspondence c = new Correspondence("http#id1", "http#id2");
 		Annotator annotator = new Annotator(models);
 		annotator = new Annotator(models);
-		assertEquals(CorrespondenceType.DIFFICULT_VERB_IDENT, annotator.annotateCorrespondence(c));
+		assertEquals(CorrespondenceType.MISC, annotator.annotateCorrespondence(c));
 	}
 	
 	/**

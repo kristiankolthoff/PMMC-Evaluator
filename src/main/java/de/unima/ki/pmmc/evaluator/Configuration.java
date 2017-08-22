@@ -658,7 +658,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		 * @param parsertype the parser type
 		 * @return this
 		 */
-		public Builder setParser(String parsertype) {
+		public Builder setParser(Parser.Type parsertype) {
 			this.parser = ParserFactory.getParser(parsertype);
 			return this;
 		}

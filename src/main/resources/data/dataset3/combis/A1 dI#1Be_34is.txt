@@ -1,0 +1,11 @@
+A1 dI
+1Be_34is
+Send confirmation of requested arrival + price indication to key-market,Transmission of Purchase Orders
+Send confirmation of requested arrival + price indication to key-market,Release of Purchase Orders
+Send confirmation of requested arrival + price indication to key-market,Transmission of Scheduling Agreements
+Offered ultrasound system in catalogue?,Purchase Order Processing
+Ask key market to revise presented information,Purchase Order Processing
+Presented  info correct?,Purchase Order Processing
+Look up value / conditions in catalogue,Purchase Order Processing
+All required info available?,Purchase Order Processing
+Calculate indication equipment value of offered device,Purchase Order Processing

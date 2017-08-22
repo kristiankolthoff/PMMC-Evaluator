@@ -8,6 +8,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
+import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
@@ -25,6 +26,12 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.FunctionMetric;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesMatcher;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesGS;
+import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesMatcher;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMacro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 
 public class PMMCNewEvaluationBirthDataset {
@@ -64,17 +71,26 @@ public class PMMCNewEvaluationBirthDataset {
 						.addMetric(new FunctionMetric(list -> 
 						{return (double) list.stream()
 								.mapToInt(c -> {return c.getAlignmentCorrect().size();})
-								.max().getAsInt();})))
-				.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
+								.max().getAsInt();})));
+				for(CorrespondenceType type : CorrespondenceType.values()) {
+					builder.addMetricGroup(new MetricGroup(type.getName())
+							.addMetric(new TypeNumCorrespondencesGS(type))
+							.addMetric(new TypeFracCorrespondencesGS(type))
+							.addMetric(new TypeNumCorrespondencesMatcher(type))
+							.addMetric(new TypeNBPrecisionMacro(type))
+							.addMetric(new TypeNBRecallMacro(type))
+							.addMetric(new TypeNBFMeasureMacro(type)));
+				}
+				builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
 				.addMatcherPath(RESULTS_PATH + "/AML-PM/dataset2/")
 				.addMatcherPath(RESULTS_PATH + "/BPLangMatch/dataset2/")
 				.addMatcherPath(RESULTS_PATH + "/KnoMa-Proc/dataset2/")
-//				.setModelsRootPath(MODELS_PATH)
+				.setModelsRootPath(MODELS_PATH)
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputName("birth-old-gs")
 				.setOutputPath(OUTPUT_PATH)
-				.setParser(Parser.TYPE_BPMN)
-				.setCTTagOn(false)
+				.setParser(Parser.Type.PNML_2)
+				.setCTTagOn(true)
 				.setDebugOn(true)
 				.persistToFile(true);
 	}

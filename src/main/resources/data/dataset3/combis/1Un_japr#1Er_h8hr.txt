@@ -1,0 +1,12 @@
+1Un_japr
+1Er_h8hr
+Profit Center Distribution: Plan,Profit Center Distribution: Plan
+Plan Data Transfer to EC-PCA from Profitability Analysis,Plan Data Transfer to EC-PCA from Profitability Analysis
+Profit Center Assessment: Plan,Plan: Profit Center Assessment
+Profit Center Analysis,Profit Center Analysis
+Manual Profit Center Planning,Manual Profit Center Planning
+Copy Actual Costs - Profit Center Planning,Copy Actual Costs -> Profit Center Planning
+Redefinition of Plan Version (Profit Center Planning),Redefinition of Plan Version (Profit Center Planning)
+Excel Upload - Profit Center Planning,Excel Upload -> Profit Center Planning
+Copy Plan from Previous Year - Profit Center Planning,Copy Plan from Previous Year -> Profit Center Planning
+Profit Center Planning Integration,Plan Integration of Profit Centers

@@ -1,577 +1,365 @@
 
 --------Correspondence---------
 misc
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
+http://birthCertificate_p246#t8 : Fill in birth registration form
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
+http://birthCertificate_p246#t22 : Archive documents
+http://birthCertificate_p248#t26 : Send Data
 
 --------Correspondence---------
 misc
-http://Cologne#sid-2A61C308-48B4-4C26-9CB3-D489A0BBC1E3 : Send online protocol
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
+http://birthCertificate_p246#t11 : Search GBA data
+http://birthCertificate_p248#t12 : Sign birth certificate
 
 --------Correspondence---------
 misc
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB : Send acceptance
+http://birthCertificate_p247#t28 : Check validity
+http://birthCertificate_p248#t21 : Finalize message
 
 --------Correspondence---------
 misc
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
+http://birthCertificate_p247#t22 : Archive documents
+http://birthCertificate_p248#t26 : Send Data
 
 --------Correspondence---------
 misc
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
+http://birthCertificate_p247#t21 : Finalize message
+http://birthCertificate_p250#t24 : Return documents
 
 --------Correspondence---------
 misc
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A : Send acceptance
+http://birthCertificate_p247#t23 : Sign certificate
+http://birthCertificate_p250#t26 : Send Data
 
 --------Correspondence---------
 misc
-http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768 : Send documents by post
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
+http://birthCertificate_p248#t9 : Check GBA data
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 misc
-http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45 : Send letter of acceptance
-http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD : Send acceptance
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026 : Send letter of rejection
-http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0 : Send rejection
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
+http://birthCertificate_p31#t6 : Refuse continuation
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
-http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB : Send acceptance
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888 : Send documents by post
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
-http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A : Send acceptance
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27 : Send letter of acceptance
-http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD : Send acceptance
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 misc
-http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42 : Send letter of rejection
-http://Wuerzburg#sid-4905EF0C-869A-4E84-B972-D562472547A0 : Send rejection
+http://birthCertificate_p31#t9 : Check GBA data
+http://birthCertificate_p250#t22 : Archive documents
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3 : Check application complete
-http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A : Checking if complete
+http://birthCertificate_p31#t21 : Finalize message
+http://birthCertificate_p33#t11 : Search GBA data
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF : Fill out application
-form
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
+http://birthCertificate_p31#t37 : Determine GBA municipality
+http://birthCertificate_p34#t2 : Return documents 1
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC : Receive acceptance
-http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3 : Receiving acceptance letter
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p34#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p34#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC : Complete application
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
+http://birthCertificate_p31#t6 : Refuse continuation
+http://birthCertificate_p34#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7 : Compare and send application
+http://birthCertificate_p31#t6 : Refuse continuation
+http://birthCertificate_p34#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF : Add certificate of Bachelor degree
-http://Muenster#sid-F1349441-49AF-4AC2-8A31-EB0BA9BACB9D : upload bachelor's degree / transcript of records / diploma 
-supplement
+http://birthCertificate_p31#t22 : Archive documents
+http://birthCertificate_p34#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282 : Add certificate of German language
-http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0 : Upload language certificate
+http://birthCertificate_p31#t26 : Send Data
+http://birthCertificate_p34#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p34#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111 : Check application in time
-http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8 : Check application in time EU countries
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p34#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111 : Check application in time
-http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465 : Check application in time non-EU countries
+http://birthCertificate_p31#t23 : Sign certificate
+http://birthCertificate_p34#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF : Fill out application
-form
-http://Muenster#sid-E75E22AB-D608-459B-A125-3089B5FC6608 : Print out and sign application form
+http://birthCertificate_p32#t57 : Create certificate of birth
+http://birthCertificate_p246#t12 : Sign birth certificate
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-E8AD3C41-2A2F-47FA-879A-648F728C4D17 : Check if bachelor is sufficient
-http://Potsdam#sid-15689096-B676-4EFE-87E9-AC7E50725AB8 : Check if bachelor equivalent to Uni Potsdam
+http://birthCertificate_p32#t57 : Create certificate of birth
+http://birthCertificate_p247#t21 : Finalize message
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-E8AD3C41-2A2F-47FA-879A-648F728C4D17 : Check if bachelor is sufficient
-http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170 : Check bachelor's degree
+http://birthCertificate_p32#t57 : Create certificate of birth
+http://birthCertificate_p250#t24 : Return documents
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
-http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2 : Send letter of rejection
+http://birthCertificate_p32#t57 : Create certificate of birth
+http://birthCertificate_p33#t17 : Send data
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544 : Send rejection
-http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95 : Send letter of rejection
+http://birthCertificate_p32#t49 : Register nationality of baby
+http://birthCertificate_p33#t15 : Update GBA
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
+http://birthCertificate_p32#t59 : Register baby as german 1
+http://birthCertificate_p33#t15 : Update GBA
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5 : Send acceptance
-http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E : Send letter of acceptance
+http://birthCertificate_p32#t43 : Send PL
+http://birthCertificate_p33#t15 : Update GBA
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF : Fill out application
-form
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p32#t57 : Create certificate of birth
+http://birthCertificate_p33#t28 : Check validity
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF : Fill out application
-form
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
+http://birthCertificate_p32#t57 : Create certificate of birth
+http://birthCertificate_p34#t11 : Search GBA data
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://Wuerzburg#sid-925591B8-59CC-4806-B43B-3B5F10D7794F : Send international application
+http://birthCertificate_p33#t21 : Finalize message
+http://birthCertificate_p246#t17 : Send data
 
 --------Correspondence---------
 misc
-http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90 : Send application
-http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2 : Send german application
+http://birthCertificate_p33#t17 : Send data
+http://birthCertificate_p246#t12 : Sign birth certificate
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A : Checking if complete
-http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF : Check application complete
+http://birthCertificate_p33#t9 : Check GBA data
+http://birthCertificate_p247#t26 : Send Data
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
-http://IIS_Erlangen#sid-5655D4E3-47A7-4059-9E04-F9BFCFE28EAF : Complete application
+http://birthCertificate_p33#t21 : Finalize message
+http://birthCertificate_p247#t24 : Return documents
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3 : Receiving acceptance letter
-http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF : Receive acceptance
+http://birthCertificate_p33#t17 : Send data
+http://birthCertificate_p247#t21 : Finalize message
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-2F047787-FB05-403C-8F37-ED7C914BEBF8 : Receiving the written applications
-http://IIS_Erlangen#sid-A212088C-053D-4D7B-B952-B396934B4817 : Receive application
+http://birthCertificate_p33#t9 : Check GBA data
+http://birthCertificate_p248#t23 : Sign certificate
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A : Checking if complete
-http://Muenster#sid-5DD3A49E-7B3D-47D1-AFA8-0B84AF735F72 : Check application complete
+http://birthCertificate_p33#t21 : Finalize message
+http://birthCertificate_p248#t24 : Return documents
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
-http://Muenster#sid-3680E18B-E26C-4B7E-8462-F4CAD48F4985 : Complete online interview
+http://birthCertificate_p33#t21 : Finalize message
+http://birthCertificate_p248#t17 : Send data
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2 : Print out the online application form (GER)
-http://Muenster#sid-E75E22AB-D608-459B-A125-3089B5FC6608 : Print out and sign application form
+http://birthCertificate_p33#t11 : Search GBA data
+http://birthCertificate_p249#t28 : Check validity
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6 : Print out the online application form (INT)
-http://Muenster#sid-E75E22AB-D608-459B-A125-3089B5FC6608 : Print out and sign application form
+http://birthCertificate_p33#t21 : Finalize message
+http://birthCertificate_p34#t12 : Sign birth certificate
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3 : Receiving acceptance letter
-http://Muenster#sid-182346E3-C3CF-4CF6-B8E6-4D3D4BDA3D1B : Receive acceptance
+http://birthCertificate_p33#t28 : Check validity
+http://birthCertificate_p34#t11 : Search GBA data
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-2F047787-FB05-403C-8F37-ED7C914BEBF8 : Receiving the written applications
-http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D : Receive and sort application
+http://birthCertificate_p33#t12 : Sign birth certificate
+http://birthCertificate_p34#t11 : Search GBA data
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F : Send documents to selection committee
-http://Muenster#sid-04580F97-3E04-4CFC-9904-FF4A851B560C : Send application to selection committee
+http://birthCertificate_p33#t17 : Send data
+http://birthCertificate_p34#t11 : Search GBA data
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874 : Receive application
-http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D : Receive and sort application
+http://birthCertificate_p34#t12 : Sign birth certificate
+http://birthCertificate_p246#t17 : Send data
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-29CFE8F0-3D84-478E-A27A-9FD962B466DB : Update the applicant status
-http://Muenster#sid-6CEC9018-8549-4CC1-A04C-89C55ACCFEF0 : Update status of application
+http://birthCertificate_p34#t6 : Refuse continuation
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A : Checking if complete
-http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9 : Check application complete
+http://birthCertificate_p34#t9 : Check GBA data
+http://birthCertificate_p246#t8 : Fill in birth registration form
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
-http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C : Complete application
+http://birthCertificate_p34#t11 : Search GBA data
+http://birthCertificate_p246#t12 : Sign birth certificate
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3 : Receiving acceptance letter
-http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88 : Receive acceptance
+http://birthCertificate_p34#t12 : Sign birth certificate
+http://birthCertificate_p247#t24 : Return documents
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-2F047787-FB05-403C-8F37-ED7C914BEBF8 : Receiving the written applications
-http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A : Receive application
+http://birthCertificate_p34#t11 : Search GBA data
+http://birthCertificate_p247#t21 : Finalize message
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
-http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2 : Send german application
+http://birthCertificate_p34#t11 : Search GBA data
+http://birthCertificate_p247#t28 : Check validity
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
+http://birthCertificate_p34#t12 : Sign birth certificate
+http://birthCertificate_p248#t24 : Return documents
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5 : Complete and send application 
-form online
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
+http://birthCertificate_p34#t12 : Sign birth certificate
+http://birthCertificate_p248#t17 : Send data
 
 --------Correspondence---------
 misc
-http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6 : Print out the online application form (INT)
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
+http://birthCertificate_p34#t11 : Search GBA data
+http://birthCertificate_p248#t21 : Finalize message
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7 : Compare and send application
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
+http://birthCertificate_p34#t8 : Fill in birth registration form
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-AD174F93-7C65-4F21-8791-2C91779F9457 : Check application in time
-http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465 : Check application in time non-EU countries
+http://birthCertificate_p34#t9 : Check GBA data
+http://birthCertificate_p248#t6 : Refuse continuation
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-AD174F93-7C65-4F21-8791-2C91779F9457 : Check application in time
-http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8 : Check application in time EU countries
+http://birthCertificate_p34#t6 : Refuse continuation
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-9E6AC1EE-583E-4DF0-86A9-2756FA0FE7E2 : Add certificate of German language
-http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0 : Upload language certificate
+http://birthCertificate_p34#t8 : Fill in birth registration form
+http://birthCertificate_p248#t9 : Check GBA data
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-CB26DB0C-6BB2-4959-BA80-63FE44D0FFEC : Add certificate of bachelor degree
-http://Muenster#sid-F1349441-49AF-4AC2-8A31-EB0BA9BACB9D : upload bachelor's degree / transcript of records / diploma 
-supplement
+http://birthCertificate_p34#t11 : Search GBA data
+http://birthCertificate_p249#t28 : Check validity
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-36CD8B1D-483C-4AB0-B548-C8E82A6C993A : Create and add English letter of motivation
-http://Muenster#sid-E82C3C01-40A1-4E7D-B642-E6FFFA9008E8 : Upload letter of motivation
+http://birthCertificate_p34#t6 : Refuse continuation
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-8EBE9433-CCB5-41EF-A5DB-A76BE4A374E7 : Add certificate of English language
-http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0 : Upload language certificate
+http://birthCertificate_p34#t8 : Fill in birth registration form
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-98F36DFD-F030-436E-9C1C-541AB22E5D0E : Invite applicant for appointment
-http://Muenster#sid-C28F8767-5ADE-4467-9F6B-92B0B07939A5 : Invite applicant for interview
+http://birthCertificate_p34#t9 : Check GBA data
+http://birthCertificate_p250#t23 : Sign certificate
 
 --------Correspondence---------
 misc
-http://IIS_Erlangen#sid-A212088C-053D-4D7B-B952-B396934B4817 : Receive application
-http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D : Receive and sort application
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-76FD78B4-8C32-4F37-9D83-35146093AA72 : Add certificates of further language skills
-http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0 : Upload language certificate
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-F7DEFF89-0D0A-4BC8-B024-1361C31D3C9B : Score qualifications
-http://Potsdam#sid-997AFA4D-FFA4-45FD-9E52-B2D45BD24785 : Score qualifications by §7(1)(c) * 15
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-78628E68-D703-4407-AD30-7895057B7981 : Attach additional requirements
-http://Potsdam#sid-913A36A0-2F12-42FE-B791-904D6E57BF46 : Add additional requirements
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-6DFE0930-0501-4B8A-A303-C56864B1E852 : Score bachelors grade
-http://Potsdam#sid-2134BCB7-AA6C-4D36-98BD-96A11AA724F7 : Score bachelors grade by §7(1)(a) * 51
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7 : Compare and send application
-http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7 : Send application
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-36CD8B1D-483C-4AB0-B548-C8E82A6C993A : Create and add English letter of motivation
-http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870 : Create and add letter of motivation
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-F7DEFF89-0D0A-4BC8-B024-1361C31D3C9B : Score qualifications
-http://Potsdam#sid-27F26039-B6AE-470D-A325-A997E655AC70 : Score qualifications by §7(1)(b) * 34
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
-http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2 : Send letter of rejection
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4 : Send rejection
-http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95 : Send letter of rejection
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB : Send acceptance
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB : Send acceptance
-http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E : Send letter of acceptance
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7 : Compare and send application
-http://Wuerzburg#sid-925591B8-59CC-4806-B43B-3B5F10D7794F : Send international application
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7 : Compare and send application
-http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2 : Send german application
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365 : Fill out application form
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
-
---------Correspondence---------
-misc
-http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365 : Fill out application form
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
-
---------Correspondence---------
-misc
-http://Muenster#sid-2EE898C6-0225-4E13-B997-2D8DE74463E8 : Check application in time EU countries
-http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A : Check application in time
-
---------Correspondence---------
-misc
-http://Muenster#sid-AC882752-8183-4B69-A4D5-0F42117E1465 : Check application in time non-EU countries
-http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A : Check application in time
-
---------Correspondence---------
-misc
-http://Muenster#sid-39727343-F5AF-48D3-B725-C0DBDC0EC15D : Receive and sort application
-http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A : Receive application
-
---------Correspondence---------
-misc
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
-http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7 : Send application
-
---------Correspondence---------
-misc
-http://Muenster#sid-F1349441-49AF-4AC2-8A31-EB0BA9BACB9D : upload bachelor's degree / transcript of records / diploma 
-supplement
-http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C : Add certificate of bachelor degree
-
---------Correspondence---------
-misc
-http://Muenster#sid-ADC31BF6-B98E-4ECC-9EED-6E5AEB7A60D0 : Upload language certificate
-http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB : Add certificate of German language
-
---------Correspondence---------
-misc
-http://Muenster#sid-E82C3C01-40A1-4E7D-B642-E6FFFA9008E8 : Upload letter of motivation
-http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870 : Create and add letter of motivation
-
---------Correspondence---------
-misc
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
-http://TU_Munich#sid-B9C01B9A-294C-4E27-A0A8-DB69025E4284 : Send documents by post
-
---------Correspondence---------
-misc
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
-http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2 : Send letter of rejection
-
---------Correspondence---------
-misc
-http://Muenster#sid-13F8AF16-C3E3-42BC-95BB-98450FD7603D : Send rejection
-http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95 : Send letter of rejection
-
---------Correspondence---------
-misc
-http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A : Send acceptance
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
-
---------Correspondence---------
-misc
-http://Muenster#sid-5DBF77E5-6F45-462A-9589-8B8A202D5C1A : Send acceptance
-http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E : Send letter of acceptance
-
---------Correspondence---------
-misc
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
-http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2 : Send german application
-
---------Correspondence---------
-misc
-http://Muenster#sid-4811BF85-FF42-4251-8F8A-7C9A07E6EC55 : Send application form and documents
-http://Wuerzburg#sid-925591B8-59CC-4806-B43B-3B5F10D7794F : Send international application
-
---------Correspondence---------
-misc
-http://Muenster#sid-E75E22AB-D608-459B-A125-3089B5FC6608 : Print out and sign application form
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
-
---------Correspondence---------
-misc
-http://Potsdam#sid-15689096-B676-4EFE-87E9-AC7E50725AB8 : Check if bachelor equivalent to Uni Potsdam
-http://TU_Munich#sid-40C33EDB-612C-481C-926B-D0FFABA5B170 : Check bachelor's degree
-
---------Correspondence---------
-misc
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
-http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2 : Send letter of rejection
-
---------Correspondence---------
-misc
-http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D : Send rejection
-http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95 : Send letter of rejection
-
---------Correspondence---------
-misc
-http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD : Send acceptance
-http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191 : Send letter of acceptance
-
---------Correspondence---------
-misc
-http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD : Send acceptance
-http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E : Send letter of acceptance
-
---------Correspondence---------
-misc
-http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671 : Fill out application form
-http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C : Fill in online form of application
-
---------Correspondence---------
-misc
-http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671 : Fill out application form
-http://Wuerzburg#sid-48539062-6B70-468F-BF19-F74EEE12F0EB : Fill in printed form of application for international students
-
---------Correspondence---------
-misc
-http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7 : Send application
-http://Wuerzburg#sid-925591B8-59CC-4806-B43B-3B5F10D7794F : Send international application
-
---------Correspondence---------
-misc
-http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7 : Send application
-http://Wuerzburg#sid-31ACAFC9-DEA8-4F26-8AC2-16751B0B91A2 : Send german application
+http://birthCertificate_p34#t11 : Search GBA data
+http://birthCertificate_p250#t24 : Return documents

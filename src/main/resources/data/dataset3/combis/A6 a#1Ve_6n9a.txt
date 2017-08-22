@@ -1,0 +1,11 @@
+A6 a
+1Ve_6n9a
+Key-Market will contact and discuss customer wishes,Customer Quotation Processing
+Put order in Planning file (F),Customer Quotation Processing
+Quotation distribution,Customer Quotation Processing
+Discount approval,Customer Quotation Processing
+Info on Prospect,Customer Quotation Processing
+Order in Key-Market ?,Customer Quotation Processing
+Quotation creation,Customer Quotation Processing
+Request for discount?,Customer Quotation Processing
+Put order in Planning file (M),Customer Quotation Processing
