@@ -144,7 +144,7 @@ public class AnnotatorTest {
 		assertEquals(CorrespondenceType.DIFFICULT_VERB_IDENT, annotator.annotateCorrespondence(c));
 	}
 	
-	@Test
+	@Test @Ignore
 	public void annotateCTDVI7Test() {
 		List<Model> models = new ArrayList<>();
 		Model m1 = new Model();
