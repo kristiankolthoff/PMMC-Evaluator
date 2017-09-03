@@ -11,7 +11,6 @@ import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBFMeasureMacro;
@@ -80,8 +79,8 @@ public class PMMCNewEvaluationAssetDataset {
 					.addMetric(new TypeNBRecallMacro(type))
 					.addMetric(new TypeNBFMeasureMacro(type)));
 		}
-		builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
-				.addMatcherPath(RESULTS_PATH + "/AML-PM/dataset3/")
+//		builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
+				builder.addMatcherPath(RESULTS_PATH + "/AML-PM/dataset3/")
 				.addMatcherPath(RESULTS_PATH + "/BPLangMatch/dataset3/")
 				.addMatcherPath(RESULTS_PATH + "/KnoMa-Proc/dataset3/")
 				.setModelsRootPath(MODELS_PATH)

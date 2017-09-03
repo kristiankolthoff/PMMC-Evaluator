@@ -46,6 +46,7 @@
 	<groupId>edu.mit</groupId>
 	<artifactId>jwi</artifactId>
 	<version>2.2.3</version>
+	<scope>compile</scope>
    </dependency>
    <!-- https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
 <dependency>
@@ -59,13 +60,13 @@
     	<artifactId>stanford-corenlp</artifactId>
     	<version>RELEASE</version>
     </dependency>
-   <dependency>
+   <!--<dependency>
     	<groupId>jakarta</groupId>
     	<artifactId>esc</artifactId>
     	<version>1.4.1</version>
     	<scope>system</scope>
     	<systemPath>${basedir}/src/main/resources/libs/ecs-1.4.1.jar</systemPath>
-    </dependency>
+    </dependency>-->
     <dependency>
 	<groupId>org.apache.commons</groupId>
 	<artifactId>commons-csv</artifactId>

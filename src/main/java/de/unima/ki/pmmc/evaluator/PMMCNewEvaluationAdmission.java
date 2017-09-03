@@ -12,7 +12,6 @@ import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
-import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBFMeasureMacro;
@@ -92,8 +91,8 @@ public class PMMCNewEvaluationAdmission {
 							.addMetric(new TypeNBRecallMacro(type))
 							.addMetric(new TypeNBFMeasureMacro(type)));
 				}
-				builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
-				.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
+//				builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
+				builder.addMatcherPath("src/main/resources/data/results/OAEI16/AML/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset1/")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset1/")
 				.setModelsRootPath(MODELS_PATH)
