@@ -56,6 +56,9 @@ public class Configuration implements Iterable<MetricGroup>{
 	private List<Predicate<Correspondence>> filterCorrespondence;
 	private List<Predicate<Alignment>> filterAlignment;
 	private Parser parser;
+	private String pathWordnet;
+	private String pathPosTagger;
+	private String pathMaxentTagger;
 	
 	
 	public Configuration(String name,
@@ -77,7 +80,10 @@ public class Configuration implements Iterable<MetricGroup>{
 			List<Predicate<Report>> filterResult,
 			List<Predicate<Correspondence>> filterCorrespondence, 
 			List<Predicate<Alignment>> filterAlignment,
-			Parser parser) {
+			Parser parser,
+			String pathWordnet,
+			String pathPosTagger,
+			String pathMaxentTagger) {
 		this.evaluationName = name;
 		this.metricGroups = metricGroups;
 		this.persistToFile = persistToFile;
@@ -102,6 +108,9 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.filterCorrespondence = filterCorrespondence;
 		this.filterAlignment = filterAlignment;
 		this.parser = parser;
+		this.setPathMaxentTagger(pathMaxentTagger);
+		this.setPathPosTagger(pathPosTagger);
+		this.setPathWordnet(pathWordnet);
 	}
 
 	public boolean isPersistToFile() {
@@ -330,6 +339,9 @@ public class Configuration implements Iterable<MetricGroup>{
 		private List<Predicate<Correspondence>> filterCorrespondence;
 		private List<Predicate<Alignment>> filterAlignment;
 		private Parser parser;
+		private String pathWordnet;
+		private String pathPosTagger;
+		private String pathMaxentTagger;
 		
 		public Builder() {
 			this.metricGroups = new ArrayList<>();
@@ -710,7 +722,37 @@ public class Configuration implements Iterable<MetricGroup>{
 					filterResult, 
 					filterCorrespondence, 
 					filterAlignment, 
-					parser);
+					parser,
+					pathWordnet,
+					pathPosTagger,
+					pathMaxentTagger);
+		}
+
+		public String getPathWordnet() {
+			return pathWordnet;
+		}
+
+		public Builder setPathWordnet(String pathWordnet) {
+			this.pathWordnet = pathWordnet;
+			return this;
+		}
+
+		public String getPathPosTagger() {
+			return pathPosTagger;
+		}
+
+		public Builder setPathPosTagger(String pathPosTagger) {
+			this.pathPosTagger = pathPosTagger;
+			return this;
+		}
+
+		public String getPathMaxentTagger() {
+			return pathMaxentTagger;
+		}
+
+		public Builder setPathMaxentTagger(String pathMaxentTagger) {
+			this.pathMaxentTagger = pathMaxentTagger;
+			return this;
 		}
 	}
 	
@@ -732,6 +774,30 @@ public class Configuration implements Iterable<MetricGroup>{
 		}
 		@SuppressWarnings("unused")
 		Evaluator evaluator = new Evaluator(builder.build());
+	}
+
+	public String getPathWordnet() {
+		return pathWordnet;
+	}
+
+	public void setPathWordnet(String pathWordnet) {
+		this.pathWordnet = pathWordnet;
+	}
+
+	public String getPathPosTagger() {
+		return pathPosTagger;
+	}
+
+	public void setPathPosTagger(String pathPosTagger) {
+		this.pathPosTagger = pathPosTagger;
+	}
+
+	public String getPathMaxentTagger() {
+		return pathMaxentTagger;
+	}
+
+	public void setPathMaxentTagger(String pathMaxentTagger) {
+		this.pathMaxentTagger = pathMaxentTagger;
 	}
 
 }

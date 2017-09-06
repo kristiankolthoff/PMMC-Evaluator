@@ -37,6 +37,7 @@ import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMacro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMacro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
+import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 
 public class PMMCNewEvaluationAdmission {
 
@@ -102,6 +103,8 @@ public class PMMCNewEvaluationAdmission {
 				.setParser(Parser.Type.BPMN)
 				.setCTTagOn(true)
 				.setDebugOn(true)
+				.setPathMaxentTagger(NLPHelper.TAGGER_BIDIR_DIRECTORY)
+				.setPathWordnet(NLPHelper.WORDNET_DIRECTORY)
 				.persistToFile(true);
 	}
 	

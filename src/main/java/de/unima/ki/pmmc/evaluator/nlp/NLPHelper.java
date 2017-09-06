@@ -47,13 +47,11 @@ public class NLPHelper {
 	public static final String POS_TAGGER_PERCEPTRON = "src/main/resources/libs/tagger/en-pos-perceptron.bin";
 	private static final String[] STOP_WORDS;
 	
+	private static String pathWordnet;
+	private static String pathPosTagger;
+	private static String pathMaxentTagger;
+	
 	static {
-		dict = new RAMDictionary(new File(WORDNET_DIRECTORY) , ILoadPolicy.NO_LOAD); 
-		try {
-			dict.open();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		STOP_WORDS = new String[]{
 				"a","able","about","across","after","all","almost","also","am","among","an","and","any","are","as","at","be","because","been","but","by","can","cannot",
 				"could","dear","did","do","does","either","else","ever","every","for","from","get","got","had","has","have","he","her","hers","him","his","how","however",
@@ -76,7 +74,7 @@ public class NLPHelper {
 		Set<POS> pos = new HashSet<POS>();
 		POS[] all = new POS[]{POS.NOUN, POS.VERB, POS.ADVERB, POS.ADJECTIVE};
 		for (POS p : all) {
-			indexWord = dict.getIndexWord(w, p);
+			indexWord = getIRAMDictionary().getIndexWord(w, p);
 			synsets = getSynsetsByIndexWord(indexWord);
 			if (synsets.size() > 0) {
 				pos.add(p);
@@ -86,19 +84,19 @@ public class NLPHelper {
 		if (w.endsWith("ing") && !pos.contains(POS.VERB)) {
 			String w1 = w.substring(0, w.length() - 3);
 			String w2 = w1 + "e";
-			indexWord = dict.getIndexWord(w1, POS.VERB);
+			indexWord = getIRAMDictionary().getIndexWord(w1, POS.VERB);
 			synsets = getSynsetsByIndexWord(indexWord);
 			if (synsets.size() > 0) {
 				pos.add(POS.VERB);
 			}
-			indexWord = dict.getIndexWord(w2, POS.VERB);
+			indexWord = getIRAMDictionary().getIndexWord(w2, POS.VERB);
 			synsets = getSynsetsByIndexWord(indexWord);
 			if (synsets.size() > 0) {
 				pos.add(POS.VERB);
 			}
 			if (w1.endsWith("nn") || w1.endsWith("tt")) {
 				String w3 = w1.substring(0, w1.length() - 1);
-				indexWord = dict.getIndexWord(w3, POS.VERB);
+				indexWord = getIRAMDictionary().getIndexWord(w3, POS.VERB);
 				synsets = getSynsetsByIndexWord(indexWord);
 				if (synsets.size() > 0) {
 					pos.add(POS.VERB);
@@ -108,7 +106,7 @@ public class NLPHelper {
 		// do some basic stemming for plural nouns
 		if (w.endsWith("s") && !pos.contains(POS.NOUN)) {
 			String w1 = w.substring(0, w.length() - 1);
-			indexWord = dict.getIndexWord(w1, POS.NOUN);
+			indexWord = getIRAMDictionary().getIndexWord(w1, POS.NOUN);
 			synsets = getSynsetsByIndexWord(indexWord);
 			if (synsets.size() > 0) {
 				pos.add(POS.NOUN);
@@ -137,7 +135,7 @@ public class NLPHelper {
 			return w;
 		}
 		if (p == POS.NOUN) {
-			indexWord = dict.getIndexWord(w, POS.NOUN);
+			indexWord = getIRAMDictionary().getIndexWord(w, POS.NOUN);
 			synsets = getSynsetsByIndexWord(indexWord);
 			if (synsets.size() == 0 && w.endsWith("s")) {
 				return w.substring(0, w.length()-1);
@@ -147,7 +145,7 @@ public class NLPHelper {
 			}
 		}
 		if (p == POS.VERB) {
-			indexWord = dict.getIndexWord(w, POS.VERB);
+			indexWord = getIRAMDictionary().getIndexWord(w, POS.VERB);
 			synsets = getSynsetsByIndexWord(indexWord);
 			if (synsets.size() > 0) {
 				return w;
@@ -155,10 +153,10 @@ public class NLPHelper {
 			if (w.endsWith("ing")) {
 				String w1 = w.substring(0, w.length() - 3);
 				String w2 = w1 + "e";
-				indexWord = dict.getIndexWord(w1, POS.VERB);
+				indexWord = getIRAMDictionary().getIndexWord(w1, POS.VERB);
 				synsets = getSynsetsByIndexWord(indexWord);
 				if (synsets.size() > 0) return w1;
-				indexWord = dict.getIndexWord(w2, POS.VERB);
+				indexWord = getIRAMDictionary().getIndexWord(w2, POS.VERB);
 				synsets = getSynsetsByIndexWord(indexWord);		
 				if (synsets.size() > 0) return w1;
 				
@@ -177,7 +175,7 @@ public class NLPHelper {
 	
 	public static void showSenses(String w, POS p) {
 
-		IIndexWord indexWord = dict.getIndexWord(w, p);
+		IIndexWord indexWord = getIRAMDictionary().getIndexWord(w, p);
 		Set<ISynset> synsets = getSynsetsByIndexWord(indexWord);
 		for (ISynset synset : synsets) {
 			System.out.println(synset);
@@ -190,7 +188,7 @@ public class NLPHelper {
 		if (indexWord != null && indexWord.getWordIDs() != null) {
 			for (IWordID wordId : indexWord.getWordIDs()) {
 				ISynsetID synsetid = wordId.getSynsetID();
-				ISynset synset = dict.getSynset(synsetid);
+				ISynset synset = getIRAMDictionary().getSynset(synsetid);
 				synsets.add(synset);
 			}
 		}
@@ -272,12 +270,12 @@ public class NLPHelper {
 	}
 	
 	public static List<String> getWordStem(String word) {
-		WordnetStemmer ws = new WordnetStemmer(dict);
+		WordnetStemmer ws = new WordnetStemmer(getIRAMDictionary());
 		return ws.findStems(word, null);
 	}
 	
 	public static List<String> getWordStemWithPOS(String word) {
-		WordnetStemmer ws = new WordnetStemmer(dict);
+		WordnetStemmer ws = new WordnetStemmer(getIRAMDictionary());
 		Set<POS> pos = getPOS(word);
 		for(POS p : pos) {
 			if(p == POS.VERB) {
@@ -292,7 +290,7 @@ public class NLPHelper {
 	}
 	
 	public static List<String> getWordStem(String word, POS pos) {
-		WordnetStemmer ws = new WordnetStemmer(dict);
+		WordnetStemmer ws = new WordnetStemmer(getIRAMDictionary());
 		return ws.findStems(word, pos);
 	}
 	
@@ -347,9 +345,23 @@ public class NLPHelper {
 	
 	public static MaxentTagger getMaxentTagger() {
 		if(tagger == null) {
-			tagger = new MaxentTagger(TAGGER_BIDIR_DIRECTORY);
+			pathMaxentTagger = (pathMaxentTagger != null) ? pathMaxentTagger : TAGGER_BIDIR_DIRECTORY;
+			tagger = new MaxentTagger(pathMaxentTagger);
 		}
 		return tagger;
+	}
+	
+	public static IRAMDictionary getIRAMDictionary() {
+		if(dict == null) {
+			pathWordnet = (pathWordnet != null) ? pathWordnet : WORDNET_DIRECTORY;
+			dict = new RAMDictionary(new File(pathWordnet) , ILoadPolicy.NO_LOAD); 
+			try {
+				dict.open();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return dict;
 	}
 	
 	public static POSTaggerME getPOSTaggerME() {
@@ -401,6 +413,30 @@ public class NLPHelper {
 			.filter(token -> {return !isStopword(token);})
 			.reduce((first, second) -> {return first + " " + second;})
 			.get();
+	}
+
+	public static String getPathWordnet() {
+		return pathWordnet;
+	}
+
+	public static void setPathWordnet(String pathWordnet) {
+		NLPHelper.pathWordnet = pathWordnet;
+	}
+
+	public static String getPathPosTagger() {
+		return pathPosTagger;
+	}
+
+	public static void setPathPosTagger(String pathPosTagger) {
+		NLPHelper.pathPosTagger = pathPosTagger;
+	}
+
+	public static String getPathMaxentTagger() {
+		return pathMaxentTagger;
+	}
+
+	public static void setPathMaxentTagger(String pathMaxentTagger) {
+		NLPHelper.pathMaxentTagger = pathMaxentTagger;
 	}
 	
 }

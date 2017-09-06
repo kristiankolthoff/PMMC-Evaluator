@@ -37,6 +37,7 @@ import de.unima.ki.pmmc.evaluator.handler.ReportHandler;
 import de.unima.ki.pmmc.evaluator.loader.Loader;
 import de.unima.ki.pmmc.evaluator.model.Model;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
+import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 import de.unima.ki.pmmc.evaluator.validation.SizeValidator;
 import de.unima.ki.pmmc.evaluator.validation.Validator;
 
@@ -139,6 +140,9 @@ public class Evaluator {
 		this.tagCTOn = configuration.isCtTagOn();
 		this.thresholds = configuration.getThresholds();
 		this.parser = configuration.getParser();
+		NLPHelper.setPathMaxentTagger(configuration.getPathMaxentTagger());
+		NLPHelper.setPathPosTagger(configuration.getPathPosTagger());
+		NLPHelper.setPathWordnet(configuration.getPathWordnet());
 	}
 	
 	

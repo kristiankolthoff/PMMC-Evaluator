@@ -3,6 +3,7 @@ package de.unima.ki.pmmc.evaluator.nlp;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +15,7 @@ import org.junit.Test;
 public class NLPHelperTest {
 
 	@Test
-	public void getPOSTest() {
+	public void getPOSTest() throws IOException {
 		assertEquals("noun",NLPHelper.getPOS("documents").iterator().next().toString());
 	}
 	
@@ -33,7 +34,7 @@ public class NLPHelperTest {
 	}
 	
 	@Test
-	public void getWordStemsSendingTest() {
+	public void getWordStemsSendingTest() throws IOException {
 		List<String> stems = NLPHelper.getStemmedTokens("sending bachelors documents to universities", false);
 		assertEquals("send", stems.get(0));
 		assertEquals("bachelor", stems.get(1));
@@ -43,7 +44,7 @@ public class NLPHelperTest {
 	
 	
 	@Test
-	public void getWordStemsWaitingTest() {
+	public void getWordStemsWaitingTest() throws IOException {
 		List<String> stems = NLPHelper.getStemmedTokens("waiting for certificates", false);
 		assertEquals("wait", stems.get(0));
 		assertEquals("certificate", stems.get(2));
@@ -60,7 +61,7 @@ public class NLPHelperTest {
 //	}
 	
 	@Test
-	public void getStemmedSentenceTest() {
+	public void getStemmedSentenceTest() throws IOException {
 		String stemmed = NLPHelper.getStemmedString("sending bachelors documents to universities", false);
 		assertEquals("send bachelor document to university", stemmed);
 	}
@@ -101,7 +102,7 @@ public class NLPHelperTest {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		String x = "run";
 		String x1 = x.substring(0, x.length() - 1);
 		System.out.println(x1);
