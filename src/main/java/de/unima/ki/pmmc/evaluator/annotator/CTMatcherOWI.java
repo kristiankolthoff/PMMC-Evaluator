@@ -5,18 +5,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.ling.TaggedWord;
-import javafx.util.Pair;
 
 public class CTMatcherOWI implements CTMatcher{
 
 	private static final CorrespondenceType TYPE = CorrespondenceType.ONE_WORD_IDENT;
 	private static final boolean USE_POS = true;
 	
-	//TODO refactor pair
 	@Override
 	public CorrespondenceType match(String label1, String label2) {
 		label1 = NLPHelper.getSanitizeLabel2(label1);
@@ -33,7 +33,7 @@ public class CTMatcherOWI implements CTMatcher{
 		for(TaggedWord w1 : words1) {
 			for(TaggedWord w2 : words2) {
 				if(w1.value().equals(w2.value())) {
-					sameWords.add(new Pair<TaggedWord, TaggedWord>(w1, w2));
+					sameWords.add(Pair.of(w1, w2));
 				}
 			}
 		}

@@ -3,10 +3,11 @@ package de.unima.ki.pmmc.evaluator.annotator;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 import edu.stanford.nlp.ling.TaggedWord;
-import javafx.util.Pair;
 
 public class CTMatcherSubNoun implements CTMatcher{
 
@@ -29,7 +30,7 @@ public class CTMatcherSubNoun implements CTMatcher{
 		for(TaggedWord w1 : words1) {
 			for(TaggedWord w2 : words2) {
 				if(w1.value().equals(w2.value())) {
-					sameWords.add(new Pair<TaggedWord, TaggedWord>(w1, w2));
+					sameWords.add(Pair.of(w1, w2));
 				}
 			}
 		}
