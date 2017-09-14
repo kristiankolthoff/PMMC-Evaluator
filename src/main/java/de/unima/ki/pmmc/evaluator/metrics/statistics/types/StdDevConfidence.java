@@ -1,6 +1,7 @@
 package de.unima.ki.pmmc.evaluator.metrics.statistics.types;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
@@ -18,11 +19,11 @@ public class StdDevConfidence implements Metric {
 	@Override
 	public double compute(List<Characteristic> characteristics) {
 		double mean = new MeanConfidence(types).compute(characteristics);
-		double sqsum =  characteristics.stream().
+		OptionalDouble sqsum =  characteristics.stream().
 				flatMap(c -> {return c.getAlignmentMapping(types).getCorrespondences().stream();}).
 				mapToDouble(corres -> {return Math.pow(corres.getConfidence() - mean, 2);}).
-				average().getAsDouble();
-		return Math.sqrt(sqsum);
+				average();
+		return sqsum.isPresent() ? Math.sqrt(sqsum.getAsDouble()) : 0.0;
 	}
 
 	@Override

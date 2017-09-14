@@ -1,6 +1,7 @@
 package de.unima.ki.pmmc.evaluator.metrics.statistics.types;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
@@ -17,9 +18,10 @@ public class MeanSize implements Metric {
 
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return characteristics.stream()
+		OptionalDouble result = characteristics.stream()
 				.mapToInt(c -> {return c.getAlignmentMapping(types).size();})
-				.average().getAsDouble();
+				.average();
+		return result.isPresent() ? result.getAsDouble() : 0.0;
 	}
 
 	@Override

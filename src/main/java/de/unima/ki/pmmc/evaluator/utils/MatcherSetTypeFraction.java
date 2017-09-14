@@ -132,9 +132,9 @@ public class MatcherSetTypeFraction {
 	}
 	
 	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
-		MatcherSetTypeFraction fraction = new MatcherSetTypeFraction(ParserFactory.getParser(Parser.Type.BPMN));
-		List<Solution> solutions = fraction.loadSolutionsAdmission();
-		List<Model> models = fraction.loadModels("src/main/resources/data/dataset1/models/");
-		fraction.computeFraction(2, solutions, models);
+		MatcherSetTypeFraction fraction = new MatcherSetTypeFraction(ParserFactory.getParser(Parser.Type.PNML_2));
+		List<Solution> solutions = fraction.loadSolutionsBirthCertificate();
+		List<Model> models = fraction.loadModels("src/main/resources/data/dataset2/models/");
+		fraction.computeFraction(3, solutions, models);
 	}
 }
