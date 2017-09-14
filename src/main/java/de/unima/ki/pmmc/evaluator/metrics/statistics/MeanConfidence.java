@@ -1,6 +1,7 @@
 package de.unima.ki.pmmc.evaluator.metrics.statistics;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
@@ -9,9 +10,10 @@ public class MeanConfidence implements Metric {
 
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return characteristics.stream().
+		OptionalDouble result = characteristics.stream().
 				flatMap(c -> {return c.getAlignmentMapping().getCorrespondences().stream();}).
-				mapToDouble(corres -> {return corres.getConfidence();}).average().getAsDouble();
+				mapToDouble(corres -> {return corres.getConfidence();}).average();
+		return result.isPresent() ? result.getAsDouble() : 0.0;
 	}
 
 	@Override
