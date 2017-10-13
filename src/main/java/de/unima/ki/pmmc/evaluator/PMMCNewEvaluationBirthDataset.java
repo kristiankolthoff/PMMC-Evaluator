@@ -11,6 +11,7 @@ import de.unima.ki.pmmc.evaluator.alignment.AlignmentReaderXml;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
+import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBFMeasureMacro;
@@ -80,11 +81,15 @@ public class PMMCNewEvaluationBirthDataset {
 							.addMetric(new TypeNBRecallMacro(type))
 							.addMetric(new TypeNBFMeasureMacro(type)));
 				}
-//				builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
-				builder.addMatcherPath(RESULTS_PATH + "/AML-PM/dataset2/")
-				.addMatcherPath(RESULTS_PATH + "/BPLangMatch/dataset2/")
-				.addMatcherPath(RESULTS_PATH + "/KnoMa-Proc/dataset2/")
+				builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/AML/")
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/I-Match")
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/LogMap")
 				.setModelsRootPath(MODELS_PATH)
+				.addThreshold(Evaluator.THRESHOLD_ZERO)
+				.addThreshold(Evaluator.THRESHOLD_LOW)
+				.addThreshold(Evaluator.THRESHOLD_MEDIUM)
+				.addThreshold(Evaluator.THRESHOLD_HIGH)
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputName("birth-old-gs")
 				.setOutputPath(OUTPUT_PATH)
@@ -100,11 +105,12 @@ public class PMMCNewEvaluationBirthDataset {
 	}
 	
 	public void oldGoldstandardExperiment() {
-		builder.addGoldstandardGroup("birth", GOLDSTANDARD_NB_PATH);
+		builder.addGoldstandardGroup("birth-non-binary", GOLDSTANDARD_NB_PATH)
+			   .addGoldstandardGroup("birth-binary", GOLDSTANDARD_PATH);
 		Evaluator evaluator = new Evaluator(builder.build());
 		try {
-			@SuppressWarnings("unused")
 			Evaluation evaluation = evaluator.run();
+			System.out.println(evaluation.getReports().size());
 		} catch (CorrespondenceException | ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
