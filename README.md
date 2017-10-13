@@ -1,10 +1,24 @@
 # PMMC-Evaluator
 This project provides an API for evaluating process model matchers with a variety of different metrics
-and is used to generate the results for the Process Model Matching Contest (PMMC). An evaluation experiment
-is easily setup by using the Builder pattern to increasingly build up an Evaluation instance. This Evaluation
-instance forms the basis for an experiment.
+and is used to generate the results for the official Process Model Matching Contest (PMMC). An evaluation experiment
+is easily setup by using the builder pattern to increasingly build up a configuration for an evaluation. This Evaluation
+instance forms the basis for any experiment.
 
-#Example
+# Example
+
+For exploring the features and capabilities of the library, we use a concise example in the following. Assume that we have three matcher results for a given process matching problem. In addition, we have three goldstandards which form two goldstandard groups: GS1 and GS2 should form one group and the metric results should be averaged over both goldstandards, and finally GS3 forms an individual group. Given a single matcher, we want to compute the metric results for each goldstandard group individually. Note that we also want to apply different thresholds to the goldstandard groups and generate metric results for each thresholded goldstandard group. For the given evaluation, we use two thresholds t1 and t2. The following figure illustrates all components we described previously. 
+
+![alt tag](https://raw.githubusercontent.com/kristiankolthoff/PMMC-Evaluator/master/src/main/resources/images/overview.png)
+
+To start with, first we create a `Configuration` which can be used to specify e.g. the metrics that should be used and allows you to group the individual metrics.
+
+```java
+Configuration.Builder builder = new Configuration.Builder().
+			addMetricGroup(new MetricGroup("Precision", "prec-info")
+					.addMetric(new NBPrecisionMicro())
+					.addMetric(new NBPrecisionMacro())
+					.addMetric(new NBPrecisionStdDev()))
+```
 
 To start with, create a Evaluator Builder and add the
 path to the RDF files of the goldstandard. Then add the 
@@ -26,6 +40,8 @@ If you want to evaluate multiple matcher outputs at once,
 Evaluator comes with matcher output search. That is, only
 specify the root path of the outputs and Evaluator will
 automatically detect the multiple outputs and load them.
+
+
 
 ```java
 Evaluator evaluator = new Evaluator.Builder().
