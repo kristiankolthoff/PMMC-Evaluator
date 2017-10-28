@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-9E6AC1EE-583E-4DF0-86A9-2756FA0FE7E2'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-DBE82358-A50E-45CA-AB6B-F0EF44F8B668'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-ECB2E4CE-141A-4D17-A9AF-35EC03B08FB9'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-9C365BD2-58D0-443D-9FD4-AC287BF377F6'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-E80393E3-80C1-4412-9317-635EBAC3AE26'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-4C4F7701-49EF-41A8-946A-88EF52B17794'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-053A0B4D-160A-4953-B0D9-298A22FAD4CE'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-9966DEA0-43B5-40A7-926C-5EA6653A5516'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-AD174F93-7C65-4F21-8791-2C91779F9457'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-5655D4E3-47A7-4059-9E04-F9BFCFE28EAF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-CB26DB0C-6BB2-4959-BA80-63FE44D0FFEC'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

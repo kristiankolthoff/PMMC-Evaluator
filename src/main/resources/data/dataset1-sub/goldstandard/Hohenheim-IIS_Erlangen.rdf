@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-2494BD3D-C2F2-4D7B-AF79-05A20B0F8365'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-F7DEFF89-0D0A-4BC8-B024-1361C31D3C9B'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-BD8FD14C-DB01-4B07-AD11-AF2417ACE06C'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-6DFE0930-0501-4B8A-A303-C56864B1E852'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-7FE86054-7714-47D1-B91A-7215AC3688B0'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-11376430-8BD2-40A7-82AB-FD1004325874'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-A212088C-053D-4D7B-B952-B396934B4817'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-BF91EE3E-9FA5-4B2D-A047-0C6E672FE0E5'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-127FF88D-82B1-497C-810F-A233C9815279'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-E326A826-24F7-4033-96F3-C5842831A3D7'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-16C5EDE2-242D-446A-B150-5E1A5D3F6ED2'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-ECB2E4CE-141A-4D17-A9AF-35EC03B08FB9'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-9966DEA0-43B5-40A7-926C-5EA6653A5516'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Hohenheim#sid-B1EBF238-7E8F-4B1D-A4A8-4D43C1982F64'/>
+      <entity2 rdf:resource='http://IIS_Erlangen#sid-52FC6F9A-BE98-410C-AB76-1D1C4D44EFAF'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

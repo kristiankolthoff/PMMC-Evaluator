@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026'/>
+      <entity2 rdf:resource='http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C'/>
+      <entity2 rdf:resource='http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554'/>
+      <entity2 rdf:resource='http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45'/>
+      <entity2 rdf:resource='http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment'
+	 xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	 alignmentSource='AgreementMakerLight'>
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>??</type>
+	<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+	<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+	<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+	<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+			<entity2 rdf:resource="http://TU_Munich#sid-BB1C4222-40C6-4013-A9C7-11BD25E18C16"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6518</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+			<entity2 rdf:resource="http://TU_Munich#sid-701A0B1D-BFF0-482A-A658-A6713BC21F13"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6518</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+			<entity2 rdf:resource="http://TU_Munich#sid-A8E1C7F2-D9A4-4669-9A5E-A39015D04BE2"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6197</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+			<entity2 rdf:resource="http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6197</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+</Alignment>
+</rdf:RDF>

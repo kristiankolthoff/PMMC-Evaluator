@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+	<Alignment>
+		<xml>yes</xml>
+		<level>0</level>
+		<type>**</type>
+		<onto1>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto1>
+		<onto2>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto2>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-701A0B1D-BFF0-482A-A658-A6713BC21F13"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-BB1C4222-40C6-4013-A9C7-11BD25E18C16"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-A8E1C7F2-D9A4-4669-9A5E-A39015D04BE2"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-DFAB4855-32CC-4502-805E-32558E512ADD"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-465F693F-A9A4-43B7-86FB-B6F16EAD8DE7"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+	</Alignment>
+</rdf:RDF>

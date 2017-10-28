@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+	<Alignment>
+		<xml>yes</xml>
+		<level>0</level>
+		<type>**</type>
+		<onto1>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto1>
+		<onto2>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto2>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Cologne#sid-885F9233-8A3A-470C-90D9-FA7F483D69CA"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Cologne#sid-4C4748D1-DBC6-4155-91C8-F71F3796A768"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-127FF88D-82B1-497C-810F-A233C9815279"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+	</Alignment>
+</rdf:RDF>

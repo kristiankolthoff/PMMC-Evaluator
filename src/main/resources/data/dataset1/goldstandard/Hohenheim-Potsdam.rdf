@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+	<Alignment>
+		<xml>yes</xml>
+		<level>0</level>
+		<type>**</type>
+		<onto1>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto1>
+		<onto2>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto2>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Hohenheim#sid-2F047787-FB05-403C-8F37-ED7C914BEBF8"/>
+				<entity2 rdf:resource="http://Potsdam#sid-000A0B1A-81B1-47A9-AA69-7A50FC11468A"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A"/>
+				<entity2 rdf:resource="http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+				<entity2 rdf:resource="http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+				<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+				<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://Hohenheim#sid-16C5EDE2-242D-446A-B150-5E1A5D3F6ED2"/>
+				<entity2 rdf:resource="http://Potsdam#sid-8331F5EE-D58A-48EC-BC26-C10543262F66"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+	</Alignment>
+</rdf:RDF>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3"/>
+		<measure rdf:datatype="xsd:float">0.83</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C8972681-3E1C-408F-8595-59226D48CF52"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0B43A1DC-9CD7-4082-82F3-B012CAF55B53"/>
+		<measure rdf:datatype="xsd:float">0.79</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<measure rdf:datatype="xsd:float">0.83</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<measure rdf:datatype="xsd:float">0.83</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-65B886A3-3075-4605-961B-5C2FB73ED1B3"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC"/>
+		<entity2 rdf:resource="http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5"/>
+		<measure rdf:datatype="xsd:float">0.83</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+</Alignment>
+</rdf:RDF>

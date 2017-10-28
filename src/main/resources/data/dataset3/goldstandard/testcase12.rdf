@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11520"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10274"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11522"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10270"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11528"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10267"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11523"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10268"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11517"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10272"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11524"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10264"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11527"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10283"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11519"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10276"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11521"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10282"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11530"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10273"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11518"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10284"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11529"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10277"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+  <map>
+    <Cell>
+      <entity1 rdf:resource="http://sap/testcase12/source/11526"/>
+      <entity2 rdf:resource="http://sap/testcase12/target/10281"/>
+      <relation>=</relation>
+      <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+    </Cell>
+  </map>
+
+</Alignment>
+</rdf:RDF>

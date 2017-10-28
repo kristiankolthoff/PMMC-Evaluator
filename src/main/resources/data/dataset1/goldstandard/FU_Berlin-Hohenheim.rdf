@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+	<Alignment>
+		<xml>yes</xml>
+		<level>0</level>
+		<type>**</type>
+		<onto1>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto1>
+		<onto2>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto2>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-127FF88D-82B1-497C-810F-A233C9815279"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://FU_Berlin#sid-DBE82358-A50E-45CA-AB6B-F0EF44F8B668"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-16C5EDE2-242D-446A-B150-5E1A5D3F6ED2"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC"/>
+				<entity2 rdf:resource="http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+	</Alignment>
+</rdf:RDF>

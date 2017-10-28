@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90'/>
+      <entity2 rdf:resource='http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC'/>
+      <entity2 rdf:resource='http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-DBE82358-A50E-45CA-AB6B-F0EF44F8B668'/>
+      <entity2 rdf:resource='http://Potsdam#sid-8331F5EE-D58A-48EC-BC26-C10543262F66'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-C8972681-3E1C-408F-8595-59226D48CF52'/>
+      <entity2 rdf:resource='http://Potsdam#sid-CBF7C869-D493-4C33-95CC-B6E0DCC0C95B'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF'/>
+      <entity2 rdf:resource='http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC'/>
+      <entity2 rdf:resource='http://Potsdam#sid-16CD6E68-2B7E-4A56-B195-076C7072930A'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5'/>
+      <entity2 rdf:resource='http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-D870966A-1714-46FD-A32E-DE8D32F6F111'/>
+      <entity2 rdf:resource='http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E'/>
+      <entity2 rdf:resource='http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC'/>
+      <entity2 rdf:resource='http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF'/>
+      <entity2 rdf:resource='http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-234E99B4-0E97-4770-B2CF-AD0DACDF6888'/>
+      <entity2 rdf:resource='http://Potsdam#sid-1181CC8B-F6CE-4E13-A25C-93BDF75B71B7'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-7E31973F-0987-4E8B-B586-05886C31EBD7'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-27F26039-B6AE-470D-A325-A997E655AC70'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-997AFA4D-FFA4-45FD-9E52-B2D45BD24785'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-913A36A0-2F12-42FE-B791-904D6E57BF46'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-2134BCB7-AA6C-4D36-98BD-96A11AA724F7'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D257B8C8-40C7-45B7-81BC-074AA5772C45'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-EE37906A-5B71-4916-AE86-E4CE3BD97C11'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-CBF7C869-D493-4C33-95CC-B6E0DCC0C95B'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6A55CE80-9951-465C-B375-41109E798BF7'/>
+      <entity2 rdf:resource='http://Potsdam#sid-B969BD21-9ED6-4153-9A4A-16D3FF6EB8E6'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-445A78A6-1CA7-40BF-B7BF-B8CCCAAEF703'/>
+      <entity2 rdf:resource='http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-F856F1D3-207E-406C-A104-712444AEBD27'/>
+      <entity2 rdf:resource='http://Potsdam#sid-17FDBB39-FBFF-46F5-A2AE-DAEC97FF32AD'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-7A2F2AA8-E50F-40F2-B7ED-CDEDB810D97C'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-F0B6060E-1460-4CFF-8D94-1181081F4671'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-AFD38E5A-3438-44ED-87A9-63EAE7A744DD'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-9460F7EB-5D0E-4C9A-933C-91EAEDFF6B1F'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D7986EB7-2220-4C30-A486-42454F049BCB'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-8DA2CA7E-99ED-4CF8-955B-FA96DD526870'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D3AE1325-5912-4B94-9B35-72D7EBE6BE16'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-6952982C-0D18-4456-93A2-B60B5B3BA047'/>
+      <entity2 rdf:resource='http://Potsdam#sid-FB567539-2B9F-4B9C-A2A8-4C8A9097CE89'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20'/>
+      <entity2 rdf:resource='http://Potsdam#sid-5D9439A1-1455-4570-A9BE-34EFA757CA6A'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-5108D3F6-5D84-4ECB-B826-1A54D3D17B20'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D762B700-0BF5-4E53-95E1-C1150CFB8FB9'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-02B39B7C-7C88-4BCC-AD34-FEED3A2D9E42'/>
+      <entity2 rdf:resource='http://Potsdam#sid-D6F6FE73-9224-4FA6-9826-C13A0C20FA8D'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://Frankfurt#sid-56CF457C-E58D-4519-AD80-5EDE6DD9E302'/>
+      <entity2 rdf:resource='http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>
