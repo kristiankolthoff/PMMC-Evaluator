@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-3386F438-4F0F-4407-9E98-F7968B1BBA95"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://IIS_Erlangen#sid-CD0AAA0A-DA33-49A7-9210-91A50CE637A4"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-A050A33E-6163-44B5-965A-614CBFDB17C2"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-5CAA1911-2EA6-4A98-87A7-9BD000B0A191"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://IIS_Erlangen#sid-57341183-918C-47F1-866B-736494086EBB"/>
+		<entity2 rdf:resource="http://TU_Munich#sid-B46A6E9A-CBC8-4796-B15D-B3862F31937E"/>
+		<measure rdf:datatype="xsd:float">0.89</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+</Alignment>
+</rdf:RDF>

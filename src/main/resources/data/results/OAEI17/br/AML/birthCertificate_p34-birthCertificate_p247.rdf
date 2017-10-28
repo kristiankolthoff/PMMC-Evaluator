@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment'
+	 xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	 alignmentSource='AgreementMakerLight'>
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>??</type>
+	<onto1>http://repositories.seals-project.eu/tdrs/testdata/persistent/pmbr/pmbr-v2017-0.91/suite/birthCertificate_p34-birthCertificate_p247/component/source/</onto1>
+	<onto2>http://repositories.seals-project.eu/tdrs/testdata/persistent/pmbr/pmbr-v2017-0.91/suite/birthCertificate_p34-birthCertificate_p247/component/target/</onto2>
+	<uri1>http://repositories.seals-project.eu/tdrs/testdata/persistent/pmbr/pmbr-v2017-0.91/suite/birthCertificate_p34-birthCertificate_p247/component/source/</uri1>
+	<uri2>http://repositories.seals-project.eu/tdrs/testdata/persistent/pmbr/pmbr-v2017-0.91/suite/birthCertificate_p34-birthCertificate_p247/component/target/</uri2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t11"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t19"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.8631</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t12"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t13"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.8141</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t11"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t13"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.8141</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t12"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t20"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.7959</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t10"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t1"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.7558</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t4"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t5"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6625</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t9"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t18"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6532</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t8"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t18"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6532</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://birthCertificate_p34#t2"/>
+			<entity2 rdf:resource="http://birthCertificate_p247#t4"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6485</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+</Alignment>
+</rdf:RDF>

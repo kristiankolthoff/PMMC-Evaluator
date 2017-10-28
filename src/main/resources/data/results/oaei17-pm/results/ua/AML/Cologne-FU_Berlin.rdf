@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment'
+	 xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	 alignmentSource='AgreementMakerLight'>
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>11</type>
+	<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+	<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+	<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+	<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-8712EF38-01F5-4812-ACB7-8F0EF759F38C"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6518</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-FF649B0C-30F0-4E43-9BEC-02E1B22AA554"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6197</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-400B2392-557D-41E3-AD14-C95E3B135E45"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6192</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Cologne#sid-50620B60-4F01-4DFD-8EB8-BBCAAECE6026"/>
+			<entity2 rdf:resource="http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6153</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+</Alignment>
+</rdf:RDF>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment'
+	 xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	 alignmentSource='AgreementMakerLight'>
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>11</type>
+	<onto1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto1>
+	<onto2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</onto2>
+	<uri1>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri1>
+	<uri2>http://dkm.fbk.eu/index.php/BPMN2_Ontology#</uri2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Frankfurt#sid-E78FA99D-E060-476F-B663-312E3503890F"/>
+			<entity2 rdf:resource="http://Potsdam#sid-4636DE79-328E-4C1B-8BE3-F0D5FF00E69C"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6632</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Frankfurt#sid-445A78A6-1CA7-40BF-B7BF-B8CCCAAEF703"/>
+			<entity2 rdf:resource="http://Potsdam#sid-2A9C0ECA-8F9F-4329-9023-8A4B3332F463"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6518</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://Frankfurt#sid-56CF457C-E58D-4519-AD80-5EDE6DD9E302"/>
+			<entity2 rdf:resource="http://Potsdam#sid-162937B1-3998-44B9-BB0A-840A43001E88"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6197</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+</Alignment>
+</rdf:RDF>
