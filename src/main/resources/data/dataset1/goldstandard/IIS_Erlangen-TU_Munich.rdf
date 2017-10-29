@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:alext="http://exmo.inrialpes.fr/align/ext/1.0/" xmlns:align="http://knowledgeweb.semanticweb.org/heterogeneity/alignment#">
+	<Alignment>
+		<xml>yes</xml>
+		<level>0</level>
+		<type>**</type>
+		<onto1>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto1>
+		<onto2>
+			<Ontology rdf:about="null">
+				<location>null</location>
+			</Ontology>
+		</onto2>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-701A0B1D-BFF0-482A-A658-A6713BC21F13"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-C2CD7A77-DD54-4B76-9226-22C848009BB6"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-BB1C4222-40C6-4013-A9C7-11BD25E18C16"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-A8E1C7F2-D9A4-4669-9A5E-A39015D04BE2"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-E1B48426-0D24-401B-8294-62FB8A9118DF"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-AC0658EC-033D-491F-8BD3-B3EAFB7DA704"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-E80393E3-80C1-4412-9317-635EBAC3AE26"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-C35B2287-57A3-420B-A8B3-86E1FBC12BDA"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-61C63143-A3D1-43D6-BE5A-8526C6794B43"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-DFAB4855-32CC-4502-805E-32558E512ADD"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-9966DEA0-43B5-40A7-926C-5EA6653A5516"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-465F693F-A9A4-43B7-86FB-B6F16EAD8DE7"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-98F36DFD-F030-436E-9C1C-541AB22E5D0E"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-AFB67B06-BDE2-40B6-B3C2-A3665192D791"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+		<map>
+			<Cell>
+				<entity1 rdf:resource="http://IIS_Erlangen#sid-053A0B4D-160A-4953-B0D9-298A22FAD4CE"/>
+				<entity2 rdf:resource="http://TU_Munich#sid-86BEFE55-806A-4B19-9DF6-EB0B403B6890"/>
+				<relation>=</relation>
+				<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</measure>
+			</Cell>
+		</map>
+	</Alignment>
+</rdf:RDF>

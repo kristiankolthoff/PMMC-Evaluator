@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-40FCF57B-44A4-443F-80D6-D2778D1045CD'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-B06626EF-C70E-4D70-B20F-BA3DAC313DD9'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-A8E1C7F2-D9A4-4669-9A5E-A39015D04BE2'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-9A5FD3B9-73DF-4C23-9E85-6298D3E6685F'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-BB1C4222-40C6-4013-A9C7-11BD25E18C16'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C069EC3-1A91-4327-9C7C-364898A9A6BF'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://TU_Munich#sid-3B9A1679-D9C0-48D4-B6EB-EE354AB529F2'/>
+      <entity2 rdf:resource='http://Wuerzburg#sid-8C628809-B4AD-4A0E-9BB9-E3AFAB22381C'/>
+      <relation>=</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>

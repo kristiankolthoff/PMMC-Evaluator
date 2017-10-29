@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+         xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+         xmlns:alext='http://exmo.inrialpes.fr/align/ext/1.0/'
+         xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+  <xml>yes</xml>
+  <level>0</level>
+  <type>**</type>
+  <onto1>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto1>
+  <onto2>
+    <Ontology rdf:about="null">
+      <location>null</location>
+    </Ontology>
+  </onto2>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-39052081-B4CE-4F1A-89CD-22BD3C7BD282'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-127FF88D-82B1-497C-810F-A233C9815279'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8CD99AE0-12FB-4062-AEDC-AA4457745B90'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-9487E693-D9A1-4049-A90C-371724878D5A'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-BF91EE3E-9FA5-4B2D-A047-0C6E672FE0E5'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-8FEB2C82-D8BE-4C3B-892E-2259C76329B3'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-B1EBF238-7E8F-4B1D-A4A8-4D43C1982F64'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-C7F816A3-51CD-4003-959F-D7334F288544'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B7F2DD16-6741-4CB0-BFF4-42A20B9731FC'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-A0F4F7A5-C581-456C-85EE-0EA5E831BBB3'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-DBE82358-A50E-45CA-AB6B-F0EF44F8B668'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-16C5EDE2-242D-446A-B150-5E1A5D3F6ED2'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-E8AD3C41-2A2F-47FA-879A-648F728C4D17'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-3572686C-9AEC-4B27-85AC-6A1F1C28883C'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-C8972681-3E1C-408F-8595-59226D48CF52'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-DB4C0A6E-9FFA-4DA6-9DBA-94407BADD758'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-0808AB0B-C7D9-4CE3-9CEE-16F184F8A6EF'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-3F0D094B-1A34-41E6-A506-54B5EA5939BC'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-9763AC57-5734-4494-A201-418849E6371F'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-110728C7-A18D-4D6E-9468-19E1A2524ED5'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-4811DA9B-DECF-4423-95F9-DF9AE5A3053E'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-40E8C5AF-D744-4471-A64D-96313973FB7E'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-0018F174-AA16-4850-98AB-1FB3C0AE4DA8'/>
+      <relation>equals</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-5F59D760-9062-4ECA-A984-61D03B97FDE6'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-B6AB9BD8-F756-41D5-9C17-8E03673B22CC'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-3B362D2A-94FE-433F-B46F-E57F6F296CD2'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+  <map>
+    <Cell>
+      <entity1 rdf:resource='http://FU_Berlin#sid-890CC5F9-3B28-4110-9018-1423B4D2DEBF'/>
+      <entity2 rdf:resource='http://Hohenheim#sid-F5DF9B8C-3421-4AD8-8E35-862722F230D5'/>
+      <relation>subsumes</relation>
+      <measure rdf:datatype='http://www.w3.org/2001/XMLSchema#float'>1.0</measure>
+    </Cell>
+  </map>
+</Alignment>
+</rdf:RDF>
