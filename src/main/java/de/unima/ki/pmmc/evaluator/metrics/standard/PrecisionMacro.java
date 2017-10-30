@@ -16,7 +16,7 @@ public class PrecisionMacro implements Metric {
 	
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeMacro(characteristics, c -> {return c.getNBPrecision();});
+		return Metric.computeMacro(characteristics, c -> {return c.getPrecision();});
 	}
 
 	@Override

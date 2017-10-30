@@ -58,10 +58,11 @@ public interface Metric {
 		int numOfOcc = 0;
 		for(Characteristic c : characteristics) {
 			double currPrecision = function.apply(c);
-			if(!Double.isNaN(currPrecision)) {
-				numOfOcc++;
-				sum += currPrecision;
+			if(Double.isNaN(currPrecision)) {
+				currPrecision = 1;
 			}
+			sum += currPrecision;
+			numOfOcc++;
 		}
 		return sum / numOfOcc;
 	}
@@ -84,11 +85,12 @@ public interface Metric {
 		int numOfOcc = 0;
 		for(Characteristic c : characteristics) {
 			double currVal = functionSum.apply(c);
-			if(!Double.isNaN(currVal)) {
-				double currDev = Math.abs(currVal - avgMacro);
-				dev += Math.pow(currDev, 2);	
-				numOfOcc++;
+			if(Double.isNaN(currVal)) {
+				currVal = 1;
 			}
+			double currDev = Math.abs(currVal - avgMacro);
+			dev += Math.pow(currDev, 2);	
+			numOfOcc++;
 		}
 		return Math.sqrt(dev/numOfOcc);
 	}
@@ -112,11 +114,12 @@ public interface Metric {
 		int numOfOcc = 0;
 		for(Characteristic c : characteristics) {
 			double val = functionSum.apply(c);
-			if(!Double.isNaN(val)) {
-				double currDev = Math.abs(val - avgMacro);
-				dev += Math.pow(currDev, 2);
-				numOfOcc++;
+			if(Double.isNaN(val)) {
+				val = 1;
 			}
+			double currDev = Math.abs(val - avgMacro);
+			dev += Math.pow(currDev, 2);
+			numOfOcc++;
 		}
 		return Math.sqrt(dev/numOfOcc);
 		

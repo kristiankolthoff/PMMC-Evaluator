@@ -15,6 +15,9 @@ import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
+import de.unima.ki.pmmc.evaluator.metrics.standard.FMeasureMacro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.FMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.FMeasureStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBFMeasureMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBFMeasureMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBFMeasureStdDev;
@@ -24,6 +27,12 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.NBPrecisionStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.NBRecallStdDev;
+import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMacro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionMicro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionStdDev;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMacro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMicro;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RecallStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.FunctionMetric;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesGS;
@@ -67,17 +76,17 @@ public class PMMCNewEvaluationAdmission {
 		MetricGroupFactory factory = MetricGroupFactory.getInstance();
 		builder = new Configuration.Builder().
 				addMetricGroup(new MetricGroup("Precision", "prec-info")
-						.addMetric(new NBPrecisionMicro())
-						.addMetric(new NBPrecisionMacro())
-						.addMetric(new NBPrecisionStdDev()))
+						.addMetric(new PrecisionMicro())
+						.addMetric(new PrecisionMacro())
+						.addMetric(new PrecisionStdDev()))
 				.addMetricGroup(new MetricGroup("Recall", "rec-info")
-						.addMetric(new NBRecallMicro())
-						.addMetric(new NBRecallMacro())
-						.addMetric(new NBRecallStdDev()))
+						.addMetric(new RecallMicro())
+						.addMetric(new RecallMacro())
+						.addMetric(new RecallStdDev()))
 				.addMetricGroup(new MetricGroup("F1-Measure")
-						.addMetric(new NBFMeasureMicro())
-						.addMetric(new NBFMeasureMacro())
-						.addMetric(new NBFMeasureStdDev()))
+						.addMetric(new FMeasureMicro())
+						.addMetric(new FMeasureMacro())
+						.addMetric(new FMeasureStdDev()))
 				.addMetricGroup(new MetricGroup("Stats")
 						.addMetric(new NumCorrespondencesGS())
 						.addMetric(new NumCorrespondencesMatcher())
@@ -119,9 +128,9 @@ public class PMMCNewEvaluationAdmission {
 				.setParser(Parser.Type.BPMN)
 				.setCTTagOn(true)
 				.addThreshold(Evaluator.THRESHOLD_ZERO)
-				.addThreshold(Evaluator.THRESHOLD_LOW)
-				.addThreshold(Evaluator.THRESHOLD_MEDIUM)
-				.addThreshold(Evaluator.THRESHOLD_HIGH)
+//				.addThreshold(Evaluator.THRESHOLD_LOW)
+//				.addThreshold(Evaluator.THRESHOLD_MEDIUM)
+//				.addThreshold(Evaluator.THRESHOLD_HIGH)
 				.setDebugOn(true)
 				.setPathMaxentTagger(NLPHelper.TAGGER_BIDIR_DIRECTORY)
 				.setPathWordnet(NLPHelper.WORDNET_DIRECTORY)
@@ -134,9 +143,9 @@ public class PMMCNewEvaluationAdmission {
 	}
 	
 	public void oldGoldstandardExperiment() {
-		builder.addGoldstandardGroup("admission-non-binary", GOLDSTANDARD_NEW_ADAPTED_PATH)
-				.addGoldstandardGroup("admission-binary-sub", GOLDSTANDARD_OLD_SUB_PATH)
-				.addGoldstandardGroup("admission-binary", GOLDSTANDARD_OLD_PATH);
+//		builder.addGoldstandardGroup("admission-non-binary", GOLDSTANDARD_NEW_ADAPTED_PATH)
+//				.addGoldstandardGroup("admission-binary-sub", GOLDSTANDARD_OLD_SUB_PATH)
+				builder.addGoldstandardGroup("admission-binary", GOLDSTANDARD_OLD_PATH);
 		Evaluator evaluator = new Evaluator(builder.build());
 		try {
 			@SuppressWarnings("unused")
