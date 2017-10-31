@@ -16,7 +16,7 @@ public class TypeFMeasureMacro implements Metric{
 
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeMacro(characteristics, 
+		return Metric.computeMacroStrict(characteristics, 
 				c -> {return c.getFMeasure(type);});
 	}
 

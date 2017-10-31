@@ -243,7 +243,7 @@ public class LaTexHandler implements ReportHandler {
 					for(int i = 0; i < results.size(); i++) {
 						Report report = results.get(i);
 						System.out.println(report.getMatcher().getName());
-						this.appendReport(report, i);
+						this.appendReport(report, i+1);
 					}
 					this.bottom();
 					this.bw.flush();

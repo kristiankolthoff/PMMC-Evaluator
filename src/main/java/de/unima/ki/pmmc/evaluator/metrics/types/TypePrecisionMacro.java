@@ -16,12 +16,12 @@ public class TypePrecisionMacro implements Metric {
 	
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeMacro(characteristics, c -> {return c.getPrecision(type);});
+		return Metric.computeMacroStrict(characteristics, c -> {return c.getPrecision(type);});
 	}
 
 	@Override
 	public String getName() {
-		return "prec-macro-type";
+		return "prec-mac";
 	}
 
 }

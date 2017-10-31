@@ -46,13 +46,13 @@ public class Loader {
 		});
 		return new Solution(name, path, threshold, alignments);
 	}
-
+	
 	public List<Solution> loadAll(Optional<String> path, 
 			List<String> matcherPaths, double threshold) throws IOException {
 //		log("Generate Results for threshold [" + threshold + "]");
 		List<Solution> results = new ArrayList<>();
 		for(String matcherPath : matcherPaths) {
-			results.add(load(matcherPath, extractName(matcherPath), threshold));
+			results.add(load(extractName(matcherPath), matcherPath, threshold));
 		}
 		if(path.isPresent()) {
 			Files.walk(Paths.get(path.get())).forEach(filePath -> {
@@ -114,7 +114,12 @@ public class Loader {
 	}
 	
 	private String extractName(String path) {
-		return path;
+		String[] values = path.split("/");
+		if(values[values.length-1].contains("dataset")) {
+			return values[values.length-2];
+		} else {
+			return values[values.length-1];
+		}
 	}
 
 	public List<Model> getModels() {

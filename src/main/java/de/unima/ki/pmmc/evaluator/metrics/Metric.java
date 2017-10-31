@@ -64,7 +64,32 @@ public interface Metric {
 			sum += currPrecision;
 			numOfOcc++;
 		}
-		return sum / numOfOcc;
+		double result = sum / numOfOcc;
+		return Double.isNaN(result) ? 0 : result;
+	}
+	
+	/**
+	 * General purpose method for computing macro summary of
+	 * values provided by the single input function. Simply sums up
+	 * the individual values provided by the function for each single
+	 * <code>Characteristic</code> and finally computes the average.
+	 * @param characteristics the characteristics to compute the macro summary from
+	 * @param function function for producing values from a single <code>Characteristic</code>
+	 * @return the average as sum{functionVals} / numOfVals
+	 */
+	static double computeMacroStrict(List<Characteristic> characteristics, 
+			Function<Characteristic, Double> function) {
+		double sum = 0;
+		int numOfOcc = 0;
+		for(Characteristic c : characteristics) {
+			double currPrecision = function.apply(c);
+			if(!Double.isNaN(currPrecision)) {
+				numOfOcc++;
+				sum += currPrecision;
+			}
+		}
+		double result = sum / numOfOcc;
+		return Double.isNaN(result) ? 0 : result;
 	}
 	
 	/**

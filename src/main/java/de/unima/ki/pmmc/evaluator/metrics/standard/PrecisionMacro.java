@@ -21,7 +21,7 @@ public class PrecisionMacro implements Metric {
 
 	@Override
 	public String getName() {
-		return "prec-macro";
+		return "prec-mac";
 	}
 
 }

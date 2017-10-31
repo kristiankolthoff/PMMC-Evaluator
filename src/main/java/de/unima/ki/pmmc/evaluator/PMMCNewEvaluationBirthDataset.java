@@ -13,6 +13,7 @@ import de.unima.ki.pmmc.evaluator.data.Evaluation;
 import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.handler.HTMLHandler;
 import de.unima.ki.pmmc.evaluator.handler.LaTexHandler;
+import de.unima.ki.pmmc.evaluator.handler.LaTexHandlerType;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroupFactory;
@@ -129,7 +130,7 @@ public class PMMCNewEvaluationBirthDataset {
 	
 	public static void main(String[] args) throws IOException {
 		PMMCNewEvaluationBirthDataset eval = new PMMCNewEvaluationBirthDataset();
-		eval.oldGoldstandardLatexExperiment();
+		eval.oldGSOnlyLaTexTypesExperiment();
 	}
 	
 	public void oldGoldstandardExperiment() {
@@ -198,5 +199,53 @@ public class PMMCNewEvaluationBirthDataset {
 					}
 	}
 	
+	public void oldGSOnlyLaTexTypesExperiment() throws IOException {
+		Metric fMeasureMicro = new FMeasureMicro();
+		builder = new Configuration.Builder().
+//				addHandler(new HTMLHandler(SHOW_IN_BROWSER))
+//				.addHandler(new LaTexHandler())
+				 addHandler(new LaTexHandlerType())
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/AML/")
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/I-Match")
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/LogMap")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/KnoMa-Proc/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/Know-Match-SSS/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/Match-SSS/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/OPBOT/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/pPalm-DS/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-NHCM/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-NLM/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-SMSL/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-VM2/dataset2")
+//				.addMatcherPath("src/main/resources/data/results/OAEI16/TripleS/dataset2")
+				.setModelsRootPath(MODELS_PATH)
+				.addThreshold(Evaluator.THRESHOLD_ZERO)
+//				.addThreshold(Evaluator.THRESHOLD_LOW)
+//				.addThreshold(Evaluator.THRESHOLD_MEDIUM)
+//				.addThreshold(Evaluator.THRESHOLD_HIGH)
+				.setAlignmentReader(new AlignmentReaderXml())
+				.setOutputName("birth-old-gs")
+				.setOutputPath(OUTPUT_PATH)
+				.setParser(Parser.Type.PNML)
+				.setCTTagOn(true)
+				.setDebugOn(true)
+				.persistToFile(true);
+		for(CorrespondenceType type : CorrespondenceType.values()) {
+			builder.addMetricGroup(new MetricGroup(type.getName())
+					.addMetric(new TypePrecisionMacro(type))
+					.addMetric(new TypeRecallMacro(type))
+					.addMetric(new TypeFMeasureMacro(type)));
+		}
+				 builder.addGoldstandardGroup("birth-binary", GOLDSTANDARD_PATH);
+					Evaluator evaluator = new Evaluator(builder.build());
+					try {
+						Evaluation evaluation = evaluator.run();
+						System.out.println(evaluation.getReports().size());
+					} catch (CorrespondenceException | ParserConfigurationException | SAXException | IOException e) {
+						e.printStackTrace();
+					}
+	}
 }
 

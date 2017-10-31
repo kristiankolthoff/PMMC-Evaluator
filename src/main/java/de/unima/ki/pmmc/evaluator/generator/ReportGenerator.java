@@ -41,7 +41,10 @@ public class ReportGenerator {
 				}
 			}
 		}
-		Collections.sort(reportPerThresholdAndGroup, configuration.getSortingComparator());
+		//TODO use optional
+		if(configuration.getSortingComparator() != null) {
+			Collections.sort(reportPerThresholdAndGroup, configuration.getSortingComparator());
+		}
 		evaluation.addReports(reportPerThresholdAndGroup);
 		return evaluation;
 	}
