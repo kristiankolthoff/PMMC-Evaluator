@@ -11,6 +11,14 @@ import de.unima.ki.pmmc.evaluator.metrics.Metric;
  */
 public class PrecisionMicro implements Metric{
 
+	private String name;
+	
+	public PrecisionMicro(String name) {
+		this.name = name;
+	}
+	
+	public PrecisionMicro() {}
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -23,7 +31,7 @@ public class PrecisionMicro implements Metric{
 
 	@Override
 	public String getName() {
-		return "prec-mic";
+		return name != null ? name : "prec-mic";
 	}
 
 }

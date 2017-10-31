@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import de.unima.ki.pmmc.evaluator.generator.MetricGroupBinding;
+import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
 public class Report implements Iterable<MetricGroupBinding>{
 

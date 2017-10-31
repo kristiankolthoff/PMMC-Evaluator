@@ -2,6 +2,7 @@ package de.unima.ki.pmmc.evaluator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -55,6 +56,7 @@ public class Configuration implements Iterable<MetricGroup>{
 	private List<Predicate<Report>> filterResult;
 	private List<Predicate<Correspondence>> filterCorrespondence;
 	private List<Predicate<Alignment>> filterAlignment;
+	private Comparator<Report> customComparator;
 	private Parser parser;
 	private String pathWordnet;
 	private String pathPosTagger;
@@ -80,6 +82,7 @@ public class Configuration implements Iterable<MetricGroup>{
 			List<Predicate<Report>> filterResult,
 			List<Predicate<Correspondence>> filterCorrespondence, 
 			List<Predicate<Alignment>> filterAlignment,
+			Comparator<Report> customComparator,
 			Parser parser,
 			String pathWordnet,
 			String pathPosTagger,
@@ -108,6 +111,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		this.filterCorrespondence = filterCorrespondence;
 		this.filterAlignment = filterAlignment;
 		this.parser = parser;
+		this.customComparator = customComparator;
 		this.setPathMaxentTagger(pathMaxentTagger);
 		this.setPathPosTagger(pathPosTagger);
 		this.setPathWordnet(pathWordnet);
@@ -157,6 +161,10 @@ public class Configuration implements Iterable<MetricGroup>{
 
 	public void setModelsRootPath(String modelsRootPath) {
 		this.modelsRootPath = modelsRootPath;
+	}
+	
+	public Comparator<Report> getSortingComparator() {
+		return customComparator;
 	}
 
 	public String getOutputPath() {
@@ -338,6 +346,7 @@ public class Configuration implements Iterable<MetricGroup>{
 		private List<Predicate<Report>> filterResult;
 		private List<Predicate<Correspondence>> filterCorrespondence;
 		private List<Predicate<Alignment>> filterAlignment;
+		private Comparator<Report> customComparator;
 		private Parser parser;
 		private String pathWordnet;
 		private String pathPosTagger;
@@ -697,6 +706,11 @@ public class Configuration implements Iterable<MetricGroup>{
 			return this;
 		}
 		
+		public Builder setSortingOrder(Comparator<Report> customerComparator) {
+			this.customComparator = customerComparator;
+			return this;
+		}
+		
 		public Configuration build() {
 			return new Configuration(
 					evaluationName,
@@ -722,6 +736,7 @@ public class Configuration implements Iterable<MetricGroup>{
 					filterResult, 
 					filterCorrespondence, 
 					filterAlignment, 
+					customComparator,
 					parser,
 					pathWordnet,
 					pathPosTagger,

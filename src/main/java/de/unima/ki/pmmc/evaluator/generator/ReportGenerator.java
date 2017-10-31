@@ -1,6 +1,7 @@
 package de.unima.ki.pmmc.evaluator.generator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.unima.ki.pmmc.evaluator.Configuration;
@@ -40,6 +41,7 @@ public class ReportGenerator {
 				}
 			}
 		}
+		Collections.sort(reportPerThresholdAndGroup, configuration.getSortingComparator());
 		evaluation.addReports(reportPerThresholdAndGroup);
 		return evaluation;
 	}

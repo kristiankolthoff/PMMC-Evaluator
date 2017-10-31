@@ -58,8 +58,9 @@ public class LaTexHandler implements ReportHandler {
 				for(@SuppressWarnings("unused") MetricBinding metricBinding : binding) {
 					this.bw.append("l");
 				}
+				this.bw.append("l");
 			}
-			this.bw.append("llll}");
+			this.bw.append("l}");
 			this.bw.newLine();
 			this.bw.append("\\noalign{\\smallskip}\\hline\\noalign{\\smallskip}");
 			this.bw.newLine();
@@ -74,13 +75,29 @@ public class LaTexHandler implements ReportHandler {
 					this.bw.append(" &");
 				}
 			}
-			this.bw.append("\\multicolumn{3}{c}{\\textbf{Rank}}& \\textbf{Approach}  &"
-					+ " \\multicolumn{2}{c}{\\textbf{ProFM}}  & \\hspace*{1mm} & "
-					+ "\\multicolumn{2}{c}{\\textbf{ProP}} & \\hspace*{1mm} &"
-					+ "\\multicolumn{2}{c}{\\textbf{ProR}} & \\hspace*{1mm} &"
-					+ "\\multicolumn{1}{c}{\\textbf{Dist.}} & \\hspace*{1mm}\\\\ ");
+//			this.bw.append("\\multicolumn{3}{c}{\\textbf{Rank}}& \\textbf{Approach}  &"
+//					+ " \\multicolumn{2}{c}{\\textbf{ProFM}}  & \\hspace*{1mm} & "
+//					+ "\\multicolumn{2}{c}{\\textbf{ProP}} & \\hspace*{1mm} &"
+//					+ "\\multicolumn{2}{c}{\\textbf{ProR}} & \\hspace*{1mm} &"
+//					+ "\\multicolumn{1}{c}{\\textbf{Dist.}} & \\hspace*{1mm}\\\\ ");
 			this.bw.newLine();
-			this.bw.append("New & Old & $\\Delta$ & & mic & mac  &&  mic  & mac && mic  & mac \\\\");
+			this.bw.append("New & Old & $\\Delta$ & &");
+			for(int i = 0; i < report.getBindings().size(); i++) {
+				MetricGroupBinding groupBinding = report.getBindings().get(i);
+				for(int j = 0; j < groupBinding.getBindings().size(); j++) {
+					MetricBinding metricBinding = groupBinding.getBindings().get(j);
+					this.bw.append(metricBinding.getMetric().getName());
+					if(j != groupBinding.getBindings().size()-1) {
+						this.bw.append(" & ");
+					}
+				}
+				if(i == report.getBindings().size()-1) {
+					this.bw.append("\\\\");
+				} else {
+					this.bw.append(" && ");
+				}
+			}
+//			this.bw.append("New & Old & $\\Delta$ & & mic & mac  &&  mic  & mac && mic  & mac \\\\");
 			this.bw.newLine();
 			this.bw.append("\\noalign{\\smallskip}\\hline\\noalign{\\smallskip}");
 			this.bw.newLine();
@@ -88,6 +105,31 @@ public class LaTexHandler implements ReportHandler {
 			e.printStackTrace();
 		}
 	}
+	
+	private void appendReport(Report report, int rank) {
+		try {
+			this.bw.append(rank + " & 1 		& $\\pm$0 &" + report.getMatcher().getName() + "    	&	");
+			for(int i = 0; i < report.getBindings().size(); i++) {
+				MetricGroupBinding groupBinding = report.getBindings().get(i);
+				for(int j = 0; j < groupBinding.getBindings().size(); j++) {
+					MetricBinding metricBinding = groupBinding.getBindings().get(j);
+					this.bw.append(this.dfSmall.format(metricBinding.getValue()));
+					if(j != groupBinding.getBindings().size()-1) {
+						this.bw.append(" & ");
+					}
+				}
+				if(i == report.getBindings().size()-1) {
+					this.bw.append("\\\\");
+				} else {
+					this.bw.append(" & & ");
+				}
+			}
+			this.bw.newLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 //	private void table(List<TypeCharacteristic> characteristics, String name, int rank) {
 //		String microPrecision = this.dfSmall.format(Characteristic.getNBPrecisionMicro(characteristics)).replaceAll(",", ".");
@@ -198,10 +240,12 @@ public class LaTexHandler implements ReportHandler {
 					this.bw = Files.newBufferedWriter(Paths.get(this.outputPath + "/" 
 									+ groupName + "/" + this.mappingInfo + "t-" + threshold+ FILE_TYPE));
 					this.init(results);
-					for(Report report : results) {
+					for(int i = 0; i < results.size(); i++) {
+						Report report = results.get(i);
 						System.out.println(report.getMatcher().getName());
-//						this.appendReport(report);
+						this.appendReport(report, i);
 					}
+					this.bottom();
 					this.bw.flush();
 					this.bw.close();
 				}

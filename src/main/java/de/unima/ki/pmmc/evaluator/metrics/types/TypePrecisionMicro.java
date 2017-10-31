@@ -6,20 +6,17 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 
-public class TypePrecisionMicro implements Metric {
+public class TypePrecisionMicro extends AbstractTypeMetric {
 
-	private CorrespondenceType[] type;
-	
-	
-	public TypePrecisionMicro(CorrespondenceType ...type) {
-		this.type = type;
+	public TypePrecisionMicro(CorrespondenceType ...types) {
+		super(types);
 	}
-
+	
 	@Override
 	public double compute(List<Characteristic> characteristics) {
 		return Metric.computeMicro(characteristics, 
-				c -> {return (double) c.getTP(type).size();}, 
-				c -> {return (double) (c.getTP(type).size() + c.getFP().size());});
+				c -> {return (double) c.getTP(types).size();}, 
+				c -> {return (double) (c.getTP(types).size() + c.getFP().size());});
 	}
 
 	@Override
