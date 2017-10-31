@@ -1,4 +1,4 @@
-package de.unima.ki.pmmc.evaluation.oaei17;
+package de.unima.ki.pmmc.evaluator.evaluation.oaei17;
 
 
 import java.io.IOException;
@@ -52,45 +52,42 @@ import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMacro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 
-public class PMMCEvaluationAdmission {
+public class PMMCEvaluationBirthCertificate {
 
 	public final boolean SHOW_IN_BROWSER = true;
 	public final String OUTPUT_PATH = "src/main/resources/data/evaluation/";
-	public final String GOLDSTANDARD_OLD_PATH = "src/main/resources/data/dataset1/goldstandard/";
-	public final String GOLDSTANDARD_OLD_SUB_PATH = "src/main/resources/data/dataset1-sub/goldstandard/";
-	public final String GOLDSTANDARD_NEW_PATH = "src/main/resources/data/results/goldstandard/dataset1_goldstandard_experts/";
-	public final String GOLDSTANDARD_NEW_ADAPTED_PATH = "src/main/resources/data/results/goldstandard/dataset1_goldstandard_experts_adapted/";
-	public final String GOLDSTANDARD_NEW_ADAPTED_PARTS_PATH = "src/main/resources/data/dataset1/goldstandard_experts_heiner/";
-	public final String RESULTS_PATH = "src/main/resources/data/results/OAEI16/";
-	public final String MODELS_PATH = "src/main/resources/data/dataset1/models/";
+	public final String GOLDSTANDARD_PATH = "src/main/resources/data/dataset2/goldstandard/";
+	public final String GOLDSTANDARD_NB_PATH = "src/main/resources/data/dataset2/new_gs_rdf/";
+	public final String RESULTS_PATH = "src/main/resources/data/results/submitted-matchers/";
+	public final String MODELS_PATH = "src/main/resources/data/dataset2/models/";
 	
 	private static final Logger LOG = Logger.getLogger(PMMCEvaluationAdmission.class.getName());
 	
-	public PMMCEvaluationAdmission() {}
+	public PMMCEvaluationBirthCertificate() {}
 	
 	private Configuration.Builder createBuilder() throws IOException {
 		Configuration.Builder builder = new Configuration.Builder()
-				.addMatcherPath("src/main/resources/data/results/OAEI17/ua/AML/")
-				.addMatcherPath("src/main/resources/data/results/OAEI17/ua/I-Match")
-				.addMatcherPath("src/main/resources/data/results/OAEI17/ua/LogMap")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset1")
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/AML/")
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/I-Match")
+				.addMatcherPath("src/main/resources/data/results/OAEI17/br/LogMap")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset2")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/DKP")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/DKP-lite")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/KnoMa-Proc/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/Know-Match-SSS/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/Match-SSS/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/OPBOT/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/pPalm-DS/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-NHCM/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-NLM/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-SMSL/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-VM2/dataset1")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/TripleS/dataset1")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/KnoMa-Proc/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/Know-Match-SSS/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/Match-SSS/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/OPBOT/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/pPalm-DS/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-NHCM/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-NLM/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-SMSL/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-VM2/dataset2")
+				.addMatcherPath("src/main/resources/data/results/OAEI16/TripleS/dataset2")
 				.setModelsRootPath(MODELS_PATH)
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputPath(OUTPUT_PATH)
-				.setParser(Parser.Type.BPMN)
+				.setParser(Parser.Type.PNML)
 				.setCTTagOn(true)
 				.addThreshold(Evaluator.THRESHOLD_ZERO)
 				.setDebugOn(true)
@@ -131,27 +128,23 @@ public class PMMCEvaluationAdmission {
 	
 	public static void main(String[] args) throws IOException, CorrespondenceException, 
 				ParserConfigurationException, SAXException {
-		PMMCEvaluationAdmission admission = new PMMCEvaluationAdmission();
-		//Run all evaluations for the binary admission goldstandard
-//		admission.runBinaryGSEvaluationHTML();
-//		admission.runBinaryGSEvaluationLaTex();
-//		admission.runBinaryGSEvaluationLaTexTypes();
-//		//Run all evaluations for the binary-sub admission goldstandard
-//		admission.runBinarySubGSEvaluationHTML();
-//		admission.runBinarySubGSEvaluationLaTex();
-//		admission.runBinarySubGSEvaluationLaTexTypes();
-		//Run all evaluations for the non-binary admission goldstandard
-		admission.runNonBinaryGSEvaluationHTML();
-		admission.runNonBinaryGSEvaluationLaTex();
-		admission.runNonBinaryGSEvaluationLaTexTypes();
+		PMMCEvaluationBirthCertificate birthCertificate = new PMMCEvaluationBirthCertificate();
+		//Run all evaluations for the binary birthCertificate goldstandard
+		birthCertificate.runBinaryGSEvaluationHTML();
+//		birthCertificate.runBinaryGSEvaluationLaTex();
+//		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+		//Run all evaluations for the non-binary birthCertificate goldstandard
+//		birthCertificate.runNonBinaryGSEvaluationHTML();
+//		birthCertificate.runNonBinaryGSEvaluationLaTex();
+//		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
 	}
 	
 	public void runBinaryGSEvaluationHTML() throws IOException, CorrespondenceException, 
 				ParserConfigurationException, SAXException {
 		Configuration.Builder builder = createHTMLConfigurationBuilder();
 		builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
-			   .setOutputName("oaei17-admission-binary")
-		       .addGoldstandardGroup("admission-binary", GOLDSTANDARD_OLD_PATH);
+			   .setOutputName("oaei17-birth-certificate-binary")
+		       .addGoldstandardGroup("birth-certificate-binary", GOLDSTANDARD_PATH);
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
@@ -172,8 +165,8 @@ public class PMMCEvaluationAdmission {
 						.addMetric(sortMetric)
 						.addMetric(new FMeasureMacro()));
 		builder.addHandler(new LaTexHandler())
-		       .setOutputName("oaei17-admission-binary")
-		       .addGoldstandardGroup("admission-binary", GOLDSTANDARD_OLD_PATH)
+		   	   .setOutputName("oaei17-birth-certificate-binary")
+	           .addGoldstandardGroup("birth-certificate-binary", GOLDSTANDARD_PATH)
 		       .setSortingOrder(new MetricSort(sortMetric, true));
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
@@ -192,67 +185,14 @@ public class PMMCEvaluationAdmission {
 					.addMetric(new TypeFMeasureMacro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
-		       .setOutputName("oaei17-admission-binary-types")
-		       .addGoldstandardGroup("admission-binary", GOLDSTANDARD_OLD_PATH);
+		       .setOutputName("oaei17-birth-certificate-binary")
+	           .addGoldstandardGroup("birth-certificate-binary", GOLDSTANDARD_PATH);
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("binaryGSEvaluationLaTexTypes : #reports = " + evaluation.getReports().size());
 	}
 	
-	public void runBinarySubGSEvaluationHTML() throws IOException, CorrespondenceException, 
-				ParserConfigurationException, SAXException {
-		Configuration.Builder builder = createHTMLConfigurationBuilder();
-		builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
-			   .setOutputName("oaei17-admission-binary-sub")
-		       .addGoldstandardGroup("admission-binary-sub", GOLDSTANDARD_OLD_SUB_PATH);
-		Configuration configuration = builder.build();
-		Evaluator evaluator = new Evaluator(configuration);
-		Evaluation evaluation = evaluator.run();
-		LOG.info("binarySubGSEvaluationHTML : #reports = " + evaluation.getReports().size());
-	}
-	
-	public void runBinarySubGSEvaluationLaTex() throws IOException, CorrespondenceException,
-			ParserConfigurationException, SAXException {
-		Configuration.Builder builder = createBuilder();
-		Metric sortMetric = new FMeasureMicro();
-		builder.addMetricGroup(new MetricGroup("Precision")
-					.addMetric(new PrecisionMicro())
-					.addMetric(new PrecisionMacro()))
-		   .addMetricGroup(new MetricGroup("Recall")
-					.addMetric(new RecallMicro())
-					.addMetric(new RecallMacro()))
-		   .addMetricGroup(new MetricGroup("F1-Measure")
-					.addMetric(sortMetric)
-					.addMetric(new FMeasureMacro()));
-		builder.addHandler(new LaTexHandler())
-		   .setOutputName("oaei17-admission-binary-sub")
-		   .addGoldstandardGroup("admission-binary-sub", GOLDSTANDARD_OLD_SUB_PATH)
-		   .setSortingOrder(new MetricSort(sortMetric, true));
-		Configuration configuration = builder.build();
-		Evaluator evaluator = new Evaluator(configuration);
-		Evaluation evaluation = evaluator.run();
-		LOG.info("binarySubGSEvaluationLaTex : #reports = " + evaluation.getReports().size());
-	}
-	
-	public void runBinarySubGSEvaluationLaTexTypes() throws IOException, CorrespondenceException, 
-			ParserConfigurationException, SAXException {
-		Configuration.Builder builder = createBuilder();
-		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
-		for(CorrespondenceType type : excludedTypes) {
-		builder.addMetricGroup(new MetricGroup(type.getName())
-				.addMetric(new TypePrecisionMacro(type))
-				.addMetric(new TypeRecallMacro(type))
-				.addMetric(new TypeFMeasureMacro(type)));
-		}
-		builder.addHandler(new LaTexHandlerType())
-		   .setOutputName("oaei17-admission-binary-sub-types")
-		   .addGoldstandardGroup("admission-binary-sub", GOLDSTANDARD_OLD_SUB_PATH);
-		Configuration configuration = builder.build();
-		Evaluator evaluator = new Evaluator(configuration);
-		Evaluation evaluation = evaluator.run();
-		LOG.info("binarySubGSEvaluationLaTexTypes : #reports = " + evaluation.getReports().size());
-	}
 	
 	
 	public void runNonBinaryGSEvaluationHTML() throws IOException, CorrespondenceException, 
@@ -283,8 +223,8 @@ public class PMMCEvaluationAdmission {
 					.addMetric(new TypeNBFMeasureMacro(type)));
 		}
 		builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
-		   .setOutputName("oaei17-admission-non-binary")
-		   .addGoldstandardGroup("admission-non-binary", GOLDSTANDARD_NEW_ADAPTED_PATH);
+		   .setOutputName("oaei17-birth-certificate-non-binary")
+		   .addGoldstandardGroup("birth-certificate-non-binary", GOLDSTANDARD_NB_PATH);
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
@@ -305,8 +245,8 @@ public class PMMCEvaluationAdmission {
 					.addMetric(sortMetric)
 					.addMetric(new NBFMeasureMacro()));
 		builder.addHandler(new LaTexHandler())
-		   .setOutputName("oaei17-admission-non-binary")
-		   .addGoldstandardGroup("admission-non-binary", GOLDSTANDARD_NEW_ADAPTED_PATH)
+			.setOutputName("oaei17-birth-certificate-non-binary")
+		   .addGoldstandardGroup("birth-certificate-non-binary", GOLDSTANDARD_NB_PATH)
 		   .setSortingOrder(new MetricSort(sortMetric, true));
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
@@ -326,8 +266,8 @@ public class PMMCEvaluationAdmission {
 				.addMetric(new TypeNBFMeasureMacro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
-		   .setOutputName("oaei17-admission-non-binary-types")
-		   .addGoldstandardGroup("admission-non-binary", GOLDSTANDARD_NEW_ADAPTED_PATH);
+		.setOutputName("oaei17-birth-certificate-non-binary")
+		   .addGoldstandardGroup("birth-certificate-non-binary", GOLDSTANDARD_NB_PATH);
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
