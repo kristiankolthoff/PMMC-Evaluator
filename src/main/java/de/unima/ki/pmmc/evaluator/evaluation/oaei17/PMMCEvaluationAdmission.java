@@ -93,6 +93,9 @@ public class PMMCEvaluationAdmission {
 				.setParser(Parser.Type.BPMN)
 				.setCTTagOn(true)
 				.addThreshold(Evaluator.THRESHOLD_ZERO)
+				.addThreshold(Evaluator.THRESHOLD_LOW)
+				.addThreshold(Evaluator.THRESHOLD_MEDIUM)
+				.addThreshold(Evaluator.THRESHOLD_HIGH)
 				.setDebugOn(true)
 				.setPathMaxentTagger(NLPHelper.TAGGER_BIDIR_DIRECTORY)
 				.setPathWordnet(NLPHelper.WORDNET_DIRECTORY)
@@ -133,13 +136,13 @@ public class PMMCEvaluationAdmission {
 				ParserConfigurationException, SAXException {
 		PMMCEvaluationAdmission admission = new PMMCEvaluationAdmission();
 		//Run all evaluations for the binary admission goldstandard
-//		admission.runBinaryGSEvaluationHTML();
-//		admission.runBinaryGSEvaluationLaTex();
-//		admission.runBinaryGSEvaluationLaTexTypes();
+		admission.runBinaryGSEvaluationHTML();
+		admission.runBinaryGSEvaluationLaTex();
+		admission.runBinaryGSEvaluationLaTexTypes();
 //		//Run all evaluations for the binary-sub admission goldstandard
-//		admission.runBinarySubGSEvaluationHTML();
-//		admission.runBinarySubGSEvaluationLaTex();
-//		admission.runBinarySubGSEvaluationLaTexTypes();
+		admission.runBinarySubGSEvaluationHTML();
+		admission.runBinarySubGSEvaluationLaTex();
+		admission.runBinarySubGSEvaluationLaTexTypes();
 		//Run all evaluations for the non-binary admission goldstandard
 		admission.runNonBinaryGSEvaluationHTML();
 		admission.runNonBinaryGSEvaluationLaTex();

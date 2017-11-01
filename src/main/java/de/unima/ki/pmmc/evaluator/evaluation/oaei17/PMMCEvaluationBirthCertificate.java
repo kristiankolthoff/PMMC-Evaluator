@@ -90,6 +90,9 @@ public class PMMCEvaluationBirthCertificate {
 				.setParser(Parser.Type.PNML)
 				.setCTTagOn(true)
 				.addThreshold(Evaluator.THRESHOLD_ZERO)
+				.addThreshold(Evaluator.THRESHOLD_LOW)
+				.addThreshold(Evaluator.THRESHOLD_MEDIUM)
+				.addThreshold(Evaluator.THRESHOLD_HIGH)
 				.setDebugOn(true)
 				.setPathMaxentTagger(NLPHelper.TAGGER_BIDIR_DIRECTORY)
 				.setPathWordnet(NLPHelper.WORDNET_DIRECTORY)
@@ -131,12 +134,12 @@ public class PMMCEvaluationBirthCertificate {
 		PMMCEvaluationBirthCertificate birthCertificate = new PMMCEvaluationBirthCertificate();
 		//Run all evaluations for the binary birthCertificate goldstandard
 		birthCertificate.runBinaryGSEvaluationHTML();
-//		birthCertificate.runBinaryGSEvaluationLaTex();
-//		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+		birthCertificate.runBinaryGSEvaluationLaTex();
+		birthCertificate.runBinaryGSEvaluationLaTexTypes();
 		//Run all evaluations for the non-binary birthCertificate goldstandard
-//		birthCertificate.runNonBinaryGSEvaluationHTML();
-//		birthCertificate.runNonBinaryGSEvaluationLaTex();
-//		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
+		birthCertificate.runNonBinaryGSEvaluationHTML();
+		birthCertificate.runNonBinaryGSEvaluationLaTex();
+		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
 	}
 	
 	public void runBinaryGSEvaluationHTML() throws IOException, CorrespondenceException, 
@@ -185,7 +188,7 @@ public class PMMCEvaluationBirthCertificate {
 					.addMetric(new TypeFMeasureMacro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
-		       .setOutputName("oaei17-birth-certificate-binary")
+		       .setOutputName("oaei17-birth-certificate-binary-types")
 	           .addGoldstandardGroup("birth-certificate-binary", GOLDSTANDARD_PATH);
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
@@ -266,7 +269,7 @@ public class PMMCEvaluationBirthCertificate {
 				.addMetric(new TypeNBFMeasureMacro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
-		.setOutputName("oaei17-birth-certificate-non-binary")
+		.setOutputName("oaei17-birth-certificate-non-binary-types")
 		   .addGoldstandardGroup("birth-certificate-non-binary", GOLDSTANDARD_NB_PATH);
 		Configuration configuration = builder.build();
 		Evaluator evaluator = new Evaluator(configuration);
