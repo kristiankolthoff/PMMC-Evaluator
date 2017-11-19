@@ -54,7 +54,7 @@ import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 
 public class PMMCEvaluationAdmission {
 
-	public final boolean SHOW_IN_BROWSER = true;
+	public final boolean SHOW_IN_BROWSER = false;
 	public final String OUTPUT_PATH = "src/main/resources/data/evaluation/";
 	public final String GOLDSTANDARD_OLD_PATH = "src/main/resources/data/dataset1/goldstandard/";
 	public final String GOLDSTANDARD_OLD_SUB_PATH = "src/main/resources/data/dataset1-sub/goldstandard/";

@@ -14,9 +14,10 @@ public class TypePrecisionMicro extends AbstractTypeMetric {
 	
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeMicro(characteristics, 
+		double value = Metric.computeMicro(characteristics, 
 				c -> {return (double) c.getTP(types).size();}, 
-				c -> {return (double) (c.getTP(types).size() + c.getFP().size());});
+				c -> {return (double) (c.getTP(types).size() + c.getFP(types).size());});
+		return Double.isNaN(value) ?  0d : value;
 	}
 
 	@Override

@@ -54,7 +54,7 @@ import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 
 public class PMMCEvaluationBirthCertificate {
 
-	public final boolean SHOW_IN_BROWSER = true;
+	public final boolean SHOW_IN_BROWSER = false;
 	public final String OUTPUT_PATH = "src/main/resources/data/evaluation/";
 	public final String GOLDSTANDARD_PATH = "src/main/resources/data/dataset2/goldstandard/";
 	public final String GOLDSTANDARD_NB_PATH = "src/main/resources/data/dataset2/new_gs_rdf/";

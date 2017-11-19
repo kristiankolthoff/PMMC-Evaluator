@@ -17,8 +17,8 @@ public class TypeRecallMicro implements Metric {
 	@Override
 	public double compute(List<Characteristic> characteristics) {
 		return Metric.computeMicro(characteristics, 
-				c -> {return (double) c.getAlignmentCorrect(type).size();}, 
-				c -> {return (double) c.getAlignmentReference(type).size();});
+				c -> {return (double) c.getTP(type).size();}, 
+				c -> {return (double) (c.getTP(type).size() + c.getFN(type).size());});
 	}
 
 	@Override
