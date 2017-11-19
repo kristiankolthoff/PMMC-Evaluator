@@ -43,12 +43,12 @@ import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesMatcher;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeFMeasureMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeFMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMicro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 
@@ -87,7 +87,7 @@ public class PMMCEvaluationBirthCertificate {
 				.setModelsRootPath(MODELS_PATH)
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputPath(OUTPUT_PATH)
-				.setParser(Parser.Type.PNML)
+				.setParser(Parser.Type.PNML_2)
 				.setCTTagOn(true)
 				.addThreshold(Evaluator.THRESHOLD_ZERO)
 				.addThreshold(Evaluator.THRESHOLD_LOW)
@@ -122,9 +122,9 @@ public class PMMCEvaluationBirthCertificate {
 					.addMetric(new TypeNumCorrespondencesGS(type))
 					.addMetric(new TypeFracCorrespondencesGS(type))
 					.addMetric(new TypeNumCorrespondencesMatcher(type))
-					.addMetric(new TypePrecisionMacro(type))
-					.addMetric(new TypeRecallMacro(type))
-					.addMetric(new TypeFMeasureMacro(type)));
+					.addMetric(new TypePrecisionMicro(type))
+					.addMetric(new TypeRecallMicro(type))
+					.addMetric(new TypeFMeasureMicro(type)));
 		}
 		return builder;
 	}
@@ -183,9 +183,9 @@ public class PMMCEvaluationBirthCertificate {
 		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
 		for(CorrespondenceType type : excludedTypes) {
 			builder.addMetricGroup(new MetricGroup(type.getName())
-					.addMetric(new TypePrecisionMacro(type))
-					.addMetric(new TypeRecallMacro(type))
-					.addMetric(new TypeFMeasureMacro(type)));
+					.addMetric(new TypePrecisionMicro(type))
+					.addMetric(new TypeRecallMicro(type))
+					.addMetric(new TypeFMeasureMicro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
 		       .setOutputName("oaei17-birth-certificate-binary-types")
@@ -221,9 +221,9 @@ public class PMMCEvaluationBirthCertificate {
 					.addMetric(new TypeNumCorrespondencesGS(type))
 					.addMetric(new TypeFracCorrespondencesGS(type))
 					.addMetric(new TypeNumCorrespondencesMatcher(type))
-					.addMetric(new TypeNBPrecisionMacro(type))
-					.addMetric(new TypeNBRecallMacro(type))
-					.addMetric(new TypeNBFMeasureMacro(type)));
+					.addMetric(new TypeNBPrecisionMicro(type))
+					.addMetric(new TypeNBRecallMicro(type))
+					.addMetric(new TypeNBFMeasureMicro(type)));
 		}
 		builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
 		   .setOutputName("oaei17-birth-certificate-non-binary")
@@ -264,9 +264,9 @@ public class PMMCEvaluationBirthCertificate {
 		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
 		for(CorrespondenceType type : excludedTypes) {
 		builder.addMetricGroup(new MetricGroup(type.getName())
-				.addMetric(new TypeNBPrecisionMacro(type))
-				.addMetric(new TypeNBRecallMacro(type))
-				.addMetric(new TypeNBFMeasureMacro(type)));
+				.addMetric(new TypeNBPrecisionMicro(type))
+				.addMetric(new TypeNBRecallMicro(type))
+				.addMetric(new TypeNBFMeasureMicro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
 		.setOutputName("oaei17-birth-certificate-non-binary-types")

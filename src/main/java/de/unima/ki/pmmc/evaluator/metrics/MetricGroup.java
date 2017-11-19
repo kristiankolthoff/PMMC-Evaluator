@@ -88,4 +88,8 @@ public class MetricGroup implements Iterable<Metric>{
 	public int size() {
 		return metrics.size();
 	}
+
+	public MetricGroup addGoldstandard() {
+		return null;
+	}
 }

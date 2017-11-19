@@ -71,7 +71,7 @@ public class PMMCNewEvaluationAdmission {
 	private void init() throws IOException {
 		@SuppressWarnings("unused")
 		CorrespondenceType[] excludedValues = CorrespondenceType
-					.valuesWithout(CorrespondenceType.TRIVIAL, CorrespondenceType.TRIVIAL_NORM);
+					.valuesWithout(CorrespondenceType.TRIVIAL);
 		@SuppressWarnings("unused")
 		MetricGroupFactory factory = MetricGroupFactory.getInstance();
 		builder = new Configuration.Builder().

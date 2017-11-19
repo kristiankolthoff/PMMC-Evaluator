@@ -43,12 +43,12 @@ import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesMatcher;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeFMeasureMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMacro;
-import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMacro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeFMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMicro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 
@@ -125,9 +125,9 @@ public class PMMCEvaluationAdmission {
 					.addMetric(new TypeNumCorrespondencesGS(type))
 					.addMetric(new TypeFracCorrespondencesGS(type))
 					.addMetric(new TypeNumCorrespondencesMatcher(type))
-					.addMetric(new TypePrecisionMacro(type))
-					.addMetric(new TypeRecallMacro(type))
-					.addMetric(new TypeFMeasureMacro(type)));
+					.addMetric(new TypePrecisionMicro(type))
+					.addMetric(new TypeRecallMicro(type))
+					.addMetric(new TypeFMeasureMicro(type)));
 		}
 		return builder;
 	}
@@ -190,9 +190,9 @@ public class PMMCEvaluationAdmission {
 		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
 		for(CorrespondenceType type : excludedTypes) {
 			builder.addMetricGroup(new MetricGroup(type.getName())
-					.addMetric(new TypePrecisionMacro(type))
-					.addMetric(new TypeRecallMacro(type))
-					.addMetric(new TypeFMeasureMacro(type)));
+					.addMetric(new TypePrecisionMicro(type))
+					.addMetric(new TypeRecallMicro(type))
+					.addMetric(new TypeFMeasureMicro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
 		       .setOutputName("oaei17-admission-binary-types")
@@ -238,15 +238,36 @@ public class PMMCEvaluationAdmission {
 		LOG.info("binarySubGSEvaluationLaTex : #reports = " + evaluation.getReports().size());
 	}
 	
+	public void runNonBinaryGSEvaluationForOAEI17Latex() throws IOException, CorrespondenceException,
+	ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		builder.addMetricGroup(new MetricGroup("Standard")
+					.addMetric(new PrecisionMicro())
+					.addMetric(new RecallMicro())
+					.addMetric(new FMeasureMicro())
+					.addGoldstandard())
+		   .addMetricGroup(new MetricGroup("Probabilistic")
+					.addMetric(new NBPrecisionMicro())
+					.addMetric(new NBRecallMicro())
+					.addMetric(new NBFMeasureMicro())
+					.addGoldstandard());
+		builder.addHandler(new LaTexHandler())
+		   .setOutputName("oaei17-admission-binary-sub");
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("binarySubGSEvaluationLaTex : #reports = " + evaluation.getReports().size());
+	}
+	
 	public void runBinarySubGSEvaluationLaTexTypes() throws IOException, CorrespondenceException, 
 			ParserConfigurationException, SAXException {
 		Configuration.Builder builder = createBuilder();
 		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
 		for(CorrespondenceType type : excludedTypes) {
 		builder.addMetricGroup(new MetricGroup(type.getName())
-				.addMetric(new TypePrecisionMacro(type))
-				.addMetric(new TypeRecallMacro(type))
-				.addMetric(new TypeFMeasureMacro(type)));
+				.addMetric(new TypePrecisionMicro(type))
+				.addMetric(new TypeRecallMicro(type))
+				.addMetric(new TypeFMeasureMicro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
 		   .setOutputName("oaei17-admission-binary-sub-types")
@@ -281,9 +302,9 @@ public class PMMCEvaluationAdmission {
 					.addMetric(new TypeNumCorrespondencesGS(type))
 					.addMetric(new TypeFracCorrespondencesGS(type))
 					.addMetric(new TypeNumCorrespondencesMatcher(type))
-					.addMetric(new TypeNBPrecisionMacro(type))
-					.addMetric(new TypeNBRecallMacro(type))
-					.addMetric(new TypeNBFMeasureMacro(type)));
+					.addMetric(new TypeNBPrecisionMicro(type))
+					.addMetric(new TypeNBRecallMicro(type))
+					.addMetric(new TypeNBFMeasureMicro(type)));
 		}
 		builder.addHandler(new HTMLHandler(SHOW_IN_BROWSER))
 		   .setOutputName("oaei17-admission-non-binary")
@@ -324,9 +345,9 @@ public class PMMCEvaluationAdmission {
 		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
 		for(CorrespondenceType type : excludedTypes) {
 		builder.addMetricGroup(new MetricGroup(type.getName())
-				.addMetric(new TypeNBPrecisionMacro(type))
-				.addMetric(new TypeNBRecallMacro(type))
-				.addMetric(new TypeNBFMeasureMacro(type)));
+				.addMetric(new TypeNBPrecisionMicro(type))
+				.addMetric(new TypeNBRecallMicro(type))
+				.addMetric(new TypeNBFMeasureMicro(type)));
 		}
 		builder.addHandler(new LaTexHandlerType())
 		   .setOutputName("oaei17-admission-non-binary-types")
