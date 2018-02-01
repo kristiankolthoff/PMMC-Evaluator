@@ -80,6 +80,23 @@ public class MatcherSetTypeFraction {
 		return loader.loadAll(Optional.empty(), paths, 0d);
 	}
 	
+	public List<Solution> loadSolutionsAssetManagement() throws IOException {
+		List<String> paths = new ArrayList<>();
+		paths.add("src/main/resources/data/results/submitted-matchers/AML-PM/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/BPLangMatch/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/KnoMa-Proc/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/Know-Match-SSS/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/Match-SSS/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/OPBOT/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/pPalm-DS/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/RMM-NHCM/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/RMM-NLM/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/RMM-SMSL/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/RMM-VM2/dataset3/");
+		paths.add("src/main/resources/data/results/submitted-matchers/TripleS/dataset3/");
+		return loader.loadAll(Optional.empty(), paths, 0d);
+	}
+	
 	private List<Model> loadModels(String path) throws ParserConfigurationException, SAXException, IOException {
 		List<Model> models = new ArrayList<>();
 		Files.walk(Paths.get(path)).forEach(filePath -> {
@@ -103,6 +120,7 @@ public class MatcherSetTypeFraction {
 	
 	public void computeFraction(final int filterThresh, List<Solution> solutions, List<Model> models) {
 		this.annotator = new Annotator(models);
+		this.annotator.setParser(parser);
 		Map<Correspondence, Integer> counts = new HashMap<>();
 		solutions.stream()
 				 .flatMap(solution -> {return solution.getAlignments().stream();})
@@ -132,9 +150,9 @@ public class MatcherSetTypeFraction {
 	}
 	
 	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
-		MatcherSetTypeFraction fraction = new MatcherSetTypeFraction(ParserFactory.getParser(Parser.Type.PNML_2));
-		List<Solution> solutions = fraction.loadSolutionsBirthCertificate();
-		List<Model> models = fraction.loadModels("src/main/resources/data/dataset2/models/");
+		MatcherSetTypeFraction fraction = new MatcherSetTypeFraction(ParserFactory.getParser(Parser.Type.EPML));
+		List<Solution> solutions = fraction.loadSolutionsAssetManagement();
+		List<Model> models = fraction.loadModels("src/main/resources/data/dataset3/models/");
 		fraction.computeFraction(3, solutions, models);
 	}
 }
