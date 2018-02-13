@@ -9,6 +9,8 @@ For exploring the features and capabilities of the library, we use a concise exa
 
 ![alt tag](https://raw.githubusercontent.com/kristiankolthoff/PMMC-Evaluator/master/src/main/resources/images/overview.png)
 
+### a.) Setting Up The Evaluation Process
+
 To start with, first we create a `Configuration.Builder` which can be used to specify all the different settings for the evaluation to conduct e.g. define the `GoldstandardGroup`s, the matcher results and the `Metric`s that should be computed grouped into several `MetricGroup`s. In the following, we will walk through some of the possible settings. After creating the `Configuration.Builder` we add two `GoldstandardGroup`s and provide the corresponding directory paths of the included goldstandards. Instead of providing the group name and the goldstandard paths, you can also directly add a `GoldstandardGroup` instance. Note that we also add the two thresholds `t1` and `t2` two the our `Configuration`.
 
 ```java
@@ -16,89 +18,41 @@ Configuration.Builder builder = new Configuration.Builder().
 			.addGoldstandardGroup("GSGroup1", gs1_path, gs2_path)
 			.addGoldstandardGroup("GSGroup2", gs3_path)
 			.addThreshold(t1).addThreshold(t2)
+			.addMatcherPath(m1_path)
+			.addMatcherPath(m2_path)
+			.addMatcherPath(m3_path);
 ```
+In addition, we also specify the paths to the generated matcher results we want to evaluate against our `GoldstandardGroup`s. This notation can be tedious if you have many matchers that you want to evaluate in parallel, hence you can also simply use `builder.setMatchersRootPath(matchersRootPath)` and provide the main directory path where all the matcher results are stored in. This will recursively search through all subdirectories, detect matcher results and load them named properly into the framework for further usage.
 
+Depending on the `Alignment` format you use in you special matching evaluation, you also need to provide a corresponding `AlignmentReader` implementation. The framework ships with preimplemented `AligmentReaderXML` which is most commonly used but also provides an `AlignmentReaderTxt` which lets you read alignments that are provided in a simple TextFile form.
 
 ```java
-Configuration.Builder builder = new Configuration.Builder().
-			addMetricGroup(new MetricGroup("Precision", "prec-info")
-					.addMetric(new NBPrecisionMicro())
-					.addMetric(new NBPrecisionMacro())
-					.addMetric(new NBPrecisionStdDev()))
+//For commonly used alignments in XML
+builder.setAlignmentReader(new AlignmentReaderXml());
+//For simple textfile-based alignments
+builder.setAlignmentReader(new AlignmentReaderTxt());
 ```
 
-To start with, create a Evaluator Builder and add the
-path to the RDF files of the goldstandard. Then add the 
-path to the corresponding RDF alignment of the matcher and
-set the parameters for the generated output like the name and
-the output path. This API ships with direct support for alignments
-in RDF-XML.
+### b.) Adding Evaluation Metrics
+
+So for we provided the basic `Configuration` parameters to implement the evaluation process as depicted in the figure above. Since we want to evaluate specific characteristics of the process model matchers, we need to add the metrics we are interested in to our `Configuration`. Note that you can add individual `Metric` instances directly, however, the preferred way is to use a `MetricGroup` instance to add several `Metrics` to and then add the created `MetricGroup` to the `Configuration.Builder`. For example, assume that we want to have a `MetricGroup` for precision that nicely groups the basic metric components like the micro-precision, macro-precision and its precision standard deviation. 
 
 ```java
-Evaluator evaluator = new Evaluator.Builder().
-				setGoldstandardPath(GOLDSTANDARD_PATH).
-				addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/").
-				setOutputPath(OUTPUT_PATH).
-				setOutputName("output-name").
-				setAlignmentReader(new AlignmentReaderXml()).
-				build();
-```
-If you want to evaluate multiple matcher outputs at once,
-Evaluator comes with matcher output search. That is, only
-specify the root path of the outputs and Evaluator will
-automatically detect the multiple outputs and load them.
-
-
-
-```java
-Evaluator evaluator = new Evaluator.Builder().
-				setGoldstandardPath(GOLDSTANDARD_PATH).
-				setMatchersRootPath(RESULTS_PATH).
-				setOutputPath(OUTPUT_PATH).
-				setOutputName("output-name").
-				setAlignmentReader(new AlignmentReaderXml()).
-				build();
+builder.addMetricGroup(new MetricGroup("Precision", "prec-info")
+				.addMetric(new PrecisionMicro())
+				.addMetric(new PrecisionMacro())
+				.addMetric(new PrecisionStdDev()));
 ```
 
-The Evaluator also supports thresholding of experiments, which can
-be simply added to the Evaluator. If now threshold is set explicitly,
-a threshold of 0.0 is used implicitly.
 
-```java
-Evaluator evaluator = new Evaluator.Builder().
-				setGoldstandardPath(GOLDSTANDARD_PATH).
-				addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/").
-				setOutputPath(OUTPUT_PATH).
-				setOutputName("output-name").
-				addThreshold(0.0).
-				addThreshold(0.5).
-				addThreshold(0.75).
-				setAlignmentReader(new AlignmentReaderXml()).
-				build();
-```
 
-To receive concise output of the experiments,
-the Evaluator ships with different result handlers.
-For a convienient overview of the results in the Browser,
-you can use the HTMLHandler. Also the Evaluator ships with
-some standard data format result handlers, like XML and JSON.
 
-```java
-Evaluator evaluator = new Evaluator.Builder().
-				setGoldstandardPath(GOLDSTANDARD_PATH).
-				addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/").
-				setOutputPath(OUTPUT_PATH).
-				setOutputName("output-name").
-				addHandler(new HTMLHandler(SHOW_IN_BROSWER));
-				addHandler(new JSONHandler());
-				setAlignmentReader(new AlignmentReaderXml()).
-				build();
-```
 
-Of course, you can also programmatically receive the results 
-from the Evaluator and do additional processing of the data.
-After successfully building the Evaluator instance, you start
-the process with the following call.
+
+
+
+
+
 
 ```java
 evaluator.run();
