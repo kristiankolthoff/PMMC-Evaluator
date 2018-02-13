@@ -44,14 +44,26 @@ builder.addMetricGroup(new MetricGroup("Precision", "prec-info")
 				.addMetric(new PrecisionStdDev()));
 ```
 
+Assume we want to add a similar group of metrics for recall consisting of the micro-recall, macro-recall and its recall standard deviation, we simply add the following calls on the `Configuration.Builder`.
 
 
+```java
+builder.addMetricGroup(new MetricGroup("Recall", "rec-info")
+				.addMetric(new RecallMicro())
+				.addMetric(new RecallMacro())
+				.addMetric(new RecallStdDev()));
+```
+
+The framework ships with many important preimplemented `Metric`s which are also used in the process model matching contest. In addition to the presented standard metrics, it also ships with the non-binary versions of precision, recall and f-measure as described in [[3](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)]. However, if you want to compute custom metric functions that are not provided by the framework directly, you can use an instance of `FunctionMetric(Function<List<Characteristic>, Double>> function)` and provide a function that takes as input a list of characteristics and computes a single double value as the metrics final result value. In the following example we simply compute the TP (true positives) as a `FunctionMetric` and add it to the `Configuration.Builder`.
 
 
-
-
-
-
+```java
+builder.addMetricGroup(new MetricGroup("custom", "custom-info")
+				.addMetric(new FunctionMetric(list -> 
+				{return (double) list.stream()
+					.mapToInt(c -> {return c.getAlignmentCorrect().size();})
+				        .max().getAsInt();})));			
+```
 
 
 ```java
@@ -64,4 +76,6 @@ evaluator.run();
 
 [2] Manel Achichi, Michelle Cheatham, Zlatan Dragisic, Jérôme Euzenat, Daniel Faria, Alfio Ferrara, Giorgos Flouris, Irini Fundulaki, Ian Harrow, Valentina Ivanova, Ernesto Jiménez-Ruiz, Kristian Kolthoff, Elena Kuss, Patrick Lambrix, Henrik Leopold, Huanyu Li, Christian Meilicke, Majid Mohammadi, Stefano Montanelli, Catia Pesquita, Tzanina Saveta, Pavel Shvaiko, Andrea Splendiani, Heiner Stuckenschmidt, Élodie Thiéblin, Konstantin Todorov, Cássia Trojahn, Ondrej Zamazal:
 **Results of the Ontology Alignment Evaluation Initiative 2017**. OM@ISWC 2017: 61-113
+
+[3] Elena Kuss, Henrik Leopold, Han Van der Aa, Heiner Stuckenschmidt and Hajo A. Reijers **Probabilistic evaluation of process model matching techniques**. In: Lecture notes in computer scienceConceptual modeling : 35th international conference, ER 2016, Gifu, Japan, November 14-17, 2016 : proceedings; 279-292. Springer, Cham, 2016.
 
