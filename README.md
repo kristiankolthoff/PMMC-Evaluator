@@ -1,8 +1,7 @@
 # PMMC-Evaluator
+
 This project provides an API for evaluating process model matchers with a variety of different metrics
-and is used to generate the results for the official Process Model Matching Contest (PMMC). An evaluation experiment
-is easily setup by using the builder pattern to increasingly build up a configuration for an evaluation. This Evaluation
-instance forms the basis for any experiment.
+and is used to generate the results for the official Process Model Matching Contest (PMMC) conducted in 2016 [1] and 2017 [2]. This contest is about finding pairwise matching tasks or activities (denoted as correspondences) in comparison of two given process models. In particular, for this contest three different datasets are used all having different notation form. The first set of process models describes the admission process at various universities and is represented in [BPMN](http://www.bpmn.org/). The second set of process models describe the process of creating birth certificates and uses [Petri-Nets](https://en.wikipedia.org/wiki/Petri_net). The third and last set of process models describe the basic process of managing assets and is represented in [EPC](https://en.wikipedia.org/wiki/Event-driven_process_chain). For evaluating the submitted matchers, we construct various evaluation settings and compute the corresponding metrics. An evaluation process is easily setup by using the builder pattern to increasingly build up a configuration for an evaluation. This `Evaluation` instance forms the basis for any experiment.
 
 # Example
 
@@ -96,4 +95,11 @@ the process with the following call.
 ```java
 evaluator.run();
 ```
+
+# Publications
+
+[1] Manel Achichi, Michelle Cheatham, Zlatan Dragisic, Jérôme Euzenat, Daniel Faria, Alfio Ferrara, Giorgos Flouris, Irini Fundulaki, Ian Harrow, Valentina Ivanova, Ernesto Jiménez-Ruiz, Elena Kuss, Patrick Lambrix, Henrik Leopold, Huanyu Li, Christian Meilicke, Stefano Montanelli, Catia Pesquita, Tzanina Saveta, Pavel Shvaiko, Andrea Splendiani, Heiner Stuckenschmidt, Konstantin Todorov, Cássia Trojahn and Ondrej Zamazal **Results of the Ontology Alignment Evaluation Initiative 2016**. In: CEUR workshop proceedingsOM 2016 : proceedings of the 11th International Workshop on Ontology Matching co-located with the 15th International Semantic Web Conference (ISWC 2016) Kobe, Japan, October 18, 2016; 73-129. RWTH, Aachen, 2016.
+
+[2] Manel Achichi, Michelle Cheatham, Zlatan Dragisic, Jérôme Euzenat, Daniel Faria, Alfio Ferrara, Giorgos Flouris, Irini Fundulaki, Ian Harrow, Valentina Ivanova, Ernesto Jiménez-Ruiz, Kristian Kolthoff, Elena Kuss, Patrick Lambrix, Henrik Leopold, Huanyu Li, Christian Meilicke, Majid Mohammadi, Stefano Montanelli, Catia Pesquita, Tzanina Saveta, Pavel Shvaiko, Andrea Splendiani, Heiner Stuckenschmidt, Élodie Thiéblin, Konstantin Todorov, Cássia Trojahn, Ondrej Zamazal:
+**Results of the Ontology Alignment Evaluation Initiative 2017**. OM@ISWC 2017: 61-113
 
