@@ -122,5 +122,5 @@ Note that the example process described previously depicts the main capabilities
 
 [4] Elena Kuss and Heiner Stuckenschmidt **Automatic classification to matching patterns for process model matching evaluation**. In: CEUR workshop proceedingsER-Forum-Demos 2017 : proceedings of the ER Forum 2017 and the ER 2017 Demo Track co-located with the 36th International Conference on Conceptual Modelling (ER 2017) Valencia, Spain, November 6-9, 2017; 306-319. RWTH, Aachen, 2017.
 
-[5] Elena Kuss, Henrik Leopold, Christian Meilicke and Heiner Stuckenschmidt Ranking-based evaluation of process model matching. In: Lecture notes in computer scienceOn the Move to Meaningful Internet Systems. OTM 2017 Conferences : Confederated International Conferences: CoopIS, C&TC, and ODBASE 2017, Rhodes, Greece, October 23-27, 2017, Proceedings, Part I; 298-305. Springer, Cham, 2017.
+[5] Elena Kuss, Henrik Leopold, Christian Meilicke and Heiner Stuckenschmidt **Ranking-based evaluation of process model matching**. In: Lecture notes in computer scienceOn the Move to Meaningful Internet Systems. OTM 2017 Conferences : Confederated International Conferences: CoopIS, C&TC, and ODBASE 2017, Rhodes, Greece, October 23-27, 2017, Proceedings, Part I; 298-305. Springer, Cham, 2017.
 
