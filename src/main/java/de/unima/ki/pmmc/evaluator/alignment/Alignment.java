@@ -303,4 +303,5 @@ public class Alignment implements Iterable<Correspondence>{
 		this.targetModel = targetModel;
 	}
 	
+	
 }
