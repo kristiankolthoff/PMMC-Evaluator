@@ -7,22 +7,21 @@ import java.util.List;
 import org.apache.commons.lang3.tuple.Pair;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
-import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 
 public interface Transformer {
 	
 	public Alignment initializeModel(String modelPath);
 	
-	public void transformActivity(Activity a1, Activity a2);
+	public void transformActivity(String id, Activity activity);
 
-	public List<Activity> one2manyParallel(String oriActivity, String... replacements);
+	public Pair<Activity, List<Activity>> one2manyParallel(String oriActivity, String... replacements);
 	
-	public List<Activity> one2manyParallel(String oriActivityId, List<Pair<String, CorrespondenceType>> replacements);
+	public Pair<Activity, List<Activity>> one2manySequential(String oriActivity, String... replacements);
 	
-	public List<Activity> one2manySequencial(String oriActivity, String... replacements);
+	public Pair<Activity, List<Activity>> many2oneParallel(String newActivity, String... replacements);
 	
-	public void many2one(String newActivity, String... replacements);
+	public Pair<Activity, List<Activity>> many2oneSequential(String newActivity, String... replacements);
 	
 	public void addIrrelevant(Activity... activities);
 	
@@ -30,8 +29,12 @@ public interface Transformer {
 	
 	public void flip(Direction direction);
 	
-	public void replaceSynonyms(Collection<String> synonyms);
+	public void replaceSynonyms(double probability, List<String> synonyms);
 	
-	public void replaceSynonyms(String... synonyms);
+	public void replaceSynonyms(double probability, String... synonyms);
+	
+	public void partMappingFromDataset(File dataset);
+	
+	public boolean writeModel(String name, String path);
 	
 }
