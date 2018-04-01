@@ -3,6 +3,7 @@ package de.unima.ki.pmmc.evaluator.alignment;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -82,6 +83,10 @@ public class Alignment implements Iterable<Correspondence>{
 	
 	public Stream<Correspondence> stream() {
 		return correspondences.stream();
+	}
+	
+	public void addAll(Collection<Correspondence> corres) {
+		this.correspondences.addAll(corres);
 	}
 	
 	/**
