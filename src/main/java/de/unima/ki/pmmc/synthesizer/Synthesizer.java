@@ -2,15 +2,16 @@ package de.unima.ki.pmmc.synthesizer;
 
 import java.io.File;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.tuple.Pair;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
-import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.alignment.SemanticRelation;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 import de.unima.ki.pmmc.synthesizer.transformation.Transformer;
+import de.unima.ki.pmmc.synthesizer.transformation.adding.AddStrategy;
 
 public class Synthesizer {
 
@@ -22,23 +23,54 @@ public class Synthesizer {
 		this.transformer = transformer;
 	}
 	
-	public Synthesizer readModel(String modelPath) {
-		goldstandard = transformer.initializeModel(modelPath);
+	public Synthesizer readModel(String modelPath, String modelName) {
+		goldstandard = transformer.initializeModel(modelPath, modelName);
+		return this;
+	}
+	
+	public Synthesizer transformActivity(String id, String transformation, boolean remainsValid) {
+		Activity insActivity = transformer.transformActivity(id, transformation);
+		if(!remainsValid) {
+			removeFromGoldstandard(insActivity);
+		}
+		return this;
+	}
+	
+	public Synthesizer transformActivity(Activity activity, boolean remainsValid) {
+		Activity insActivity = transformer.transformActivity(activity);
+		if(!remainsValid) {
+			removeFromGoldstandard(insActivity);
+		}
 		return this;
 	}
 	
 	public Synthesizer one2ManyParallel(String oriActivityId, String... replacements) {
-//		List<Activity> insActivities = transformer.one2manyParallel(oriActivityId, replacements);
-//		goldstandard.getCorrespondences()
-//					.removeIf(corres -> {return corres.getUri1().equals(oriActivityId);});
-//		insActivities.stream()
-//					 .forEach(act -> {goldstandard.add(new Correspondence(oriActivityId, act.getId(),
-//							                                         SemanticRelation.EQUIV, 1.0));});
+		List<Pair<Activity, Activity>> insActivities = transformer.one2manyParallel(oriActivityId, replacements);
+		goldstandard.getCorrespondences()
+					.removeIf(corres -> {return corres.getUri1().equals(oriActivityId);});
+		insActivities.stream()
+					 .forEach(pair -> {goldstandard.add(new Correspondence(pair.getLeft().getId(), 
+							 pair.getRight().getId(), SemanticRelation.EQUIV, 1.0));});
+		return this;
+	}
+	
+	public Synthesizer one2ManySequential(String oriActivityId, String... replacements) {
+		transformer.one2manySequential(oriActivityId, replacements);
 		return this;
 	}
 	
 	public Synthesizer many2OneParallel(String replacement, String... oriActivityIds) {
-//		Activity insActivity = transformer.manyParallel2one(replacement, oriActivityIds);
+		List<Pair<Activity, Activity>> pairs = transformer.many2oneParallel(replacement, oriActivityIds);
+		pairs.stream().forEach(pair -> 
+		        {goldstandard.getCorrespondences()
+		        	.removeIf(corres -> {return corres.getUri1().equals(pair.getLeft().getId());});
+		        goldstandard.add(new Correspondence(pair.getLeft().getId(), 
+		        		pair.getRight().getId(), SemanticRelation.EQUIV, 1.0));;});
+		return this;
+	}
+	
+	public Synthesizer many2OneSequential(String oriActivityId, String... replacements) {
+		transformer.many2oneSequential(oriActivityId, replacements);
 		return this;
 	}
 	
@@ -57,23 +89,23 @@ public class Synthesizer {
 		return this;
 	}
 	
-	public Synthesizer transformActivity(String id, Activity activity) {
-		transformer.transformActivity(id, activity);
+	public Synthesizer transformActivity(Activity activity) {
+		transformer.transformActivity(activity);
 		return this;
 	}
 	
 	public Synthesizer transformActivity(String id, String label) {
-		transformer.transformActivity(id, new Activity(null, label));
+		transformer.transformActivity(id, label);
 		return this;
 	}
 	
-	public Synthesizer addIrrelevant(Activity... activities) {
-		transformer.addIrrelevant(activities);
+	public Synthesizer addIrrelevant(AddStrategy addStrategy, Activity... activities) {
+		transformer.addIrrelevant(addStrategy, activities);
 		return this;
 	}
 	
-	public Synthesizer addIrrelevantFromDataset(File dataset, double ratio) {
-		transformer.addIrrelevantFromDataset(dataset, ratio);
+	public Synthesizer addIrrelevantFromDataset(AddStrategy addStrategy, File dataset, double ratio) {
+		transformer.addIrrelevantFromDataset(addStrategy, dataset, ratio);
 		return this;
 	}
 	
@@ -81,6 +113,18 @@ public class Synthesizer {
 		//Check validation state
 		transformer.writeModel(name, path);
 		return this;
+	}
+	
+	private void removeFromGoldstandard(Activity activity) {
+		goldstandard.getCorrespondences().removeIf(corres -> 
+			{return corres.getUri2().equals(activity.getId());});
+	}
+	
+	private void addToGoldstandard(List<Pair<Activity, Activity>> pairs) {
+		List<Correspondence> corres = pairs.stream().map(pair -> {return 
+				new Correspondence(pair.getLeft().getId(), pair.getRight().getId(), 
+					SemanticRelation.EQUIV, 1.0);}).collect(Collectors.toList());
+		goldstandard.addAll(corres);
 	}
 	
 }

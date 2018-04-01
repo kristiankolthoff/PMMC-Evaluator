@@ -7,14 +7,15 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.model.Activity;
+import de.unima.ki.pmmc.synthesizer.transformation.adding.AddStrategy;
 
 public interface Transformer {
 	
 	public Alignment initializeModel(String modelPath, String modelName);
 	
-	public Activity transformActivity(String id, String transformation, boolean isValidCorres);
+	public Activity transformActivity(String id, String transformation);
 	
-	public Activity transformActivity(Activity activity, boolean isValidCorres);
+	public Activity transformActivity(Activity activity);
 
 	public List<Pair<Activity, Activity>> one2manyParallel(String oriActivity, String... replacements);
 	
@@ -26,7 +27,7 @@ public interface Transformer {
 	
 	public void addIrrelevant(AddStrategy addStrategy, Activity... activities);
 	
-	public void addIrrelevantFromDataset(File dataset, double ratio, AddStrategy addStrategy);
+	public void addIrrelevantFromDataset(AddStrategy addStrategy, File dataset, double ratio);
 	
 	public List<Pair<Activity, Activity>> flip(Direction direction);
 	

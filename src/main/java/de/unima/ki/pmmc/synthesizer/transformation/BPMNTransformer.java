@@ -28,44 +28,66 @@ import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.alignment.SemanticRelation;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
+import de.unima.ki.pmmc.synthesizer.transformation.adding.AddStrategy;
+import de.unima.ki.pmmc.synthesizer.transformation.adding.BPMNAddStrategy;
 
 public class BPMNTransformer implements Transformer{
 
 	private BpmnModelInstance model;
+	private BpmnModelInstance unmodifiedModel;
 	private Random random;
+	private String modelName;
 	
 	private static final String ATTR_NAME = "name";
 	private static final String ATTR_ID = "id";
+	private static final String HTTP = "http://";
+	private static final String SEPERATOR = "#";
+	private static final String TRANSF = "transformed";
 	
 	public BPMNTransformer() {
 		this.random = new Random();
 	}
 	
 	@Override
-	public Alignment initializeModel(String modelPath) {
-		model =  Bpmn.readModelFromFile(new File(modelPath));
+	public Alignment initializeModel(String modelPath, String modelName) {
+		File file = new File(modelPath);
+		unmodifiedModel = Bpmn.readModelFromFile(file);
+		model =  Bpmn.readModelFromFile(file);
 		Alignment alignment = new Alignment();
 		ModelElementType taskType = model.getModel().getType(Task.class);
 		Collection<ModelElementInstance> taskInstances = model.getModelElementsByType(taskType);
 		for(ModelElementInstance task : taskInstances) {
-			Correspondence corres = new Correspondence(task.getAttributeValue(ATTR_ID), 
-					task.getAttributeValue(ATTR_ID), SemanticRelation.EQUIV, 1.0, CorrespondenceType.TRIVIAL);
+			String uri1 = getFullSpecifiedOriModelId(task.getAttributeValue(ATTR_ID));
+			String uri2 = getFullSpecifiedTransModelId(task.getAttributeValue(ATTR_ID));
+			Correspondence corres = new Correspondence(uri1, uri2, 
+					SemanticRelation.EQUIV, 1.0, CorrespondenceType.TRIVIAL);
 			alignment.add(corres);
 		}
 		return alignment;
 	}
 
 	@Override
-	public void transformActivity(String id, Activity activity) {
+	public Activity transformActivity(String id, String transformation) {
 		Task task = (Task) model.getModelElementById(id);
 		if(Objects.isNull(task)) {
 			throw new IllegalArgumentException("Activity with id " + id + " not found");
 		}
-		task.setAttributeValue(ATTR_NAME, activity.getLabel());
+		task.setAttributeValue(ATTR_NAME, transformation);
+		return new Activity(task.getAttributeValue(ATTR_ID), task.getAttributeValue(ATTR_NAME));
 	}
 
 	@Override
-	public Pair<Activity, List<Activity>> one2manyParallel(String oriActivity, String... replacements) {
+	public Activity transformActivity(Activity activity) {
+		Task task = (Task) model.getModelElementById(activity.getId());
+		if(Objects.isNull(task)) {
+			throw new IllegalArgumentException("Activity with id " + activity.getId() + " not found");
+		}
+		task.setAttributeValue(ATTR_NAME, activity.getLabel());
+		return new Activity(task.getAttributeValue(ATTR_ID), task.getAttributeValue(ATTR_NAME));
+	}
+
+	@Override
+	public List<Pair<Activity, Activity>> one2manyParallel(String oriActivity, String... replacements) {
 		Task task = (Task) model.getModelElementById(oriActivity);
 		if(Objects.isNull(task)) {
 			throw new IllegalArgumentException("Activity with id " + oriActivity + " not found");
@@ -109,7 +131,8 @@ public class BPMNTransformer implements Transformer{
 		gatewayConv.getOutgoing().add(flowFrom);
 		succedingElement.getIncoming().add(flowFrom);
 		//Create all the tasks and add them to the gateway
-		List<Activity> activities = new ArrayList<>();
+		Activity activity = new Activity(task.getId(), task.getName());
+		List<Pair<Activity, Activity>> activities = new ArrayList<>();
 		for(String replacement : replacements) {
 			UserTask userTask = model.newInstance(UserTask.class);
 			userTask.setName(replacement);
@@ -124,27 +147,33 @@ public class BPMNTransformer implements Transformer{
 			parent.addChildElement(seqFlowTaskTo);
 			seqFlowTaskTo.setSource(userTask);
 			seqFlowTaskTo.setTarget(gatewayConv);
-			activities.add(new Activity(userTask.getId(), userTask.getName()));
+			activities.add(Pair.of(activity, 
+					new Activity(getFullSpecifiedTransModelId(userTask.getId()), userTask.getName())));
 			//Update all sequence flow lists
 			gatewayDiv.getOutgoing().add(seqFlowTaskFrom);
 			userTask.getIncoming().add(seqFlowTaskFrom);
 			userTask.getOutgoing().add(seqFlowTaskTo);
 			gatewayConv.getIncoming().add(seqFlowTaskTo);
 		}
-		return null;
+		return activities;
 	}
-	
+
 	@Override
-	public Pair<Activity, List<Activity>> many2oneParallel(String newActivity, String... oriActivityIds) {
-		if(oriActivityIds.length == 0) {
-			return Pair.of(new Activity(null, null), Collections.emptyList());
+	public List<Pair<Activity, Activity>> one2manySequential(String oriActivity, String... replacements) {
+		return Collections.emptyList();
+	}
+
+	@Override
+	public List<Pair<Activity, Activity>> many2oneParallel(String newActivity, String... replacements) {
+		if(replacements.length == 0) {
+			return Collections.emptyList();
 		}
 		List<Task> tasks = new ArrayList<>();
 		List<SequenceFlow> sequenceFlowsIn = new ArrayList<>();
 		List<SequenceFlow> sequenceFlowsOut = new ArrayList<>();
 		List<ParallelGateway> gatewaysLeft = new ArrayList<>();
 		List<ParallelGateway> gatewaysRight = new ArrayList<>();
-		for(String oriActivity : oriActivityIds) {
+		for(String oriActivity : replacements) {
 			Task task = (Task) model.getModelElementById(oriActivity);
 			tasks.add(task);
 			if(Objects.isNull(task)) {
@@ -205,8 +234,14 @@ public class BPMNTransformer implements Transformer{
 		parent.addChildElement(flowFrom);
 		flowFrom.setSource(userTask);
 		flowFrom.setTarget(succeding);
-//		return new Activity(userTask.getName(), userTask.getId());
-		return null;
+		//Compute activity pairs for the goldstandard
+		List<Pair<Activity, Activity>> activites = new ArrayList<>();
+		Activity insActivity = new Activity(userTask.getId(), userTask.getName());
+		for(Task task : tasks) {
+			activites.add(Pair.of(new Activity(task.getId(), task.getName()), 
+					insActivity));
+		}
+		return activites;
 	}
 	
 	private boolean verifyGatewayEquality(List<ParallelGateway> gateways) {
@@ -220,22 +255,42 @@ public class BPMNTransformer implements Transformer{
 		return true;
 	}
 
+
 	@Override
-	public void addIrrelevant(Activity... activities) {
-		// TODO Auto-generated method stub
-		
+	public List<Pair<Activity, Activity>> many2oneSequential(String newActivity, String... replacements) {
+		return Collections.emptyList();
 	}
 
 	@Override
-	public void addIrrelevantFromDataset(File dataset, double ratio) {
-		// TODO Auto-generated method stub
-		
+	public void addIrrelevant(AddStrategy addStrategy, Activity... activities) {
+		if(addStrategy instanceof BPMNAddStrategy) {
+			BPMNAddStrategy bpmnAddStrategy = (BPMNAddStrategy) addStrategy;
+			for (int i = 0; i < activities.length; i++) {
+				model = bpmnAddStrategy.addActivity(model, activities[i]);
+			}
+		} else {
+			throw new IllegalArgumentException("Using not compatible AddStrategy " 
+							+ addStrategy + " for BPMN models");
+		}
 	}
 
 	@Override
-	public void flip(Direction direction) {
+	public void addIrrelevantFromDataset(AddStrategy addStrategy, File dataset, double ratio) {
+		BpmnModelInstance modelB = Bpmn.readModelFromFile(dataset);
+		ModelElementType taskType = modelB.getModel().getType(Task.class);
+		Collection<ModelElementInstance> taskInstances = modelB.getModelElementsByType(taskType);
+		for(ModelElementInstance task : taskInstances) {
+			if(random.nextDouble() <= ratio) {
+				addIrrelevant(addStrategy, new Activity(task.getAttributeValue(ATTR_ID), 
+						task.getAttributeValue(ATTR_NAME)));
+			}
+		}
+	}
+
+	@Override
+	public List<Pair<Activity, Activity>> flip(Direction direction) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
@@ -273,6 +328,11 @@ public class BPMNTransformer implements Transformer{
 	}
 
 	@Override
+	public void partMappingFromDataset(File dataset) {
+		return;
+	}
+
+	@Override
 	public boolean writeModel(String name, String path) {
 		Bpmn.validateModel(model);
 		Bpmn.writeModelToFile(new File(path + name), model);
@@ -280,22 +340,33 @@ public class BPMNTransformer implements Transformer{
 	}
 
 	@Override
-	public void partMappingFromDataset(File dataset) {
-		// TODO Auto-generated method stub
-		
+	public List<Activity> getActivitiesByName(String name) {
+		List<Activity> activities = new ArrayList<>();
+		ModelElementType taskType = model.getModel().getType(Task.class);
+		Collection<ModelElementInstance> taskInstances = model.getModelElementsByType(taskType);
+		for(ModelElementInstance task : taskInstances) {
+			if(task.getAttributeValue(ATTR_NAME).equals(name)) 
+				activities.add(new Activity(task.getAttributeValue(ATTR_ID), 
+						task.getAttributeValue(ATTR_NAME)));
+		}
+		return activities;
 	}
 
 	@Override
-	public Pair<Activity, List<Activity>> one2manySequential(String oriActivity, String... replacements) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Pair<Activity, List<Activity>> many2oneSequential(String newActivity, String... replacements) {
-		// TODO Auto-generated method stub
+	public Activity getActivityById(String id) {
+		Task task = (Task) model.getModelElementById(id);
+		if(Objects.isNull(task)) {
+			throw new IllegalArgumentException("Activity with id " + id + " not found");
+		}
 		return null;
 	}
 	
-
+	private String getFullSpecifiedOriModelId(String id) {
+		return HTTP + modelName + SEPERATOR + id;
+	}
+	
+	private String getFullSpecifiedTransModelId(String id) {
+		return HTTP + modelName + "-" + TRANSF + SEPERATOR + id;
+	}
+	
 }
