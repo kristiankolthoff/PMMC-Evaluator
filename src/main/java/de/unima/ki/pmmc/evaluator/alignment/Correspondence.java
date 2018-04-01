@@ -7,8 +7,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 
-
-
 public class Correspondence implements Comparable<Correspondence> {
 
 	private String uri1;
