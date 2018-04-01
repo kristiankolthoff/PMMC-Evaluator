@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.model.Model;
@@ -78,7 +79,10 @@ public class Alignment implements Iterable<Correspondence>{
 			this.correspondences.add(cLabeled);
 		}
 	}
-
+	
+	public Stream<Correspondence> stream() {
+		return correspondences.stream();
+	}
 	
 	/**
 	* Constructs a alignment from a alignment given in a file, that has to be formated in 
@@ -126,7 +130,6 @@ public class Alignment implements Iterable<Correspondence>{
 		}
 	}
 
-	//TODO: override?
 	//@Override
 	public Iterator<Correspondence> iterator() {
 		return correspondences.iterator();
