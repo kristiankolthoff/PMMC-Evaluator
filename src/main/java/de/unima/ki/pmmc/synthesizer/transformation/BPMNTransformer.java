@@ -289,8 +289,18 @@ public class BPMNTransformer implements Transformer{
 
 	@Override
 	public List<Pair<Activity, Activity>> flip(Direction direction) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<SequenceFlow> flows = model.getModelElementsByType(SequenceFlow.class);
+		for(SequenceFlow flow : flows) {
+			FlowNode leftNode = flow.getSource();
+			FlowNode rightNode = flow.getTarget();
+			leftNode.getOutgoing().remove(flow);
+			rightNode.getIncoming().remove(flow);
+			flow.setSource(rightNode);
+			flow.setTarget(leftNode);
+			leftNode.getIncoming().add(flow);
+			rightNode.getOutgoing().add(flow);
+		}
+		return Collections.emptyList();
 	}
 
 	@Override

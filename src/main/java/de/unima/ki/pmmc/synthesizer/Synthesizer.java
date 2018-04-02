@@ -10,6 +10,7 @@ import de.unima.ki.pmmc.evaluator.alignment.Alignment;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.SemanticRelation;
 import de.unima.ki.pmmc.evaluator.model.Activity;
+import de.unima.ki.pmmc.synthesizer.transformation.Direction;
 import de.unima.ki.pmmc.synthesizer.transformation.Transformer;
 import de.unima.ki.pmmc.synthesizer.transformation.adding.AddStrategy;
 
@@ -106,6 +107,11 @@ public class Synthesizer {
 	
 	public Synthesizer addIrrelevantFromDataset(AddStrategy addStrategy, File dataset, double ratio) {
 		transformer.addIrrelevantFromDataset(addStrategy, dataset, ratio);
+		return this;
+	}
+	
+	public Synthesizer flip(Direction direction) {
+		transformer.flip(direction);
 		return this;
 	}
 	
