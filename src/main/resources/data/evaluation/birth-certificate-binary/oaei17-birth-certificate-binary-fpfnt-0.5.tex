@@ -1,0 +1,47 @@
+\begin{table}[htb]
+
+\setlength{\tabcolsep}{0.4em}
+
+\centering
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}[tb]{llllllllllllllllllllllllllllllllllllllll}
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\textbf{Approach}   & \multicolumn{2}{c}{\textbf{trivial}} &  & \multicolumn{2}{c}{\textbf{trivial-norm}} &  & \multicolumn{2}{c}{\textbf{no-word-ident}} &  & \multicolumn{2}{c}{\textbf{verb-ident}} &  & \multicolumn{2}{c}{\textbf{one-word-ident}} &  & \multicolumn{2}{c}{\textbf{misc}} & \\
+
+\\
+
+ & FP & FN && FP & FN && FP & FN && FP & FN && FP & FN && FP & FN \\
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+AML    	&	7 & 4 && 0 & 0 && 213 & 278 && 13 & 7 && 27 & 37 && 14 & 29\\
+I-Match    	&	1 & 7 && 0 & 0 && 35 & 334 && 1 & 7 && 9 & 52 && 4 & 45\\
+LogMap    	&	37 & 7 && 0 & 0 && 43 & 323 && 1 & 9 && 9 & 53 && 2 & 44\\
+AML-PM    	&	48 & 5 && 0 & 0 && 204 & 287 && 8 & 8 && 24 & 38 && 6 & 32\\
+BPLangMatch    	&	2 & 8 && 0 & 0 && 72 & 311 && 3 & 6 && 16 & 37 && 6 & 41\\
+DKP    	&	0 & 26 && 0 & 0 && 0 & 437 && 0 & 9 && 0 & 58 && 0 & 53\\
+DKP-lite    	&	0 & 26 && 0 & 0 && 0 & 437 && 0 & 9 && 0 & 58 && 0 & 53\\
+KnoMa-Proc    	&	12 & 7 && 0 & 0 && 463 & 306 && 10 & 7 && 35 & 53 && 15 & 37\\
+Know-Match-SSS    	&	2 & 7 && 0 & 0 && 23 & 326 && 1 & 9 && 7 & 52 && 4 & 41\\
+Match-SSS    	&	0 & 8 && 0 & 0 && 6 & 347 && 1 & 9 && 3 & 53 && 0 & 48\\
+OPBOT    	&	2 & 4 && 0 & 0 && 74 & 248 && 5 & 5 && 17 & 29 && 12 & 24\\
+pPalm-DS    	&	4 & 3 && 0 & 0 && 183 & 274 && 8 & 7 && 32 & 34 && 17 & 19\\
+RMM-NHCM    	&	1 & 7 && 0 & 0 && 49 & 295 && 3 & 7 && 12 & 43 && 8 & 37\\
+RMM-NLM    	&	0 & 13 && 0 & 0 && 10 & 352 && 1 & 9 && 7 & 53 && 0 & 46\\
+RMM-SMSL    	&	4 & 16 && 0 & 0 && 131 & 291 && 12 & 7 && 19 & 50 && 8 & 39\\
+RMM-VM2    	&	3 & 4 && 0 & 0 && 190 & 280 && 21 & 7 && 32 & 31 && 13 & 28\\
+TripleS    	&	25 & 6 && 0 & 0 && 60 & 313 && 1 & 9 && 10 & 52 && 7 & 40\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\end{tabular}
+
+}
+
+\caption{Results oaei17-birth-certificate-binary-fpfn}
+
+\label{tbl:results}
+
+\end{table}

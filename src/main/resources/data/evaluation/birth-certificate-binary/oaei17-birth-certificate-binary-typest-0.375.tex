@@ -1,0 +1,47 @@
+\begin{table}[htb]
+
+\setlength{\tabcolsep}{0.4em}
+
+\centering
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}[tb]{llllllllllllllllllllllllllllllllll}
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\textbf{Approach}   & \multicolumn{3}{c}{\textbf{trivial}} &  & \multicolumn{3}{c}{\textbf{no-word-ident}} &  & \multicolumn{3}{c}{\textbf{verb-ident}} &  & \multicolumn{3}{c}{\textbf{one-word-ident}} &  & \multicolumn{3}{c}{\textbf{misc}} & \\
+
+\\
+
+ & prec-micro & rec-mic & fm-mic && prec-micro & rec-mic & fm-mic && prec-micro & rec-mic & fm-mic && prec-micro & rec-mic & fm-mic && prec-micro & rec-mic & fm-mic \\
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+AML    	&	,759 & ,846 & ,8 && ,427 & ,364 & ,393 && ,133 & ,222 & ,167 && ,438 & ,362 & ,396 && ,632 & ,453 & ,527\\
+I-Match    	&	,95 & ,731 & ,826 && ,746 & ,236 & ,358 && ,667 & ,222 & ,333 && ,4 & ,103 & ,164 && ,667 & ,151 & ,246\\
+LogMap    	&	,339 & ,731 & ,463 && ,726 & ,261 & ,384 && ,0 & ,0 & ,0 && ,357 & ,086 & ,139 && ,818 & ,17 & ,281\\
+AML-PM    	&	,304 & ,808 & ,442 && ,424 & ,343 & ,379 && ,111 & ,111 & ,111 && ,455 & ,345 & ,392 && ,778 & ,396 & ,525\\
+BPLangMatch    	&	,9 & ,692 & ,783 && ,636 & ,288 & ,397 && ,5 & ,333 & ,4 && ,568 & ,362 & ,442 && ,667 & ,226 & ,338\\
+DKP    	&	,0 & ,0 & ,0 && ,0 & ,0 & ,0 && ,0 & ,0 & ,0 && ,0 & ,0 & ,0 && ,0 & ,0 & ,0\\
+DKP-lite    	&	,0 & ,0 & ,0 && ,0 & ,0 & ,0 && ,0 & ,0 & ,0 && ,0 & ,0 & ,0 && ,0 & ,0 & ,0\\
+KnoMa-Proc    	&	,613 & ,731 & ,667 && ,221 & ,3 & ,254 && ,167 & ,222 & ,19 && ,125 & ,086 & ,102 && ,516 & ,302 & ,381\\
+Know-Match-SSS    	&	,905 & ,731 & ,809 && ,828 & ,254 & ,389 && ,0 & ,0 & ,0 && ,462 & ,103 & ,169 && ,75 & ,226 & ,348\\
+Match-SSS    	&	1,0 & ,692 & ,818 && ,938 & ,206 & ,338 && ,0 & ,0 & ,0 && ,625 & ,086 & ,152 && 1,0 & ,094 & ,172\\
+OPBOT    	&	,917 & ,846 & ,88 && ,719 & ,432 & ,54 && ,444 & ,444 & ,444 && ,63 & ,5 & ,558 && ,707 & ,547 & ,617\\
+pPalm-DS    	&	,852 & ,885 & ,868 && ,471 & ,373 & ,416 && ,2 & ,222 & ,211 && ,429 & ,414 & ,421 && ,667 & ,642 & ,654\\
+RMM-NHCM    	&	,95 & ,731 & ,826 && ,743 & ,325 & ,452 && ,4 & ,222 & ,286 && ,556 & ,259 & ,353 && ,667 & ,302 & ,416\\
+RMM-NLM    	&	1,0 & ,5 & ,667 && ,895 & ,195 & ,32 && ,0 & ,0 & ,0 && ,417 & ,086 & ,143 && 1,0 & ,132 & ,233\\
+RMM-SMSL    	&	,714 & ,385 & ,5 && ,527 & ,334 & ,409 && ,143 & ,222 & ,174 && ,296 & ,138 & ,188 && ,636 & ,264 & ,373\\
+RMM-VM2    	&	,88 & ,846 & ,863 && ,452 & ,359 & ,401 && ,087 & ,222 & ,125 && ,458 & ,466 & ,462 && ,658 & ,472 & ,549\\
+TripleS    	&	,444 & ,769 & ,563 && ,674 & ,284 & ,399 && ,0 & ,0 & ,0 && ,375 & ,103 & ,162 && ,65 & ,245 & ,356\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\end{tabular}
+
+}
+
+\caption{Results oaei17-birth-certificate-binary-types}
+
+\label{tbl:results}
+
+\end{table}

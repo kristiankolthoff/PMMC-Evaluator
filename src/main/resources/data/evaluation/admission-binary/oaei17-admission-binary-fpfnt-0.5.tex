@@ -1,0 +1,47 @@
+\begin{table}[htb]
+
+\setlength{\tabcolsep}{0.4em}
+
+\centering
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}[tb]{llllllllllllllllllllllllllllllllllllllll}
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\textbf{Approach}   & \multicolumn{2}{c}{\textbf{trivial}} &  & \multicolumn{2}{c}{\textbf{trivial-norm}} &  & \multicolumn{2}{c}{\textbf{no-word-ident}} &  & \multicolumn{2}{c}{\textbf{verb-ident}} &  & \multicolumn{2}{c}{\textbf{one-word-ident}} &  & \multicolumn{2}{c}{\textbf{misc}} & \\
+
+\\
+
+ & FP & FN && FP & FN && FP & FN && FP & FN && FP & FN && FP & FN \\
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+AML    	&	12 & 2 && 0 & 4 && 2 & 27 && 1 & 22 && 3 & 11 && 45 & 8\\
+I-Match    	&	9 & 6 && 1 & 0 && 0 & 68 && 3 & 25 && 0 & 17 && 1 & 16\\
+LogMap    	&	12 & 0 && 0 & 2 && 0 & 68 && 4 & 23 && 39 & 11 && 92 & 8\\
+AML-PM    	&	12 & 1 && 0 & 4 && 32 & 48 && 59 & 12 && 114 & 10 && 117 & 1\\
+BPLangMatch    	&	6 & 24 && 2 & 0 && 37 & 68 && 8 & 20 && 55 & 9 && 68 & 10\\
+DKP    	&	12 & 0 && 0 & 4 && 19 & 60 && 0 & 27 && 0 & 17 && 36 & 14\\
+DKP-lite    	&	12 & 0 && 0 & 4 && 0 & 68 && 0 & 27 && 0 & 17 && 36 & 14\\
+KnoMa-Proc    	&	12 & 10 && 2 & 0 && 1 & 68 && 24 & 23 && 41 & 12 && 132 & 9\\
+Know-Match-SSS    	&	12 & 0 && 0 & 0 && 16 & 61 && 7 & 18 && 9 & 13 && 83 & 6\\
+Match-SSS    	&	12 & 0 && 0 & 4 && 4 & 64 && 2 & 17 && 0 & 17 && 9 & 17\\
+OPBOT    	&	3 & 21 && 2 & 0 && 11 & 32 && 8 & 21 && 12 & 10 && 58 & 8\\
+pPalm-DS    	&	12 & 3 && 3 & 0 && 11 & 68 && 135 & 15 && 319 & 10 && 214 & 2\\
+RMM-NHCM    	&	8 & 3 && 0 & 0 && 7 & 42 && 13 & 16 && 5 & 11 && 36 & 9\\
+RMM-NLM    	&	12 & 0 && 1 & 0 && 25 & 45 && 0 & 27 && 0 & 17 && 0 & 17\\
+RMM-SMSL    	&	11 & 15 && 0 & 3 && 6 & 34 && 59 & 15 && 8 & 17 && 43 & 14\\
+RMM-VM2    	&	8 & 18 && 0 & 2 && 1 & 68 && 113 & 20 && 171 & 11 && 104 & 5\\
+TripleS    	&	12 & 0 && 1 & 0 && 0 & 68 && 52 & 22 && 2 & 14 && 51 & 16\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\end{tabular}
+
+}
+
+\caption{Results oaei17-admission-binary-fpfn}
+
+\label{tbl:results}
+
+\end{table}

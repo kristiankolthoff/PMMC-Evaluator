@@ -1,0 +1,47 @@
+\begin{table}[htb]
+
+\setlength{\tabcolsep}{0.4em}
+
+\centering
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}[tb]{llllllllllllllllllllllllllllllllllllllll}
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\textbf{Approach}   & \multicolumn{2}{c}{\textbf{trivial}} &  & \multicolumn{2}{c}{\textbf{trivial-norm}} &  & \multicolumn{2}{c}{\textbf{no-word-ident}} &  & \multicolumn{2}{c}{\textbf{verb-ident}} &  & \multicolumn{2}{c}{\textbf{one-word-ident}} &  & \multicolumn{2}{c}{\textbf{misc}} & \\
+
+\\
+
+ & FP & FN && FP & FN && FP & FN && FP & FN && FP & FN && FP & FN \\
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+AML    	&	20 & 2 && 0 & 4 && 24 & 210 && 0 & 97 && 0 & 36 && 16 & 54\\
+I-Match    	&	11 & 0 && 1 & 0 && 0 & 229 && 3 & 101 && 0 & 45 && 1 & 91\\
+LogMap    	&	20 & 0 && 0 & 2 && 0 & 229 && 3 & 98 && 36 & 36 && 41 & 32\\
+AML-PM    	&	20 & 1 && 0 & 4 && 43 & 220 && 45 & 74 && 97 & 21 && 57 & 16\\
+BPLangMatch    	&	4 & 14 && 2 & 0 && 35 & 227 && 3 & 91 && 45 & 27 && 29 & 46\\
+DKP    	&	20 & 0 && 0 & 4 && 20 & 222 && 0 & 103 && 0 & 45 && 17 & 70\\
+DKP-lite    	&	20 & 0 && 0 & 4 && 0 & 229 && 0 & 103 && 0 & 45 && 17 & 70\\
+KnoMa-Proc    	&	10 & 0 && 2 & 0 && 1 & 229 && 19 & 94 && 39 & 38 && 73 & 25\\
+Know-Match-SSS    	&	20 & 0 && 0 & 0 && 18 & 224 && 7 & 94 && 3 & 35 && 52 & 50\\
+Match-SSS    	&	20 & 0 && 0 & 4 && 6 & 227 && 1 & 92 && 0 & 45 && 9 & 92\\
+OPBOT    	&	12 & 22 && 2 & 0 && 33 & 215 && 7 & 96 && 10 & 36 && 27 & 52\\
+pPalm-DS    	&	20 & 3 && 3 & 0 && 11 & 229 && 134 & 90 && 314 & 33 && 155 & 18\\
+RMM-NHCM    	&	16 & 3 && 0 & 0 && 23 & 219 && 3 & 82 && 2 & 36 && 9 & 57\\
+RMM-NLM    	&	20 & 0 && 1 & 0 && 36 & 217 && 0 & 103 && 0 & 45 && 0 & 92\\
+RMM-SMSL    	&	19 & 15 && 0 & 3 && 24 & 213 && 59 & 91 && 8 & 45 && 12 & 58\\
+RMM-VM2    	&	5 & 7 && 0 & 2 && 1 & 229 && 106 & 89 && 164 & 32 && 54 & 30\\
+TripleS    	&	20 & 0 && 1 & 0 && 0 & 229 && 52 & 98 && 2 & 42 && 41 & 81\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\end{tabular}
+
+}
+
+\caption{Results oaei17-admission-non-binary-fpfn}
+
+\label{tbl:results}
+
+\end{table}

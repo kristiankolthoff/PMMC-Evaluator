@@ -1,0 +1,47 @@
+\begin{table}[htb]
+
+\setlength{\tabcolsep}{0.4em}
+
+\centering
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}[tb]{llllllllllllllllllllllllllllllllllllllll}
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\textbf{Approach}   & \multicolumn{2}{c}{\textbf{trivial}} &  & \multicolumn{2}{c}{\textbf{trivial-norm}} &  & \multicolumn{2}{c}{\textbf{no-word-ident}} &  & \multicolumn{2}{c}{\textbf{verb-ident}} &  & \multicolumn{2}{c}{\textbf{one-word-ident}} &  & \multicolumn{2}{c}{\textbf{misc}} & \\
+
+\\
+
+ & FP & FN && FP & FN && FP & FN && FP & FN && FP & FN && FP & FN \\
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+AML    	&	6 & 63 && 0 & 0 && 172 & 696 && 6 & 28 && 14 & 49 && 11 & 46\\
+I-Match    	&	0 & 66 && 0 & 0 && 22 & 780 && 0 & 34 && 5 & 73 && 3 & 64\\
+LogMap    	&	3 & 33 && 0 & 0 && 20 & 759 && 0 & 36 && 5 & 74 && 1 & 63\\
+AML-PM    	&	5 & 22 && 0 & 0 && 137 & 679 && 5 & 33 && 19 & 58 && 4 & 50\\
+BPLangMatch    	&	1 & 67 && 0 & 0 && 59 & 757 && 3 & 34 && 10 & 56 && 3 & 58\\
+DKP    	&	0 & 86 && 0 & 0 && 0 & 896 && 0 & 37 && 0 & 83 && 0 & 73\\
+DKP-lite    	&	0 & 86 && 0 & 0 && 0 & 896 && 0 & 37 && 0 & 83 && 0 & 73\\
+KnoMa-Proc    	&	12 & 67 && 0 & 0 && 437 & 739 && 11 & 36 && 31 & 74 && 14 & 56\\
+Know-Match-SSS    	&	1 & 66 && 0 & 0 && 13 & 775 && 0 & 36 && 3 & 73 && 4 & 61\\
+Match-SSS    	&	0 & 68 && 0 & 0 && 3 & 803 && 0 & 36 && 0 & 75 && 0 & 68\\
+OPBOT    	&	2 & 64 && 0 & 0 && 74 & 707 && 4 & 32 && 9 & 46 && 10 & 42\\
+pPalm-DS    	&	3 & 62 && 0 & 0 && 166 & 716 && 2 & 29 && 25 & 52 && 14 & 36\\
+RMM-NHCM    	&	1 & 67 && 0 & 0 && 33 & 738 && 3 & 35 && 4 & 60 && 3 & 52\\
+RMM-NLM    	&	0 & 73 && 0 & 0 && 6 & 807 && 0 & 36 && 4 & 75 && 0 & 66\\
+RMM-SMSL    	&	3 & 75 && 0 & 0 && 109 & 728 && 4 & 27 && 15 & 71 && 8 & 59\\
+RMM-VM2    	&	2 & 63 && 0 & 0 && 161 & 710 && 10 & 24 && 20 & 44 && 12 & 47\\
+TripleS    	&	24 & 65 && 0 & 0 && 45 & 757 && 0 & 36 && 6 & 73 && 6 & 59\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\end{tabular}
+
+}
+
+\caption{Results oaei17-birth-certificate-non-binary-fpfn}
+
+\label{tbl:results}
+
+\end{table}

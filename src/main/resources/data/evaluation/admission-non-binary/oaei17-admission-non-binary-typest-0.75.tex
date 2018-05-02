@@ -1,0 +1,47 @@
+\begin{table}[htb]
+
+\setlength{\tabcolsep}{0.4em}
+
+\centering
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}[tb]{llllllllllllllllllllllllllllllllll}
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\textbf{Approach}   & \multicolumn{3}{c}{\textbf{trivial}} &  & \multicolumn{3}{c}{\textbf{no-word-ident}} &  & \multicolumn{3}{c}{\textbf{verb-ident}} &  & \multicolumn{3}{c}{\textbf{one-word-ident}} &  & \multicolumn{3}{c}{\textbf{misc}} & \\
+
+\\
+
+ & nb-pre-mic & nb-rec-mic & nb-fm-mic && nb-pre-mic & nb-rec-mic & nb-fm-mic && nb-pre-mic & nb-rec-mic & nb-fm-mic && nb-pre-mic & nb-rec-mic & nb-fm-mic && nb-pre-mic & nb-rec-mic & nb-fm-mic \\
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+AML    	&	,784 & ,943 & ,856 && ,07 & ,025 & ,036 && ,636 & ,051 & ,095 && 1,0 & ,268 & ,423 && ,622 & ,446 & ,519\\
+I-Match    	&	,847 & 1,0 & ,917 && � & ,0 & ,0 && ,4 & ,029 & ,055 && � & ,0 & ,0 && ,467 & ,012 & ,024\\
+LogMap    	&	,792 & ,989 & ,879 && � & ,0 & ,0 && ,492 & ,057 & ,102 && ,186 & ,268 & ,22 && ,501 & ,672 & ,574\\
+AML-PM    	&	,786 & ,955 & ,862 && ,058 & ,025 & ,034 && ,274 & ,288 & ,281 && ,148 & ,569 & ,235 && ,468 & ,827 & ,598\\
+BPLangMatch    	&	,882 & ,847 & ,864 && ,024 & ,007 & ,011 && ,504 & ,105 & ,173 && ,255 & ,5 & ,337 && ,5 & ,499 & ,5\\
+DKP    	&	,788 & ,966 & ,868 && ,0 & ,0 & ,0 && � & ,0 & ,0 && � & ,0 & ,0 && ,507 & ,264 & ,347\\
+DKP-lite    	&	,788 & ,966 & ,868 && � & ,0 & ,0 && � & ,0 & ,0 && � & ,0 & ,0 && ,507 & ,264 & ,347\\
+KnoMa-Proc    	&	,847 & 1,0 & ,917 && ,0 & ,0 & ,0 && ,233 & ,094 & ,134 && ,136 & ,199 & ,161 && ,383 & ,718 & ,5\\
+Know-Match-SSS    	&	,786 & 1,0 & ,88 && ,13 & ,025 & ,041 && ,541 & ,121 & ,198 && ,67 & ,264 & ,379 && ,399 & ,503 & ,445\\
+Match-SSS    	&	,788 & ,966 & ,868 && ,0 & ,0 & ,0 && ,733 & ,121 & ,208 && � & ,0 & ,0 && ,0 & ,0 & ,0\\
+OPBOT    	&	,813 & ,785 & ,799 && ,0 & ,0 & ,0 && ,321 & ,062 & ,104 && ,437 & ,252 & ,32 && ,51 & ,46 & ,484\\
+pPalm-DS    	&	,76 & ,967 & ,851 && ,0 & ,0 & ,0 && ,085 & ,182 & ,115 && ,033 & ,354 & ,061 && ,26 & ,815 & ,394\\
+RMM-NHCM    	&	,81 & ,966 & ,881 && ,0 & ,0 & ,0 && ,724 & ,231 & ,35 && ,8 & ,26 & ,393 && ,702 & ,403 & ,512\\
+RMM-NLM    	&	,779 & 1,0 & ,876 && ,0 & ,0 & ,0 && � & ,0 & ,0 && � & ,0 & ,0 && � & ,0 & ,0\\
+RMM-SMSL    	&	,765 & ,81 & ,787 && ,0 & ,0 & ,0 && ,166 & ,172 & ,169 && ,0 & ,0 & ,0 && ,684 & ,401 & ,506\\
+RMM-VM2    	&	,921 & ,925 & ,923 && ,0 & ,0 & ,0 && ,079 & ,138 & ,101 && ,05 & ,289 & ,086 && ,431 & ,668 & ,524\\
+TripleS    	&	,779 & 1,0 & ,876 && � & ,0 & ,0 && ,084 & ,07 & ,076 && ,568 & ,085 & ,148 && ,153 & ,111 & ,128\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\end{tabular}
+
+}
+
+\caption{Results oaei17-admission-non-binary-types}
+
+\label{tbl:results}
+
+\end{table}

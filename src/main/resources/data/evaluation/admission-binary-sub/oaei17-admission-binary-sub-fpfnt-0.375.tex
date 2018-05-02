@@ -1,0 +1,47 @@
+\begin{table}[htb]
+
+\setlength{\tabcolsep}{0.4em}
+
+\centering
+
+\resizebox{\linewidth}{!}{
+
+\begin{tabular}[tb]{llllllllllllllllllllllllllllllllllllllll}
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\textbf{Approach}   & \multicolumn{2}{c}{\textbf{trivial}} &  & \multicolumn{2}{c}{\textbf{trivial-norm}} &  & \multicolumn{2}{c}{\textbf{no-word-ident}} &  & \multicolumn{2}{c}{\textbf{verb-ident}} &  & \multicolumn{2}{c}{\textbf{one-word-ident}} &  & \multicolumn{2}{c}{\textbf{misc}} & \\
+
+\\
+
+ & FP & FN && FP & FN && FP & FN && FP & FN && FP & FN && FP & FN \\
+
+\noalign{\smallskip}\hline\noalign{\smallskip}
+AML    	&	9 & 2 && 0 & 4 && 2 & 256 && 1 & 83 && 1 & 40 && 19 & 54\\
+I-Match    	&	6 & 6 && 1 & 0 && 0 & 297 && 3 & 86 && 0 & 48 && 1 & 88\\
+LogMap    	&	9 & 0 && 0 & 2 && 0 & 297 && 4 & 84 && 36 & 39 && 49 & 37\\
+AML-PM    	&	9 & 1 && 0 & 4 && 32 & 277 && 54 & 68 && 106 & 33 && 66 & 22\\
+BPLangMatch    	&	4 & 25 && 2 & 0 && 36 & 296 && 7 & 80 && 47 & 32 && 30 & 44\\
+DKP    	&	9 & 0 && 0 & 4 && 19 & 289 && 0 & 88 && 0 & 48 && 18 & 68\\
+DKP-lite    	&	9 & 0 && 0 & 4 && 0 & 297 && 0 & 88 && 0 & 48 && 18 & 68\\
+KnoMa-Proc    	&	9 & 10 && 2 & 0 && 1 & 297 && 21 & 81 && 38 & 40 && 79 & 28\\
+Know-Match-SSS    	&	9 & 0 && 0 & 0 && 16 & 290 && 7 & 79 && 7 & 42 && 55 & 50\\
+Match-SSS    	&	9 & 0 && 0 & 4 && 4 & 293 && 2 & 78 && 0 & 48 && 9 & 89\\
+OPBOT    	&	2 & 23 && 2 & 0 && 8 & 258 && 8 & 82 && 12 & 41 && 28 & 50\\
+pPalm-DS    	&	9 & 3 && 3 & 0 && 11 & 297 && 135 & 76 && 316 & 38 && 161 & 21\\
+RMM-NHCM    	&	5 & 3 && 0 & 0 && 5 & 269 && 6 & 70 && 3 & 40 && 13 & 58\\
+RMM-NLM    	&	9 & 0 && 1 & 0 && 25 & 274 && 0 & 88 && 0 & 48 && 0 & 89\\
+RMM-SMSL    	&	8 & 15 && 0 & 3 && 3 & 260 && 59 & 76 && 8 & 48 && 14 & 57\\
+RMM-VM2    	&	5 & 18 && 0 & 2 && 1 & 297 && 110 & 78 && 166 & 37 && 58 & 31\\
+TripleS    	&	9 & 0 && 1 & 0 && 0 & 297 && 52 & 83 && 2 & 45 && 41 & 78\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+
+\end{tabular}
+
+}
+
+\caption{Results oaei17-admission-binary-sub-fpfn}
+
+\label{tbl:results}
+
+\end{table}
