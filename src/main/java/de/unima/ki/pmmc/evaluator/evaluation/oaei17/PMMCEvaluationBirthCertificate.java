@@ -136,13 +136,13 @@ public class PMMCEvaluationBirthCertificate {
 		PMMCEvaluationBirthCertificate birthCertificate = new PMMCEvaluationBirthCertificate();
 		//Run all evaluations for the binary birthCertificate goldstandard
 		birthCertificate.runBinaryGSEvaluationHTML();
-//		birthCertificate.runBinaryGSEvaluationLaTex();
-//		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+		birthCertificate.runBinaryGSEvaluationLaTex();
+		birthCertificate.runBinaryGSEvaluationLaTexTypes();
 		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
 		//Run all evaluations for the non-binary birthCertificate goldstandard
-//		birthCertificate.runNonBinaryGSEvaluationHTML();
-//		birthCertificate.runNonBinaryGSEvaluationLaTex();
-//		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
+		birthCertificate.runNonBinaryGSEvaluationHTML();
+		birthCertificate.runNonBinaryGSEvaluationLaTex();
+		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
 		birthCertificate.runNonBinaryGSEvaluationLaTexFPFN();
 	}
 	
