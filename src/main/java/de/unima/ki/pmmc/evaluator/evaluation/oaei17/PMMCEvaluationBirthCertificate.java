@@ -44,6 +44,8 @@ import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeFMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeFNMatcher;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeFPMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
@@ -134,12 +136,14 @@ public class PMMCEvaluationBirthCertificate {
 		PMMCEvaluationBirthCertificate birthCertificate = new PMMCEvaluationBirthCertificate();
 		//Run all evaluations for the binary birthCertificate goldstandard
 		birthCertificate.runBinaryGSEvaluationHTML();
-		birthCertificate.runBinaryGSEvaluationLaTex();
-		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+//		birthCertificate.runBinaryGSEvaluationLaTex();
+//		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
 		//Run all evaluations for the non-binary birthCertificate goldstandard
-		birthCertificate.runNonBinaryGSEvaluationHTML();
-		birthCertificate.runNonBinaryGSEvaluationLaTex();
-		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
+//		birthCertificate.runNonBinaryGSEvaluationHTML();
+//		birthCertificate.runNonBinaryGSEvaluationLaTex();
+//		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
+		birthCertificate.runNonBinaryGSEvaluationLaTexFPFN();
 	}
 	
 	public void runBinaryGSEvaluationHTML() throws IOException, CorrespondenceException, 
@@ -194,6 +198,24 @@ public class PMMCEvaluationBirthCertificate {
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("binaryGSEvaluationLaTexTypes : #reports = " + evaluation.getReports().size());
+	}
+	
+	public void runBinaryGSEvaluationLaTexFPFN() throws IOException, CorrespondenceException, 
+				ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
+		for(CorrespondenceType type : excludedTypes) {
+		builder.addMetricGroup(new MetricGroup(type.getName())
+			.addMetric(new TypeFPMatcher(type))
+			.addMetric(new TypeFNMatcher(type)));
+		}
+		builder.addHandler(new LaTexHandlerType())
+		.setOutputName("oaei17-birth-certificate-binary-fpfn")
+		.addGoldstandardGroup("birth-certificate-binary", GOLDSTANDARD_PATH);
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("binaryGSEvaluationLaTexFPFN : #reports = " + evaluation.getReports().size());
 	}
 	
 	
@@ -275,6 +297,24 @@ public class PMMCEvaluationBirthCertificate {
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("nonBinaryGSEvaluationLaTexTypes : #reports = " + evaluation.getReports().size());
+	}
+	
+	public void runNonBinaryGSEvaluationLaTexFPFN() throws IOException, CorrespondenceException, 
+				ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
+		for(CorrespondenceType type : excludedTypes) {
+		builder.addMetricGroup(new MetricGroup(type.getName())
+				.addMetric(new TypeFPMatcher(type))
+				.addMetric(new TypeFNMatcher(type)));
+		}
+		builder.addHandler(new LaTexHandlerType())
+		.setOutputName("oaei17-birth-certificate-non-binary-fpfn")
+		.addGoldstandardGroup("birth-certificate-non-binary", GOLDSTANDARD_NB_PATH);
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("binaryGSEvaluationLaTexFPFN : #reports = " + evaluation.getReports().size());
 	}
 	
 }

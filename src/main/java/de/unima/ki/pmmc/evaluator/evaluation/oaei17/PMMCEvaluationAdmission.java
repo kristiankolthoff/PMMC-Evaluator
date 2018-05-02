@@ -44,6 +44,8 @@ import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesGS;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeNumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeFMeasureMicro;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeFNMatcher;
+import de.unima.ki.pmmc.evaluator.metrics.types.TypeFPMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBFMeasureMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
@@ -139,14 +141,17 @@ public class PMMCEvaluationAdmission {
 		admission.runBinaryGSEvaluationHTML();
 		admission.runBinaryGSEvaluationLaTex();
 		admission.runBinaryGSEvaluationLaTexTypes();
+		admission.runBinaryGSEvaluationLaTexFPFN();
 //		//Run all evaluations for the binary-sub admission goldstandard
 		admission.runBinarySubGSEvaluationHTML();
 		admission.runBinarySubGSEvaluationLaTex();
 		admission.runBinarySubGSEvaluationLaTexTypes();
+		admission.runBinarySubGSEvaluationLaTexFPFN();
 		//Run all evaluations for the non-binary admission goldstandard
 		admission.runNonBinaryGSEvaluationHTML();
 		admission.runNonBinaryGSEvaluationLaTex();
 		admission.runNonBinaryGSEvaluationLaTexTypes();
+		admission.runNonBinaryGSEvaluationLaTexFPFN();
 	}
 	
 	public void runBinaryGSEvaluationHTML() throws IOException, CorrespondenceException, 
@@ -201,6 +206,24 @@ public class PMMCEvaluationAdmission {
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("binaryGSEvaluationLaTexTypes : #reports = " + evaluation.getReports().size());
+	}
+	
+	public void runBinaryGSEvaluationLaTexFPFN() throws IOException, CorrespondenceException, 
+				ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
+		for(CorrespondenceType type : excludedTypes) {
+		builder.addMetricGroup(new MetricGroup(type.getName())
+				.addMetric(new TypeFPMatcher(type))
+				.addMetric(new TypeFNMatcher(type)));
+		}
+		builder.addHandler(new LaTexHandlerType())
+		   .setOutputName("oaei17-admission-binary-fpfn")
+		   .addGoldstandardGroup("admission-binary", GOLDSTANDARD_OLD_PATH);
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("binaryGSEvaluationLaTexFPFN : #reports = " + evaluation.getReports().size());
 	}
 	
 	public void runBinarySubGSEvaluationHTML() throws IOException, CorrespondenceException, 
@@ -276,6 +299,25 @@ public class PMMCEvaluationAdmission {
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("binarySubGSEvaluationLaTexTypes : #reports = " + evaluation.getReports().size());
+	}
+	
+	
+	public void runBinarySubGSEvaluationLaTexFPFN() throws IOException, CorrespondenceException, 
+				ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
+		for(CorrespondenceType type : excludedTypes) {
+		builder.addMetricGroup(new MetricGroup(type.getName())
+			.addMetric(new TypeFPMatcher(type))
+			.addMetric(new TypeFNMatcher(type)));
+		}
+		builder.addHandler(new LaTexHandlerType())
+		.setOutputName("oaei17-admission-binary-sub-fpfn")
+		.addGoldstandardGroup("admission-binary-sub", GOLDSTANDARD_OLD_SUB_PATH);
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("binarySubGSEvaluationLaTexFPFN : #reports = " + evaluation.getReports().size());
 	}
 	
 	
@@ -356,6 +398,24 @@ public class PMMCEvaluationAdmission {
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("nonBinaryGSEvaluationLaTexTypes : #reports = " + evaluation.getReports().size());
+	}
+	
+	public void runNonBinaryGSEvaluationLaTexFPFN() throws IOException, CorrespondenceException, 
+				ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		CorrespondenceType[] excludedTypes = CorrespondenceType.valuesWithout(CorrespondenceType.DEFAULT);
+		for(CorrespondenceType type : excludedTypes) {
+		builder.addMetricGroup(new MetricGroup(type.getName())
+				.addMetric(new TypeFPMatcher(type))
+				.addMetric(new TypeFNMatcher(type)));
+		}
+		builder.addHandler(new LaTexHandlerType())
+		.setOutputName("oaei17-admission-non-binary-fpfn")
+		.addGoldstandardGroup("admission-non-binary", GOLDSTANDARD_NEW_ADAPTED_PATH);
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("nonbinaryGSEvaluationLaTexFPFN : #reports = " + evaluation.getReports().size());
 	}
 	
 }

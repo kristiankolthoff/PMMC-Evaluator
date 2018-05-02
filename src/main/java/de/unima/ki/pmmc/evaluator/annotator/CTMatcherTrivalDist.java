@@ -18,14 +18,14 @@ public class CTMatcherTrivalDist implements CTMatcher {
 		label2 = NLPHelper.getSanitizeLabel(label2);
 		label2 = NLPHelper.getStemmedString(label2, USE_POS);
 		if(label1.equals(label2)) {
-//			return CorrespondenceType.TRIVIAL_NORM;
-			return CorrespondenceType.TRIVIAL;
+			return CorrespondenceType.TRIVIAL_NORM;
+//			return CorrespondenceType.TRIVIAL;
 		}
 		label1 = NLPHelper.getStemmedStringWithoutStopWords(label1, USE_POS);
 		label2 = NLPHelper.getStemmedStringWithoutStopWords(label2, USE_POS);
 		if(label1.equals(label2)) {
-//			return CorrespondenceType.TRIVIAL_NORM;
-			return CorrespondenceType.TRIVIAL;
+			return CorrespondenceType.TRIVIAL_NORM;
+//			return CorrespondenceType.TRIVIAL;
 		}
 		return CorrespondenceType.DEFAULT;
 	}

@@ -60,6 +60,7 @@ public class MatcherSetTypeFraction {
 		paths.add("src/main/resources/data/results/OAEI16/RMM-SMSL/dataset1/");
 		paths.add("src/main/resources/data/results/OAEI16/RMM-VM2/dataset1/");
 		paths.add("src/main/resources/data/results/OAEI16/TripleS/dataset1/");
+		paths.add("src/main/resources/data/results/OAEI17/ua/I-Match/");
 		return loader.loadAll(Optional.empty(), paths, 0d);
 	}
 	
@@ -77,6 +78,9 @@ public class MatcherSetTypeFraction {
 		paths.add("src/main/resources/data/results/submitted-matchers/RMM-SMSL/dataset2/");
 		paths.add("src/main/resources/data/results/submitted-matchers/RMM-VM2/dataset2/");
 		paths.add("src/main/resources/data/results/submitted-matchers/TripleS/dataset2/");
+		paths.add("src/main/resources/data/results/OAEI17/br/AML/");
+		paths.add("src/main/resources/data/results/OAEI17/br/I-Match/");
+		paths.add("src/main/resources/data/results/OAEI17/br/LogMap/");
 		return loader.loadAll(Optional.empty(), paths, 0d);
 	}
 	
@@ -153,6 +157,6 @@ public class MatcherSetTypeFraction {
 		MatcherSetTypeFraction fraction = new MatcherSetTypeFraction(ParserFactory.getParser(Parser.Type.EPML));
 		List<Solution> solutions = fraction.loadSolutionsAssetManagement();
 		List<Model> models = fraction.loadModels("src/main/resources/data/dataset3/models/");
-		fraction.computeFraction(3, solutions, models);
+		fraction.computeFraction(2, solutions, models);
 	}
 }

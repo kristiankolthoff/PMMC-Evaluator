@@ -40,6 +40,10 @@ public class LaTexHandlerType implements ReportHandler {
 		this.dfLarge = new DecimalFormat("###.###");
 	}
 	
+	public LaTexHandlerType(DecimalFormat format) {
+		
+	}
+	
 	@Override
 	public void open() throws IOException {
 		
@@ -419,6 +423,7 @@ public class LaTexHandlerType implements ReportHandler {
 				for(int j = 0; j < groupBinding.getBindings().size(); j++) {
 					MetricBinding metricBinding = groupBinding.getBindings().get(j);
 					this.bw.append(this.dfSmall.format(metricBinding.getValue()));
+//					this.bw.append(String.valueOf(metricBinding.getValue()).split("\\.")[0]);
 					if(j != groupBinding.getBindings().size()-1) {
 						this.bw.append(" & ");
 					}
