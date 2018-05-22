@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.tuple.Pair;
 
 import de.unima.ki.pmmc.evaluator.alignment.Alignment;
+import de.unima.ki.pmmc.evaluator.alignment.AlignmentWriterXml;
 import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.SemanticRelation;
+import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 import de.unima.ki.pmmc.synthesizer.transformation.Direction;
 import de.unima.ki.pmmc.synthesizer.transformation.Transformer;
@@ -18,7 +20,7 @@ public class Synthesizer {
 
 	private Transformer transformer;
 	private Alignment goldstandard;
-
+	private String modelName;
 	
 	public Synthesizer(Transformer transformer) {
 		this.transformer = transformer;
@@ -26,6 +28,7 @@ public class Synthesizer {
 	
 	public Synthesizer readModel(String modelPath, String modelName) {
 		goldstandard = transformer.initializeModel(modelPath, modelName);
+		this.modelName = modelName;
 		return this;
 	}
 	
@@ -48,7 +51,7 @@ public class Synthesizer {
 	public Synthesizer one2ManyParallel(String oriActivityId, String... replacements) {
 		List<Pair<Activity, Activity>> insActivities = transformer.one2manyParallel(oriActivityId, replacements);
 		goldstandard.getCorrespondences()
-					.removeIf(corres -> {return corres.getUri1().equals(oriActivityId);});
+					.removeIf(corres -> {return corres.getUri1().contains(oriActivityId);});
 		insActivities.stream()
 					 .forEach(pair -> {goldstandard.add(new Correspondence(pair.getLeft().getId(), 
 							 pair.getRight().getId(), SemanticRelation.EQUIV, 1.0));});
@@ -64,7 +67,7 @@ public class Synthesizer {
 		List<Pair<Activity, Activity>> pairs = transformer.many2oneParallel(replacement, oriActivityIds);
 		pairs.stream().forEach(pair -> 
 		        {goldstandard.getCorrespondences()
-		        	.removeIf(corres -> {return corres.getUri1().equals(pair.getLeft().getId());});
+		        	.removeIf(corres -> {return corres.getUri1().contains(pair.getLeft().getId());});
 		        goldstandard.add(new Correspondence(pair.getLeft().getId(), 
 		        		pair.getRight().getId(), SemanticRelation.EQUIV, 1.0));;});
 		return this;
@@ -115,9 +118,12 @@ public class Synthesizer {
 		return this;
 	}
 	
-	public Synthesizer finished(String name, String path) {
-		//Check validation state
-		transformer.writeModel(name, path);
+	public Synthesizer finished(String path) throws AlignmentException {
+		final String directoryName = path + "/" + modelName;
+		File directory = new File(directoryName);
+		directory.mkdir();
+		transformer.writeModel(modelName, directoryName);
+		new AlignmentWriterXml().writeAlignment(directoryName + "/goldstandard.rdf", goldstandard);
 		return this;
 	}
 	

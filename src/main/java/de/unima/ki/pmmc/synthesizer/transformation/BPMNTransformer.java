@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.ecs.xhtml.pre;
 import org.camunda.bpm.model.bpmn.Bpmn;
 import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 import org.camunda.bpm.model.bpmn.GatewayDirection;
@@ -42,6 +43,7 @@ public class BPMNTransformer implements Transformer{
 	private static final String ATTR_ID = "id";
 	private static final String HTTP = "http://";
 	private static final String SEPERATOR = "#";
+	private static final String ORIGINAL = "original";
 	private static final String TRANSF = "transformed";
 	
 	public BPMNTransformer() {
@@ -53,6 +55,7 @@ public class BPMNTransformer implements Transformer{
 		File file = new File(modelPath);
 		unmodifiedModel = Bpmn.readModelFromFile(file);
 		model =  Bpmn.readModelFromFile(file);
+		this.modelName = modelName;
 		Alignment alignment = new Alignment();
 		ModelElementType taskType = model.getModel().getType(Task.class);
 		Collection<ModelElementInstance> taskInstances = model.getModelElementsByType(taskType);
@@ -147,7 +150,8 @@ public class BPMNTransformer implements Transformer{
 			parent.addChildElement(seqFlowTaskTo);
 			seqFlowTaskTo.setSource(userTask);
 			seqFlowTaskTo.setTarget(gatewayConv);
-			activities.add(Pair.of(activity, 
+			activities.add(Pair.of(
+					new Activity(getFullSpecifiedOriModelId(activity.getId()), activity.getLabel()),
 					new Activity(getFullSpecifiedTransModelId(userTask.getId()), userTask.getName())));
 			//Update all sequence flow lists
 			gatewayDiv.getOutgoing().add(seqFlowTaskFrom);
@@ -229,16 +233,21 @@ public class BPMNTransformer implements Transformer{
 		parent.addChildElement(flowTo);
 		flowTo.setSource(preceeding);
 		flowTo.setTarget(userTask);
+		preceeding.getOutgoing().add(flowTo);
+		userTask.getIncoming().add(flowTo);
 		//New sequence flow from the inserted activity
 		SequenceFlow flowFrom = model.newInstance(SequenceFlow.class);
 		parent.addChildElement(flowFrom);
 		flowFrom.setSource(userTask);
 		flowFrom.setTarget(succeding);
+		userTask.getOutgoing().add(flowFrom);
+		succeding.getIncoming().add(flowFrom);
 		//Compute activity pairs for the goldstandard
 		List<Pair<Activity, Activity>> activites = new ArrayList<>();
-		Activity insActivity = new Activity(userTask.getId(), userTask.getName());
+		Activity insActivity = new Activity(getFullSpecifiedTransModelId(userTask.getId()), 
+				userTask.getName());
 		for(Task task : tasks) {
-			activites.add(Pair.of(new Activity(task.getId(), task.getName()), 
+			activites.add(Pair.of(new Activity(getFullSpecifiedOriModelId(task.getId()), task.getName()), 
 					insActivity));
 		}
 		return activites;
@@ -344,8 +353,10 @@ public class BPMNTransformer implements Transformer{
 
 	@Override
 	public boolean writeModel(String name, String path) {
+		Bpmn.validateModel(unmodifiedModel);
 		Bpmn.validateModel(model);
-		Bpmn.writeModelToFile(new File(path + name), model);
+		Bpmn.writeModelToFile(new File(path + "/" + name + "_original.bpmn"), unmodifiedModel);
+		Bpmn.writeModelToFile(new File(path + "/" + name + "_transformed.bpmn"), model);
 		return false;
 	}
 
@@ -372,11 +383,11 @@ public class BPMNTransformer implements Transformer{
 	}
 	
 	private String getFullSpecifiedOriModelId(String id) {
-		return HTTP + modelName + SEPERATOR + id;
+		return HTTP + modelName + "_" + ORIGINAL + SEPERATOR + id;
 	}
 	
 	private String getFullSpecifiedTransModelId(String id) {
-		return HTTP + modelName + "-" + TRANSF + SEPERATOR + id;
+		return HTTP + modelName + "_" + TRANSF + SEPERATOR + id;
 	}
 	
 }

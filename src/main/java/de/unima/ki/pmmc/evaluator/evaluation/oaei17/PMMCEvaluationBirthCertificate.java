@@ -86,6 +86,7 @@ public class PMMCEvaluationBirthCertificate {
 				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-SMSL/dataset2")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/RMM-VM2/dataset2")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/TripleS/dataset2")
+				.addMatcherPath("src/main/resources/data/results/Ensamble")
 				.setModelsRootPath(MODELS_PATH)
 				.setAlignmentReader(new AlignmentReaderXml())
 				.setOutputPath(OUTPUT_PATH)
@@ -135,10 +136,10 @@ public class PMMCEvaluationBirthCertificate {
 				ParserConfigurationException, SAXException {
 		PMMCEvaluationBirthCertificate birthCertificate = new PMMCEvaluationBirthCertificate();
 		//Run all evaluations for the binary birthCertificate goldstandard
-		birthCertificate.runBinaryGSEvaluationHTML();
-		birthCertificate.runBinaryGSEvaluationLaTex();
-		birthCertificate.runBinaryGSEvaluationLaTexTypes();
-		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
+//		birthCertificate.runBinaryGSEvaluationHTML();
+//		birthCertificate.runBinaryGSEvaluationLaTex();
+//		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+//		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
 		//Run all evaluations for the non-binary birthCertificate goldstandard
 		birthCertificate.runNonBinaryGSEvaluationHTML();
 		birthCertificate.runNonBinaryGSEvaluationLaTex();
