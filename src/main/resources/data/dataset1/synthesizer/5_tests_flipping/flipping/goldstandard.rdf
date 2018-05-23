@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment" 
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://flipping_original#Task_0w1pt40"/>
+		<entity2 rdf:resource="http://flipping_transformed#Task_0w1pt40"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://flipping_original#Task_0et9ryz"/>
+		<entity2 rdf:resource="http://flipping_transformed#Task_0et9ryz"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://flipping_original#Task_1yuuw5z"/>
+		<entity2 rdf:resource="http://flipping_transformed#Task_1yuuw5z"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://flipping_original#Task_06istns"/>
+		<entity2 rdf:resource="http://flipping_transformed#Task_06istns"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://flipping_original#Task_1yn0bki"/>
+		<entity2 rdf:resource="http://flipping_transformed#Task_1yn0bki"/>
+		<measure rdf:datatype="xsd:float">1.0</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+
+</Alignment>
+</rdf:RDF>

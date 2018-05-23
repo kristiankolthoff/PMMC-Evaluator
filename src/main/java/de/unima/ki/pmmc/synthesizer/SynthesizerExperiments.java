@@ -2,10 +2,12 @@ package de.unima.ki.pmmc.synthesizer;
 
 import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.synthesizer.transformation.BPMNTransformer;
+import de.unima.ki.pmmc.synthesizer.transformation.Direction;
 
 public class SynthesizerExperiments {
 
 	public static final String INS_TEST_PATH =  "src/main/resources/data/dataset1/synthesizer/1ab_tests_insert/";
+	public static final String FLIPPING_TEST_PATH = "src/main/resources/data/dataset1/synthesizer/5_tests_flipping";
 	public static final String TRANSFORM_TEST_PATH = "src/main/resources/data/dataset1/synthesizer/7_tests_manipulate";
 	public static final String SYNONYMS_TEST_PATH = "src/main/resources/data/dataset1/synthesizer/6_tests_synonyms";
 	public static final String ONE_2_MANY_PATH = INS_TEST_PATH + "one2many.bpmn";
@@ -17,6 +19,7 @@ public class SynthesizerExperiments {
 		SynthesizerExperiments.runMany2OneExperiment();
 		SynthesizerExperiments.runTransformExperiment();
 		SynthesizerExperiments.runSynonymsExperiemnt();
+		SynthesizerExperiments.runFlippingExperiment();
 	}
 	
 	private static void runOne2ManyExperiment() throws AlignmentException {
@@ -51,5 +54,12 @@ public class SynthesizerExperiments {
 			       .replaceAllSynonyms("graduate", "exmatriculate")
 			       .replaceAllSynonyms("do", "make", "try")
 			       .finished(SYNONYMS_TEST_PATH);
+	}
+	
+	private static void runFlippingExperiment() throws AlignmentException {
+		Synthesizer synthesizer = new Synthesizer(new BPMNTransformer());
+		synthesizer.readModel(FLIPPING_TEST_PATH + "/flipping.bpmn", "flipping")
+				   .flip(Direction.VERTICAL)
+				   .finished(FLIPPING_TEST_PATH);
 	}
 }

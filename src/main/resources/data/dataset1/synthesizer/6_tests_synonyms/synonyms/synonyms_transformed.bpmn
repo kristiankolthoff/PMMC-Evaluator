@@ -17,7 +17,7 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1apnyuu" sourceRef="StartEvent_1" targetRef="Task_0w1pt40"/>
     <bpmn:sequenceFlow id="SequenceFlow_1fg4njq" sourceRef="Task_0w1pt40" targetRef="Task_0et9ryz"/>
-    <bpmn:task completionQuantity="1" id="Task_1yuuw5z" isForCompensation="false" name="make the test" startQuantity="1">
+    <bpmn:task completionQuantity="1" id="Task_1yuuw5z" isForCompensation="false" name="try the test" startQuantity="1">
       <bpmn:incoming>SequenceFlow_1boqfu4</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0om48lq</bpmn:outgoing>
     </bpmn:task>

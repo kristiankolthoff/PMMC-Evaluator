@@ -15,9 +15,11 @@ import org.apache.ecs.xhtml.pre;
 import org.camunda.bpm.model.bpmn.Bpmn;
 import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 import org.camunda.bpm.model.bpmn.GatewayDirection;
+import org.camunda.bpm.model.bpmn.instance.EndEvent;
 import org.camunda.bpm.model.bpmn.instance.FlowNode;
 import org.camunda.bpm.model.bpmn.instance.ParallelGateway;
 import org.camunda.bpm.model.bpmn.instance.SequenceFlow;
+import org.camunda.bpm.model.bpmn.instance.StartEvent;
 import org.camunda.bpm.model.bpmn.instance.Task;
 import org.camunda.bpm.model.bpmn.instance.UserTask;
 import org.camunda.bpm.model.xml.instance.ModelElementInstance;
@@ -299,9 +301,18 @@ public class BPMNTransformer implements Transformer{
 	@Override
 	public List<Pair<Activity, Activity>> flip(Direction direction) {
 		Collection<SequenceFlow> flows = model.getModelElementsByType(SequenceFlow.class);
+		FlowNode startEvent = null, endEvent = null;
+		SequenceFlow startFlow = null, endFlow = null;
 		for(SequenceFlow flow : flows) {
 			FlowNode leftNode = flow.getSource();
 			FlowNode rightNode = flow.getTarget();
+			if(leftNode instanceof StartEvent) {
+				startEvent = leftNode;
+				startFlow = flow;
+			} else if (rightNode instanceof EndEvent) {
+				endEvent = rightNode;
+				endFlow = flow;
+			}
 			leftNode.getOutgoing().remove(flow);
 			rightNode.getIncoming().remove(flow);
 			flow.setSource(rightNode);
@@ -309,6 +320,14 @@ public class BPMNTransformer implements Transformer{
 			leftNode.getIncoming().add(flow);
 			rightNode.getOutgoing().add(flow);
 		}
+		//Update start event to correctly point to end sequence
+		startEvent.getIncoming().clear();
+		startEvent.getOutgoing().add(endFlow);
+		endFlow.setSource(startEvent);
+		//Update end event to correctly point to start sequence
+		endEvent.getOutgoing().clear();
+		endEvent.getIncoming().add(startFlow);
+		startFlow.setTarget(endEvent);
 		return Collections.emptyList();
 	}
 
