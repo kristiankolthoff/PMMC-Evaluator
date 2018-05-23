@@ -1,9 +1,12 @@
 package de.unima.ki.pmmc.synthesizer;
 
+import java.io.File;
+
 import de.unima.ki.pmmc.evaluator.exceptions.AlignmentException;
 import de.unima.ki.pmmc.evaluator.model.Activity;
 import de.unima.ki.pmmc.synthesizer.transformation.BPMNTransformer;
 import de.unima.ki.pmmc.synthesizer.transformation.Direction;
+import de.unima.ki.pmmc.synthesizer.transformation.adding.BPMNAddStrategyMeta;
 import de.unima.ki.pmmc.synthesizer.transformation.adding.BPMNAddStrategyParallelGateway;
 import de.unima.ki.pmmc.synthesizer.transformation.adding.BPMNAddStrategyTaskSequential;
 import de.unima.ki.pmmc.synthesizer.transformation.adding.BPMNAddStrategyUnconnected;
@@ -75,6 +78,7 @@ public class SynthesizerExperiments {
 				   .addIrrelevant(new BPMNAddStrategyUnconnected(), new Activity("test_id_1", "Unconnected activity"))
 				   .addIrrelevant(new BPMNAddStrategyTaskSequential(), new Activity("test_id_2", "Sequential activity"))
 				   .addIrrelevant(new BPMNAddStrategyParallelGateway(), new Activity("test_id_3", "Parallel Gateway activity"))
+				   .addIrrelevantFromDataset(new BPMNAddStrategyMeta(), new File(ADDIRRELEVANT_TEST_PATH + "/birthcertificate.bpmn"), 1.0)
 				   .finished(ADDIRRELEVANT_TEST_PATH);
 	}
 }

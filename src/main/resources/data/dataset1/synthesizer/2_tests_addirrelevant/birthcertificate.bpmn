@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_03xdaqh" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1qpjepr</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Task_1w68xzl" name="Add birthcertifcate">
+      <bpmn:incoming>SequenceFlow_1qpjepr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1qnr3ot</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_14qhiwg" name="Sign birth form">
+      <bpmn:incoming>SequenceFlow_1qnr3ot</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_063miit</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_1x56osm" name="Register birth at office">
+      <bpmn:incoming>SequenceFlow_063miit</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1o9hw4r</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1yhxqvx">
+      <bpmn:incoming>SequenceFlow_1o9hw4r</bpmn:incoming>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1qpjepr" sourceRef="StartEvent_1" targetRef="Task_1w68xzl" />
+    <bpmn:sequenceFlow id="SequenceFlow_1qnr3ot" sourceRef="Task_1w68xzl" targetRef="Task_14qhiwg" />
+    <bpmn:sequenceFlow id="SequenceFlow_063miit" sourceRef="Task_14qhiwg" targetRef="Task_1x56osm" />
+    <bpmn:sequenceFlow id="SequenceFlow_1o9hw4r" sourceRef="Task_1x56osm" targetRef="IntermediateThrowEvent_1yhxqvx" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="204" y="170" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="177" y="206" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1w68xzl_di" bpmnElement="Task_1w68xzl">
+        <dc:Bounds x="346" y="148" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_14qhiwg_di" bpmnElement="Task_14qhiwg">
+        <dc:Bounds x="550" y="148" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1x56osm_di" bpmnElement="Task_1x56osm">
+        <dc:Bounds x="743" y="148" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_1yhxqvx_di" bpmnElement="IntermediateThrowEvent_1yhxqvx">
+        <dc:Bounds x="954" y="170" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="972" y="210" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1qpjepr_di" bpmnElement="SequenceFlow_1qpjepr">
+        <di:waypoint x="240" y="188" />
+        <di:waypoint x="346" y="188" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="293" y="167" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1qnr3ot_di" bpmnElement="SequenceFlow_1qnr3ot">
+        <di:waypoint x="446" y="188" />
+        <di:waypoint x="550" y="188" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="498" y="167" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_063miit_di" bpmnElement="SequenceFlow_063miit">
+        <di:waypoint x="650" y="188" />
+        <di:waypoint x="743" y="188" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="696.5" y="167" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1o9hw4r_di" bpmnElement="SequenceFlow_1o9hw4r">
+        <di:waypoint x="843" y="188" />
+        <di:waypoint x="954" y="188" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="898.5" y="167" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

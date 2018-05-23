@@ -113,6 +113,10 @@ public class Synthesizer {
 		return this;
 	}
 	
+	public Synthesizer addIrrelevantFromDataset(AddStrategy addStrategy, File dataset, int numInstances) {
+		return this;
+	}
+	
 	public Synthesizer flip(Direction direction) {
 		transformer.flip(direction);
 		goldstandard.getCorrespondences().clear();
