@@ -115,6 +115,7 @@ public class Synthesizer {
 	
 	public Synthesizer flip(Direction direction) {
 		transformer.flip(direction);
+		goldstandard.getCorrespondences().clear();
 		return this;
 	}
 	

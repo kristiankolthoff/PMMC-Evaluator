@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath" id="Definitions_1vy23eh" targetNamespace="http://bpmn.io/schema/bpmn" typeLanguage="http://www.w3.org/2001/XMLSchema">
   <bpmn:process id="Process_1" isClosed="false" isExecutable="false" processType="None">
     <bpmn:startEvent id="StartEvent_1" isInterrupting="true" parallelMultiple="false">
-      <outgoing xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_f376b850-da28-4483-9d22-787233949f77</outgoing>
+      <outgoing xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_4717ce5f-20b2-4a9b-ac20-28b9f217ad7c</outgoing>
       
     </bpmn:startEvent>
     
@@ -13,67 +13,67 @@
     
     
     <bpmn:task completionQuantity="1" id="Task_1yuuw5z" isForCompensation="false" name="Do the test" startQuantity="1">
-      <incoming xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_8f302bdd-8aad-42cf-a6de-69c0d2cb7765</incoming>
+      <incoming xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_83a203dc-b223-4b2c-8254-6819e44a2bbc</incoming>
       
       <bpmn:outgoing>SequenceFlow_0om48lq</bpmn:outgoing>
     </bpmn:task>
     
     <bpmn:sequenceFlow id="SequenceFlow_0om48lq" sourceRef="Task_1yuuw5z" targetRef="EndEvent_1b8td0h"/>
-    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Diverging" id="parallelGateway_3adc15e6-fbbf-4837-acfe-21e1bb2dc91c">
-      <incoming>sequenceFlow_5d572005-70c3-49d7-9a69-c0847ca836af</incoming>
-      <outgoing>sequenceFlow_2abb3771-2ab1-4b72-b29b-65a6837e6bac</outgoing>
-      <outgoing>sequenceFlow_0570b5ea-b678-4d9a-9875-2eebe99cb9cd</outgoing>
-      <outgoing>sequenceFlow_b8772621-a1da-40ac-bf2c-b3779e514234</outgoing>
+    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Diverging" id="parallelGateway_1a9c38a6-03c3-45e3-8cae-aa6a6d7b28ee">
+      <incoming>sequenceFlow_fa25b267-8a9e-4cc0-b753-05ab2bc50fd4</incoming>
+      <outgoing>sequenceFlow_070fbcc9-6ed6-4dec-a021-d73383146173</outgoing>
+      <outgoing>sequenceFlow_08da3774-2a15-42bb-9f0e-d5fa3865afbd</outgoing>
+      <outgoing>sequenceFlow_0b986f0a-14dc-494e-85f9-f011fe6e3913</outgoing>
     </parallelGateway>
-    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Converging" id="parallelGateway_b85d0db7-a70b-437a-aa75-7598509f507e">
-      <incoming>sequenceFlow_c93eeebd-7ab5-4b0e-ab5e-754654cace68</incoming>
-      <incoming>sequenceFlow_60df2ed3-f4cd-4f79-9ccb-facf7b30ae7d</incoming>
-      <incoming>sequenceFlow_ddf18c7a-a0f0-41bd-87ad-985795e840c6</incoming>
-      <outgoing>sequenceFlow_8f302bdd-8aad-42cf-a6de-69c0d2cb7765</outgoing>
+    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Converging" id="parallelGateway_edda3ea7-3f40-42ff-a6d0-467c47d0e162">
+      <incoming>sequenceFlow_6d63a090-fb4a-46fb-a00b-53628d1996fa</incoming>
+      <incoming>sequenceFlow_ac8296b4-984b-422d-b6d1-f1746391d073</incoming>
+      <incoming>sequenceFlow_a2f99b9e-db3e-4080-a316-c1011925fe26</incoming>
+      <outgoing>sequenceFlow_83a203dc-b223-4b2c-8254-6819e44a2bbc</outgoing>
     </parallelGateway>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_8f302bdd-8aad-42cf-a6de-69c0d2cb7765" sourceRef="parallelGateway_b85d0db7-a70b-437a-aa75-7598509f507e" targetRef="Task_1yuuw5z"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_712b0e2e-fa22-4223-b5fb-0b1f76b26535" name="Upload necessary documents">
-      <incoming>sequenceFlow_2abb3771-2ab1-4b72-b29b-65a6837e6bac</incoming>
-      <outgoing>sequenceFlow_c93eeebd-7ab5-4b0e-ab5e-754654cace68</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_83a203dc-b223-4b2c-8254-6819e44a2bbc" sourceRef="parallelGateway_edda3ea7-3f40-42ff-a6d0-467c47d0e162" targetRef="Task_1yuuw5z"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_00ea4098-b426-434f-be74-030e260c733c" name="Upload necessary documents">
+      <incoming>sequenceFlow_070fbcc9-6ed6-4dec-a021-d73383146173</incoming>
+      <outgoing>sequenceFlow_6d63a090-fb4a-46fb-a00b-53628d1996fa</outgoing>
     </userTask>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_2abb3771-2ab1-4b72-b29b-65a6837e6bac" sourceRef="parallelGateway_3adc15e6-fbbf-4837-acfe-21e1bb2dc91c" targetRef="userTask_712b0e2e-fa22-4223-b5fb-0b1f76b26535"/>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_c93eeebd-7ab5-4b0e-ab5e-754654cace68" sourceRef="userTask_712b0e2e-fa22-4223-b5fb-0b1f76b26535" targetRef="parallelGateway_b85d0db7-a70b-437a-aa75-7598509f507e"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_a1607e4d-11bf-4c43-88fa-d2b460702edf" name="Upload cv">
-      <incoming>sequenceFlow_0570b5ea-b678-4d9a-9875-2eebe99cb9cd</incoming>
-      <outgoing>sequenceFlow_60df2ed3-f4cd-4f79-9ccb-facf7b30ae7d</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_070fbcc9-6ed6-4dec-a021-d73383146173" sourceRef="parallelGateway_1a9c38a6-03c3-45e3-8cae-aa6a6d7b28ee" targetRef="userTask_00ea4098-b426-434f-be74-030e260c733c"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_6d63a090-fb4a-46fb-a00b-53628d1996fa" sourceRef="userTask_00ea4098-b426-434f-be74-030e260c733c" targetRef="parallelGateway_edda3ea7-3f40-42ff-a6d0-467c47d0e162"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_4c0e8eaf-0b5e-4d9f-a0f4-ea84cd5b0104" name="Upload cv">
+      <incoming>sequenceFlow_08da3774-2a15-42bb-9f0e-d5fa3865afbd</incoming>
+      <outgoing>sequenceFlow_ac8296b4-984b-422d-b6d1-f1746391d073</outgoing>
     </userTask>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_0570b5ea-b678-4d9a-9875-2eebe99cb9cd" sourceRef="parallelGateway_3adc15e6-fbbf-4837-acfe-21e1bb2dc91c" targetRef="userTask_a1607e4d-11bf-4c43-88fa-d2b460702edf"/>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_60df2ed3-f4cd-4f79-9ccb-facf7b30ae7d" sourceRef="userTask_a1607e4d-11bf-4c43-88fa-d2b460702edf" targetRef="parallelGateway_b85d0db7-a70b-437a-aa75-7598509f507e"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_be8f550a-ae20-43bc-b027-01f3605ece08" name="Fill out questionaire">
-      <incoming>sequenceFlow_b8772621-a1da-40ac-bf2c-b3779e514234</incoming>
-      <outgoing>sequenceFlow_ddf18c7a-a0f0-41bd-87ad-985795e840c6</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_08da3774-2a15-42bb-9f0e-d5fa3865afbd" sourceRef="parallelGateway_1a9c38a6-03c3-45e3-8cae-aa6a6d7b28ee" targetRef="userTask_4c0e8eaf-0b5e-4d9f-a0f4-ea84cd5b0104"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_ac8296b4-984b-422d-b6d1-f1746391d073" sourceRef="userTask_4c0e8eaf-0b5e-4d9f-a0f4-ea84cd5b0104" targetRef="parallelGateway_edda3ea7-3f40-42ff-a6d0-467c47d0e162"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_87f26652-6f4d-4c4d-9895-88e157003b64" name="Fill out questionaire">
+      <incoming>sequenceFlow_0b986f0a-14dc-494e-85f9-f011fe6e3913</incoming>
+      <outgoing>sequenceFlow_a2f99b9e-db3e-4080-a316-c1011925fe26</outgoing>
     </userTask>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_b8772621-a1da-40ac-bf2c-b3779e514234" sourceRef="parallelGateway_3adc15e6-fbbf-4837-acfe-21e1bb2dc91c" targetRef="userTask_be8f550a-ae20-43bc-b027-01f3605ece08"/>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_ddf18c7a-a0f0-41bd-87ad-985795e840c6" sourceRef="userTask_be8f550a-ae20-43bc-b027-01f3605ece08" targetRef="parallelGateway_b85d0db7-a70b-437a-aa75-7598509f507e"/>
-    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Diverging" id="parallelGateway_c1da8bb1-81ba-424a-91fa-f1f6579ba982">
-      <incoming>sequenceFlow_f376b850-da28-4483-9d22-787233949f77</incoming>
-      <outgoing>sequenceFlow_cad4eae9-ca70-40e1-a173-33c3f1c9c2f9</outgoing>
-      <outgoing>sequenceFlow_22550580-2ce2-41f1-ae6e-1bc91cb76342</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_0b986f0a-14dc-494e-85f9-f011fe6e3913" sourceRef="parallelGateway_1a9c38a6-03c3-45e3-8cae-aa6a6d7b28ee" targetRef="userTask_87f26652-6f4d-4c4d-9895-88e157003b64"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_a2f99b9e-db3e-4080-a316-c1011925fe26" sourceRef="userTask_87f26652-6f4d-4c4d-9895-88e157003b64" targetRef="parallelGateway_edda3ea7-3f40-42ff-a6d0-467c47d0e162"/>
+    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Diverging" id="parallelGateway_084724bc-2395-4ed9-a4e4-d449ac3298fd">
+      <incoming>sequenceFlow_4717ce5f-20b2-4a9b-ac20-28b9f217ad7c</incoming>
+      <outgoing>sequenceFlow_2d6c30b8-61c5-4185-8401-fc3c64bdb62f</outgoing>
+      <outgoing>sequenceFlow_451ab3ba-fb6a-425f-9a56-7b30cd5de582</outgoing>
     </parallelGateway>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_f376b850-da28-4483-9d22-787233949f77" sourceRef="StartEvent_1" targetRef="parallelGateway_c1da8bb1-81ba-424a-91fa-f1f6579ba982"/>
-    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Converging" id="parallelGateway_0fd6cc9b-268f-4a87-b603-da6b435f97be">
-      <incoming>sequenceFlow_36645b06-9dfb-4bad-b74a-dcbfee527ab8</incoming>
-      <incoming>sequenceFlow_214e01fa-dc98-4fab-8238-8ccefb34fbee</incoming>
-      <outgoing>sequenceFlow_5d572005-70c3-49d7-9a69-c0847ca836af</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_4717ce5f-20b2-4a9b-ac20-28b9f217ad7c" sourceRef="StartEvent_1" targetRef="parallelGateway_084724bc-2395-4ed9-a4e4-d449ac3298fd"/>
+    <parallelGateway xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" gatewayDirection="Converging" id="parallelGateway_2ff1f215-4b8c-4302-ac29-29f3ce92d407">
+      <incoming>sequenceFlow_e497f077-d82d-48d0-949f-79b238ed894d</incoming>
+      <incoming>sequenceFlow_7b38cf4f-913d-401b-961a-645eb8a7e69c</incoming>
+      <outgoing>sequenceFlow_fa25b267-8a9e-4cc0-b753-05ab2bc50fd4</outgoing>
     </parallelGateway>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_5d572005-70c3-49d7-9a69-c0847ca836af" sourceRef="parallelGateway_0fd6cc9b-268f-4a87-b603-da6b435f97be" targetRef="parallelGateway_3adc15e6-fbbf-4837-acfe-21e1bb2dc91c"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_d5a73b20-aee2-41e1-a1f5-58af88ca3429" name="Write final exams">
-      <incoming>sequenceFlow_cad4eae9-ca70-40e1-a173-33c3f1c9c2f9</incoming>
-      <outgoing>sequenceFlow_36645b06-9dfb-4bad-b74a-dcbfee527ab8</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_fa25b267-8a9e-4cc0-b753-05ab2bc50fd4" sourceRef="parallelGateway_2ff1f215-4b8c-4302-ac29-29f3ce92d407" targetRef="parallelGateway_1a9c38a6-03c3-45e3-8cae-aa6a6d7b28ee"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_89146dde-1727-417b-941f-95fe975b2011" name="Write final exams">
+      <incoming>sequenceFlow_2d6c30b8-61c5-4185-8401-fc3c64bdb62f</incoming>
+      <outgoing>sequenceFlow_e497f077-d82d-48d0-949f-79b238ed894d</outgoing>
     </userTask>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_cad4eae9-ca70-40e1-a173-33c3f1c9c2f9" sourceRef="parallelGateway_c1da8bb1-81ba-424a-91fa-f1f6579ba982" targetRef="userTask_d5a73b20-aee2-41e1-a1f5-58af88ca3429"/>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_36645b06-9dfb-4bad-b74a-dcbfee527ab8" sourceRef="userTask_d5a73b20-aee2-41e1-a1f5-58af88ca3429" targetRef="parallelGateway_0fd6cc9b-268f-4a87-b603-da6b435f97be"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_956c6f9a-ca9d-4771-a18a-79ad9387fc18" name="Search for programs">
-      <incoming>sequenceFlow_22550580-2ce2-41f1-ae6e-1bc91cb76342</incoming>
-      <outgoing>sequenceFlow_214e01fa-dc98-4fab-8238-8ccefb34fbee</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_2d6c30b8-61c5-4185-8401-fc3c64bdb62f" sourceRef="parallelGateway_084724bc-2395-4ed9-a4e4-d449ac3298fd" targetRef="userTask_89146dde-1727-417b-941f-95fe975b2011"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_e497f077-d82d-48d0-949f-79b238ed894d" sourceRef="userTask_89146dde-1727-417b-941f-95fe975b2011" targetRef="parallelGateway_2ff1f215-4b8c-4302-ac29-29f3ce92d407"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_2fc85c4c-7fd8-4718-b9ed-9324dd4e54ef" name="Search for programs">
+      <incoming>sequenceFlow_451ab3ba-fb6a-425f-9a56-7b30cd5de582</incoming>
+      <outgoing>sequenceFlow_7b38cf4f-913d-401b-961a-645eb8a7e69c</outgoing>
     </userTask>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_22550580-2ce2-41f1-ae6e-1bc91cb76342" sourceRef="parallelGateway_c1da8bb1-81ba-424a-91fa-f1f6579ba982" targetRef="userTask_956c6f9a-ca9d-4771-a18a-79ad9387fc18"/>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_214e01fa-dc98-4fab-8238-8ccefb34fbee" sourceRef="userTask_956c6f9a-ca9d-4771-a18a-79ad9387fc18" targetRef="parallelGateway_0fd6cc9b-268f-4a87-b603-da6b435f97be"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_451ab3ba-fb6a-425f-9a56-7b30cd5de582" sourceRef="parallelGateway_084724bc-2395-4ed9-a4e4-d449ac3298fd" targetRef="userTask_2fc85c4c-7fd8-4718-b9ed-9324dd4e54ef"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_7b38cf4f-913d-401b-961a-645eb8a7e69c" sourceRef="userTask_2fc85c4c-7fd8-4718-b9ed-9324dd4e54ef" targetRef="parallelGateway_2ff1f215-4b8c-4302-ac29-29f3ce92d407"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane bpmnElement="Process_1" id="BPMNPlane_1">

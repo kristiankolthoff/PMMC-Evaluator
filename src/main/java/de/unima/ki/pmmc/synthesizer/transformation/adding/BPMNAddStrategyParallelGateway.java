@@ -1,7 +1,10 @@
 package de.unima.ki.pmmc.synthesizer.transformation.adding;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.Stack;
+import java.util.stream.Collectors;
 
 import org.camunda.bpm.model.bpmn.BpmnModelInstance;
 import org.camunda.bpm.model.bpmn.instance.FlowNode;
@@ -47,16 +50,24 @@ public class BPMNAddStrategyParallelGateway implements BPMNAddStrategy {
 	}
 	
 	private Optional<ParallelGateway> getRightGateway(BpmnModelInstance model, ParallelGateway gateLeft) {
-		for(SequenceFlow flow : gateLeft.getOutgoing()) {
-			FlowNode node = flow.getTarget();
-			FlowNode target = node.getOutgoing().iterator().next().getTarget();
-			if(target instanceof ParallelGateway) {
-				ParallelGateway gateRight = (ParallelGateway) target;
-				if(gateRight.getAttributeValue("gatewayDirection").equals("Diverging"))
+		Stack<FlowNode> stack = new Stack<>();
+		stack.addAll(transformSequenceFlowsToFlowNodes(gateLeft));
+		while(!stack.isEmpty()) {
+			FlowNode flowNode = stack.pop();
+			if(flowNode instanceof ParallelGateway) {
+				ParallelGateway gateRight = (ParallelGateway) flowNode;
+				if(gateRight.getAttributeValue("gatewayDirection").equals("Converging"))
 					return Optional.of(gateRight);
 			}
+			stack.addAll(transformSequenceFlowsToFlowNodes(flowNode));
 		}
 		return Optional.empty();
+		
+	}
+	
+	private List<FlowNode> transformSequenceFlowsToFlowNodes(FlowNode flowNode) {
+		return flowNode.getOutgoing().stream().map(flow -> 
+				{return flow.getTarget();}).collect(Collectors.toList());
 	}
 
 }

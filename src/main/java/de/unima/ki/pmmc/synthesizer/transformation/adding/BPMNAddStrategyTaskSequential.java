@@ -1,7 +1,7 @@
 package de.unima.ki.pmmc.synthesizer.transformation.adding;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -26,19 +26,28 @@ public class BPMNAddStrategyTaskSequential implements BPMNAddStrategy{
 	public BpmnModelInstance addActivity(BpmnModelInstance model, Activity activity) {
 		UserTask userTask = model.newInstance(UserTask.class);
 		userTask.setName(activity.getLabel());
+		//Select sequence flow to place new task in
 		List<SequenceFlow> flows = selectCandidates(model);
 		SequenceFlow flow = flows.get(random.nextInt(flows.size()));
+		//Select the left node and right node of that sequence flow
+		//and remove the flow
 		FlowNode leftNode = flow.getSource();
 		FlowNode rightNode = flow.getTarget();
 		leftNode.getOutgoing().remove(flow);
 		rightNode.getIncoming().remove(flow);
+		//Remove the flow itself
 		ModelElementInstance parent = flow.getParentElement();
 		parent.removeChildElement(flow);
+		//Create new flows
 		SequenceFlow flowLeft = model.newInstance(SequenceFlow.class);
 		SequenceFlow flowRight = model.newInstance(SequenceFlow.class);
+		parent.addChildElement(userTask);
 		parent.addChildElement(flowLeft);
 		parent.addChildElement(flowRight);
-		parent.addChildElement(userTask);
+		flowLeft.setSource(leftNode);
+		flowLeft.setTarget(userTask);
+		flowRight.setSource(userTask);
+		flowRight.setTarget(rightNode);
 		leftNode.getOutgoing().add(flowLeft);
 		userTask.getIncoming().add(flowLeft);
 		userTask.getOutgoing().add(flowRight);
@@ -48,9 +57,9 @@ public class BPMNAddStrategyTaskSequential implements BPMNAddStrategy{
 	
 	private List<SequenceFlow> selectCandidates(BpmnModelInstance model) {
 		List<SequenceFlow> seqFlows = new ArrayList<>();
-		Collection<SequenceFlow> flows = model.getModelElementsByType(SequenceFlow.class);
-		while(flows.iterator().hasNext()) {
-			SequenceFlow flow = flows.iterator().next();
+		Iterator<SequenceFlow> flows = model.getModelElementsByType(SequenceFlow.class).iterator();
+		while(flows.hasNext()) {
+			SequenceFlow flow = flows.next();
 			FlowNode leftNode = flow.getSource();
 			FlowNode rightNode = flow.getTarget();
 			if(leftNode instanceof Task && rightNode instanceof Task) 
