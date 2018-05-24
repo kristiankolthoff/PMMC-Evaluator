@@ -466,6 +466,14 @@ public class Characteristic {
 		return getRelativeDistance(mappings, references, normalize);
 	}
 	
+	public double getRelativeDistance(boolean normalize, CorrespondenceType... types) {
+		List<Alignment> mappings = new ArrayList<>();
+		List<Alignment> references = new ArrayList<>();
+		mappings.add(getAlignmentMapping(types));
+		references.add(getAlignmentReference(types));
+		return getRelativeDistance(mappings, references, normalize);
+	}
+	
 	
 	/**
 	 * Computes the correlation between matcher and
