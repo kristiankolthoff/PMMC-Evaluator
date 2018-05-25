@@ -52,7 +52,7 @@ public class BPMNAddStrategyExclusiveGateway implements BPMNAddStrategy {
 			FlowNode target = node.getOutgoing().iterator().next().getTarget();
 			if(target instanceof ExclusiveGateway) {
 				ExclusiveGateway gateRight = (ExclusiveGateway) target;
-				if(gateRight.getAttributeValue("gatewayDirection").equals("Diverging"))
+				if(gateRight.getAttributeValue("gatewayDirection").equals("Converging"))
 					return Optional.of(gateRight);
 			}
 		}
