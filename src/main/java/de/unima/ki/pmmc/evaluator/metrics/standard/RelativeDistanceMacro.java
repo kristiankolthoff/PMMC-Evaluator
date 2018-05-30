@@ -15,8 +15,7 @@ public class RelativeDistanceMacro implements Metric{
 
 	@Override
 	public double compute(List<Characteristic> characteristics) {
-		return Metric.computeMacro(characteristics, 
-						c -> {return c.getRelativeDistance(normalize);});
+		return Characteristic.getRelativeDistance(characteristics, normalize);
 	}
 
 	@Override

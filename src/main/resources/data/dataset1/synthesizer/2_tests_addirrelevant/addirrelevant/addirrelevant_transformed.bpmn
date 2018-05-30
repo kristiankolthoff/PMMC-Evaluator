@@ -6,7 +6,7 @@
     </bpmn:startEvent>
     <bpmn:task completionQuantity="1" id="Task_0w1pt40" isForCompensation="false" name="Graduate" startQuantity="1">
       <bpmn:incoming>SequenceFlow_1apnyuu</bpmn:incoming>
-      <outgoing xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_6e50b510-77b3-48b7-9064-bdaded084773</outgoing>
+      <outgoing xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_d0f11e02-901b-430a-8cca-4c78a33695d5</outgoing>
       
     </bpmn:task>
     <bpmn:task completionQuantity="1" id="Task_0et9ryz" isForCompensation="false" name="Upload language certificate" startQuantity="1">
@@ -50,25 +50,25 @@
     <bpmn:sequenceFlow id="SequenceFlow_1sdignr" sourceRef="Task_1yn0bki" targetRef="ExclusiveGateway_1gazk9j"/>
     <bpmn:sequenceFlow id="SequenceFlow_1uixc4q" sourceRef="Task_06istns" targetRef="ExclusiveGateway_1gazk9j"/>
     <bpmn:task completionQuantity="1" id="Task_1j1hz6i" isForCompensation="false" name="Implement" startQuantity="1">
-      <incoming xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_38b4b05f-73d7-423f-b55a-4e74dbcea676</incoming>
+      <incoming xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">sequenceFlow_c763c45a-d99f-4acf-8fd6-5062a099181a</incoming>
       
       <bpmn:outgoing>SequenceFlow_0auvbar</bpmn:outgoing>
     </bpmn:task>
     
     <bpmn:sequenceFlow id="SequenceFlow_0auvbar" sourceRef="Task_1j1hz6i" targetRef="ExclusiveGateway_1p48ccd"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_9f590d1d-439a-4a0b-8c70-ae1537645158" name="Unconnected activity"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_88ad4756-a3ab-429d-9746-f4388396cac9" name="Sequential activity">
-      <incoming>sequenceFlow_6e50b510-77b3-48b7-9064-bdaded084773</incoming>
-      <outgoing>sequenceFlow_0df64681-86e5-4ac2-862d-5d2663011f43</outgoing>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_5049c958-8452-4a81-980f-c813396f4125" name="Unconnected activity"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_a23cab26-95ab-4828-b58a-2fae22aa7cf4" name="Sequential activity">
+      <incoming>sequenceFlow_dcd91644-d456-4277-92a5-a45a8e5a7004</incoming>
+      <outgoing>sequenceFlow_c763c45a-d99f-4acf-8fd6-5062a099181a</outgoing>
     </userTask>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_6e50b510-77b3-48b7-9064-bdaded084773" sourceRef="Task_0w1pt40" targetRef="userTask_88ad4756-a3ab-429d-9746-f4388396cac9"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_ce8e3f65-2455-489b-b391-2ce36fca426f" name="Add birthcertifcate"/>
-    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_8fccf081-e473-4499-bfb9-8d3528b3e29c" name="Sign birth form">
-      <incoming>sequenceFlow_0df64681-86e5-4ac2-862d-5d2663011f43</incoming>
-      <outgoing>sequenceFlow_38b4b05f-73d7-423f-b55a-4e74dbcea676</outgoing>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_c763c45a-d99f-4acf-8fd6-5062a099181a" sourceRef="userTask_a23cab26-95ab-4828-b58a-2fae22aa7cf4" targetRef="Task_1j1hz6i"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_91b403cc-d465-4396-8c4d-6445cc567514" name="Sign birth form">
+      <incoming>sequenceFlow_d0f11e02-901b-430a-8cca-4c78a33695d5</incoming>
+      <outgoing>sequenceFlow_dcd91644-d456-4277-92a5-a45a8e5a7004</outgoing>
     </userTask>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_0df64681-86e5-4ac2-862d-5d2663011f43" sourceRef="userTask_88ad4756-a3ab-429d-9746-f4388396cac9" targetRef="userTask_8fccf081-e473-4499-bfb9-8d3528b3e29c"/>
-    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_38b4b05f-73d7-423f-b55a-4e74dbcea676" sourceRef="userTask_8fccf081-e473-4499-bfb9-8d3528b3e29c" targetRef="Task_1j1hz6i"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_d0f11e02-901b-430a-8cca-4c78a33695d5" sourceRef="Task_0w1pt40" targetRef="userTask_91b403cc-d465-4396-8c4d-6445cc567514"/>
+    <sequenceFlow xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sequenceFlow_dcd91644-d456-4277-92a5-a45a8e5a7004" sourceRef="userTask_91b403cc-d465-4396-8c4d-6445cc567514" targetRef="userTask_a23cab26-95ab-4828-b58a-2fae22aa7cf4"/>
+    <userTask xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="userTask_8e436d2b-5d96-4468-8723-0cbd5914c265" name="Register birth at office"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane bpmnElement="Process_1" id="BPMNPlane_1">

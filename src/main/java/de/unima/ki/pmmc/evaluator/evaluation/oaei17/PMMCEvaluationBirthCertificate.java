@@ -38,6 +38,7 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallStdDev;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RelativeDistanceMacro;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
@@ -117,6 +118,8 @@ public class PMMCEvaluationBirthCertificate {
 				.addMetric(new FMeasureMicro())
 				.addMetric(new FMeasureMacro())
 				.addMetric(new FMeasureStdDev()))
+	   .addMetricGroup(new MetricGroup("Dist")
+			   .addMetric(new RelativeDistanceMacro(true)))
 	   .addMetricGroup(new MetricGroup("Stats")
 			    .addMetric(new MinimumConfidence())
 			    .addMetric(new NumCorrespondencesMatcher()));
@@ -136,10 +139,10 @@ public class PMMCEvaluationBirthCertificate {
 				ParserConfigurationException, SAXException {
 		PMMCEvaluationBirthCertificate birthCertificate = new PMMCEvaluationBirthCertificate();
 		//Run all evaluations for the binary birthCertificate goldstandard
-//		birthCertificate.runBinaryGSEvaluationHTML();
-//		birthCertificate.runBinaryGSEvaluationLaTex();
-//		birthCertificate.runBinaryGSEvaluationLaTexTypes();
-//		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
+		birthCertificate.runBinaryGSEvaluationHTML();
+		birthCertificate.runBinaryGSEvaluationLaTex();
+		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
 		//Run all evaluations for the non-binary birthCertificate goldstandard
 		birthCertificate.runNonBinaryGSEvaluationHTML();
 		birthCertificate.runNonBinaryGSEvaluationLaTex();
@@ -236,6 +239,8 @@ public class PMMCEvaluationBirthCertificate {
 				.addMetric(new NBFMeasureMicro())
 				.addMetric(new NBFMeasureMacro())
 				.addMetric(new NBFMeasureStdDev()))
+	   .addMetricGroup(new MetricGroup("Dist")
+			   .addMetric(new RelativeDistanceMacro(true)))
 	   .addMetricGroup(new MetricGroup("Stats")
 			    .addMetric(new MinimumConfidence())
 			    .addMetric(new NumCorrespondencesMatcher()));

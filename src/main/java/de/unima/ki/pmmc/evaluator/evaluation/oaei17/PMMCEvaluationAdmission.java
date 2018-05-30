@@ -38,6 +38,7 @@ import de.unima.ki.pmmc.evaluator.metrics.standard.PrecisionStdDev;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMacro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.standard.RecallStdDev;
+import de.unima.ki.pmmc.evaluator.metrics.standard.RelativeDistanceMacro;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.MinimumConfidence;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.NumCorrespondencesMatcher;
 import de.unima.ki.pmmc.evaluator.metrics.statistics.TypeFracCorrespondencesGS;
@@ -119,6 +120,8 @@ public class PMMCEvaluationAdmission {
 				.addMetric(new FMeasureMicro())
 				.addMetric(new FMeasureMacro())
 				.addMetric(new FMeasureStdDev()))
+	   .addMetricGroup(new MetricGroup("Dist")
+			   .addMetric(new RelativeDistanceMacro(true)))
 	   .addMetricGroup(new MetricGroup("Stats")
 			    .addMetric(new MinimumConfidence())
 			    .addMetric(new NumCorrespondencesMatcher()));
@@ -336,6 +339,8 @@ public class PMMCEvaluationAdmission {
 				.addMetric(new NBFMeasureMicro())
 				.addMetric(new NBFMeasureMacro())
 				.addMetric(new NBFMeasureStdDev()))
+	   .addMetricGroup(new MetricGroup("Dist")
+			   .addMetric(new RelativeDistanceMacro(true)))
 	   .addMetricGroup(new MetricGroup("Stats")
 			    .addMetric(new MinimumConfidence())
 			    .addMetric(new NumCorrespondencesMatcher()));
