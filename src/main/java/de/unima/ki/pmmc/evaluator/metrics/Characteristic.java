@@ -96,14 +96,14 @@ public class Characteristic {
 		this.init();
 	}
 	
-	private void init() throws CorrespondenceException {
+	private void init() {
 		this.alignmentReferenceTyped = extractCTMap(getAlignmentReference());
 		this.alignmentMappingTyped = extractCTMap(getAlignmentMapping());
 		this.alignmentCorrectTyped = extractCTMap(getAlignmentCorrect());
 	}
 	
 	private Map<CorrespondenceType, Alignment> extractCTMap(Alignment alignment) 
-			throws CorrespondenceException {
+			 {
 		Map<CorrespondenceType, Alignment> vals = new HashMap<>();
 		for(CorrespondenceType type : CorrespondenceType.values()) {
 			vals.put(type, new Alignment());
@@ -115,7 +115,7 @@ public class Characteristic {
 				vals.put(c.getCType().get(), align);
 			
 			} else {
-				throw new CorrespondenceException(CorrespondenceException.MISSING_TYPE_ANNOTATION, c.toString());
+//				throw new CorrespondenceException(CorrespondenceException.MISSING_TYPE_ANNOTATION, c.toString());
 			}
 		}
 		return vals;
@@ -1195,12 +1195,12 @@ public class Characteristic {
 			}
 			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
 			double sqDev;
-//			if(!isFirstLineAlignment(mappings)) {
+			if(!isFirstLineAlignment(mappings)) {
 				double delta = (confRef!=0) ? confRef : 1; 
-				sqDev = Math.abs(Math.pow(cMap.getConfidence() - confRef, 2));
-//			} else {
-//				sqDev = Math.pow(cMap.getConfidence() - confRef, 2);
-//			}
+				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
+			} else {
+				sqDev = Math.pow(cMap.getConfidence() - confRef, POW_CONST);
+			}
 			sum += sqDev;
 			}
 		}
@@ -1209,11 +1209,11 @@ public class Characteristic {
 		for(int i = 0; i < references.size(); i++) {
 			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
 			for(Correspondence cOnlyRef : alignOnlyRef) {
-//				if(!isFirstLineAlignment(mappings)) {
-					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), 2));
-//				} else {
-//					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), 2));
-//				}
+				if(!isFirstLineAlignment(mappings)) {
+					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
+				} else {
+					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), POW_CONST));
+				}
 			}
 		}
 		return sum;
@@ -1242,25 +1242,25 @@ public class Characteristic {
 		}
 		double maxConf = Collections.max(allCorres).getConfidence();
 		//Normalize FLM confidences between 0.125 and 1
-//		if(isFirstLineAlignment(alignments)) {
-//			for(Correspondence c : allCorres) {
-//				c.setConfidence(c.getConfidence() / maxConf);
-//			}
-//			double minConf = Collections.min(allCorres).getConfidence();
-//			final double TARGET_MAX = 1;
-//			final double TARGET_MIN = 0.125;
-//			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
-//			for(Correspondence c : allCorres) {
-//				double finalConf = 1 - mult * (1 - c.getConfidence());
-//				c.setConfidence(finalConf);
-//			}
-//		} 
-////		//Normalize SLM confidences to 0 and 1
-//		else {
+		if(isFirstLineAlignment(alignments)) {
+			for(Correspondence c : allCorres) {
+				c.setConfidence(c.getConfidence() / maxConf);
+			}
+			double minConf = Collections.min(allCorres).getConfidence();
+			final double TARGET_MAX = 1;
+			final double TARGET_MIN = 0.125;
+			double mult = (TARGET_MAX - TARGET_MIN) / (1 - minConf);
+			for(Correspondence c : allCorres) {
+				double finalConf = 1 - mult * (1 - c.getConfidence());
+				c.setConfidence(finalConf);
+			}
+		} 
+//		//Normalize SLM confidences to 0 and 1
+		else {
 			for(Correspondence c : allCorres) {
 				c.setConfidence((c.getConfidence()>0) ? 1 : 0);
 			}
-//		}
+		}
 		return vals;
 	}
 	
