@@ -145,7 +145,7 @@ If we only want to replace a certain fraction of words contained in the process 
 	    .replaceSynonymsWithProbability(0.3, "rate", "evaluate");
 ```
 
-In order to test process model matching systems specifically on their abaility to identify one-to-many correspondences based on model specifications created in different kinds of levels of granularity, the Synthesizer ships with many methods to create test instances for the described characteristic. For example, we can replace a single activity by a set of parallel executed activities (describing the single activity more fine-grained). We can do the same but instead of replacing it by parallel activties, we replace it by a set of sequentially executed activities. The corresponding original process model may look similar to the following figure.
+In order to test process model matching systems specifically on their ability to identify one-to-many correspondences based on model specifications created in different kinds of levels of granularity, the Synthesizer ships with many methods to create test instances for the described characteristic. For example, we can replace a single activity by a set of activities executed in parallel (describing the single activity more fine-grained). We can do the same but instead of replacing it by parallel activties, we replace it by a set of sequentially executed activities. The corresponding original process model may look similar to the following figure.
 
 ![alt tag](https://raw.githubusercontent.com/kristiankolthoff/PMMC-Evaluator/master/src/main/resources/images/original.PNG)
 
