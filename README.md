@@ -145,7 +145,9 @@ If we only want to replace a certain fraction of words contained in the process 
 	    .replaceSynonymsWithProbability(0.3, "rate", "evaluate");
 ```
 
-In order to test process model matching systems specifically on their abaility to identify one-to-many correspondences based on model specifications created in different kinds of levels of granularity, the Synthesizer ships with many methods to create test instances for the described characteristic. For example, we can replace a single activity by a set of parallel executed activities (describing the single activity more fine-grained). We can do the same but instead of replacing it by parallel activties, we replace it by a set of sequentially executed activities.
+In order to test process model matching systems specifically on their abaility to identify one-to-many correspondences based on model specifications created in different kinds of levels of granularity, the Synthesizer ships with many methods to create test instances for the described characteristic. For example, we can replace a single activity by a set of parallel executed activities (describing the single activity more fine-grained). We can do the same but instead of replacing it by parallel activties, we replace it by a set of sequentially executed activities. The corresponding original process model may look similar to the following figure.
+
+![alt tag](https://raw.githubusercontent.com/kristiankolthoff/PMMC-Evaluator/master/src/main/resources/images/original.PNG)
 
 ```java
 synthesizer.one2ManyParallel("Task_0et9ryz", "Upload necessary documents", 
@@ -156,7 +158,36 @@ synthesizer.one2ManyParallel("Task_0et9ryz", "Upload necessary documents",
 	   .one2ManySequential("Task_0r2px70", "Invite for test", 
 	   				       "Conduct test", 
 					       "Evaluate test");
+	   .many2OneParallel("Apply online", "Task_xfsad4",
+	  				     "Task_trgw5",
+					     "Task_62gji");
 ```
+
+After applying the one-to-many parallel transformations on the previously shown simple example process model, the transformed process model is illustrated in the following figure.
+
+![alt tag](https://raw.githubusercontent.com/kristiankolthoff/PMMC-Evaluator/master/src/main/resources/images/one2many.PNG)
+
+So far we only examinated transformations that require manual input. In the subsequent section we show the capabilities of automatically generating synthesized models with only little manual input. For example, we can add totally irrelevant activities from another process model. However, we also can add an `Activity` manually by specifying a corresponding `AddStrategy` (or more specifically here we need to specify a `BPMNAddStrategy`).
+
+```java
+synthesizer.addIrrelevant(new BPMNAddStrategyUnconnected(), 
+				new Activity("test_id_1", "Unconnected activity"))
+	   .addIrrelevant(new BPMNAddStrategyTaskSequential(), 
+	   			new Activity("test_id_2", "Sequential activity"))
+	   .addIrrelevant(new BPMNAddStrategyParallelGateway(), 
+	   			new Activity("test_id_3", "Parallel Gateway activity"))
+	   .addIrrelevantFromDataset(new BPMNAddStrategyMeta(), 
+	   			new File(ADDIRRELEVANT_TEST_PATH + "/birthcertificate.bpmn"), 1.0)
+```
+
+Another automatic transformation is to flip the process model. By flipping the process model vertically, we reverse the direction of the
+information flow (e.g. for BPMN process models we inverse the *SequenceFlows* and swap the *StartEvent* and *EndEvent*). This can be achieved by the following call.
+
+```java
+synthesizer.flip(Direction.VERTICAL)
+```
+
+The described transformation functions are the most important, but there are also minor ones in the libary not described in this example. To finally let the `Synthesizer` create the transformed model and the goldstandard we call `synthesizer.finished(MODEL_PATH + "/case1");`. The `Synthesizer` creates a directory called *case1* and saves all three components in there: the original model, the transformed model and the goldstandard.
 
 # Publications
 
