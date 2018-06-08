@@ -123,7 +123,7 @@ be applied (here it is the `BPMNTransformer` because we want to work with BPMN p
 
 ```java
 Synthesizer synthesizer = new Synthesizer(new BPMNTransformer());
-synthesizer.readModel(ONE_2_MANY_PATH, "one2many")
+synthesizer.readModel(ONE_2_MANY_PATH, "one2many");
 ```
 
 After reading in the process model, we can start executing the first simple transformations shown in the following code snippet. Here we
@@ -132,7 +132,30 @@ simply transform two activities which are identified by the activity ID of the o
 ```java
 synthesizer.transformActivity("Task_0et9ryz", "Apply via online")
 	   .transformActivity("Task_0w1pt40", "Graduate from school")
-	   .transformActivity("Task_0r2px70", "Test language skills", false)
+	   .transformActivity("Task_0r2px70", "Test language skills", false);
+```
+
+Another useful transformation which keeps the original correspondences valid is to replace words by a specified synonym group. For example, in the following we replace the words *graduate* and *exmatriculate* with one of the remaining synonyms in the synonym group.
+If we only want to replace a certain fraction of words contained in the process model, we can also specify a probability in the method
+`replaceSynonymsWithProability(double probability, String... replacements)`.
+
+```java
+ synthesizer.replaceAllSynonyms("graduate", "exmatriculate")
+  	    .replaceAllSynonyms("do", "make", "try")
+	    .replaceSynonymsWithProbability(0.3, "rate", "evaluate");
+```
+
+In order to test process model matching systems specifically on their abaility to identify one-to-many correspondences based on model specifications created in different kinds of levels of granularity, the Synthesizer ships with many methods to create test instances for the described characteristic. For example, we can replace a single activity by a set of parallel executed activities (describing the single activity more fine-grained). We can do the same but instead of replacing it by parallel activties, we replace it by a set of sequentially executed activities.
+
+```java
+synthesizer.one2ManyParallel("Task_0et9ryz", "Upload necessary documents", 
+					     "Upload cv", 
+				             "Fill out questionaire")
+	   .one2ManyParallel("Task_0w1pt40", "Write final exams",
+	                                     "Search for programs")
+	   .one2ManySequential("Task_0r2px70", "Invite for test", 
+	   				       "Conduct test", 
+					       "Evaluate test");
 ```
 
 # Publications
