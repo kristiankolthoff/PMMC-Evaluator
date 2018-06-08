@@ -3,7 +3,7 @@
 This project provides an API for evaluating process model matchers with a variety of different metrics
 and is used to generate the results for the official Process Model Matching Contest (PMMC) conducted in 2016 [[1](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)] and 2017 [[2](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)]. This contest is about finding pairwise matching tasks or activities (denoted as correspondences) in comparison of two given process models. In particular, for this contest three different datasets are used all having different notation form. The first set of process models describes the admission process at various universities and is represented in [BPMN](http://www.bpmn.org/). The second set of process models describe the process of creating birth certificates and uses [Petri-Nets](https://en.wikipedia.org/wiki/Petri_net). The third and last set of process models describe the basic process of managing assets and is represented in [EPC](https://en.wikipedia.org/wiki/Event-driven_process_chain). For evaluating the submitted matchers, we construct various evaluation settings and compute the corresponding metrics. An evaluation process is easily setup by using the builder pattern to increasingly build up a configuration for an evaluation. This `Evaluation` instance forms the basis for any experiment.
 
-# Example
+## Example
 
 For exploring the features and capabilities of the library, we use a concise example in the following. Assume that we have three matcher results for a given process matching problem. In addition, we have three goldstandards which form two goldstandard groups: GS1 and GS2 should form one group and the metric results should be averaged over both goldstandards, and finally GS3 forms an individual group. Given a single matcher, we want to compute the metric results for each goldstandard group individually. Note that we also want to apply different thresholds to the goldstandard groups and generate metric results for each thresholded goldstandard group. For the given evaluation, we use two thresholds `t1` and `t2`. The following figure illustrates all components we described previously. 
 
@@ -110,6 +110,30 @@ List<Report> reports4 = evaluation.getReports("GSGroup2", ts2);
 ### e.) Final Notes
 
 Note that the example process described previously depicts the main capabilities of this process model matching evaluation framework. However, there is much more functionality implemented at the moment. One important additional functionality to mention is that you can also classify the correspondences in the goldstandards and matchers into classes of different difficulty automatically. Afterwards you can compute the metrics as shown on any combination of the individual subsets for the different classes only. The general idea on the automatic classification to matching patterns for process model matching evaluation is described in the corresponding paper [[4](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)].
+
+
+# Synthesizer
+
+In addition to the Evaluator used to evaluate Process Model Matchin Systems described previously, this library also ships with a Synthesizer API which is capable of semi-autoamtically generating synthesized process models. It not only generates a synthesized process model based on an original process model, but also creates an entire process model matching systems test case consiting of the original untransformed model, the synthesized model and a corresponding goldstandard to evaluate against.
+
+## Example
+
+To get started with the Synthesizer, we first of all create a `Synthesizer` instance by specifying which `Transformer` should
+be applied (here it is the `BPMNTransformer` because we want to work with BPMN process models), and add the model path.
+
+```java
+Synthesizer synthesizer = new Synthesizer(new BPMNTransformer());
+synthesizer.readModel(ONE_2_MANY_PATH, "one2many")
+```
+
+After reading in the process model, we can start executing the first simple transformations shown in the following code snippet. Here we
+simply transform two activities which are identified by the activity ID of the original process model and set new activity labels. We can additionally specify if the correspondence remains valid after the label transformation.
+
+```java
+synthesizer.transformActivity("Task_0et9ryz", "Apply via online")
+	   .transformActivity("Task_0w1pt40", "Graduate from school")
+	   .transformActivity("Task_0r2px70", "Test language skills", false)
+```
 
 # Publications
 
