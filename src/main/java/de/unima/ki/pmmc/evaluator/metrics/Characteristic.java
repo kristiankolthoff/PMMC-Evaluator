@@ -1195,12 +1195,12 @@ public class Characteristic {
 			}
 			double confRef = (cRef != null) ? cRef.getConfidence() : 0;
 			double sqDev;
-			if(!isFirstLineAlignment(mappings)) {
-				double delta = (confRef!=0) ? confRef : 1; 
-				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
-			} else {
-				sqDev = Math.pow(cMap.getConfidence() - confRef, POW_CONST);
-			}
+//			if(!isFirstLineAlignment(mappings)) {
+//				double delta = (confRef!=0) ? confRef : 1; 
+//				sqDev = delta * Math.abs(Math.pow(cMap.getConfidence() - confRef, POW_CONST));
+//			} else {
+				sqDev = Math.pow(cMap.getConfidence() - confRef, 2);
+//			}
 			sum += sqDev;
 			}
 		}
@@ -1209,11 +1209,11 @@ public class Characteristic {
 		for(int i = 0; i < references.size(); i++) {
 			Alignment alignOnlyRef = references.get(i).minus(mappings.get(i));
 			for(Correspondence cOnlyRef : alignOnlyRef) {
-				if(!isFirstLineAlignment(mappings)) {
-					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
-				} else {
-					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), POW_CONST));
-				}
+//				if(!isFirstLineAlignment(mappings)) {
+//					sum += Math.abs(cOnlyRef.getConfidence() * Math.pow(cOnlyRef.getConfidence(), POW_CONST));
+//				} else {
+					sum += Math.abs(Math.pow(cOnlyRef.getConfidence(), 2));
+//				}
 			}
 		}
 		return sum;

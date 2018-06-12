@@ -54,6 +54,7 @@ import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMicro;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
+import de.unima.ki.pmmc.evaluator.utils.GSPartitioner;
 
 public class PMMCEvaluationAdmission {
 
@@ -421,6 +422,36 @@ public class PMMCEvaluationAdmission {
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("nonbinaryGSEvaluationLaTexFPFN : #reports = " + evaluation.getReports().size());
+	}
+	
+	public void runNonBinaryGSAllNCombsLatex() throws IOException, CorrespondenceException,
+				ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		Metric sortMetric = new NBFMeasureMicro();
+		builder.addMetricGroup(new MetricGroup("Precision")
+					.addMetric(new NBPrecisionMicro())
+					.addMetric(new NBPrecisionMacro()))
+		   .addMetricGroup(new MetricGroup("Recall")
+					.addMetric(new NBRecallMicro())
+					.addMetric(new NBRecallMacro()))
+		   .addMetricGroup(new MetricGroup("F1-Measure")
+					.addMetric(sortMetric)
+					.addMetric(new NBFMeasureMacro()));
+		builder.addHandler(new LaTexHandler())
+		   .setOutputName("oaei17-admission-non-binary-all-combs")
+		   .setSortingOrder(new MetricSort(sortMetric, true));
+		//Load the partitioned goldstandards for all combinations of n annotators
+		GSPartitioner partitioner = new GSPartitioner();
+		partitioner.setAnnotators("HIWI1", "Heiner", "Henrik", 
+				"Viktor", "Han", "Elena", "HIWI2", "HIWI3");
+		for (int i = 1; i <= partitioner.getAnnotators().size(); i++) {
+			builder.addGoldstandardGroup("admission-non-binary-n-" + i, 
+					partitioner.getKGoldstandardsAsResult(i));
+		}
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("nonBinaryGSEvaluationLaTex : #reports = " + evaluation.getReports().size());
 	}
 	
 }

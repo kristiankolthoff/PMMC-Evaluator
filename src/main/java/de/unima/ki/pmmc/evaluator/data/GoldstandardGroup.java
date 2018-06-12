@@ -2,7 +2,6 @@ package de.unima.ki.pmmc.evaluator.data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class GoldstandardGroup {
@@ -10,7 +9,6 @@ public class GoldstandardGroup {
 	private String name;
 	private List<String> paths;
 	private List<Solution> goldstandards;
-	
 	
 	public GoldstandardGroup(String name, List<String> paths) {
 		this.name = name;
@@ -32,6 +30,10 @@ public class GoldstandardGroup {
 	public GoldstandardGroup addSolution(Solution goldstandard) {
 		this.goldstandards.add(goldstandard);
 		return this;
+	}
+	
+	public boolean isPreloaded() {
+		return !goldstandards.isEmpty();
 	}
 
 	public String getName() {

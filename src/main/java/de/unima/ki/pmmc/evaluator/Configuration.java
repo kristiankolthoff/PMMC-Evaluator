@@ -2,6 +2,7 @@ package de.unima.ki.pmmc.evaluator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +17,7 @@ import de.unima.ki.pmmc.evaluator.alignment.Correspondence;
 import de.unima.ki.pmmc.evaluator.alignment.CorrespondenceType;
 import de.unima.ki.pmmc.evaluator.data.GoldstandardGroup;
 import de.unima.ki.pmmc.evaluator.data.Report;
+import de.unima.ki.pmmc.evaluator.data.Solution;
 import de.unima.ki.pmmc.evaluator.handler.ReportHandler;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
@@ -577,9 +579,23 @@ public class Configuration implements Iterable<MetricGroup>{
 			return this;
 		}
 		
-		public Builder addGoldstandardGroup(String groupName, String ...paths) {
+		public Builder addGoldstandardGroup(String groupName, String... paths) {
 			GoldstandardGroup group = new GoldstandardGroup(groupName);
 			group.getPaths().addAll(Arrays.asList(paths));
+			this.gsgroups.add(group);
+			return this;
+		}
+		
+		public Builder addGoldstandardGroup(String groupName, Solution... solutions) {
+			GoldstandardGroup group = new GoldstandardGroup(groupName);
+			group.getGoldstandards().addAll(Arrays.asList(solutions));
+			this.gsgroups.add(group);
+			return this;
+		}
+		
+		public Builder addGoldstandardGroup(String groupName, Collection<Solution> solutions) {
+			GoldstandardGroup group = new GoldstandardGroup(groupName);
+			group.getGoldstandards().addAll(solutions);
 			this.gsgroups.add(group);
 			return this;
 		}

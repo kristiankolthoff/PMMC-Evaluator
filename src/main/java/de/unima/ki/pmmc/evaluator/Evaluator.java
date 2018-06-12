@@ -170,20 +170,24 @@ public class Evaluator {
 			//Load all goldstandard solutions for all thresholds
 			for(double threshold : thresholds) {
 				for(GoldstandardGroup group : gsgroups) {
-					for(String goldstandardPath : group.getPaths()) {
-						Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, threshold);
-						group.addSolution(gs);
+					if(!group.isPreloaded()) {
+						for(String goldstandardPath : group.getPaths()) {
+							Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, threshold);
+							group.addSolution(gs);
+						}
 					}
 				}
-			}
 			
-		} else {
+			}
+			} else {
 			thresholds.add(THRESHOLD_ZERO);
 			//Load all goldstandards solutions without threshold
 			for(GoldstandardGroup group : gsgroups) {
-				for(String goldstandardPath : group.getPaths()) {
-					Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, THRESHOLD_ZERO);
-					group.addSolution(gs);
+				if(!group.isPreloaded()) {
+					for(String goldstandardPath : group.getPaths()) {
+						Solution gs = loader.load(GOLDSTANDARD_NAME, goldstandardPath, THRESHOLD_ZERO);
+						group.addSolution(gs);
+					}
 				}
 			}
 		}
