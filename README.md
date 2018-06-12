@@ -3,7 +3,7 @@
 This project provides an API for evaluating process model matchers with a variety of different metrics
 and is used to generate the results for the official Process Model Matching Contest (PMMC) conducted in 2016 [[1](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)] and 2017 [[2](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)]. This contest is about finding pairwise matching tasks or activities (denoted as correspondences) in comparison of two given process models. In particular, for this contest three different datasets are used all having different notation form. The first set of process models describes the admission process at various universities and is represented in [BPMN](http://www.bpmn.org/). The second set of process models describe the process of creating birth certificates and uses [Petri-Nets](https://en.wikipedia.org/wiki/Petri_net). The third and last set of process models describe the basic process of managing assets and is represented in [EPC](https://en.wikipedia.org/wiki/Event-driven_process_chain). For evaluating the submitted matchers, we construct various evaluation settings and compute the corresponding metrics. An evaluation process is easily setup by using the builder pattern to increasingly build up a configuration for an evaluation. This `Evaluation` instance forms the basis for any experiment.
 
-# Example
+## Example
 
 For exploring the features and capabilities of the library, we use a concise example in the following. Assume that we have three matcher results for a given process matching problem. In addition, we have three goldstandards which form two goldstandard groups: GS1 and GS2 should form one group and the metric results should be averaged over both goldstandards, and finally GS3 forms an individual group. Given a single matcher, we want to compute the metric results for each goldstandard group individually. Note that we also want to apply different thresholds to the goldstandard groups and generate metric results for each thresholded goldstandard group. For the given evaluation, we use two thresholds `t1` and `t2`. The following figure illustrates all components we described previously. 
 
@@ -110,6 +110,84 @@ List<Report> reports4 = evaluation.getReports("GSGroup2", ts2);
 ### e.) Final Notes
 
 Note that the example process described previously depicts the main capabilities of this process model matching evaluation framework. However, there is much more functionality implemented at the moment. One important additional functionality to mention is that you can also classify the correspondences in the goldstandards and matchers into classes of different difficulty automatically. Afterwards you can compute the metrics as shown on any combination of the individual subsets for the different classes only. The general idea on the automatic classification to matching patterns for process model matching evaluation is described in the corresponding paper [[4](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)].
+
+
+# Synthesizer
+
+In addition to the Evaluator used to evaluate Process Model Matchin Systems described previously, this library also ships with a Synthesizer API which is capable of semi-autoamtically generating synthesized process models. It not only generates a synthesized process model based on an original process model, but also creates an entire process model matching systems test case consiting of the original untransformed model, the synthesized model and a corresponding goldstandard to evaluate against.
+
+## Example
+
+To get started with the Synthesizer, we first of all create a `Synthesizer` instance by specifying which `Transformer` should
+be applied (here it is the `BPMNTransformer` because we want to work with BPMN process models), and add the model path.
+
+```java
+Synthesizer synthesizer = new Synthesizer(new BPMNTransformer());
+synthesizer.readModel(ONE_2_MANY_PATH, "one2many");
+```
+
+After reading in the process model, we can start executing the first simple transformations shown in the following code snippet. Here we
+simply transform two activities which are identified by the activity ID of the original process model and set new activity labels. We can additionally specify if the correspondence remains valid after the label transformation.
+
+```java
+synthesizer.transformActivity("Task_0et9ryz", "Apply via online")
+	   .transformActivity("Task_0w1pt40", "Graduate from school")
+	   .transformActivity("Task_0r2px70", "Test language skills", false);
+```
+
+Another useful transformation which keeps the original correspondences valid is to replace words by a specified synonym group. For example, in the following we replace the words *graduate* and *exmatriculate* with one of the remaining synonyms in the synonym group.
+If we only want to replace a certain fraction of words contained in the process model, we can also specify a probability in the method
+`replaceSynonymsWithProability(double probability, String... replacements)`.
+
+```java
+ synthesizer.replaceAllSynonyms("graduate", "exmatriculate")
+  	    .replaceAllSynonyms("do", "make", "try")
+	    .replaceSynonymsWithProbability(0.3, "rate", "evaluate");
+```
+
+In order to test process model matching systems specifically on their ability to identify one-to-many correspondences based on model specifications created in different kinds of levels of granularity, the Synthesizer ships with many methods to create test instances for the described characteristic. For example, we can replace a single activity by a set of activities executed in parallel (describing the single activity more fine-grained). We can do the same but instead of replacing it by parallel activties, we replace it by a set of sequentially executed activities. The corresponding original process model may look similar to the following figure.
+
+![alt tag](https://raw.githubusercontent.com/kristiankolthoff/PMMC-Evaluator/master/src/main/resources/images/original.PNG)
+
+```java
+synthesizer.one2ManyParallel("Task_0et9ryz", "Upload necessary documents", 
+					     "Upload cv", 
+				             "Fill out questionaire")
+	   .one2ManyParallel("Task_0w1pt40", "Write final exams",
+	                                     "Search for programs")
+	   .one2ManySequential("Task_0r2px70", "Invite for test", 
+	   				       "Conduct test", 
+					       "Evaluate test");
+	   .many2OneParallel("Apply online", "Task_xfsad4",
+	  				     "Task_trgw5",
+					     "Task_62gji");
+```
+
+After applying the one-to-many parallel transformations on the previously shown simple example process model, the transformed process model is illustrated in the following figure.
+
+![alt tag](https://raw.githubusercontent.com/kristiankolthoff/PMMC-Evaluator/master/src/main/resources/images/one2many.PNG)
+
+So far we only examinated transformations that require manual input. In the subsequent section we show the capabilities of automatically generating synthesized models with only little manual input. For example, we can add totally irrelevant activities from another process model. However, we also can add an `Activity` manually by specifying a corresponding `AddStrategy` (or more specifically here we need to specify a `BPMNAddStrategy`).
+
+```java
+synthesizer.addIrrelevant(new BPMNAddStrategyUnconnected(), 
+				new Activity("test_id_1", "Unconnected activity"))
+	   .addIrrelevant(new BPMNAddStrategyTaskSequential(), 
+	   			new Activity("test_id_2", "Sequential activity"))
+	   .addIrrelevant(new BPMNAddStrategyParallelGateway(), 
+	   			new Activity("test_id_3", "Parallel Gateway activity"))
+	   .addIrrelevantFromDataset(new BPMNAddStrategyMeta(), 
+	   			new File(ADDIRRELEVANT_TEST_PATH + "/birthcertificate.bpmn"), 1.0)
+```
+
+Another automatic transformation is to flip the process model. By flipping the process model vertically, we reverse the direction of the
+information flow (e.g. for BPMN process models we inverse the *SequenceFlows* and swap the *StartEvent* and *EndEvent*). This can be achieved by the following call.
+
+```java
+synthesizer.flip(Direction.VERTICAL)
+```
+
+The described transformation functions are the most important, but there are also minor ones in the libary not described in this example. To finally let the `Synthesizer` create the transformed model and the goldstandard we call `synthesizer.finished(MODEL_PATH + "/case1");`. The `Synthesizer` creates a directory called *case1* and saves all three components in there: the original model, the transformed model and the goldstandard.
 
 # Publications
 
