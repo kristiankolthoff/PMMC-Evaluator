@@ -52,6 +52,7 @@ import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMicro;
+import de.unima.ki.pmmc.evaluator.model.parser.BPMNParser;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
 import de.unima.ki.pmmc.evaluator.utils.GSPartitioner;
@@ -146,7 +147,7 @@ public class PMMCEvaluationAdmission {
 		admission.runBinaryGSEvaluationLaTex();
 		admission.runBinaryGSEvaluationLaTexTypes();
 		admission.runBinaryGSEvaluationLaTexFPFN();
-//		//Run all evaluations for the binary-sub admission goldstandard
+		//Run all evaluations for the binary-sub admission goldstandard
 		admission.runBinarySubGSEvaluationHTML();
 		admission.runBinarySubGSEvaluationLaTex();
 		admission.runBinarySubGSEvaluationLaTexTypes();
@@ -156,6 +157,8 @@ public class PMMCEvaluationAdmission {
 		admission.runNonBinaryGSEvaluationLaTex();
 		admission.runNonBinaryGSEvaluationLaTexTypes();
 		admission.runNonBinaryGSEvaluationLaTexFPFN();
+		//Run evaluation for the non-binary n combination goldstandards
+//		admission.runNonBinaryGSAllNCombsLatex();
 	}
 	
 	public void runBinaryGSEvaluationHTML() throws IOException, CorrespondenceException, 
@@ -441,10 +444,10 @@ public class PMMCEvaluationAdmission {
 		   .setOutputName("oaei17-admission-non-binary-all-combs")
 		   .setSortingOrder(new MetricSort(sortMetric, true));
 		//Load the partitioned goldstandards for all combinations of n annotators
-		GSPartitioner partitioner = new GSPartitioner();
+		GSPartitioner partitioner = new GSPartitioner(new BPMNParser(), "");
 		partitioner.setAnnotators("HIWI1", "Heiner", "Henrik", 
 				"Viktor", "Han", "Elena", "HIWI2", "HIWI3");
-		for (int i = 1; i <= partitioner.getAnnotators().size(); i++) {
+		for (int i = 1; i <= 1; i++) {
 			builder.addGoldstandardGroup("admission-non-binary-n-" + i, 
 					partitioner.getKGoldstandardsAsResult(i));
 		}

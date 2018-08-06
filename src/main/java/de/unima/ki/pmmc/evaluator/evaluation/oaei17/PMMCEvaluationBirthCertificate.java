@@ -52,8 +52,11 @@ import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBPrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeNBRecallMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypePrecisionMicro;
 import de.unima.ki.pmmc.evaluator.metrics.types.TypeRecallMicro;
+import de.unima.ki.pmmc.evaluator.model.parser.PNMLParser;
+import de.unima.ki.pmmc.evaluator.model.parser.PNMLParser2;
 import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 import de.unima.ki.pmmc.evaluator.nlp.NLPHelper;
+import de.unima.ki.pmmc.evaluator.utils.GSPartitioner;
 
 public class PMMCEvaluationBirthCertificate {
 
@@ -75,8 +78,6 @@ public class PMMCEvaluationBirthCertificate {
 				.addMatcherPath("src/main/resources/data/results/OAEI17/br/LogMap")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/AML-PM/dataset2")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/BPLangMatch/dataset2")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/DKP")
-				.addMatcherPath("src/main/resources/data/results/OAEI16/DKP-lite")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/KnoMa-Proc/dataset2")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/Know-Match-SSS/dataset2")
 				.addMatcherPath("src/main/resources/data/results/OAEI16/Match-SSS/dataset2")
@@ -139,15 +140,17 @@ public class PMMCEvaluationBirthCertificate {
 				ParserConfigurationException, SAXException {
 		PMMCEvaluationBirthCertificate birthCertificate = new PMMCEvaluationBirthCertificate();
 		//Run all evaluations for the binary birthCertificate goldstandard
-		birthCertificate.runBinaryGSEvaluationHTML();
-		birthCertificate.runBinaryGSEvaluationLaTex();
-		birthCertificate.runBinaryGSEvaluationLaTexTypes();
-		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
-		//Run all evaluations for the non-binary birthCertificate goldstandard
-		birthCertificate.runNonBinaryGSEvaluationHTML();
-		birthCertificate.runNonBinaryGSEvaluationLaTex();
-		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
-		birthCertificate.runNonBinaryGSEvaluationLaTexFPFN();
+//		birthCertificate.runBinaryGSEvaluationHTML();
+//		birthCertificate.runBinaryGSEvaluationLaTex();
+//		birthCertificate.runBinaryGSEvaluationLaTexTypes();
+//		birthCertificate.runBinaryGSEvaluationLaTexFPFN();
+//		//Run all evaluations for the non-binary birthCertificate goldstandard
+//		birthCertificate.runNonBinaryGSEvaluationHTML();
+//		birthCertificate.runNonBinaryGSEvaluationLaTex();
+//		birthCertificate.runNonBinaryGSEvaluationLaTexTypes();
+//		birthCertificate.runNonBinaryGSEvaluationLaTexFPFN();
+		//Run evaluation for the non-binary all n combinations goldstandards
+		birthCertificate.runNonBinaryGSAllNCombsLatex();
 	}
 	
 	public void runBinaryGSEvaluationHTML() throws IOException, CorrespondenceException, 
@@ -321,6 +324,49 @@ public class PMMCEvaluationBirthCertificate {
 		Evaluator evaluator = new Evaluator(configuration);
 		Evaluation evaluation = evaluator.run();
 		LOG.info("binaryGSEvaluationLaTexFPFN : #reports = " + evaluation.getReports().size());
+	}
+	
+	public void runNonBinaryGSAllNCombsLatex() throws IOException, CorrespondenceException,
+	ParserConfigurationException, SAXException {
+		Configuration.Builder builder = createBuilder();
+		Metric sortMetric = new NBFMeasureMicro();
+		builder.addMetricGroup(new MetricGroup("Precision")
+				.addMetric(new NBPrecisionMicro())
+				.addMetric(new NBPrecisionMacro()))
+		.addMetricGroup(new MetricGroup("Recall")
+				.addMetric(new NBRecallMicro())
+				.addMetric(new NBRecallMacro()))
+		.addMetricGroup(new MetricGroup("F1-Measure")
+				.addMetric(sortMetric)
+				.addMetric(new NBFMeasureMacro()));
+		builder.addHandler(new HTMLHandler(false))
+			   .addHandler(new LaTexHandler())
+			   .setOutputName("oaei17-birthcertificate-non-binary-all-combs")
+		       .setSortingOrder(new MetricSort(sortMetric, true))
+		       .setCTTagOn(false);
+		//Load the partitioned goldstandards for all combinations of n annotators
+		GSPartitioner partitioner = new GSPartitioner(new PNMLParser2(), 
+				"src/main/resources/data/dataset2/birth-goldstandard.CSV");
+		partitioner.setAnnotators("HIWI1", "Clemens", "Christoph", 
+			"GS1", "GS2", "GS3", "GS4", "Proc-mapp");
+		partitioner.setLineBreak("birthCertificate_");
+		partitioner.loadModelPaths("src/main/resources/data/dataset2/models/birthCertificate_p31.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p32.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p33.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p34.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p246.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p247.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p248.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p249.pnml",
+								   "src/main/resources/data/dataset2/models/birthCertificate_p250.pnml");
+		for (int i = 1; i <= 8; i++) {
+			builder.addGoldstandardGroup("birthCertificate-non-binary-n-" + i, 
+				partitioner.getKGoldstandardsAsResult(i));
+		}
+		Configuration configuration = builder.build();
+		Evaluator evaluator = new Evaluator(configuration);
+		Evaluation evaluation = evaluator.run();
+		LOG.info("nonBinaryGSEvaluationLaTex : #reports = " + evaluation.getReports().size());
 	}
 	
 }
