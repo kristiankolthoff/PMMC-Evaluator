@@ -1,0 +1,1325 @@
+<table cellpadding="3" cellspacing="5" border="2">
+<caption style="font-size:50;font-weight:bold">Matcher Evaluation Summary</caption>
+	<tr colspan="13"></tr>
+	<tr>
+<th style="border:none;"></th>
+<th width="15" style="border:none;"></th>
+<th colspan="3">Precision</th>
+<th width="15" style="border:none;"></th>
+<th colspan="3">Recall</th>
+<th width="15" style="border:none;"></th>
+<th colspan="3">F1-Measure</th>
+<th width="15" style="border:none;"></th>
+<th colspan="1">Dist</th>
+<th width="15" style="border:none;"></th>
+<th colspan="2">Stats</th>
+<th width="15" style="border:none;"></th>
+<th colspan="6">trivial</th>
+<th width="15" style="border:none;"></th>
+<th colspan="6">trivial-norm</th>
+<th width="15" style="border:none;"></th>
+<th colspan="6">no-word-ident</th>
+<th width="15" style="border:none;"></th>
+<th colspan="6">verb-ident</th>
+<th width="15" style="border:none;"></th>
+<th colspan="6">one-word-ident</th>
+<th width="15" style="border:none;"></th>
+<th colspan="6">misc</th>
+<th width="15" style="border:none;"></th>
+<th colspan="6">default</th>
+	</tr>
+	<tr>
+<td><b>Approach</b></td>
+<td style="border:none;"></td>
+<td>prec-mic</td>
+<td>prec-mac</td>
+<td>prec-std-dev</td>
+<td style="border:none;"></td>
+<td>rec-mic</td>
+<td>rec-mac</td>
+<td>rec-std-dev</td>
+<td style="border:none;"></td>
+<td>fm-mic</td>
+<td>fm-mac</td>
+<td>fm-std-dev</td>
+<td style="border:none;"></td>
+<td>rel-dist-mac</td>
+<td style="border:none;"></td>
+<td>min-conf</td>
+<td>#c-m</td>
+<td style="border:none;"></td>
+<td>#c-gs-trivial</td>
+<td>%-c-gs</td>
+<td>#c-m-trivial</td>
+<td>prec-micro</td>
+<td>rec-mic</td>
+<td>fm-mic</td>
+<td style="border:none;"></td>
+<td>#c-gs-trivial-norm</td>
+<td>%-c-gs</td>
+<td>#c-m-trivial-norm</td>
+<td>prec-micro</td>
+<td>rec-mic</td>
+<td>fm-mic</td>
+<td style="border:none;"></td>
+<td>#c-gs-no-word-ident</td>
+<td>%-c-gs</td>
+<td>#c-m-no-word-ident</td>
+<td>prec-micro</td>
+<td>rec-mic</td>
+<td>fm-mic</td>
+<td style="border:none;"></td>
+<td>#c-gs-verb-ident</td>
+<td>%-c-gs</td>
+<td>#c-m-verb-ident</td>
+<td>prec-micro</td>
+<td>rec-mic</td>
+<td>fm-mic</td>
+<td style="border:none;"></td>
+<td>#c-gs-one-word-ident</td>
+<td>%-c-gs</td>
+<td>#c-m-one-word-ident</td>
+<td>prec-micro</td>
+<td>rec-mic</td>
+<td>fm-mic</td>
+<td style="border:none;"></td>
+<td>#c-gs-misc</td>
+<td>%-c-gs</td>
+<td>#c-m-misc</td>
+<td>prec-micro</td>
+<td>rec-mic</td>
+<td>fm-mic</td>
+<td style="border:none;"></td>
+<td>#c-gs-default</td>
+<td>%-c-gs</td>
+<td>#c-m-default</td>
+<td>prec-micro</td>
+<td>rec-mic</td>
+<td>fm-mic</td>
+<td style="border:none;"></td>
+	</tr>
+<tr colspan="13"></tr>
+<td>AML</td>
+<td style="border:none;"></td>
+<td>0,454</td>
+<td>0,43</td>
+<td>0,17</td>
+<td style="border:none;"></td>
+<td>0,391</td>
+<td>0,396</td>
+<td>0,218</td>
+<td style="border:none;"></td>
+<td>0,42</td>
+<td>0,39</td>
+<td>0,166</td>
+<td style="border:none;"></td>
+<td>462,671</td>
+<td style="border:none;"></td>
+<td>0,604</td>
+<td>502</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>29</td>
+<td>0,759</td>
+<td>0,846</td>
+<td>0,8</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>372</td>
+<td>0,427</td>
+<td>0,364</td>
+<td>0,393</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>15</td>
+<td>0,133</td>
+<td>0,222</td>
+<td>0,167</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>48</td>
+<td>0,438</td>
+<td>0,362</td>
+<td>0,396</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>38</td>
+<td>0,632</td>
+<td>0,453</td>
+<td>0,527</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>I-Match</td>
+<td style="border:none;"></td>
+<td>0,734</td>
+<td>0,554</td>
+<td>0,352</td>
+<td style="border:none;"></td>
+<td>0,237</td>
+<td>0,208</td>
+<td>0,257</td>
+<td style="border:none;"></td>
+<td>0,358</td>
+<td>0,267</td>
+<td>0,282</td>
+<td style="border:none;"></td>
+<td>495</td>
+<td style="border:none;"></td>
+<td>0,752</td>
+<td>188</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>20</td>
+<td>0,95</td>
+<td>0,731</td>
+<td>0,826</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>138</td>
+<td>0,746</td>
+<td>0,236</td>
+<td>0,358</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>3</td>
+<td>0,667</td>
+<td>0,222</td>
+<td>0,333</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>15</td>
+<td>0,4</td>
+<td>0,103</td>
+<td>0,164</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>12</td>
+<td>0,667</td>
+<td>0,151</td>
+<td>0,246</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>LogMap</td>
+<td style="border:none;"></td>
+<td>0,615</td>
+<td>0,46</td>
+<td>0,246</td>
+<td style="border:none;"></td>
+<td>0,252</td>
+<td>0,227</td>
+<td>0,248</td>
+<td style="border:none;"></td>
+<td>0,358</td>
+<td>0,275</td>
+<td>0,244</td>
+<td style="border:none;"></td>
+<td>528</td>
+<td style="border:none;"></td>
+<td>0,75</td>
+<td>239</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>56</td>
+<td>0,339</td>
+<td>0,731</td>
+<td>0,463</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>157</td>
+<td>0,726</td>
+<td>0,261</td>
+<td>0,384</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>14</td>
+<td>0,357</td>
+<td>0,086</td>
+<td>0,139</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>11</td>
+<td>0,818</td>
+<td>0,17</td>
+<td>0,281</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>AML-PM</td>
+<td style="border:none;"></td>
+<td>0,423</td>
+<td>0,402</td>
+<td>0,168</td>
+<td style="border:none;"></td>
+<td>0,365</td>
+<td>0,366</td>
+<td>0,186</td>
+<td style="border:none;"></td>
+<td>0,392</td>
+<td>0,367</td>
+<td>0,164</td>
+<td style="border:none;"></td>
+<td>590,992</td>
+<td style="border:none;"></td>
+<td>0,408</td>
+<td>503</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>69</td>
+<td>0,304</td>
+<td>0,808</td>
+<td>0,442</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>354</td>
+<td>0,424</td>
+<td>0,343</td>
+<td>0,379</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>9</td>
+<td>0,111</td>
+<td>0,111</td>
+<td>0,111</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>44</td>
+<td>0,455</td>
+<td>0,345</td>
+<td>0,392</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>27</td>
+<td>0,778</td>
+<td>0,396</td>
+<td>0,525</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>BPLangMatch</td>
+<td style="border:none;"></td>
+<td>0,645</td>
+<td>0,558</td>
+<td>0,205</td>
+<td style="border:none;"></td>
+<td>0,309</td>
+<td>0,297</td>
+<td>0,22</td>
+<td style="border:none;"></td>
+<td>0,418</td>
+<td>0,369</td>
+<td>0,221</td>
+<td style="border:none;"></td>
+<td>502</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>279</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>20</td>
+<td>0,9</td>
+<td>0,692</td>
+<td>0,783</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>198</td>
+<td>0,636</td>
+<td>0,288</td>
+<td>0,397</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>6</td>
+<td>0,5</td>
+<td>0,333</td>
+<td>0,4</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>37</td>
+<td>0,568</td>
+<td>0,362</td>
+<td>0,442</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>18</td>
+<td>0,667</td>
+<td>0,226</td>
+<td>0,338</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>DKP</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0,111</td>
+<td>0,314</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>760</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>177</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>177</td>
+<td>0</td>
+<td>�</td>
+<td>0</td>
+<tr colspan="13"></tr>
+<td>DKP-lite</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0,111</td>
+<td>0,314</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>733</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>150</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>150</td>
+<td>0</td>
+<td>�</td>
+<td>0</td>
+<tr colspan="13"></tr>
+<td>KnoMa-Proc</td>
+<td style="border:none;"></td>
+<td>0,234</td>
+<td>0,217</td>
+<td>0,188</td>
+<td style="border:none;"></td>
+<td>0,297</td>
+<td>0,278</td>
+<td>0,234</td>
+<td style="border:none;"></td>
+<td>0,262</td>
+<td>0,237</td>
+<td>0,205</td>
+<td style="border:none;"></td>
+<td>977</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>740</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>31</td>
+<td>0,613</td>
+<td>0,731</td>
+<td>0,667</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>594</td>
+<td>0,221</td>
+<td>0,3</td>
+<td>0,254</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>12</td>
+<td>0,167</td>
+<td>0,222</td>
+<td>0,19</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>40</td>
+<td>0,125</td>
+<td>0,086</td>
+<td>0,102</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>31</td>
+<td>0,516</td>
+<td>0,302</td>
+<td>0,381</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>32</td>
+<td>0</td>
+<td>�</td>
+<td>0</td>
+<tr colspan="13"></tr>
+<td>Know-Match-SSS</td>
+<td style="border:none;"></td>
+<td>0,8</td>
+<td>0,768</td>
+<td>0,238</td>
+<td style="border:none;"></td>
+<td>0,254</td>
+<td>0,237</td>
+<td>0,238</td>
+<td style="border:none;"></td>
+<td>0,385</td>
+<td>0,313</td>
+<td>0,254</td>
+<td style="border:none;"></td>
+<td>465,456</td>
+<td style="border:none;"></td>
+<td>0,758</td>
+<td>185</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>21</td>
+<td>0,905</td>
+<td>0,731</td>
+<td>0,809</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>134</td>
+<td>0,828</td>
+<td>0,254</td>
+<td>0,389</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>13</td>
+<td>0,462</td>
+<td>0,103</td>
+<td>0,169</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>16</td>
+<td>0,75</td>
+<td>0,226</td>
+<td>0,348</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>Match-SSS</td>
+<td style="border:none;"></td>
+<td>0,922</td>
+<td>0,972</td>
+<td>0,057</td>
+<td style="border:none;"></td>
+<td>0,202</td>
+<td>0,177</td>
+<td>0,223</td>
+<td style="border:none;"></td>
+<td>0,332</td>
+<td>0,244</td>
+<td>0,261</td>
+<td style="border:none;"></td>
+<td>475</td>
+<td style="border:none;"></td>
+<td>0,952</td>
+<td>128</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>18</td>
+<td>1</td>
+<td>0,692</td>
+<td>0,818</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>96</td>
+<td>0,938</td>
+<td>0,206</td>
+<td>0,338</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>8</td>
+<td>0,625</td>
+<td>0,086</td>
+<td>0,152</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>5</td>
+<td>1</td>
+<td>0,094</td>
+<td>0,172</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>OPBOT</td>
+<td style="border:none;"></td>
+<td>0,713</td>
+<td>0,679</td>
+<td>0,184</td>
+<td style="border:none;"></td>
+<td>0,468</td>
+<td>0,474</td>
+<td>0,239</td>
+<td style="border:none;"></td>
+<td>0,565</td>
+<td>0,54</td>
+<td>0,216</td>
+<td style="border:none;"></td>
+<td>420</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>383</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>24</td>
+<td>0,917</td>
+<td>0,846</td>
+<td>0,88</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>263</td>
+<td>0,719</td>
+<td>0,432</td>
+<td>0,54</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>9</td>
+<td>0,444</td>
+<td>0,444</td>
+<td>0,444</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>46</td>
+<td>0,63</td>
+<td>0,5</td>
+<td>0,558</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>41</td>
+<td>0,707</td>
+<td>0,547</td>
+<td>0,617</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>pPalm-DS</td>
+<td style="border:none;"></td>
+<td>0,502</td>
+<td>0,499</td>
+<td>0,172</td>
+<td style="border:none;"></td>
+<td>0,422</td>
+<td>0,429</td>
+<td>0,245</td>
+<td style="border:none;"></td>
+<td>0,459</td>
+<td>0,426</td>
+<td>0,187</td>
+<td style="border:none;"></td>
+<td>581</td>
+<td style="border:none;"></td>
+<td>0,77</td>
+<td>490</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>27</td>
+<td>0,852</td>
+<td>0,885</td>
+<td>0,868</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>346</td>
+<td>0,471</td>
+<td>0,373</td>
+<td>0,416</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>10</td>
+<td>0,2</td>
+<td>0,222</td>
+<td>0,211</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>56</td>
+<td>0,429</td>
+<td>0,414</td>
+<td>0,421</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>51</td>
+<td>0,667</td>
+<td>0,642</td>
+<td>0,654</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>RMM-NHCM</td>
+<td style="border:none;"></td>
+<td>0,727</td>
+<td>0,715</td>
+<td>0,197</td>
+<td style="border:none;"></td>
+<td>0,333</td>
+<td>0,325</td>
+<td>0,189</td>
+<td style="border:none;"></td>
+<td>0,456</td>
+<td>0,416</td>
+<td>0,175</td>
+<td style="border:none;"></td>
+<td>462</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>267</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>20</td>
+<td>0,95</td>
+<td>0,731</td>
+<td>0,826</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>191</td>
+<td>0,743</td>
+<td>0,325</td>
+<td>0,452</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>5</td>
+<td>0,4</td>
+<td>0,222</td>
+<td>0,286</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>27</td>
+<td>0,556</td>
+<td>0,259</td>
+<td>0,353</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>24</td>
+<td>0,667</td>
+<td>0,302</td>
+<td>0,416</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>RMM-NLM</td>
+<td style="border:none;"></td>
+<td>0,859</td>
+<td>0,948</td>
+<td>0,096</td>
+<td style="border:none;"></td>
+<td>0,189</td>
+<td>0,164</td>
+<td>0,211</td>
+<td style="border:none;"></td>
+<td>0,309</td>
+<td>0,225</td>
+<td>0,244</td>
+<td style="border:none;"></td>
+<td>491</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>128</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>13</td>
+<td>1</td>
+<td>0,5</td>
+<td>0,667</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>95</td>
+<td>0,895</td>
+<td>0,195</td>
+<td>0,32</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>12</td>
+<td>0,417</td>
+<td>0,086</td>
+<td>0,143</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>7</td>
+<td>1</td>
+<td>0,132</td>
+<td>0,233</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>RMM-SMSL</td>
+<td style="border:none;"></td>
+<td>0,508</td>
+<td>0,499</td>
+<td>0,151</td>
+<td style="border:none;"></td>
+<td>0,309</td>
+<td>0,305</td>
+<td>0,233</td>
+<td style="border:none;"></td>
+<td>0,384</td>
+<td>0,342</td>
+<td>0,178</td>
+<td style="border:none;"></td>
+<td>577</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>354</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>14</td>
+<td>0,714</td>
+<td>0,385</td>
+<td>0,5</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>277</td>
+<td>0,527</td>
+<td>0,334</td>
+<td>0,409</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>14</td>
+<td>0,143</td>
+<td>0,222</td>
+<td>0,174</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>27</td>
+<td>0,296</td>
+<td>0,138</td>
+<td>0,188</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>22</td>
+<td>0,636</td>
+<td>0,264</td>
+<td>0,373</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>RMM-VM2</td>
+<td style="border:none;"></td>
+<td>0,474</td>
+<td>0,44</td>
+<td>0,2</td>
+<td style="border:none;"></td>
+<td>0,4</td>
+<td>0,397</td>
+<td>0,241</td>
+<td style="border:none;"></td>
+<td>0,433</td>
+<td>0,404</td>
+<td>0,21</td>
+<td style="border:none;"></td>
+<td>609</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>492</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>25</td>
+<td>0,88</td>
+<td>0,846</td>
+<td>0,863</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>347</td>
+<td>0,452</td>
+<td>0,359</td>
+<td>0,401</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>23</td>
+<td>0,087</td>
+<td>0,222</td>
+<td>0,125</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>59</td>
+<td>0,458</td>
+<td>0,466</td>
+<td>0,462</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>38</td>
+<td>0,658</td>
+<td>0,472</td>
+<td>0,549</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>TripleS</td>
+<td style="border:none;"></td>
+<td>0,613</td>
+<td>0,553</td>
+<td>0,26</td>
+<td style="border:none;"></td>
+<td>0,28</td>
+<td>0,265</td>
+<td>0,264</td>
+<td style="border:none;"></td>
+<td>0,384</td>
+<td>0,306</td>
+<td>0,237</td>
+<td style="border:none;"></td>
+<td>523</td>
+<td style="border:none;"></td>
+<td>0,7</td>
+<td>266</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>45</td>
+<td>0,444</td>
+<td>0,769</td>
+<td>0,563</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>184</td>
+<td>0,674</td>
+<td>0,284</td>
+<td>0,399</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>16</td>
+<td>0,375</td>
+<td>0,103</td>
+<td>0,162</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>20</td>
+<td>0,65</td>
+<td>0,245</td>
+<td>0,356</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<tr colspan="13"></tr>
+<td>Ensamble</td>
+<td style="border:none;"></td>
+<td>0,717</td>
+<td>0,693</td>
+<td>0,202</td>
+<td style="border:none;"></td>
+<td>0,482</td>
+<td>0,482</td>
+<td>0,219</td>
+<td style="border:none;"></td>
+<td>0,576</td>
+<td>0,544</td>
+<td>0,189</td>
+<td style="border:none;"></td>
+<td>413</td>
+<td style="border:none;"></td>
+<td>1</td>
+<td>392</td>
+<td style="border:none;"></td>
+<td>26</td>
+<td>4,46</td>
+<td>24</td>
+<td>0,958</td>
+<td>0,885</td>
+<td>0,92</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+<td style="border:none;"></td>
+<td>437</td>
+<td>74,957</td>
+<td>271</td>
+<td>0,72</td>
+<td>0,446</td>
+<td>0,551</td>
+<td style="border:none;"></td>
+<td>9</td>
+<td>1,544</td>
+<td>9</td>
+<td>0,667</td>
+<td>0,667</td>
+<td>0,667</td>
+<td style="border:none;"></td>
+<td>58</td>
+<td>9,949</td>
+<td>50</td>
+<td>0,6</td>
+<td>0,517</td>
+<td>0,556</td>
+<td style="border:none;"></td>
+<td>53</td>
+<td>9,091</td>
+<td>38</td>
+<td>0,711</td>
+<td>0,509</td>
+<td>0,593</td>
+<td style="border:none;"></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>�</td>
+<td>�</td>
+</table>
