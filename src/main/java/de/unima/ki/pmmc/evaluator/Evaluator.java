@@ -191,6 +191,13 @@ public class Evaluator {
 				}
 			}
 		}
+		//Create thresholds for preloaded groups
+		for(GoldstandardGroup group : gsgroups) {
+			if(group.isPreloaded()) {
+				List<Solution> solutionsThresholded = applyTreshold(group, thresholds);
+				group.setGoldstandards(solutionsThresholded);
+			}
+		}
 		//Load matcher solutions
 		matcherSolutions = loader.loadAll(matchersRootPath, matcherPaths, THRESHOLD_ZERO);
 		//Validate matcher solutions against goldstandard
@@ -235,6 +242,19 @@ public class Evaluator {
 		}
 		log("Finished tasks...");
 		return evaluation;
+	}
+	
+	private List<Solution> applyTreshold(GoldstandardGroup group, List<Double> thresholds) {
+		List<Solution> solutionThresholded = new ArrayList<>();
+		for(double threshold : thresholds) {
+			for(Solution solution : group.getGoldstandards()) {
+				Solution solutionThresh = new Solution(solution.getName(), 
+						solution.getPath(), threshold, Alignment.newInstance(solution.getAlignments()));
+				solutionThresh.forEach(alignment -> {alignment.applyThreshold(threshold);});
+				solutionThresholded.add(solutionThresh);
+			}
+		}
+		return solutionThresholded;
 	}
 	
 	private void printGoldstandardTypes() {

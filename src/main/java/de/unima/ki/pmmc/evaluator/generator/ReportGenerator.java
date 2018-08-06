@@ -14,13 +14,16 @@ import de.unima.ki.pmmc.evaluator.exceptions.CorrespondenceException;
 import de.unima.ki.pmmc.evaluator.metrics.Characteristic;
 import de.unima.ki.pmmc.evaluator.metrics.Metric;
 import de.unima.ki.pmmc.evaluator.metrics.MetricGroup;
+import edu.stanford.nlp.util.Pair;
 
 public class ReportGenerator {
 
 	private Configuration configuration;
+	private AlignmentBinder alignmentBinder;
 	
 	public ReportGenerator(Configuration configuration) {
 		this.configuration = configuration;
+		this.alignmentBinder = new AlignmentBinder();
 	}
 	
 	public Evaluation generate(List<GoldstandardGroup> groups, 
@@ -52,12 +55,19 @@ public class ReportGenerator {
 	private List<Characteristic> computeCharacteristics(List<Solution> goldstandards, Solution matcher) throws CorrespondenceException {
 		List<Characteristic> characteristics = new ArrayList<>();
 		for(Solution gs : goldstandards) {
-			//TODO attentation : this is not safe, match alignments
-			for (int i = 0; i < gs.getAlignments().size(); i++) {
-				Alignment alignGS = gs.getAlignments().get(i);
-				Alignment alignMatcher = matcher.getAlignments().get(i);
+			AlignmentBinding binding = alignmentBinder.bind(gs.getAlignments(), matcher.getAlignments());
+			for(Pair<Alignment, Alignment> pair : binding) {
+				Alignment alignGS = pair.first();
+				Alignment alignMatcher = pair.second();
 				characteristics.add(new Characteristic(alignMatcher, alignGS));
 			}
+			//TODO attentation : this is not safe, match alignments
+//			for (int i = 0; i < gs.getAlignments().size(); i++) {
+				
+//				Alignment alignGS = gs.getAlignments().get(i);
+//				Alignment alignMatcher = matcher.getAlignments().get(i);
+//				characteristics.add(new Characteristic(alignMatcher, alignGS));
+//			}
 		}
 		return characteristics;
 	}

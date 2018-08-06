@@ -22,16 +22,18 @@ public class MetricSort implements Comparator<Report> {
 	public int compare(Report report1, Report report2) {
 		double metricValue1 = getMetricValue(report1, metric);
 		double metricValue2 = getMetricValue(report2, metric);
-		double diff = metricValue1 - metricValue2;
-		if(diff < 0) {
-			if(desc) return 1;
-			else return -1;
-		}
-		else if(diff > 0) {
-			if(desc) return -1;
-			else return 1;
-		}
-		else return 0;
+		int comparision = Double.compare(metricValue1, metricValue2);
+		return desc ? -comparision : comparision;
+//		double diff = metricValue1 - metricValue2;
+//		if(diff < 0) {
+//			if(desc) return 1;
+//			else return -1;
+//		}
+//		else if(diff > 0) {
+//			if(desc) return -1;
+//			else return 1;
+//		}
+//		else return 0;
 	}
 	
 	private double getMetricValue(Report report, Metric metric) {

@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,39 +30,42 @@ import de.unima.ki.pmmc.evaluator.model.parser.Parser;
 
 public class GSPartitioner {
 
+	private Parser parser;
 	private List<String> annotators;
+	private List<String> modelPaths;
 	private List<Model> models;
+	private String goldstandardPath;
 	private int numNulls;
 	private int numDouble;
+	private String lineBreak;
+	private String labelAnnotators;
+	private String label1;
+	private String label2;
 	
-	public GSPartitioner() {
-		//Hack improve models
-		String[] modelIds = new String[]{
-				"Cologne",
-				"Frankfurt",
-				"FU_Berlin",
-				"Hohenheim",
-				"IIS_Erlangen",
-				"Muenster",
-				"Potsdam",
-				"TU_Munich",
-				"Wuerzburg"
-		};
-		Parser parser = new BPMNParser();
+	public GSPartitioner(Parser parser, String goldstandardPath) {
+		this.parser = parser;
+		this.goldstandardPath = goldstandardPath;
+		this.modelPaths = new ArrayList<>();
 		this.models = new ArrayList<>();
-		for (int i = 0; i < modelIds.length; i++) {
+		this.annotators = new ArrayList<>();
+		this.setLabelAnnotators("annotators");
+		this.label1 = "label1";
+		this.label2 = "label2";
+	}
+	
+	private void loadModels() {
+		for (int i = 0; i < modelPaths.size(); i++) {
 			Model model;
 			try {
-				model = parser.parse("src/main/resources/data/dataset1/models/" + modelIds[i] + ".bpmn");
-				model.setPrefix("http://" + modelIds[i] + "#");
-				model.setId(modelIds[i]);
+				model = this.parser.parse(modelPaths.get(i));
+				String[] prefix = modelPaths.get(i).split("/");
+				model.setPrefix("http://" + prefix[prefix.length-1].replaceAll(".pnml", "") + "#");
+				model.setId(modelPaths.get(i));
 				models.add(model);
 			} catch (ParserConfigurationException | SAXException | IOException e) {
 				e.printStackTrace();
 			}
 		}
-		this.annotators = new ArrayList<>();
-		init();
 	}
 	
 	
@@ -108,20 +112,10 @@ public class GSPartitioner {
 		return combinations;
 	}
 	
-	private void init() {
-		this.annotators.add("HIWI1");
-		this.annotators.add("Heiner");
-		this.annotators.add("Henrik");
-		this.annotators.add("Viktor");
-		this.annotators.add("Han");
-		this.annotators.add("Elena");
-		this.annotators.add("HIWI2");
-		this.annotators.add("HIWI3");
-	}
-	
-	public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, AlignmentException {
-		GSPartitioner partitioner = new GSPartitioner();
-		System.out.println("Started");
+	public static void main(String[] args) throws ParserConfigurationException, 
+					IOException, SAXException, AlignmentException {
+		GSPartitioner partitioner = new GSPartitioner(new BPMNParser(), 
+				"src/main/resources/data/dataset1/GoldStandard_8experts_merged_.csv");
 		List<Solution> vals = partitioner.getKGoldstandardsAsResult(1);
 		AlignmentReader reader1 = new AlignmentReaderXml();
 		Alignment notFound = new Alignment();
@@ -138,7 +132,6 @@ public class GSPartitioner {
 				}
 				if(!found) {
 					notFound.add(c);
-//					System.out.println("not found : " + c);
 				}
 			}
 		}
@@ -167,7 +160,6 @@ public class GSPartitioner {
 				}
 				if(!found) {
 					notFound.add(c);
-//					System.out.println("not found : " + c);
 				}
 			}
 			}
@@ -205,7 +197,8 @@ public class GSPartitioner {
 		return goldstandards;
 	}
 	
-	public List<Alignment> getGoldstandard(List<Model> models, List<String> annotators) throws FileNotFoundException, IOException, AlignmentException {
+	public List<Alignment> getGoldstandard(List<Model> models, List<String> annotators) throws FileNotFoundException, 
+			IOException, AlignmentException {
 		final Reader in = new FileReader("src/main/resources/data/dataset1/GoldStandard_8experts_merged_.csv");
 		final Iterable<CSVRecord> records = CSVFormat.EXCEL.
 				withDelimiter(';').
@@ -271,8 +264,9 @@ public class GSPartitioner {
 		return alignments;
 	}
 	
-	public Solution getGoldstandardAsResult(List<Model> models, List<String> annotators) throws FileNotFoundException, IOException, AlignmentException {
-		final Reader in = new FileReader("src/main/resources/data/dataset1/GoldStandard_8experts_merged_ updated_conf.csv");
+	public Solution getGoldstandardAsResult(List<Model> models, List<String> annotators) throws 
+			FileNotFoundException, IOException, AlignmentException {
+		final Reader in = new FileReader(this.goldstandardPath);
 		final Iterable<CSVRecord> records = CSVFormat.EXCEL.
 				withDelimiter(';').
 				withHeader().
@@ -285,20 +279,23 @@ public class GSPartitioner {
 		this.numDouble = 0;
 		List<String> cache = new ArrayList<>();
 		for(CSVRecord record : records) {
-			String label1 = record.get("label1");
-			String label2 = record.get("label2");
-			String anns = record.get("annotators");
-			if(label1.contains("Admission") && label2.contains("Admission")) {
+			String label1 = record.get(0); //record.get(this.label1)
+			String label2 = record.get(1); //record.get(this.label2)
+			String anns = record.get(3); //record.get(this.labelAnnotators)
+			if(label1.contains(this.lineBreak) && label2.contains(this.lineBreak)) {
 				if(!Objects.isNull(alignment)) {
 					alignment.setSourceModel(sourceModel);
 					alignment.setTargetModel(targetModel);
-					alignment.setName(sourceModel.getId() + "-" + targetModel.getId() + ".rdf");
+					String[] sourceIds = sourceModel.getId().split("/");
+					String[] targetIds = targetModel.getId().split("/");
+					alignment.setName(sourceIds[sourceIds.length-1].replace(".pnml", "") + "-" 
+								+ targetIds[targetIds.length-1].replace(".pnml", "")  + ".rdf");
 					alignments.add(alignment);				
 				}
 				for(Model m : models) {
-					if(label1.replace(" ", "_").contains(m.getId())) {
+					if(m.getId().contains(label1)) {
 						sourceModel = m;
-					} else if(label2.replace(" ", "_").contains(m.getId())) {
+					} else if(m.getId().contains(label2)) {
 						targetModel = m;
 					}
 				}
@@ -308,7 +305,6 @@ public class GSPartitioner {
 			} else if(!label1.isEmpty() && !label2.isEmpty()){
 				String sourceID = (label1.contains("sid")) ? label1 : this.getLabelId(sourceModel, label1);
 				String targetID = (label2.contains("sid")) ? label2 : this.getLabelId(targetModel, label2);
-//				String targetID = this.getLabelId(targetModel, label2);
 				if(cache.contains(sourceID+targetID)) {
 					System.out.println("--------Doppelt-------");
 					System.out.println(label1 + " - " + label2);
@@ -332,9 +328,11 @@ public class GSPartitioner {
 		}
 		alignment.setSourceModel(sourceModel);
 		alignment.setTargetModel(targetModel);
-		alignment.setName(sourceModel.getId() + "-" + targetModel.getId() + ".rdf");
+		String[] sourceIds = sourceModel.getId().split("/");
+		String[] targetIds = targetModel.getId().split("/");
+		alignment.setName(sourceIds[sourceIds.length-1].replace(".pnml", "") + "-" 
+					+ targetIds[targetIds.length-1].replace(".pnml", "")  + ".rdf");
 		alignments.add(alignment);
-//		System.out.println("Number of Double occurrences : " + this.numDouble);
 		System.out.println("Number of NULL occurrences : " + this.numNulls + "/");
 		StringBuilder sb = new StringBuilder();
 		for(String s : annotators) {
@@ -344,10 +342,6 @@ public class GSPartitioner {
 		return new Solution("goldstandard-" + sb.toString(), "src/main/resources/data/dataset1/GoldStandard_8experts_merged_.csv", 0.0, alignments);
 	}
 	
-	//TODO: make annotators a class
-	public void transformLabelsToIDsToFile(List<Model> models, List<String> annotators, final String OUTPUT_PATH) {
-		
-	}
 	
 	public String getLabelId(Model m, String label) {
 		label = getSanitizeLabel(label);
@@ -381,15 +375,66 @@ public class GSPartitioner {
 	public void setAnnotators(String... annotators) {
 		this.annotators = Arrays.asList(annotators);
 	}
-
+	
+	public void loadModelPaths(String... modelPaths) {
+		this.modelPaths = Arrays.asList(modelPaths);
+		this.loadModels();
+	}
 
 	public List<Model> getModels() {
 		return models;
 	}
 
-
 	public void setModels(List<Model> models) {
 		this.models = models;
+	}
+
+	public String getGoldstandardPath() {
+		return goldstandardPath;
+	}
+
+	public void setGoldstandardPath(String goldstandardPath) {
+		this.goldstandardPath = goldstandardPath;
+	}
+
+	public int getNumDouble() {
+		return numDouble;
+	}
+
+	public void setNumDouble(int numDouble) {
+		this.numDouble = numDouble;
+	}
+
+	public String getLineBreak() {
+		return lineBreak;
+	}
+
+	public void setLineBreak(String lineBreak) {
+		this.lineBreak = lineBreak;
+	}
+
+	public String getLabel1() {
+		return label1;
+	}
+
+	public void setLabel1(String label1) {
+		this.label1 = label1;
+	}
+
+	public String getLabel2() {
+		return label2;
+	}
+
+	public void setLabel2(String label2) {
+		this.label2 = label2;
+	}
+
+	public String getLabelAnnotators() {
+		return labelAnnotators;
+	}
+
+	public void setLabelAnnotators(String labelAnnotators) {
+		this.labelAnnotators = labelAnnotators;
 	}
 	
 	
