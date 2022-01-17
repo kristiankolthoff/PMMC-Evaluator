@@ -1,5 +1,8 @@
 # PMMC-Evaluator
 
+[![DOI](https://zenodo.org/badge/55837927.svg)](https://zenodo.org/badge/latestdoi/55837927)
+
+
 This project provides an API for evaluating process model matchers with a variety of different metrics
 and is used to generate the results for the official Process Model Matching Contest (PMMC) conducted in 2016 [[1](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)] and 2017 [[2](https://github.com/kristiankolthoff/PMMC-Evaluator#publications)]. This contest is about finding pairwise matching tasks or activities (denoted as correspondences) in comparison of two given process models. In particular, for this contest three different datasets are used all having different notation form. The first set of process models describes the admission process at various universities and is represented in [BPMN](http://www.bpmn.org/). The second set of process models describe the process of creating birth certificates and uses [Petri-Nets](https://en.wikipedia.org/wiki/Petri_net). The third and last set of process models describe the basic process of managing assets and is represented in [EPC](https://en.wikipedia.org/wiki/Event-driven_process_chain). For evaluating the submitted matchers, we construct various evaluation settings and compute the corresponding metrics. An evaluation process is easily setup by using the builder pattern to increasingly build up a configuration for an evaluation. This `Evaluation` instance forms the basis for any experiment.
 
